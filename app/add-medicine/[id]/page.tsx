@@ -8,9 +8,11 @@ interface ApiResponse {
   data: MedicineData;
 }
 
+const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000';
+
 async function getMedicineData(id: string): Promise<MedicineData | null> {
   try {
-    const response = await fetch(`http://localhost:4000/api/products/${id}`, {
+    const response = await fetch(`${API_URL}/api/products/${id}`, {
       cache: 'no-store',
     });
     
