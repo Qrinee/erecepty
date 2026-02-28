@@ -1,7 +1,7 @@
 "use client";
 
 import { ChevronDown } from "lucide-react";
-import { useState } from "react";
+import { useId, useState } from "react";
 
 type FAQItemProps = {
   question: string;
@@ -10,18 +10,25 @@ type FAQItemProps = {
 
 export default function FAQItem({ question, answer }: FAQItemProps) {
   const [open, setOpen] = useState(false);
+  const id = useId();
+  const answerId = `answer-${id}`;
+  const buttonId = `button-${id}`;
 
   return (
     <div className="rounded-xl bg-slate-50 px-6 py-4 transition" >
       <button
+        id={buttonId}
         onClick={() => setOpen(!open)}
-        className="cursor-pointer flex w-full items-center justify-between text-left"
+        aria-expanded={open}
+        aria-controls={answerId}
+        className="cursor-pointer flex w-full items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 -mx-2"
       >
         <span className="font-medium text-slate-900">
           {question}
         </span>
         <ChevronDown
           size={18}
+          aria-hidden="true"
           className={`text-blue-600 transition-transform ${
             open ? "rotate-180" : ""
           }`}
@@ -29,9 +36,14 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
       </button>
 
       {open && (
-        <p className="mt-4 text-sm text-slate-500">
+        <div 
+          id={answerId}
+          role="region" 
+          aria-labelledby={buttonId}
+          className="mt-4 text-sm text-slate-600"
+        >
           {answer}
-        </p>
+        </div>
       )}
     </div>
   );

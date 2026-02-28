@@ -1,41 +1,53 @@
 import { faqData } from "@/app/data/faqData";
 import FAQItem from "./FAQItem";
-
-
+import { HelpCircle, MessageCircle, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 export default function FAQSection() {
   return (
-    <section className="bg-white py-20">
+    <section className="bg-white py-20" aria-labelledby="faq-section-title">
       <div className="mx-auto max-w-3xl px-6">
         <div className="mb-12 text-center">
-          <h2 className="text-3xl font-bold text-slate-900">
+          <span className="inline-flex items-center gap-2 bg-purple-100 text-purple-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+            <HelpCircle size={16} />
+            FAQ
+          </span>
+          <h2 id="faq-section-title" className="text-3xl font-bold text-slate-900">
             Często zadawane pytania
           </h2>
-          <p className="mt-3 text-slate-500">
+          <p className="mt-3 text-slate-600 text-lg">
             Znajdź szybkie odpowiedzi na najważniejsze pytania o nasze usługi.
           </p>
         </div>
 
-        <div className="space-y-4">
+        <div className="space-y-4" role="list">
           {faqData.map((item, index) => (
             <FAQItem key={index} {...item} />
           ))}
         </div>
 
         {/* CTA */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border border-blue-100 bg-blue-50 px-8 py-6 sm:flex-row">
-          <div>
-            <p className="font-semibold text-slate-900">
-              Nadal potrzebujesz pomocy?
-            </p>
-            <p className="text-sm text-slate-500">
+        <div className="mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border-2 border-blue-100 bg-gradient-to-br from-blue-50 to-purple-50 px-8 py-8 sm:flex-row">
+          <div className="text-center sm:text-left">
+            <div className="flex items-center gap-2 justify-center sm:justify-start mb-2">
+              <MessageCircle className="text-blue-600" size={20} />
+              <p className="font-bold text-slate-900 text-lg">
+                Nadal potrzebujesz pomocy?
+              </p>
+            </div>
+            <p className="text-slate-600">
               Nasi konsultanci są dostępni na czacie 24/7.
             </p>
           </div>
 
-          <button className="cursor-pointer rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700">
+          <Link 
+            href="/jak-to-dziala"
+            className="cursor-pointer rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 shadow-lg shadow-blue-600/25 inline-flex items-center gap-2"
+            aria-label="Skontaktuj się z nami"
+          >
             Skontaktuj się z nami
-          </button>
+            <ArrowRight size={16} />
+          </Link>
         </div>
       </div>
     </section>

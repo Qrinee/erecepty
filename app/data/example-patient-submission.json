@@ -1,0 +1,47 @@
+{
+  "patient": {
+    "contact": {
+      "email": "jan.kowalski@email.pl",
+      "firstName": "Jan",
+      "lastName": "Kowalski",
+      "pesel": "91020312345",
+      "phone": "+48 123 456 789",
+      "street": "ul. Długa",
+      "houseNumber": "12",
+      "apartmentNumber": "5",
+      "postalCode": "00-001",
+      "city": "Warszawa"
+    },
+    "medical": {
+      "mainComplaint": "Od kilku dni mam silne bóle głowy, które nie ustępują po lekach przeciwbólowych. Dodatkowo odczuwam zmęczenie i osłabienie.",
+      "hasChronicDiseases": "yes",
+      "chronicDiseases": "Nadciśnienie tętnicze (diagnozowane od 2 lat), przyjmuję lek Renedi 5mg",
+      "takesMedications": "yes",
+      "medications": "Renedi 5mg raz dziennie, Witamina D3 2000 IU",
+      "hasAllergies": "no",
+      "allergies": null,
+      "otherMedicalInfo": "Przebyłem operację wyrostka robatkowego w 2015 roku",
+      "pregnancyStatus": "na"
+    },
+    "consent": {
+      "rodoConsent": true,
+      "medicalConsent": true,
+      "newsletterConsent": true,
+      "createAccount": true,
+      "password": "securePassword123"
+    }
+  },
+  "medicines": [
+    {
+      "medicineId": "507f1f77bcf86cd799439011",
+      "quantity": 2,
+      "dosage": "1 tabletka rano i wieczorem"
+    },
+    {
+      "medicineId": "507f1f77bcf86cd799439012",
+      "quantity": 1,
+      "dosage": "1 tabletka w razie bólu"
+    }
+  ],
+  "submissionDate": "2026-02-05T10:21:00.000Z"
+}

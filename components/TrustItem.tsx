@@ -12,13 +12,13 @@ export default function TrustItem({
   description
 }: Props) {
   return (
-    <div className="flex gap-4 bg-white rounded-xl p-6 border border-slate-200">
-      <div className="w-10 h-10 flex items-center justify-center rounded-lg bg-blue-50 text-blue-600 shrink-0">
-        <Icon size={20} />
+    <div className="flex gap-4 bg-white rounded-2xl p-6 border-2 border-slate-100 hover:border-blue-200 hover:shadow-lg transition-all duration-300 group">
+      <div className="w-12 h-12 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 shrink-0 group-hover:scale-110 transition-transform" aria-hidden="true">
+        <Icon size={24} />
       </div>
 
       <div>
-        <h4 className="font-semibold text-slate-900 mb-1">
+        <h4 className="font-bold text-slate-900 mb-1 text-lg">
           {title}
         </h4>
         <p className="text-sm text-slate-600 leading-relaxed">

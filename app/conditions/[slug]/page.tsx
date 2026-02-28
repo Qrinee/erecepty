@@ -1,26 +1,7 @@
 // app/conditions/[slug]/page.tsx
 import { conditions } from "@/app/data/conditions";
 import type { Metadata } from "next";
-import Link from "next/link";
 import { notFound } from "next/navigation";
-import { ConditionPageData } from "@/app/types/condition";
-import { 
-  CheckCircle, 
-  XCircle, 
-  Clock, 
-  Shield,
-  Users,
-  TrendingUp,
-  Heart,
-  Pill,
-  Stethoscope,
-  FileText,
-  Calendar,
-  ArrowRight,
-  Sparkles,
-  Activity,
-  Zap
-} from 'lucide-react';
 import ConditionPageClient from "./ConditionPageClient";
 
 // Named export for metadata - MUSI być Server Component

@@ -2,36 +2,55 @@ import {
   ShieldCheck,
   UserCheck,
   Zap,
-  FileCheck
+  FileCheck,
+  ArrowRight
 } from "lucide-react";
+import Link from "next/link";
 import TrustItem from "./TrustItem";
 
 export default function TrustSection() {
   return (
-    <section className="bg-slate-100 py-20">
+    <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-20" aria-labelledby="trust-section-title">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
         <div>
-          <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 text-sm font-medium px-4 py-1.5 rounded-full mb-4">
-            <ShieldCheck size={16} />
+          <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+            <ShieldCheck size={16} aria-hidden="true" />
             Gwarancja bezpieczeństwa
           </span>
 
-          <h2 className="text-3xl font-bold text-slate-900 mb-4">
+          <h2 id="trust-section-title" className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
             Dlaczego warto nam zaufać?
           </h2>
 
-          <p className="text-slate-600 max-w-md">
+          <p className="text-slate-600 max-w-md text-lg mb-6">
             Nasza platforma została stworzona z myślą o najwyższych
             standardach etyki lekarskiej oraz bezpieczeństwa cyfrowego.
             Działamy w pełni transparentnie i zgodnie z polskim prawem.
           </p>
 
-          <a
-            href="#"
-            className="inline-flex items-center gap-2 mt-6 text-blue-600 font-medium hover:underline"
+          {/* Trust badges */}
+          <div className="flex flex-wrap gap-3 mb-6">
+            <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg border border-slate-200">
+              <UserCheck className="text-blue-600" size={18} />
+              <span className="text-sm font-medium text-slate-700">Lekarze z PWZ</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg border border-slate-200">
+              <ShieldCheck className="text-green-600" size={18} />
+              <span className="text-sm font-medium text-slate-700">RODO</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg border border-slate-200">
+              <Zap className="text-yellow-500" size={18} />
+              <span className="text-sm font-medium text-slate-700">Szybko</span>
+            </div>
+          </div>
+
+          <Link
+            href="/jak-to-dziala"
+            className="inline-flex items-center gap-2 mt-6 bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-lg shadow-blue-600/25"
           >
-            Dowiedz się więcej o procesie →
-          </a>
+            Dowiedz się więcej o procesie
+            <ArrowRight size={18} />
+          </Link>
         </div>
 
         <div className="grid sm:grid-cols-2 gap-6">

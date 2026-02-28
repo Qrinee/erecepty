@@ -6,6 +6,7 @@ export const knowledgeCards = [
     description:
       "Kilka prostych kroków, które pomogą Ci maksymalnie wykorzystać czas z lekarzem online i uniknąć stresu.",
     image: "/doctor.jpg",
+    slug: "jak-sie-przygotowac-do-telekonsultacji"
   },
   {
     tag: "KOMPENDIUM",
@@ -14,6 +15,7 @@ export const knowledgeCards = [
     description:
       "Przewodnik po systemie e-zdrowia. Dowiedz się jak działa kod PIN i jak sprawdzić historię leczenia.",
     image: "/erecepta.jpg",
+    slug: "wszystko-o-e-recepcie"
   },
   {
     tag: "BEZPIECZEŃSTWO",
@@ -22,5 +24,6 @@ export const knowledgeCards = [
     description:
       "Czy wiesz, że możesz przedłużyć leki stałe bez wychodzenia z domu? Sprawdź, jakie dokumenty są potrzebne.",
     image: "/security.jpg",
+    slug: "leczenie-chorob-przewleklych-online"
   },
 ];

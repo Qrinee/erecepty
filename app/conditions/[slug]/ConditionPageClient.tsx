@@ -9,29 +9,21 @@ import {
   Clock, 
   Users,
   TrendingUp,
-  Heart,
   Pill,
   Stethoscope,
   FileText,
   Calendar,
   BookOpen,
   Brain,
-  Shield,
   Activity,
-  Zap,
   AlertCircle,
   TrendingDown
 } from 'lucide-react';
-import { useEffect } from 'react';
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
 // Floating abstract elements
 function FloatingElements() {
-  useEffect(() => {
-    // Client-side only effects
-  }, []);
-
   return (
     <>
       <Header />

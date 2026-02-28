@@ -1,0 +1,548 @@
+import FAQSection from "@/components/FAQSection";
+import Footer from "@/components/Footer";
+import Header from "@/components/Header";
+import {
+  Search,
+  FileText,
+  Stethoscope,
+  Pill,
+  Clock,
+  Shield,
+  CheckCircle,
+  ArrowRight,
+  CreditCard,
+  Building2,
+  Users,
+  Star,
+  BadgeCheck,
+  Phone,
+  Mail,
+  MessageCircle,
+  Heart,
+  Activity,
+  Calendar,
+  Video,
+  ChevronRight
+} from "lucide-react";
+
+export default function JakToDzialaPage() {
+  const steps = [
+    {
+      number: "01",
+      icon: Search,
+      title: "Wyszukaj lek",
+      description: "Wpisz nazwę leku lub substancji czynnej w wyszukiwarce. Podaj również dawkę i opakowanie.",
+      color: "bg-blue-500"
+    },
+    {
+      number: "02",
+      icon: FileText,
+      title: "Wypełnij formularz",
+      description: "Uzupełnij krótki formularz medyczny z informacjami o Twoim stanie zdrowia i historii leczenia.",
+      color: "bg-purple-500"
+    },
+    {
+      number: "03",
+      icon: Stethoscope,
+      title: "Konsultacja lekarska",
+      description: "Lekarz przeanalizuje Twoje zgłoszenie i wystawi e-receptę, jeśli nie będzie przeciwwskazań.",
+      color: "bg-green-500"
+    },
+    {
+      number: "04",
+      icon: Pill,
+      title: "Odbierz receptę",
+      description: "Receptę otrzymasz SMS-em i e-mailem. Realizuj ją w dowolnej aptece w Polsce.",
+      color: "bg-orange-500"
+    }
+  ];
+
+  const features = [
+    {
+      icon: Clock,
+      title: "Szybko",
+      description: "E-recepta nawet w 15 minut",
+      color: "bg-blue-100 text-blue-600"
+    },
+    {
+      icon: Shield,
+      title: "Bezpiecznie",
+      description: "Dane chronione przez RODO",
+      color: "bg-green-100 text-green-600"
+    },
+    {
+      icon: Building2,
+      title: "Legalnie",
+      description: "Zgodnie z polskim prawem",
+      color: "bg-purple-100 text-purple-600"
+    },
+    {
+      icon: Users,
+      title: "Profesjonalnie",
+      description: "Weryfikowani lekarze z PWZ",
+      color: "bg-orange-100 text-orange-600"
+    }
+  ];
+
+  const stats = [
+    { value: "50 000+", label: "Wystawionych recept" },
+    { value: "1 200+", label: "Zadowolonych pacjentów" },
+    { value: "4.9/5", label: "Ocena w Google" },
+    { value: "24/7", label: "Dostępność" }
+  ];
+
+  const testimonials = [
+    {
+      name: "Anna K.",
+      text: "Bardzo szybka obsługa! Receptę dostałam w 10 minut, bez wychodzenia z domu.",
+      rating: 5
+    },
+    {
+      name: "Marek W.",
+      text: "Super aplikacja, wszystko działa bezproblemowo. Polecam każdemu.",
+      rating: 5
+    },
+    {
+      name: "Katarzyna P.",
+      text: "Wreszcie nie muszę czekać w kolejkach do lekarza. E-recepta to rewolucja!",
+      rating: 5
+    }
+  ];
+
+  const pricing = [
+    {
+      title: "Konsultacja standardowa",
+      price: "od 49,99 zł",
+      description: "Dla większości leków stosowanych przewlekle",
+      features: [
+        "E-recepta w 15 minut",
+        "Dostęp 24/7",
+        "Zwrot w ciągu 14 dni"
+      ],
+      popular: false
+    },
+    {
+      title: "Konsultacja priorytetowa",
+      price: "od 79,99 zł",
+      description: "Dla leków wymagających szybszej oceny",
+      features: [
+        "E-recepta w 30 minut",
+        "Dostęp 24/7",
+        "Konsultacja z lekarzem w ciągu 2h",
+        "Zwrot w ciągu 14 dni"
+      ],
+      popular: true
+    },
+    {
+      title: "Pakiet familia",
+      price: "od 119,99 zł",
+      description: "Dla rodzin - 3 konsultacje w pakiecie",
+      features: [
+        "3 e-recepty",
+        "Oszczędzasz do 30 zł",
+        "Ważne 90 dni",
+        "Dla całej rodziny"
+      ],
+      popular: false
+    }
+  ];
+
+  return (
+    <>
+      <Header />
+      <main id="main-content" tabIndex={-1}>
+        {/* Hero Section with Illustration */}
+        <div style={{margin: '100px'}}></div>
+        <section className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
+          {/* Decorative elements */}
+          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-30 blur-2xl" />
+          <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-200 rounded-full opacity-30 blur-3xl" />
+          <div className="absolute top-1/2 left-1/4 w-4 h-4 bg-blue-400 rounded-full opacity-50" />
+          <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-purple-400 rounded-full opacity-50" />
+          
+          <div className="max-w-7xl mx-auto px-4 py-20 relative">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="text-center lg:text-left">
+                <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+                  <Clock size={16} />
+                  Nawet w 15 minut
+                </span>
+
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
+                  Jak działa{" "}
+                  <span className="text-blue-600">e-recepta online?</span>
+                </h1>
+
+                <p className="text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 mb-8">
+                  To proste! Wystarczą 4 kroki, aby otrzymać receptę online 
+                  bez wychodzenia z domu, bez kolejek i bez zbędnego stresu.
+                </p>
+
+                <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+                  <a
+                    href="#kroki"
+                    className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-lg shadow-blue-600/25"
+                  >
+                    Zobacz jak to działa
+                    <ArrowRight size={18} />
+                  </a>
+                  <a
+                    href="#cennik"
+                    className="inline-flex items-center justify-center gap-2 bg-white text-slate-700 border border-slate-300 px-6 py-3 rounded-full font-medium hover:bg-slate-50 transition"
+                  >
+                    Sprawdź cennik
+                  </a>
+                </div>
+
+                {/* Trust badges */}
+                <div className="mt-10 flex flex-wrap gap-6 justify-center lg:justify-start">
+                  <div className="flex items-center gap-2 text-sm text-slate-600">
+                    <BadgeCheck className="text-green-500" size={20} />
+                    <span>Lekarze z PWZ</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-slate-600">
+                    <Shield className="text-blue-500" size={20} />
+                    <span>RODO</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-sm text-slate-600">
+                    <Star className="text-yellow-500" size={20} />
+                    <span>4.9/5 ocena</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Phone mockup illustration */}
+              <div className="relative hidden lg:block">
+                <div className="relative mx-auto w-72 h-[500px] bg-gradient-to-b from-slate-800 to-slate-900 rounded-[3rem] p-3 shadow-2xl">
+                  <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden relative">
+                    {/* Phone screen mockup */}
+                    <div className="p-4 h-full flex flex-col">
+                      <div className="bg-blue-600 text-white p-4 rounded-2xl mb-4">
+                        <div className="text-sm opacity-80">Twoja recepta</div>
+                        <div className="text-2xl font-bold mt-1">E-Recepta.pl</div>
+                      </div>
+                      <div className="space-y-3 flex-1">
+                        <div className="bg-green-50 border border-green-200 p-3 rounded-xl">
+                          <div className="flex items-center gap-2 text-green-700 font-medium">
+                            <CheckCircle size={16} />
+                            Wystawiona
+                          </div>
+                          <div className="text-sm text-green-600 mt-1">Lek: Amokscyklina 500mg</div>
+                        </div>
+                        <div className="bg-slate-50 p-3 rounded-xl">
+                          <div className="text-sm text-slate-500">Realizacja:</div>
+                          <div className="font-medium text-slate-700">Dowolna apteka w PL</div>
+                        </div>
+                        <div className="bg-slate-50 p-3 rounded-xl">
+                          <div className="text-sm text-slate-500">Kod:</div>
+                          <div className="font-mono font-bold text-slate-900">ABCD 1234 EFGH</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                {/* Floating elements */}
+                <div className="absolute -top-4 -right-8 bg-white p-3 rounded-xl shadow-lg animate-bounce">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-green-100 rounded-full flex items-center justify-center">
+                      <CheckCircle className="text-green-600" size={16} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-slate-900">Sukces!</div>
+                      <div className="text-xs text-slate-500">Recepta gotowa</div>
+                    </div>
+                  </div>
+                </div>
+                <div className="absolute -bottom-4 -left-8 bg-white p-3 rounded-xl shadow-lg">
+                  <div className="flex items-center gap-2">
+                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                      <Clock className="text-blue-600" size={16} />
+                    </div>
+                    <div>
+                      <div className="text-sm font-medium text-slate-900">15 minut</div>
+                      <div className="text-xs text-slate-500">Czas realizacji</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Stats Section */}
+        <section className="py-12 bg-white border-b">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {stats.map((stat, index) => (
+                <div key={index} className="text-center">
+                  <div className="text-3xl md:text-4xl font-bold text-blue-600 mb-2">
+                    {stat.value}
+                  </div>
+                  <div className="text-sm text-slate-600">{stat.label}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+
+        {/* Steps Section */}
+        <section id="kroki" className="py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                4 proste kroki do recepty
+              </h2>
+              <p className="text-slate-600 max-w-xl mx-auto">
+                Cały proces jest intuicyjny i zajmuje tylko kilka minut. 
+                Nie musisz instalować żadnych aplikacji.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {steps.map((step, index) => (
+                <div key={index} className="relative group">
+                  {index < steps.length - 1 && (
+                    <div className="hidden lg:block absolute top-20 left-1/2 w-full h-1 bg-gradient-to-r from-blue-200 to-purple-200 -translate-y-1/2 z-0" />
+                  )}
+                  
+                  <div className="relative bg-white rounded-2xl border-2 border-slate-100 p-6 h-full hover:border-blue-200 hover:shadow-xl transition-all duration-300">
+                    <div className="flex items-center justify-between mb-4">
+                      <div className={`w-14 h-14 flex items-center justify-center rounded-xl ${step.color} text-white shadow-lg`}>
+                        <step.icon size={28} />
+                      </div>
+                      <span className="text-5xl font-bold text-slate-100">
+                        {step.number}
+                      </span>
+                    </div>
+
+                    <h3 className="font-bold text-xl text-slate-900 mb-2">
+                      {step.title}
+                    </h3>
+
+                    <p className="text-sm text-slate-600 leading-relaxed">
+                      {step.description}
+                    </p>
+
+                    {index < steps.length - 1 && (
+                      <div className="lg:hidden absolute bottom-6 right-4 text-blue-300">
+                        <ChevronRight size={24} />
+                      </div>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            {/* Process visualization */}
+            <div className="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
+              <div className="grid md:grid-cols-3 gap-8 items-center">
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
+                    <Video className="text-blue-600" size={32} />
+                  </div>
+                  <h4 className="font-semibold text-slate-900">Bez wizyty</h4>
+                  <p className="text-sm text-slate-600 mt-1">Rozmowa online</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
+                    <Activity className="text-green-600" size={32} />
+                  </div>
+                  <h4 className="font-semibold text-slate-900">Bezpiecznie</h4>
+                  <p className="text-sm text-slate-600 mt-1">Lekarze z PWZ</p>
+                </div>
+                <div className="text-center">
+                  <div className="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
+                    <Calendar className="text-purple-600" size={32} />
+                  </div>
+                  <h4 className="font-semibold text-slate-900">24/7</h4>
+                  <p className="text-sm text-slate-600 mt-1">Całą dobę</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Testimonials Section */}
+        <section className="py-20 bg-gradient-to-br from-blue-50 to-purple-50">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                Co mówią nasi pacjenci?
+              </h2>
+              <p className="text-slate-600">
+                Zobacz opinie osób, które skorzystały z naszej platformy
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {testimonials.map((testimonial, index) => (
+                <div key={index} className="bg-white rounded-2xl p-6 shadow-lg">
+                  <div className="flex gap-1 mb-4">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="text-yellow-400 fill-yellow-400" size={18} />
+                    ))}
+                  </div>
+                  <p className="text-slate-600 mb-4">"{testimonial.text}"</p>
+                  <div className="font-semibold text-slate-900">{testimonial.name}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Pricing Section */}
+        <section id="cennik" className="py-20 bg-white">
+          <div className="max-w-6xl mx-auto px-4">
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+                Prosty i przejrzysty cennik
+              </h2>
+              <p className="text-slate-600 max-w-xl mx-auto">
+                Jedna cena, bez ukrytych kosztów. Płacisz tylko za konsultację lekarską.
+              </p>
+            </div>
+
+            <div className="grid md:grid-cols-3 gap-6">
+              {pricing.map((plan, index) => (
+                <div
+                  key={index}
+                  className={`relative bg-white rounded-2xl p-6 ${
+                    plan.popular
+                      ? "border-2 border-blue-500 shadow-xl scale-105"
+                      : "border-2 border-slate-100 hover:border-blue-200"
+                  }`}
+                >
+                  {plan.popular && (
+                    <div className="absolute -top-3 left-1/2 -translate-x-1/2 bg-blue-500 text-white text-xs font-medium px-3 py-1 rounded-full">
+                      Najpopularniejsze
+                    </div>
+                  )}
+
+                  <h3 className="font-bold text-xl text-slate-900 mb-2">
+                    {plan.title}
+                  </h3>
+
+                  <div className="mb-4">
+                    <span className="text-4xl font-bold text-slate-900">
+                      {plan.price}
+                    </span>
+                  </div>
+
+                  <p className="text-sm text-slate-600 mb-6">
+                    {plan.description}
+                  </p>
+
+                  <ul className="space-y-3 mb-6">
+                    {plan.features.map((feature, featureIndex) => (
+                      <li key={featureIndex} className="flex items-center gap-2 text-sm text-slate-600">
+                        <CheckCircle size={16} className="text-green-500 shrink-0" />
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+
+                  <a
+                    href="/"
+                    className={`block w-full py-3 rounded-xl font-medium text-center transition ${
+                      plan.popular
+                        ? "bg-blue-600 text-white hover:bg-blue-700 shadow-lg shadow-blue-600/25"
+                        : "bg-slate-100 text-slate-700 hover:bg-slate-200"
+                    }`}
+                  >
+                    Wybieram
+                  </a>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-12 text-center">
+              <div className="flex flex-wrap items-center justify-center gap-6 text-slate-600 mb-4">
+                <div className="flex items-center gap-2">
+                  <Shield size={20} className="text-green-500" />
+                  <span className="text-sm">Bezpieczne płatności SSL</span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <CreditCard size={20} className="text-slate-400" />
+                  <span className="text-sm">BLIK, karta, przelew</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Contact Section */}
+        <section className="py-20 bg-slate-900 text-white">
+          <div className="max-w-4xl mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-6">
+              Masz pytania?
+            </h2>
+            <p className="text-slate-300 mb-8 text-lg">
+              Skontaktuj się z nami - jesteśmy do Twojej dyspozycji
+            </p>
+            
+            <div className="grid sm:grid-cols-3 gap-6">
+              <a href="tel:+48000000000" className="bg-white/10 hover:bg-white/20 rounded-2xl p-6 transition">
+                <Phone className="mx-auto mb-3 text-blue-400" size={32} />
+                <div className="font-semibold">Telefon</div>
+                <div className="text-sm text-slate-300">+48 000 000 000</div>
+              </a>
+              <a href="mailto:kontakt@e-recepta.pl" className="bg-white/10 hover:bg-white/20 rounded-2xl p-6 transition">
+                <Mail className="mx-auto mb-3 text-blue-400" size={32} />
+                <div className="font-semibold">Email</div>
+                <div className="text-sm text-slate-300">kontakt@e-recepta.pl</div>
+              </a>
+              <div className="bg-white/10 rounded-2xl p-6">
+                <MessageCircle className="mx-auto mb-3 text-blue-400" size={32} />
+                <div className="font-semibold">Czat</div>
+                <div className="text-sm text-slate-300"> dostępny 24/7</div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* FAQ Section */}
+        <section className="py-20 bg-white">
+          <div className="max-w-3xl mx-auto px-4">
+            <div className="text-center mb-12">
+              <h2 className="text-3xl font-bold text-slate-900 mb-4">
+                Częste pytania
+              </h2>
+              <p className="text-slate-600">
+                Odpowiedzi na najczęściej zadawane pytania
+              </p>
+            </div>
+
+            <FAQSection />
+          </div>
+        </section>
+
+        {/* CTA Section */}
+        <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-full">
+            <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full" />
+            <div className="absolute bottom-10 right-10 w-48 h-48 bg-white/10 rounded-full" />
+            <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-white/5 rounded-full -translate-x-1/2 -translate-y-1/2" />
+          </div>
+          <div className="max-w-3xl mx-auto px-4 text-center relative">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+              Gotowy na receptę online?
+            </h2>
+            <p className="text-blue-100 mb-8 text-lg">
+              Nie czekaj w kolejkach. Otrzymaj receptę w 15 minut, 
+              bez wychodzenia z domu.
+            </p>
+            <a
+              href="/"
+              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-full font-medium hover:bg-blue-50 transition shadow-xl"
+            >
+              Pobierz receptę teraz
+              <ArrowRight size={20} />
+            </a>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </>
+  );
+}
