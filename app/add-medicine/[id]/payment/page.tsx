@@ -81,29 +81,27 @@ export default function PaymentPage() {
     // Save contact data
     localStorage.setItem('orderContact', JSON.stringify(data));
     
-    // Prepare patient data for submission
+    // Prepare patient data for submission - flat structure as expected by API
     const patientData = {
-      contact: {
-        email: data.email,
-        firstName: data.firstName,
-        lastName: data.lastName,
-        pesel: data.pesel,
-        phone: data.phone,
-        street: data.street,
-        houseNumber: data.houseNumber,
-        apartmentNumber: data.apartmentNumber || undefined,
-        postalCode: data.postalCode,
-        city: data.city,
-      },
-      medical: orderData?.medicalConsultation || {},
-      consent: {
-        rodoConsent: true,
-        medicalConsent: true,
-        newsletterConsent: false,
-        createAccount: data.createAccount,
-        password: data.password || undefined,
-      },
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      pesel: data.pesel,
+      phone: data.phone,
     };
+
+    // Prepare medical info from consultation
+    const medicalInfo = orderData?.medicalConsultation ? {
+      mainComplaint: orderData.medicalConsultation.mainComplaint || '',
+      hasChronicDiseases: orderData.medicalConsultation.hasChronicDiseases || false,
+      chronicDiseases: orderData.medicalConsultation.chronicDiseases || '',
+      takesMedications: orderData.medicalConsultation.takesMedications || false,
+      medications: orderData.medicalConsultation.medications || '',
+      hasAllergies: orderData.medicalConsultation.hasAllergies || false,
+      allergies: orderData.medicalConsultation.allergies || '',
+      otherMedicalInfo: orderData.medicalConsultation.otherMedicalInfo || '',
+      pregnancyStatus: orderData.medicalConsultation.pregnancyStatus || 'nie',
+    } : null;
 
     // Prepare medicines data
     const medicinesData = orderData?.medicines.map((med: MedicineData) => ({
@@ -122,6 +120,7 @@ export default function PaymentPage() {
         },
         body: JSON.stringify({
           patient: patientData,
+          medicalInfo,
           medicines: medicinesData,
           submissionDate: new Date().toISOString(),
         }),
