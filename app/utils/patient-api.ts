@@ -25,7 +25,8 @@ export async function submitPatientForm(
   const { patientData, medicines } = params;
 
   const submission: PatientSubmission = {
-    patient: patientData,
+    patient: patientData.patient,
+    medicalInfo: patientData.medicalInfo,
     medicines,
     submissionDate: new Date().toISOString(),
   };
@@ -63,37 +64,8 @@ export async function submitPatientForm(
 // Transform patient form data for backend compatibility
 export function transformPatientDataForBackend(data: PatientFormData) {
   return {
-    contact: {
-      email: data.contact.email,
-      firstName: data.contact.firstName,
-      lastName: data.contact.lastName,
-      pesel: data.contact.pesel,
-      phone: data.contact.phone,
-      address: {
-        street: data.contact.street,
-        houseNumber: data.contact.houseNumber,
-        apartmentNumber: data.contact.apartmentNumber || null,
-        postalCode: data.contact.postalCode,
-        city: data.contact.city,
-      },
-    },
-    medical: {
-      mainComplaint: data.medical.mainComplaint,
-      hasChronicDiseases: data.medical.hasChronicDiseases,
-      chronicDiseases: data.medical.chronicDiseases || null,
-      takesMedications: data.medical.takesMedications,
-      medications: data.medical.medications || null,
-      hasAllergies: data.medical.hasAllergies,
-      allergies: data.medical.allergies || null,
-      otherMedicalInfo: data.medical.otherMedicalInfo || null,
-      pregnancyStatus: data.medical.pregnancyStatus,
-    },
-    consent: {
-      rodoConsent: data.consent.rodoConsent,
-      medicalConsent: data.consent.medicalConsent,
-      newsletterConsent: data.consent.newsletterConsent,
-      createAccount: data.consent.createAccount,
-    },
+    patient: data.patient,
+    medicalInfo: data.medicalInfo,
   };
 }
 
@@ -101,46 +73,38 @@ export function transformPatientDataForBackend(data: PatientFormData) {
 export function validatePatientForm(data: PatientFormData): { valid: boolean; errors: string[] } {
   const errors: string[] = [];
 
-  // Contact validation
-  if (!data.contact.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.contact.email)) {
+  // Patient data validation
+  if (!data.patient.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.patient.email)) {
     errors.push('Invalid email address');
   }
-  if (!data.contact.pesel || data.contact.pesel.length !== 11) {
+  if (!data.patient.pesel || data.patient.pesel.length !== 11) {
     errors.push('PESEL must be 11 digits');
   }
-  if (!data.contact.phone || data.contact.phone.length < 9) {
+  if (!data.patient.phone || data.patient.phone.length < 9) {
     errors.push('Invalid phone number');
   }
-  if (!data.contact.firstName) {
+  if (!data.patient.firstName) {
     errors.push('First name is required');
   }
-  if (!data.contact.lastName) {
+  if (!data.patient.lastName) {
     errors.push('Last name is required');
   }
 
-  // Medical validation
-  if (!data.medical.mainComplaint) {
+  // Medical info validation
+  if (!data.medicalInfo.mainComplaint) {
     errors.push('Main complaint is required');
   }
-  if (!data.medical.hasChronicDiseases) {
+  if (data.medicalInfo.hasChronicDiseases === undefined) {
     errors.push('Chronic diseases question must be answered');
   }
-  if (!data.medical.takesMedications) {
+  if (data.medicalInfo.takesMedications === undefined) {
     errors.push('Medications question must be answered');
   }
-  if (!data.medical.hasAllergies) {
+  if (data.medicalInfo.hasAllergies === undefined) {
     errors.push('Allergies question must be answered');
   }
-  if (!data.medical.pregnancyStatus) {
+  if (!data.medicalInfo.pregnancyStatus) {
     errors.push('Pregnancy status must be answered');
-  }
-
-  // Consent validation
-  if (!data.consent.rodoConsent) {
-    errors.push('RODO consent is required');
-  }
-  if (!data.consent.medicalConsent) {
-    errors.push('Medical consent is required');
   }
 
   return {
