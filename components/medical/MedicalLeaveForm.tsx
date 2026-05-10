@@ -1,8 +1,31 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { Calendar, User, Stethoscope, Clock, Building, FileText } from "lucide-react";
 import { MedicalLeaveData } from '@/app/types/medicine';
+import { useCurrentUser } from '@/app/hooks/useCurrentUser';
+
+type MedicalLeavePayload = {
+  patientFirstName: string;
+  patientLastName: string;
+  patientPesel: string;
+  patientAddress: string;
+  patientPostalCode: string;
+  patientCity: string;
+  email?: string;
+  phone?: string;
+  diagnosis?: string;
+  diagnosisDescription?: string;
+  icd10Code?: string;
+  leaveStartDate?: string;
+  leaveEndDate?: string;
+  leaveReason?: MedicalLeaveData['leaveReason'];
+  isHospitalized?: MedicalLeaveData['isHospitalized'];
+  hospitalName?: string;
+  additionalNotes?: string;
+  followUpVisit?: MedicalLeaveData['followUpVisit'];
+  followUpDate?: string;
+};
 
 interface MedicalLeaveFormProps {
   onSubmit: (data: MedicalLeaveData) => void;
@@ -13,6 +36,8 @@ export default function MedicalLeaveForm({
   onSubmit, 
   onCancel 
 }: MedicalLeaveFormProps) {
+  const { user } = useCurrentUser();
+  
   const [formData, setFormData] = useState<MedicalLeaveData>({
     patientFirstName: '',
     patientLastName: '',
@@ -32,26 +57,90 @@ export default function MedicalLeaveForm({
     followUpVisit: null,
     followUpDate: '',
   });
-
   const [currentSection, setCurrentSection] = useState(1);
   const totalSections = 3;
+  const [errors, setErrors] = useState<Record<string, string>>({});
+
+  // Auto-fill form with logged-in user data
+  useEffect(() => {
+    if (user) {
+      setFormData(prev => ({
+        ...prev,
+        patientFirstName: user.firstName || '',
+        patientLastName: user.lastName || '',
+      }));
+    }
+  }, [user]);
+
+  const validateSection = (section: number): boolean => {
+    const newErrors: Record<string, string> = {};
+
+    if (section === 1) {
+      if (!formData.patientFirstName?.trim()) {
+        newErrors.patientFirstName = 'Imię jest wymagane';
+      }
+      if (!formData.patientLastName?.trim()) {
+        newErrors.patientLastName = 'Nazwisko jest wymagane';
+      }
+      if (!formData.patientPesel?.trim()) {
+        newErrors.patientPesel = 'PESEL jest wymagany';
+      } else if (!/^\d{11}$/.test(formData.patientPesel)) {
+        newErrors.patientPesel = 'PESEL musi składać się z 11 cyfr';
+      }
+      if (!formData.patientAddress?.trim()) {
+        newErrors.patientAddress = 'Adres jest wymagany';
+      }
+      if (!formData.patientPostalCode?.trim()) {
+        newErrors.patientPostalCode = 'Kod pocztowy jest wymagany';
+      }
+      if (!formData.patientCity?.trim()) {
+        newErrors.patientCity = 'Miasto jest wymagane';
+      }
+    }
+
+    if (section === 2) {
+ 
+      if (formData.isHospitalized === null) {
+        newErrors.isHospitalized = 'Wybierz, czy pacjent był hospitalizowany';
+      }
+    }
+
+    if (section === 3) {
+      if (!formData.leaveStartDate) {
+        newErrors.leaveStartDate = 'Data rozpoczęcia jest wymagana';
+      }
+      if (!formData.leaveEndDate) {
+        newErrors.leaveEndDate = 'Data zakończenia jest wymagana';
+      }
+      if (!formData.leaveReason) {
+        newErrors.leaveReason = 'Przyczyna niezdolności jest wymagana';
+      }
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
 
   const handleChange = (field: keyof MedicalLeaveData, value: any) => {
     setFormData(prev => ({ ...prev, [field]: value }));
+    // Clear error when user starts typing
+    if (errors[field]) {
+      setErrors(prev => ({ ...prev, [field]: '' }));
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Log the data to console (as requested)
-    console.log('Medical Leave Form Data:', formData);
-    console.log('Ready to send to server:', JSON.stringify(formData, null, 2));
-    
-    onSubmit(formData);
+    if (validateSection(1) && validateSection(2) && validateSection(3)) {
+      console.log('Medical Leave Form Data:', formData);
+      console.log('Ready to send to server:', JSON.stringify(formData, null, 2));
+      onSubmit(formData);
+    }
   };
 
   const nextSection = () => {
-    if (currentSection < totalSections) {
+    if (currentSection < totalSections && validateSection(currentSection)) {
       setCurrentSection(prev => prev + 1);
     }
   };
@@ -74,6 +163,14 @@ export default function MedicalLeaveForm({
         </div>
       </div>
 
+      {Object.keys(errors).length > 0 && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <p className="text-sm font-medium text-red-800">
+            Proszę poprawić błędy w formularzu przed przejściem dalej
+          </p>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-900 mb-2">
@@ -83,9 +180,14 @@ export default function MedicalLeaveForm({
             type="text"
             value={formData.patientFirstName}
             onChange={(e) => handleChange('patientFirstName', e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors"
+            className={`w-full px-4 py-3 rounded-lg border focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors ${
+              errors.patientFirstName ? 'border-red-500' : 'border-gray-200'
+            }`}
             required
           />
+          {errors.patientFirstName && (
+            <p className="text-red-500 text-xs mt-1">{errors.patientFirstName}</p>
+          )}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-900 mb-2">
@@ -95,9 +197,14 @@ export default function MedicalLeaveForm({
             type="text"
             value={formData.patientLastName}
             onChange={(e) => handleChange('patientLastName', e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors"
+            className={`w-full px-4 py-3 rounded-lg border focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors ${
+              errors.patientLastName ? 'border-red-500' : 'border-gray-200'
+            }`}
             required
           />
+          {errors.patientLastName && (
+            <p className="text-red-500 text-xs mt-1">{errors.patientLastName}</p>
+          )}
         </div>
       </div>
 
@@ -110,9 +217,14 @@ export default function MedicalLeaveForm({
           value={formData.patientPesel}
           onChange={(e) => handleChange('patientPesel', e.target.value)}
           placeholder="Wpisz PESEL"
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors"
+          className={`w-full px-4 py-3 rounded-lg border focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors ${
+            errors.patientPesel ? 'border-red-500' : 'border-gray-200'
+          }`}
           required
         />
+        {errors.patientPesel && (
+          <p className="text-red-500 text-xs mt-1">{errors.patientPesel}</p>
+        )}
       </div>
 
       <div>
@@ -124,16 +236,23 @@ export default function MedicalLeaveForm({
           value={formData.patientAddress}
           onChange={(e) => handleChange('patientAddress', e.target.value)}
           placeholder="Ulica i numer domu/mieszkania"
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors mb-3"
+          className={`w-full px-4 py-3 rounded-lg border focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors mb-3 ${
+            errors.patientAddress ? 'border-red-500' : 'border-gray-200'
+          }`}
           required
         />
+        {errors.patientAddress && (
+          <p className="text-red-500 text-xs mt-1 mb-3">{errors.patientAddress}</p>
+        )}
         <div className="grid grid-cols-2 gap-4">
           <input
             type="text"
             value={formData.patientPostalCode}
             onChange={(e) => handleChange('patientPostalCode', e.target.value)}
             placeholder="Kod pocztowy"
-            className="px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors"
+            className={`px-4 py-3 rounded-lg border focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors ${
+              errors.patientPostalCode ? 'border-red-500' : 'border-gray-200'
+            }`}
             required
           />
           <input
@@ -141,10 +260,18 @@ export default function MedicalLeaveForm({
             value={formData.patientCity}
             onChange={(e) => handleChange('patientCity', e.target.value)}
             placeholder="Miasto"
-            className="px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors"
+            className={`px-4 py-3 rounded-lg border focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors ${
+              errors.patientCity ? 'border-red-500' : 'border-gray-200'
+            }`}
             required
           />
         </div>
+        {(errors.patientPostalCode || errors.patientCity) && (
+          <div className="flex gap-4 mt-1">
+            {errors.patientPostalCode && <p className="text-red-500 text-xs">{errors.patientPostalCode}</p>}
+            {errors.patientCity && <p className="text-red-500 text-xs">{errors.patientCity}</p>}
+          </div>
+        )}
       </div>
     </div>
   );
@@ -161,26 +288,23 @@ export default function MedicalLeaveForm({
         </div>
       </div>
 
+      {Object.keys(errors).length > 0 && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <p className="text-sm font-medium text-red-800">
+            Proszę poprawić błędy w formularzu przed przejściem dalej
+          </p>
+        </div>
+      )}
+
       <div>
-        <label className="block text-sm font-medium text-gray-900 mb-2">
-          Rozpoznanie (ICD-10) <span className="text-red-500">*</span>
-        </label>
-        <input
-          type="text"
-          value={formData.icd10Code}
-          onChange={(e) => handleChange('icd10Code', e.target.value)}
-          placeholder="np. J06.9"
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors mb-3"
-          required
-        />
-        <input
-          type="text"
-          value={formData.diagnosis}
-          onChange={(e) => handleChange('diagnosis', e.target.value)}
-          placeholder="Nazwa rozpoznania"
-          className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors"
-          required
-        />
+
+        {errors.icd10Code && (
+          <p className="text-red-500 text-xs mb-3">{errors.icd10Code}</p>
+        )}
+
+        {errors.diagnosis && (
+          <p className="text-red-500 text-xs">{errors.diagnosis}</p>
+        )}
       </div>
 
       <div>
@@ -190,7 +314,7 @@ export default function MedicalLeaveForm({
         <textarea
           value={formData.diagnosisDescription}
           onChange={(e) => handleChange('diagnosisDescription', e.target.value)}
-          placeholder="Dodatkowy opis schorzenia..."
+          placeholder="Opis schorzenia..."
           className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors min-h-[100px] resize-y"
         />
       </div>
@@ -223,6 +347,9 @@ export default function MedicalLeaveForm({
             Nie
           </button>
         </div>
+        {errors.isHospitalized && (
+          <p className="text-red-500 text-xs mt-2">{errors.isHospitalized}</p>
+        )}
       </div>
 
       {formData.isHospitalized === 'yes' && (
@@ -254,6 +381,14 @@ export default function MedicalLeaveForm({
         </div>
       </div>
 
+      {Object.keys(errors).length > 0 && (
+        <div className="bg-red-50 border border-red-200 rounded-lg p-4">
+          <p className="text-sm font-medium text-red-800">
+            Proszę poprawić błędy w formularzu przed przejściem dalej
+          </p>
+        </div>
+      )}
+
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         <div>
           <label className="block text-sm font-medium text-gray-900 mb-2">
@@ -263,9 +398,14 @@ export default function MedicalLeaveForm({
             type="date"
             value={formData.leaveStartDate}
             onChange={(e) => handleChange('leaveStartDate', e.target.value)}
-            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors"
+            className={`w-full px-4 py-3 rounded-lg border focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors ${
+              errors.leaveStartDate ? 'border-red-500' : 'border-gray-200'
+            }`}
             required
           />
+          {errors.leaveStartDate && (
+            <p className="text-red-500 text-xs mt-1">{errors.leaveStartDate}</p>
+          )}
         </div>
         <div>
           <label className="block text-sm font-medium text-gray-900 mb-2">
@@ -276,9 +416,14 @@ export default function MedicalLeaveForm({
             value={formData.leaveEndDate}
             onChange={(e) => handleChange('leaveEndDate', e.target.value)}
             min={formData.leaveStartDate}
-            className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors"
+            className={`w-full px-4 py-3 rounded-lg border focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors ${
+              errors.leaveEndDate ? 'border-red-500' : 'border-gray-200'
+            }`}
             required
           />
+          {errors.leaveEndDate && (
+            <p className="text-red-500 text-xs mt-1">{errors.leaveEndDate}</p>
+          )}
         </div>
       </div>
 
@@ -307,6 +452,9 @@ export default function MedicalLeaveForm({
             </button>
           ))}
         </div>
+        {errors.leaveReason && (
+          <p className="text-red-500 text-xs mt-2">{errors.leaveReason}</p>
+        )}
       </div>
 
       <div>
@@ -316,7 +464,7 @@ export default function MedicalLeaveForm({
         <textarea
           value={formData.additionalNotes}
           onChange={(e) => handleChange('additionalNotes', e.target.value)}
-          placeholder="Dodatkowe informacje dla pacjenta..."
+          placeholder="Dodatkowe informacje dla lekarza..."
           className="w-full px-4 py-3 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors min-h-[80px] resize-y"
         />
       </div>
@@ -373,10 +521,10 @@ export default function MedicalLeaveForm({
       {/* Header */}
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-gray-900">
-          Zwolnienie lekarskie (e-Zwolnienie)
+          Zwolnienie lekarskie
         </h2>
         <p className="text-sm text-gray-500 mt-1">
-          Wypełnij formularz, aby wystawić zwolnienie lekarskie
+          Wypełnij formularz
         </p>
       </div>
 

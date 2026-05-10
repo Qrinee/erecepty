@@ -1,22 +1,22 @@
 export const faqData = [
   {
-    question: "Czy wystawianie recept online jest w pełni legalne?",
+    question: "Czy konsultacje online są w pełni legalne?",
     answer:
-      "Tak. Recepty online są wystawiane zgodnie z obowiązującymi przepisami prawa i przez uprawnionych lekarzy.",
+      "Tak. Wszystkie usługi są świadczone zgodnie z obowiązującymi przepisami prawa i przez uprawnionych specjalistów.",
   },
   {
-    question: "Jak szybko otrzymam swoją e-receptę?",
+    question: "Jak szybko otrzymam swoje dokumenty?",
     answer:
-      "W większości przypadków e-recepta trafia do pacjenta w ciągu kilkunastu minut od zakończenia konsultacji.",
+      "W większości przypadków dokumenty trafiają do pacjenta w ciągu kilkunastu minut od zakończenia konsultacji.",
   },
   {
-    question: "Ile kosztuje konsultacja lekarska?",
+    question: "Ile kosztuje konsultacja ze specjalistą?",
     answer:
       "Cena konsultacji zależy od rodzaju usługi i jest widoczna przed dokonaniem płatności.",
   },
   {
-    question: "Czy otrzymam receptę na każdy lek?",
+    question: "Czy otrzymam wszystkie potrzebne dokumenty?",
     answer:
-      "Lekarz podejmuje decyzję indywidualnie, na podstawie wywiadu medycznego i aktualnych wskazań.",
+      "Specjalista podejmuje decyzję indywidualnie, na podstawie wywiadu zdrowotnego i aktualnych wskazań.",
   },
 ];

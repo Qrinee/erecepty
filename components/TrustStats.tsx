@@ -11,7 +11,7 @@ const stats = [
   {
     icon: CheckCircle,
     title: "50 000+",
-    desc: "Wystawionych recept",
+    desc: "Przeprowadzonych konsultacji",
     color: "text-green-600",
     bgColor: "bg-green-50"
   },

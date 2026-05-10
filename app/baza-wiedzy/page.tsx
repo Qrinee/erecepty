@@ -5,8 +5,8 @@ import { knowledgeCards } from "@/app/data/knowledgeCards";
 import { BookOpen, Search, Filter } from "lucide-react";
 
 export const metadata = {
-  title: "Baza wiedzy - E-Recepta.pl",
-  description: "Przeczytaj artykuły o e-recepcie, telekonsultacjach lekarskich i zdrowiu. Poznaj porady ekspertów i najnowsze informacje.",
+  title: "Baza wiedzy - Platforma",
+  description: "Przeczytaj artykuły o konsultacjach zdrowotnych, telekonsultacjach lekarskich i zdrowiu. Poznaj porady ekspertów i najnowsze informacje.",
 };
 
 const categories = [
@@ -38,12 +38,12 @@ export default function BazaWiedzyPage() {
               
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                 Wiedza o{" "}
-                <span className="text-blue-600">e-recepcie</span>
+                <span className="text-blue-600">zdrowiu i konsultacjach</span>
               </h1>
               
               <p className="text-lg text-slate-600 mb-8">
                 Poznaj porady ekspertów, najnowsze informacje i odpowiedzi na najczęściej zadawane pytania dotyczące 
-                e-recepty, telekonsultacji i zdrowia.
+                konsultacji zdrowotnych, telekonsultacji i zdrowia.
               </p>
 
               {/* Search Bar */}
@@ -61,39 +61,12 @@ export default function BazaWiedzyPage() {
           </div>
         </section>
 
-        {/* Categories */}
-        <section className="py-8 bg-white border-b">
-          <div className="max-w-7xl mx-auto px-6">
-            <div className="flex items-center gap-2 overflow-x-auto pb-2">
-              <Filter size={18} className="text-slate-400 shrink-0" />
-              {categories.map((category) => (
-                <button
-                  key={category.id}
-                  className={`px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition ${
-                    category.id === "all"
-                      ? "bg-blue-600 text-white"
-                      : "bg-slate-100 text-slate-600 hover:bg-slate-200"
-                  }`}
-                >
-                  {category.label}
-                </button>
-              ))}
-            </div>
-          </div>
-        </section>
+
 
         {/* Articles Grid */}
         <section className="py-16 bg-gradient-to-br from-white to-blue-50">
           <div className="max-w-7xl mx-auto px-6">
-            <div className="mb-10">
-              <h2 className="text-2xl font-bold text-slate-900">
-                Wszystkie artykuły
-              </h2>
-              <p className="text-slate-600 mt-2">
-                Znaleziono {allArticles.length} artykułów
-              </p>
-            </div>
-
+      
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {allArticles.map((card, index) => (
                 <KnowledgeCard key={index} {...card} />
@@ -117,28 +90,7 @@ export default function BazaWiedzyPage() {
           </div>
         </section>
 
-        {/* Newsletter Section */}
-        <section className="py-16 bg-blue-600">
-          <div className="max-w-4xl mx-auto px-6 text-center">
-            <h2 className="text-3xl font-bold text-white mb-4">
-              Bądź na bieżąco
-            </h2>
-            <p className="text-blue-100 mb-8 max-w-xl mx-auto">
-              Zapisz się do newslettera i otrzymuj najnowsze informacje o e-recepcie, 
-              porady zdrowotne i aktualności z platformy E-Recepta.pl
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
-              <input
-                type="email"
-                placeholder="Twój adres email"
-                className="flex-1 px-6 py-3 rounded-full border-2 border-white/20 bg-white/10 text-white placeholder:text-blue-200 focus:outline-none focus:border-white"
-              />
-              <button className="px-8 py-3 bg-white text-blue-600 rounded-full font-medium hover:bg-blue-50 transition">
-                Zapisz się
-              </button>
-            </div>
-          </div>
-        </section>
+
       </main>
       <Footer />
     </>

@@ -30,7 +30,7 @@ export default function ForWhoSection() {
         <ForWhoCard
           icon={Pill}
           title="Kontynuacja leczenia"
-          description="Dla pacjentów przyjmujących stałe leki, którzy potrzebują nowej recepty bez konieczności wizyty stacjonarnej."
+          description="Dla osób potrzebujących porad dotyczących zdrowia, którzy chcą uniknąć wizyty stacjonarnej."
         />
 
         <ForWhoCard
@@ -42,7 +42,7 @@ export default function ForWhoSection() {
         <ForWhoCard
           icon={Plane}
           title="Podróżni"
-          description="Gdy zapomnisz leków lub potrzebujesz e-recepty przebywając poza miejscem zamieszkania lub na wakacjach."
+          description="Gdy potrzebujesz profesjonalnej porady przebywając poza miejscem zamieszkania lub na wakacjach."
         />
 
         <ForWhoCard

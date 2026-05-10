@@ -191,26 +191,45 @@ export default function SearchBar() {
         />
 
         {/* Button */}
-        <button
-          onClick={handleSearch}
-          type="button"
-          className="
-            cursor-pointer
-            absolute right-1 top-1/2 -translate-y-1/2
-            h-10 px-6
-            bg-blue-600 text-white
-            rounded-full
-            text-sm font-medium
-            hover:bg-blue-700
-            transition-colors
-            focus:outline-none focus:ring-2 focus:ring-blue-300
-            disabled:opacity-50 disabled:cursor-not-allowed
-          "
-          disabled={isLoading}
-          aria-label="Szukaj leków"
-        >
-          {isLoading ? '...' : 'Szukaj'}
-        </button>
+        <div className="absolute right-1 top-1/2 -translate-y-1/2 flex gap-2">
+          <button
+            onClick={handleSearch}
+            type="button"
+            className="
+              cursor-pointer
+              h-10 px-6
+              bg-blue-600 text-white
+              rounded-full
+              text-sm font-medium
+              hover:bg-blue-700
+              transition-colors
+              focus:outline-none focus:ring-2 focus:ring-blue-300
+              disabled:opacity-50 disabled:cursor-not-allowed
+            "
+            disabled={isLoading}
+            aria-label="Szukaj leków"
+          >
+            {isLoading ? '...' : 'Szukaj'}
+          </button>
+
+          <button
+            type="button"
+            onClick={() => router.push('/medical-leave')}
+            className="
+              h-10 px-4
+              bg-indigo-600 text-white
+              rounded-full
+              text-sm font-medium
+              hover:bg-indigo-700
+              transition-colors
+              focus:outline-none focus:ring-2 focus:ring-indigo-300
+              shadow-sm
+            "
+            aria-label="Zwolnienie lekarskie"
+          >
+            Zwolnienie
+          </button>
+        </div>
 
         {/* Loading indicator */}
         {isLoading && (

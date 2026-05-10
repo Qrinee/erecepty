@@ -51,13 +51,13 @@ export default function Hero() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
             </span>
-            Dostępne 24/7 • Ponad 10,000 zrealizowanych recept
+            Dostępne 24/7 • Bezpieczne konsultacje
           </span>
         </div>
 
         {/* Main heading */}
         <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-center text-white">
-          Recepta online{" "}
+          Konsultacja lekarska{" "}
           <span className="bg-gradient-to-r from-blue-300 via-indigo-300 to-purple-300 bg-clip-text text-transparent">
             bez wychodzenia
           </span>{" "}
@@ -66,7 +66,7 @@ export default function Hero() {
 
         {/* Subheading */}
         <p className="text-lg md:text-xl text-slate-300 text-center mb-10 max-w-2xl mx-auto">
-          Szybka konsultacja lekarska i e-recepta nawet w <span className="text-white font-semibold">15 minut</span>. 
+          Szybka konsultacja lekarska i pomoc zdrowotna nawet w <span className="text-white font-semibold">15 minut</span>.
           Bez kolejek, bez wychodzenia z domu, o każdej porze.
         </p>
 
@@ -82,25 +82,6 @@ export default function Hero() {
 
         {/* Trust indicators */}
         <div className="flex flex-wrap justify-center items-center gap-6 md:gap-10 text-sm text-slate-400">
-          <div className="flex items-center gap-2">
-            <div className="flex -space-x-1">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <div key={i} className="w-7 h-7 rounded-full bg-gradient-to-br from-blue-400 to-indigo-500 border-2 border-slate-900 flex items-center justify-center text-[10px] text-white font-medium">
-                  {String.fromCharCode(64 + i)}
-                </div>
-              ))}
-            </div>
-            <span className="ml-1">500+ opinii</span>
-          </div>
-          
-          <div className="flex items-center gap-2">
-            <div className="flex items-center text-amber-400">
-              {[1, 2, 3, 4, 5].map((i) => (
-                <Star key={i} className="w-4 h-4 fill-current" />
-              ))}
-            </div>
-            <span className="text-white font-medium">4.9/5</span>
-          </div>
 
           <div className="flex items-center gap-2">
             <Shield className="w-4 h-4 text-emerald-400" />
@@ -109,14 +90,14 @@ export default function Hero() {
 
           <div className="flex items-center gap-2">
             <Clock className="w-4 h-4 text-blue-400" />
-            <span>Średni czas: 12 min</span>
+            <span>Szybka obsługa</span>
           </div>
         </div>
 
         {/* CTA Button */}
         <div className="flex justify-center mt-10">
           <a 
-            href="#jak-to-dziala"
+            href="/jak-to-dziala"
             className="group inline-flex items-center gap-2 px-6 py-3 bg-white text-slate-900 font-semibold rounded-full hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
           >
             Dowiedz się jak to działa

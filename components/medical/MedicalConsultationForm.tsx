@@ -1,3 +1,4 @@
+// components/medical/MedicalConsultationForm.tsx
 "use client";
 
 import { useState } from 'react';
@@ -43,6 +44,35 @@ export default function MedicalConsultationForm({
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    
+    // Validate required fields
+    const errors: Record<string, string> = {};
+    
+    if (!formData.mainComplaint?.trim()) {
+      errors.mainComplaint = 'Opis problemu jest wymagany';
+    }
+    
+    if (formData.hasChronicDiseases === 'yes' && !formData.chronicDiseases?.trim()) {
+      errors.chronicDiseases = 'Wymagane podanie schorzeń przewlekłych';
+    }
+    
+    if (formData.takesMedications === 'yes' && !formData.medications?.trim()) {
+      errors.medications = 'Wymagane podanie przyjmowanych leków';
+    }
+    
+    if (formData.hasAllergies === 'yes' && !formData.allergies?.trim()) {
+      errors.allergies = 'Wymagane podanie alergii/nietolerancji';
+    }
+    
+    if (formData.pregnancyStatus === null) {
+      errors.pregnancyStatus = 'Wymagane określenie statusu ciąży/karmienia';
+    }
+    
+    if (Object.keys(errors).length > 0) {
+      console.error('Form validation errors:', errors);
+      return;
+    }
+    
     onSubmit(formData);
   };
 
@@ -107,7 +137,10 @@ export default function MedicalConsultationForm({
                     type="radio"
                     name="hasChronicDiseases"
                     checked={formData.hasChronicDiseases === 'yes'}
-                    onChange={() => handleChange('hasChronicDiseases', 'yes')}
+                    onChange={() => {
+                      handleChange('hasChronicDiseases', 'yes' as const);
+                      handleChange('chronicDiseases', '');
+                    }}
                     className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                   />
                   <span className="text-sm text-gray-700">Tak</span>
@@ -117,7 +150,10 @@ export default function MedicalConsultationForm({
                     type="radio"
                     name="hasChronicDiseases"
                     checked={formData.hasChronicDiseases === 'no'}
-                    onChange={() => handleChange('hasChronicDiseases', 'no')}
+                    onChange={() => {
+                      handleChange('hasChronicDiseases', 'no' as const);
+                      handleChange('chronicDiseases', '');
+                    }}
                     className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                   />
                   <span className="text-sm text-gray-700">Nie</span>
@@ -169,7 +205,10 @@ export default function MedicalConsultationForm({
                     type="radio"
                     name="takesMedications"
                     checked={formData.takesMedications === 'yes'}
-                    onChange={() => handleChange('takesMedications', 'yes')}
+                    onChange={() => {
+                      handleChange('takesMedications', 'yes' as const);
+                      handleChange('medications', '');
+                    }}
                     className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                   />
                   <span className="text-sm text-gray-700">Tak</span>
@@ -179,7 +218,10 @@ export default function MedicalConsultationForm({
                     type="radio"
                     name="takesMedications"
                     checked={formData.takesMedications === 'no'}
-                    onChange={() => handleChange('takesMedications', 'no')}
+                    onChange={() => {
+                      handleChange('takesMedications', 'no' as const);
+                      handleChange('medications', '');
+                    }}
                     className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                   />
                   <span className="text-sm text-gray-700">Nie</span>
@@ -231,7 +273,10 @@ export default function MedicalConsultationForm({
                     type="radio"
                     name="hasAllergies"
                     checked={formData.hasAllergies === 'yes'}
-                    onChange={() => handleChange('hasAllergies', 'yes')}
+                    onChange={() => {
+                      handleChange('hasAllergies', 'yes' as const);
+                      handleChange('allergies', '');
+                    }}
                     className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                   />
                   <span className="text-sm text-gray-700">Tak</span>
@@ -241,7 +286,10 @@ export default function MedicalConsultationForm({
                     type="radio"
                     name="hasAllergies"
                     checked={formData.hasAllergies === 'no'}
-                    onChange={() => handleChange('hasAllergies', 'no')}
+                    onChange={() => {
+                      handleChange('hasAllergies', 'no' as const);
+                      handleChange('allergies', '');
+                    }}
                     className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                   />
                   <span className="text-sm text-gray-700">Nie</span>
@@ -305,7 +353,7 @@ export default function MedicalConsultationForm({
                   type="radio"
                   name="pregnancyStatus"
                   checked={formData.pregnancyStatus === 'na'}
-                  onChange={() => handleChange('pregnancyStatus', 'na')}
+                  onChange={() => handleChange('pregnancyStatus', 'na' as const)}
                   className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                 />
                 <span className="text-sm text-gray-700">Nie dotyczy</span>
@@ -315,7 +363,7 @@ export default function MedicalConsultationForm({
                   type="radio"
                   name="pregnancyStatus"
                   checked={formData.pregnancyStatus === 'pregnant'}
-                  onChange={() => handleChange('pregnancyStatus', 'pregnant')}
+                  onChange={() => handleChange('pregnancyStatus', 'pregnant' as const)}
                   className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                 />
                 <span className="text-sm text-gray-700">Tak, jestem w ciąży</span>
@@ -325,7 +373,7 @@ export default function MedicalConsultationForm({
                   type="radio"
                   name="pregnancyStatus"
                   checked={formData.pregnancyStatus === 'breastfeeding'}
-                  onChange={() => handleChange('pregnancyStatus', 'breastfeeding')}
+                  onChange={() => handleChange('pregnancyStatus', 'breastfeeding' as const)}
                   className="w-4 h-4 text-blue-600 border-gray-300 focus:ring-blue-500"
                 />
                 <span className="text-sm text-gray-700">Tak, karmię piersią</span>

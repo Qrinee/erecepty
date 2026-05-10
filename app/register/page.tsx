@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import AlertMessage from "@/components/ui/AlertMessage";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
 export default function RegisterPage() {
   const [formData, setFormData] = useState({
@@ -56,13 +57,23 @@ export default function RegisterPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Registration failed");
+        // Handle different error cases with user-friendly messages
+        if (data.errorCode === 'EMAIL_EXISTS') {
+          throw new Error("Konto z tym adresem e-mail już istnieje");
+        }
+        if (data.errorCode === 'INVALID_EMAIL') {
+          throw new Error("Podaj prawidłowy adres e-mail");
+        }
+        if (data.errorCode === 'WEAK_PASSWORD') {
+          throw new Error("Hasło musi zawierać co najmniej 6 znaków");
+        }
+        throw new Error(data.message || "Rejestracja nie powiodła się. Spróbuj ponownie.");
       }
 
       router.push("/");
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Registration failed");
+      setError(err instanceof Error ? err.message : "Wystąpił błąd podczas rejestracji. Spróbuj ponownie.");
     } finally {
       setLoading(false);
     }
@@ -76,8 +87,12 @@ export default function RegisterPage() {
         </h1>
         
         {error && (
-          <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg" role="alert" aria-live="assertive">
-            {error}
+          <div className="mb-4">
+            <AlertMessage 
+              type="error" 
+              title="Błąd rejestracji"
+              message={error} 
+            />
           </div>
         )}
         

@@ -1,5 +1,6 @@
 import { cookies } from "next/headers";
 import Link from "next/link";
+import StatusSelect from "@/components/admin/StatusSelect";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
@@ -21,6 +22,7 @@ interface ApiResponse<T> {
 
 interface SubmissionDetail {
   id: string;
+  submissionType: "prescription" | "medical_leave";
   status: "pending" | "reviewed" | "completed" | "cancelled";
   submittedAt: string;
   submissionDate: string;
@@ -30,6 +32,18 @@ interface SubmissionDetail {
     quantity: number;
     dosage: string;
   }[];
+  leaveDetails?: {
+    leaveStartDate?: string;
+    leaveEndDate?: string;
+    leaveReason?: string;
+    diagnosis?: string;
+    icd10Code?: string;
+    isHospitalized?: boolean;
+    hospitalName?: string;
+    additionalNotes?: string;
+    followUpVisit?: boolean;
+    followUpDate?: string;
+  };
   patient: {
     contact: {
       email: string;
@@ -221,9 +235,14 @@ export default async function SubmissionDetailPage({
   }
 
   const { patient, medicalInfo } = submission;
-  const contact = patient.contact;
-  const medical = patient.medical;
-  const consent = patient.consent;
+  const contact = patient?.contact || patient || {};
+  const medical = patient?.medical || medicalInfo || {};
+  const consent = patient?.consent || {
+    rodoConsent: true,
+    medicalConsent: true,
+    newsletterConsent: false,
+    createAccount: false,
+  };
 
   // Fetch medicine details for each medicine in the submission
   const medicinesWithDetails = await Promise.all(
@@ -250,7 +269,7 @@ export default async function SubmissionDetailPage({
             <div className="flex items-center justify-between">
               <div>
                 <h1 className="text-xl font-semibold text-gray-900">
-                  Zgłoszenie pacjenta
+                  {submission.submissionType === "medical_leave" ? "Zgłoszenie zwolnienia lekarskiego" : "Zgłoszenie receptowe"}
                 </h1>
                 <p className="text-sm text-gray-500 font-mono mt-1">
                   ID: {submission.id}
@@ -299,19 +318,10 @@ export default async function SubmissionDetailPage({
                 <p className="text-sm text-gray-500">Telefon</p>
                 <p className="font-medium">{contact.phone}</p>
               </div>
-              <div className="md:col-span-2">
-                <p className="text-sm text-gray-500">Adres</p>
-                <p className="font-medium">
-                  {contact.street} {contact.houseNumber}
-                  {contact.apartmentNumber &&
-                    `/${contact.apartmentNumber}`}
-                  , {contact.postalCode} {contact.city}
-                </p>
-              </div>
             </div>
           </div>
         </div>
-
+        
         <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
           <div className="px-6 py-4 border-b border-gray-100">
             <h2 className="text-lg font-semibold text-gray-900">
@@ -373,42 +383,152 @@ export default async function SubmissionDetailPage({
           </div>
         </div>
 
+        {/* Show medicines only for prescriptions */}
+        {submission.submissionType === "prescription" && (
+          <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
+            <div className="px-6 py-4 border-b border-gray-100">
+              <h2 className="text-lg font-semibold text-gray-900">
+                Zamówione leki
+              </h2>
+            </div>
+            <div className="overflow-x-auto">
+              <table className="w-full text-sm">
+                <thead className="bg-gray-50">
+                  <tr>
+                    <th className="px-6 py-3 text-left font-medium text-gray-700">
+                      Lek (ID)
+                    </th>
+                    <th className="px-6 py-3 text-left font-medium text-gray-700">
+                      Ilość
+                    </th>
+                    <th className="px-6 py-3 text-left font-medium text-gray-700">
+                      Dawkowanie
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className="divide-y divide-gray-100">
+                  {(medicinesWithDetails || []).map((medicine, index) => (
+                    <tr key={index}>
+                      <td className="px-6 py-3">
+                        <div className="font-medium">{medicine.medicineName}</div>
+                        <div className="text-xs text-gray-500 font-mono">{medicine.medicineId}</div>
+                      </td>
+                      <td className="px-6 py-3">{medicine.quantity}</td>
+                      <td className="px-6 py-3">
+                        {medicine.dosage || "-"}
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
+
+        {/* Show medical leave details for medical leave submissions */}
+        {submission.submissionType === "medical_leave" && submission.leaveDetails && (
+          <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
+            <div className="px-6 py-4 border-b border-gray-100">
+              <h2 className="text-lg font-semibold text-gray-900">
+                Szczegóły zwolnienia lekarskiego
+              </h2>
+            </div>
+            <div className="p-6 space-y-4">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">Rozpoznanie (diagnoza)</p>
+                  <p className="p-3 bg-gray-50 rounded-lg font-medium">
+                    {submission.leaveDetails.diagnosis || "Brak"}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">Kod ICD-10</p>
+                  <p className="p-3 bg-gray-50 rounded-lg font-medium font-mono">
+                    {submission.leaveDetails.icd10Code || "Brak"}
+                  </p>
+                </div>
+              </div>
+
+              <div>
+                <p className="text-sm text-gray-500 mb-1">Przyczyna niezdolności do pracy</p>
+                <p className="p-3 bg-gray-50 rounded-lg">
+                  {submission.leaveDetails.leaveReason === "illness" ? "Choroba" 
+                    : submission.leaveDetails.leaveReason === "accident" ? "Wypadek"
+                    : submission.leaveDetails.leaveReason === "quarantine" ? "Kwarantanna"
+                    : submission.leaveDetails.leaveReason === "other" ? "Inne"
+                    : "Nie określona"}
+                </p>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">Od dnia</p>
+                  <p className="p-3 bg-gray-50 rounded-lg font-medium">
+                    {submission.leaveDetails.leaveStartDate 
+                      ? new Date(submission.leaveDetails.leaveStartDate).toLocaleDateString("pl-PL")
+                      : "Brak"}
+                  </p>
+                </div>
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">Do dnia</p>
+                  <p className="p-3 bg-gray-50 rounded-lg font-medium">
+                    {submission.leaveDetails.leaveEndDate 
+                      ? new Date(submission.leaveDetails.leaveEndDate).toLocaleDateString("pl-PL")
+                      : "Brak"}
+                  </p>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">Hospitalizacja</p>
+                  <p className="p-3 bg-gray-50 rounded-lg">
+                    {submission.leaveDetails.isHospitalized ? "Tak" : "Nie"}
+                  </p>
+                </div>
+                {submission.leaveDetails.isHospitalized && submission.leaveDetails.hospitalName && (
+                  <div>
+                    <p className="text-sm text-gray-500 mb-1">Nazwa szpitala</p>
+                    <p className="p-3 bg-gray-50 rounded-lg">
+                      {submission.leaveDetails.hospitalName}
+                    </p>
+                  </div>
+                )}
+              </div>
+
+              {submission.leaveDetails.additionalNotes && (
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">Dodatkowe uwagi</p>
+                  <p className="p-3 bg-gray-50 rounded-lg">
+                    {submission.leaveDetails.additionalNotes}
+                  </p>
+                </div>
+              )}
+
+              {submission.leaveDetails.followUpVisit && (
+                <div>
+                  <p className="text-sm text-gray-500 mb-1">Data następnej wizyty kontrolnej</p>
+                  <p className="p-3 bg-gray-50 rounded-lg">
+                    {submission.leaveDetails.followUpDate 
+                      ? new Date(submission.leaveDetails.followUpDate).toLocaleDateString("pl-PL")
+                      : "Nie określona"}
+                  </p>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
+
         <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
           <div className="px-6 py-4 border-b border-gray-100">
-            <h2 className="text-lg font-semibold text-gray-900">
-              Zamówione leki
-            </h2>
+            <h2 className="text-lg font-semibold text-gray-900">Notatki lekarza</h2>
           </div>
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-3 text-left font-medium text-gray-700">
-                    Lek (ID)
-                  </th>
-                  <th className="px-6 py-3 text-left font-medium text-gray-700">
-                    Ilość
-                  </th>
-                  <th className="px-6 py-3 text-left font-medium text-gray-700">
-                    Dawkowanie
-                  </th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-100">
-                {(medicinesWithDetails || []).map((medicine, index) => (
-                  <tr key={index}>
-                    <td className="px-6 py-3">
-                      <div className="font-medium">{medicine.medicineName}</div>
-                      <div className="text-xs text-gray-500 font-mono">{medicine.medicineId}</div>
-                    </td>
-                    <td className="px-6 py-3">{medicine.quantity}</td>
-                    <td className="px-6 py-3">
-                      {medicine.dosage || "-"}
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="p-6">
+            <div className="bg-gray-50 rounded-lg p-4 min-h-[6.25rem]">
+              <p className="text-gray-700">
+                {submission.adminNotes || "Brak notatek"}
+              </p>
+            </div>
           </div>
         </div>
 
@@ -458,33 +578,19 @@ export default async function SubmissionDetailPage({
           </div>
         </div>
 
-        <div className="flex gap-4">
-          <form
-            action={`/api/patient/submissions/${submission.id}/status`}
-            method="POST"
-            className="flex-1"
+        <div className="space-y-4">
+          <StatusSelect
+            submissionId={submission.id}
+            currentStatus={submission.status}
+            submissionType={submission.submissionType}
+          />
+
+          <Link
+            href="/admin"
+            className="inline-flex items-center justify-center px-6 py-3 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition-colors font-medium text-center"
           >
-            <input type="hidden" name="status" value="reviewed" />
-            <button
-              type="submit"
-              className="w-full px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium text-center"
-            >
-              Rozpocznij przegląd
-            </button>
-          </form>
-          <form
-            action={`/api/patient/submissions/${submission.id}/status`}
-            method="POST"
-            className="flex-1"
-          >
-            <input type="hidden" name="status" value="completed" />
-            <button
-              type="submit"
-              className="w-full px-6 py-3 bg-green-600 text-white rounded-lg hover:bg-green-700 transition-colors font-medium text-center"
-            >
-              Zakończ i wystaw receptę
-            </button>
-          </form>
+            ← Powrót do panelu
+          </Link>
         </div>
       </div>
     </div>

@@ -2,8 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import AlertMessage from "@/components/ui/AlertMessage";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -28,13 +29,23 @@ export default function LoginPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || "Login failed");
+        // Handle different error cases with user-friendly messages
+        if (data.errorCode === 'INVALID_CREDENTIALS') {
+          throw new Error("Nieprawidłowy adres e-mail lub hasło");
+        }
+        if (data.errorCode === 'ACCOUNT_LOCKED') {
+          throw new Error("Konto zostało zablokowane. Skontaktuj się z supportem.");
+        }
+        if (data.errorCode === 'ACCOUNT_NOT_VERIFIED') {
+          throw new Error("Konto nie zostało aktywowane. Sprawdź swoją skrzynkę e-mail.");
+        }
+        throw new Error(data.message || "Nie udało się zalogować. Spróbuj ponownie.");
       }
 
       router.push("/");
       router.refresh();
     } catch (err) {
-      setError(err instanceof Error ? err.message : "Login failed");
+      setError(err instanceof Error ? err.message : "Wystąpił błąd podczas logowania. Spróbuj ponownie.");
     } finally {
       setLoading(false);
     }
@@ -48,8 +59,12 @@ export default function LoginPage() {
         </h1>
         
         {error && (
-          <div className="mb-4 p-3 bg-red-50 text-red-700 text-sm rounded-lg" role="alert" aria-live="assertive">
-            {error}
+          <div className="mb-4">
+            <AlertMessage 
+              type="error" 
+              title="Błąd logowania"
+              message={error} 
+            />
           </div>
         )}
         

@@ -69,6 +69,15 @@ export default function OrderSummaryClient({ initialMedicine, medicineId }: Orde
     router.push(`/add-medicine/${medicineId}/consultation`);
   };
 
+  // Handle cancel - go back to step 1 preserving all state
+  const handleCancel = () => {
+    // Save current state before going back
+    localStorage.setItem('orderMedicines', JSON.stringify(medicines));
+    localStorage.setItem('orderExpress', JSON.stringify(isExpress));
+    localStorage.setItem('orderRefunded', JSON.stringify(isRefunded));
+    router.back();
+  };
+
   // Check if form is valid (all required fields filled)
   const isFormValid = () => {
     if (medicines.length === 0) return false;

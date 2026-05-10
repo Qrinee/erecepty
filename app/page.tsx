@@ -14,7 +14,6 @@ export default function Home() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    console.log('API URL:', process.env.NEXT_PUBLIC_API_URL);
     const handleScroll = () => {
       setScrolled(window.scrollY > 50);
     };
@@ -27,7 +26,6 @@ export default function Home() {
       <Header transparent={!scrolled} />
       <main id="main-content" tabIndex={-1}>
         <Hero />
-        <TrustStats />
         <ForWhoSection />
         <TrustSection />
         <KnowledgeCenter/>

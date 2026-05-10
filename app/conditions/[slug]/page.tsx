@@ -16,31 +16,31 @@ export async function generateMetadata({
 
   if (!condition) {
     return {
-      title: "Nie znaleziono strony | E-Recepta.pl",
+      title: "Nie znaleziono strony | Platforma",
       description: "Strona o danym schorzeniu nie została znaleziona.",
     };
   }
 
-  const title = `${condition.title} ${condition.subtitle} – konsultacja online | E-Recepta.pl`;
-  const description = condition.metaDescription || `Dowiedz się wszystkiego o ${condition.subtitle}. szybki dostęp do e-recepty.`;
+  const title = `${condition.title} ${condition.subtitle} – konsultacja online | Platforma`;
+  const description = condition.metaDescription || `Dowiedz się wszystkiego o ${condition.subtitle}. szybki dostęp do profesjonalnych konsultacji.`;
 
   return {
     title,
     description,
     keywords: condition.keywords,
     alternates: {
-      canonical: `https://e-recepta.pl/conditions/${condition.slug}`,
+      canonical: `https://platforma.pl/conditions/${condition.slug}`,
     },
     openGraph: {
       title,
       description,
       type: "article",
-      url: `https://e-recepta.pl/conditions/${condition.slug}`,
+      url: `https://platforma.pl/conditions/${condition.slug}`,
       images: [
         {
           url: condition.heroImage.startsWith('http') 
             ? condition.heroImage 
-            : `https://e-recepta.pl${condition.heroImage}`,
+            : `https://platforma.pl${condition.heroImage}`,
           width: 1200,
           height: 630,
           alt: `${condition.title} ${condition.subtitle}`,
@@ -53,7 +53,7 @@ export async function generateMetadata({
       description,
       images: [condition.heroImage.startsWith('http') 
         ? condition.heroImage 
-        : `https://e-recepta.pl${condition.heroImage}`],
+        : `https://platforma.pl${condition.heroImage}`],
     },
     robots: {
       index: true,

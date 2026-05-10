@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Plus, Pill } from "lucide-react";
 import MedicineSearchSection from './MedicineSearchSection';
 import MedicineList from './MedicineList';
+import AlertMessage from '@/components/ui/AlertMessage';
 import { MedicineData, SearchResult } from '@/app/types/medicine';
 
 interface MedicineCartClientProps {
@@ -44,6 +45,10 @@ export default function MedicineCartClient({ initialMedicine }: MedicineCartClie
   const [medicines, setMedicines] = useState<MedicineData[]>([]);
   const [isSearchOpen, setIsSearchOpen] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [notification, setNotification] = useState<{
+    type: 'success' | 'error' | 'info';
+    message: string;
+  } | null>(null);
 
   // Initialize with the medicine from URL
   useEffect(() => {
@@ -57,6 +62,12 @@ export default function MedicineCartClient({ initialMedicine }: MedicineCartClie
     window.__MEDICINES_CART__ = medicines;
     window.dispatchEvent(new CustomEvent('medicines-updated'));
   }, [medicines]);
+
+  // Show notification with auto-dismiss
+  const showNotification = (type: 'success' | 'error' | 'info', message: string) => {
+    setNotification({ type, message });
+    setTimeout(() => setNotification(null), 4000);
+  };
 
   // Handle medicine selection from search
   const handleMedicineSelect = async (result: SearchResult) => {
@@ -73,13 +84,16 @@ export default function MedicineCartClient({ initialMedicine }: MedicineCartClie
         
         if (!exists) {
           setMedicines(prev => [...prev, medicineData]);
+          showNotification('success', `Lek "${medicineData.nazwaProduktuLeczniczego}" został dodany do zamówienia`);
         } else {
-          alert('Ten lek już został dodany do zamówienia');
+          showNotification('info', 'Ten lek już został dodany do zamówienia');
         }
+      } else {
+        showNotification('error', 'Nie udało się dodać leku. Spróbuj ponownie.');
       }
     } catch (error) {
       console.error('Failed to add medicine:', error);
-      alert('Nie udało się dodać leku. Spróbuj ponownie.');
+      showNotification('error', 'Nie udało się dodać leku. Sprawdź połączenie i spróbuj ponownie.');
     } finally {
       setIsLoading(false);
     }
@@ -92,6 +106,16 @@ export default function MedicineCartClient({ initialMedicine }: MedicineCartClie
 
   return (
     <>
+      {/* Notification */}
+      {notification && (
+        <div className="fixed top-4 right-4 z-50 max-w-sm">
+          <AlertMessage
+            type={notification.type}
+            message={notification.message}
+          />
+        </div>
+      )}
+
       {/* Section header */}
       <div className="rounded-xl bg-white p-6 shadow-sm">
         <div className="flex items-center justify-between">

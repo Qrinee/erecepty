@@ -1,8 +1,9 @@
 "use client";
 
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { PatientData, MedicalInfoData, PatientFormData } from '@/app/types/patient';
+import { useCurrentUser } from '@/app/hooks/useCurrentUser';
 
 interface PatientFormProps {
   onSubmit: (data: PatientFormData) => void;
@@ -10,6 +11,8 @@ interface PatientFormProps {
 }
 
 export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
+  const { user } = useCurrentUser();
+  
   const [currentStep, setCurrentStep] = useState<'medical' | 'contact' | 'consent'>('medical');
   
   const [patientData, setPatientData] = useState<PatientData>({
@@ -19,6 +22,19 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
     email: '',
     phone: '',
   });
+
+  // Auto-fill form with logged-in user data
+  useEffect(() => {
+    if (user) {
+      setPatientData(prev => ({
+        ...prev,
+        firstName: user.firstName || '',
+        lastName: user.lastName || '',
+        email: user.email || '',
+        phone: user.phone || '',
+      }));
+    }
+  }, [user]);
 
   const [medicalInfo, setMedicalInfo] = useState<MedicalInfoData>({
     mainComplaint: '',

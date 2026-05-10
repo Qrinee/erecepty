@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL;
+const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
 interface User {
   firstName: string;
@@ -60,7 +60,7 @@ export default function Header({ transparent = false }: HeaderProps) {
       });
       if (response.ok) {
         const userData = await response.json();
-        setUser(userData);
+        setUser(userData?.data?.user || null);
         setIsAuthenticated(true);
       } else {
         setIsAuthenticated(false);
@@ -97,17 +97,16 @@ export default function Header({ transparent = false }: HeaderProps) {
       role="banner"
     >
       <div className={`max-w-7xl mx-auto px-4 py-4 flex items-center justify-between ${transparent ? 'text-white' : ''}`}>
-        <Link href="/" className={`flex items-center gap-2 font-semibold text-lg ${transparent ? 'text-white' : ''}`} aria-label="E-Recepta.pl - Strona główna">
+        <Link href="/" className={`flex items-center gap-2 font-semibold text-lg ${transparent ? 'text-white' : ''}`} aria-label="Konsultacje online - Strona główna">
           <div className="w-6 h-6 bg-blue-600 rotate-45 rounded-sm flex items-center justify-center" aria-hidden="true">
             <div className="w-2 h-2 bg-white rounded-sm" />
           </div>
-          <span>E-Recepta.pl</span>
+          <span>Platforma</span>
         </Link>
 
         <nav aria-label="Główna nawigacja" className={`hidden md:flex items-center gap-6 text-sm ${transparent ? 'text-white/90' : 'text-slate-600'}`}>
           <Link href="/baza-wiedzy" className={`hover:text-blue-300 flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white' : 'text-slate-600'}`}>Baza wiedzy</Link>
           <Link href="/jak-to-dziala" className={`hover:text-blue-300 flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white' : 'text-slate-600'}`}>Jak to działa?</Link>
-          <a href="#" className={`hover:text-blue-300 flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white' : 'text-slate-600'}`}>Cennik</a>
           {user?.role === "administrator" && (
             <Link href="/admin" className="text-blue-300 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1">
               Panel lekarza

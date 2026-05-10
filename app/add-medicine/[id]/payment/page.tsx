@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import ProgressHeader from '@/components/layout/ProgressHeader';
 import ContactForm from '@/components/order/ContactForm';
 import { MedicineData, MedicalConsultationData } from '@/app/types/medicine';
+import AlertMessage from '@/components/ui/AlertMessage';
 
 interface ContactFormData {
   email: string;
@@ -33,7 +34,7 @@ export default function PaymentPage() {
   const router = useRouter();
   const params = useParams();
   const medicineId = params?.id as string;
-  const [orderData, setOrderData] = useState<{
+  const [orderData, setOrderData] = useState<{ 
     medicines: MedicineData[];
     medicalConsultation: MedicalConsultationData | null;
     isExpress: boolean;
@@ -41,6 +42,39 @@ export default function PaymentPage() {
   } | null>(null);
   const [contact, setContact] = useState<ContactFormData | null>(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+  const [successMessage, setSuccessMessage] = useState<string | null>(null);
+  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [userEmail, setUserEmail] = useState('');
+  const [userPhone, setUserPhone] = useState('');
+  const [userFirstName, setUserFirstName] = useState('');
+  const [userLastName, setUserLastName] = useState('');
+
+  // Check authentication status and fetch user data
+  useEffect(() => {
+    const checkAuth = async () => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/api/auth/me`, {
+          credentials: 'include',
+        });
+        if (response.ok) {
+          const data = await response.json();
+          const user = data?.data?.user;
+          setIsAuthenticated(true);
+          if (user) {
+            setUserEmail(user.email || '');
+            setUserPhone(user.phone || '');
+            setUserFirstName(user.firstName || '');
+            setUserLastName(user.lastName || '');
+          }
+        }
+      } catch {
+        setIsAuthenticated(false);
+      }
+    };
+    checkAuth();
+  }, []);
 
   // Load order data from localStorage
   useEffect(() => {
@@ -77,12 +111,21 @@ export default function PaymentPage() {
   // Handle form submission
   const handleSubmit = async (data: ContactFormData) => {
     setContact(data);
+    setError(null);
+    setIsSubmitting(true);
     
     // Save contact data
     localStorage.setItem('orderContact', JSON.stringify(data));
     
     // Prepare patient data for submission - flat structure as expected by API
+    if (!orderData) {
+      setError('Nie udało się odczytać danych zamówienia. Spróbuj ponownie.');
+      setIsSubmitting(false);
+      return;
+    }
+
     const patientData = {
+
       email: data.email,
       firstName: data.firstName,
       lastName: data.lastName,
@@ -112,25 +155,30 @@ export default function PaymentPage() {
 
     try {
       // Send data to backend
-      console.log(process.env.NEXT_PUBLIC_API_URL);
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/patient/submissions`, {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/api/patient/submissions`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include',
         body: JSON.stringify({
           patient: patientData,
           medicalInfo,
           medicines: medicinesData,
           submissionDate: new Date().toISOString(),
+          amount: Math.round(
+            (orderData.medicines.length * 49.99 +
+              (orderData.isExpress ? 19.99 : 0) +
+              (orderData.isRefunded ? 10.00 : 0)) * 100
+          ),
         }),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit patient form');
-      }
-
       const result = await response.json();
+      
+      if (!response.ok) {
+        throw new Error(result.message || 'Nie udało się złożyć zamówienia. Spróbuj ponownie.');
+      }
       
       console.log('Patient submission successful:', result);
       
@@ -146,19 +194,20 @@ export default function PaymentPage() {
         localStorage.setItem('submissionId', result.submissionId || result.data.submissionId);
       }
       
-      // In a real app, this would redirect to payment gateway
-      // For now, show success message
-      alert('Zamówienie zostało złożone! ID: ' + (result.submissionId || result.data?.submissionId || 'Demo'));
+      // Show success message
+      setSuccessMessage(`Zamówienie zostało złożone! ID: ${result.submissionId || result.data?.submissionId || 'Demo'}`);
       
-    } catch (error) {
-      console.error('Error submitting patient form:', error);
-      alert('Wystąpił błąd podczas składania zamówienia. Spróbuj ponownie.');
+    } catch (err) {
+      console.error('Error submitting patient form:', err);
+      setError(err instanceof Error ? err.message : 'Wystąpił błąd podczas składania zamówienia. Spróbuj ponownie.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   // Handle cancel - go back to step 2
   const handleCancel = () => {
-    router.push(`/add-medicine/${medicineId}/consultation`);
+    router.back();
   };
 
   if (isLoading) {
@@ -217,13 +266,13 @@ export default function PaymentPage() {
                 </div>
                 {expressFee > 0 && (
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Recepta express</span>
+                    <span className="text-gray-600">Konsultacja express</span>
                     <span>+{expressFee.toFixed(2)} PLN</span>
                   </div>
                 )}
                 {refundedFee > 0 && (
                   <div className="flex justify-between">
-                    <span className="text-gray-600">Recepta refundowana</span>
+                    <span className="text-gray-600">Konsultacja refundowana</span>
                     <span>+{refundedFee.toFixed(2)} PLN</span>
                   </div>
                 )}
@@ -236,9 +285,31 @@ export default function PaymentPage() {
           </div>
         </div>
 
+        {/* Error Message */}
+        {error && (
+          <div className="mb-6">
+            <AlertMessage 
+              type="error" 
+              title="Błąd podczas składania zamówienia"
+              message={error}
+            />
+          </div>
+        )}
+
+        {/* Success Message */}
+        {successMessage && (
+          <div className="mb-6">
+            <AlertMessage 
+              type="success" 
+              title="Sukces"
+              message={successMessage}
+            />
+          </div>
+        )}
+
         {/* Contact Form */}
         <div className="bg-white rounded-xl shadow-sm p-6">
-          <ContactForm onSubmit={handleSubmit} onCancel={handleCancel} />
+          <ContactForm onSubmit={handleSubmit} onCancel={handleCancel} isSubmitting={isSubmitting} isAuthenticated={isAuthenticated} userEmail={userEmail} userPhone={userPhone} userFirstName={userFirstName} userLastName={userLastName} />
         </div>
       </main>
     </div>

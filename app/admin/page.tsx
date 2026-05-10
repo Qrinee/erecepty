@@ -1,65 +1,12 @@
 import { cookies } from "next/headers";
-import Link from "next/link";
+import AdminSubmissionsTable from "@/components/admin/AdminSubmissionsTable";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
-// API Response types
 interface ApiResponse<T> {
   success: boolean;
   data?: T;
   message?: string;
-}
-
-interface SubmissionListItem {
-  id: string;
-  status: "pending" | "reviewed" | "completed" | "cancelled";
-  submittedAt: string;
-  hasUser: boolean;
-}
-
-interface SubmissionDetail {
-  id: string;
-  status: "pending" | "reviewed" | "completed" | "cancelled";
-  submittedAt: string;
-  submissionDate: string;
-  medicines: {
-    medicineId: string;
-    quantity: number;
-    dosage: string;
-  }[];
-  patient: {
-    contact: {
-      email: string;
-      firstName: string;
-      lastName: string;
-      pesel: string;
-      phone: string;
-      street: string;
-      houseNumber: string;
-      apartmentNumber?: string;
-      postalCode: string;
-      city: string;
-    };
-    medical: {
-      mainComplaint: string;
-      hasChronicDiseases: string;
-      chronicDiseases?: string;
-      takesMedications: string;
-      medications?: string;
-      hasAllergies: string;
-      allergies?: string;
-      otherMedicalInfo?: string;
-      pregnancyStatus: string;
-    };
-    consent: {
-      rodoConsent: boolean;
-      medicalConsent: boolean;
-      newsletterConsent: boolean;
-      createAccount: boolean;
-    };
-  };
-  adminNotes?: string;
-  reviewedAt?: string;
 }
 
 interface SubmissionStats {
@@ -71,18 +18,6 @@ interface SubmissionStats {
   };
   submittedToday: number;
   total: number;
-}
-
-interface Pagination {
-  page: number;
-  limit: number;
-  total: number;
-  pages: number;
-}
-
-interface SubmissionsResponse {
-  submissions: SubmissionListItem[];
-  pagination: Pagination;
 }
 
 async function getUser() {
@@ -108,41 +43,6 @@ async function getUser() {
     return await response.json();
   } catch {
     return null;
-  }
-}
-
-async function getSubmissions(): Promise<SubmissionListItem[]> {
-  try {
-    const cookieStore = await cookies();
-    const token = cookieStore.get("accessToken")?.value;
-
-    if (!token) {
-      return [];
-    }
-
-    const response = await fetch(`${API_URL}/api/patient/submissions`, {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-      credentials: "include",
-      next: { revalidate: 0 },
-    });
-
-    if (!response.ok) {
-      console.error("Failed to fetch submissions:", response.status);
-      return [];
-    }
-
-    const data: ApiResponse<SubmissionsResponse> = await response.json();
-    
-    if (data.success && data.data?.submissions) {
-      return data.data.submissions;
-    }
-    
-    return [];
-  } catch (error) {
-    console.error("Error fetching submissions:", error);
-    return [];
   }
 }
 
@@ -179,56 +79,27 @@ async function getStats(): Promise<SubmissionStats> {
   }
 }
 
-function getStatusBadgeClass(status: string): string {
-  switch (status) {
-    case "pending":
-      return "bg-yellow-100 text-yellow-800";
-    case "reviewed":
-      return "bg-blue-100 text-blue-800";
-    case "completed":
-      return "bg-green-100 text-green-800";
-    case "cancelled":
-      return "bg-red-100 text-red-800";
-    default:
-      return "bg-gray-100 text-gray-800";
-  }
-}
-
-function getStatusLabel(status: string): string {
-  switch (status) {
-    case "pending":
-      return "Oczekujące";
-    case "reviewed":
-      return "Przeglądane";
-    case "completed":
-      return "Zakończone";
-    case "cancelled":
-      return "Anulowane";
-    default:
-      return status;
-  }
-}
-
 export default async function AdminPage() {
   const user = await getUser();
-  const submissions = await getSubmissions();
+  const currentUser = user?.data?.user;
+  if (!currentUser || currentUser.role !== "administrator") {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <p className="text-gray-600">Brak dostępu do panelu lekarza.</p>
+      </div>
+    );
+  }
   const stats = await getStats();
-
-  // Filter submissions by status
-  const pendingSubmissions = submissions.filter((s) => s.status === "pending");
-  const activeSubmissions = submissions.filter(
-    (s) => s.status === "reviewed" || s.status === "pending"
-  );
-  const completedSubmissions = submissions.filter(
-    (s) => s.status === "completed" || s.status === "cancelled"
-  );
 
   return (
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 py-8">
-        <h1 className="text-3xl font-semibold text-gray-900 mb-8">
-          Panel lekarza
-        </h1>
+        <div className="mb-8">
+          <h1 className="text-3xl font-semibold text-gray-900 mb-2">
+            Panel lekarza
+          </h1>
+          <p className="text-gray-600">Zarządzaj konsultacjami i zwolnieniami lekarskimi</p>
+        </div>
 
         {/* Stats Cards */}
         <div className="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
@@ -250,7 +121,7 @@ export default async function AdminPage() {
             <p className="text-sm text-gray-500 mt-1">nowych zgłoszeń</p>
           </div>
 
-          <div className="bg-white rounded-xl shadow-sm p-6">
+          <div className="bg-white rounded-xl shadow-sm p-6 relative">
             <h2 className="text-lg font-medium text-gray-900 mb-4">
               Oczekujące
             </h2>
@@ -258,6 +129,12 @@ export default async function AdminPage() {
               {stats.byStatus.pending}
             </p>
             <p className="text-sm text-gray-500 mt-1">do przeglądu</p>
+            {stats.byStatus.pending > 0 && (
+              <span className="absolute top-3 right-3 inline-flex items-center gap-1 px-2 py-1 bg-yellow-100 text-yellow-800 text-xs font-semibold rounded-full animate-pulse">
+                <span className="w-2 h-2 bg-yellow-500 rounded-full" />
+                NOWE
+              </span>
+            )}
           </div>
 
           <div className="bg-white rounded-xl shadow-sm p-6">
@@ -271,212 +148,8 @@ export default async function AdminPage() {
           </div>
         </div>
 
-        {/* Pending Submissions */}
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Zgłoszenia oczekujące ({pendingSubmissions.length})
-          </h2>
-          {pendingSubmissions.length > 0 ? (
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm text-left">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        ID
-                      </th>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        Status
-                      </th>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        Data zgłoszenia
-                      </th>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        Akcje
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    {pendingSubmissions.map((submission) => (
-                      <tr
-                        key={submission.id}
-                        className="hover:bg-gray-50"
-                      >
-                        <td className="px-4 py-3 text-gray-900 font-mono text-xs">
-                          {submission.id.substring(0, 8)}...
-                        </td>
-                        <td className="px-4 py-3">
-                          <span
-                            className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadgeClass(
-                              submission.status
-                            )}`}
-                          >
-                            {getStatusLabel(submission.status)}
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-gray-600">
-                          {new Date(submission.submittedAt).toLocaleString(
-                            "pl-PL"
-                          )}
-                        </td>
-                        <td className="px-4 py-3">
-                          <Link
-                            href={`/admin/submissions/${submission.id}`}
-                            className="text-blue-600 hover:underline"
-                          >
-                            Przeglądaj →
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          ) : (
-            <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-              <p className="text-gray-500">Brak oczekujących zgłoszeń</p>
-            </div>
-          )}
-        </div>
-
-        {/* Active Submissions */}
-        <div className="mb-8">
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Zgłoszenia w trakcie ({activeSubmissions.length})
-          </h2>
-          {activeSubmissions.length > 0 ? (
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm text-left">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        ID
-                      </th>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        Status
-                      </th>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        Data zgłoszenia
-                      </th>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        Akcje
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    {activeSubmissions.map((submission) => (
-                      <tr
-                        key={submission.id}
-                        className="hover:bg-gray-50"
-                      >
-                        <td className="px-4 py-3 text-gray-900 font-mono text-xs">
-                          {submission.id.substring(0, 8)}...
-                        </td>
-                        <td className="px-4 py-3">
-                          <span
-                            className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadgeClass(
-                              submission.status
-                            )}`}
-                          >
-                            {getStatusLabel(submission.status)}
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-gray-600">
-                          {new Date(submission.submittedAt).toLocaleString(
-                            "pl-PL"
-                          )}
-                        </td>
-                        <td className="px-4 py-3">
-                          <Link
-                            href={`/admin/submissions/${submission.id}`}
-                            className="text-blue-600 hover:underline"
-                          >
-                            Przeglądaj →
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          ) : (
-            <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-              <p className="text-gray-500">Brak zgłoszeń w trakcie</p>
-            </div>
-          )}
-        </div>
-
-        {/* Completed Submissions */}
-        <div>
-          <h2 className="text-xl font-semibold text-gray-900 mb-4">
-            Zakończone zgłoszenia ({completedSubmissions.length})
-          </h2>
-          {completedSubmissions.length > 0 ? (
-            <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm text-left">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        ID
-                      </th>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        Status
-                      </th>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        Data zgłoszenia
-                      </th>
-                      <th className="px-4 py-3 font-medium text-gray-700">
-                        Akcje
-                      </th>
-                    </tr>
-                  </thead>
-                  <tbody className="divide-y divide-gray-100">
-                    {completedSubmissions.map((submission) => (
-                      <tr
-                        key={submission.id}
-                        className="hover:bg-gray-50"
-                      >
-                        <td className="px-4 py-3 text-gray-900 font-mono text-xs">
-                          {submission.id.substring(0, 8)}...
-                        </td>
-                        <td className="px-4 py-3">
-                          <span
-                            className={`inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${getStatusBadgeClass(
-                              submission.status
-                            )}`}
-                          >
-                            {getStatusLabel(submission.status)}
-                          </span>
-                        </td>
-                        <td className="px-4 py-3 text-gray-600">
-                          {new Date(submission.submittedAt).toLocaleString(
-                            "pl-PL"
-                          )}
-                        </td>
-                        <td className="px-4 py-3">
-                          <Link
-                            href={`/admin/submissions/${submission.id}`}
-                            className="text-blue-600 hover:underline"
-                          >
-                            Zobacz →
-                          </Link>
-                        </td>
-                      </tr>
-                    ))}
-                  </tbody>
-                </table>
-              </div>
-            </div>
-          ) : (
-            <div className="bg-white rounded-xl shadow-sm p-8 text-center">
-              <p className="text-gray-500">Brak zakończonych zgłoszeń</p>
-            </div>
-          )}
-        </div>
+        {/* Main table with search, tabs, and inline status changes */}
+        <AdminSubmissionsTable />
       </div>
     </div>
   );

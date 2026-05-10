@@ -115,7 +115,7 @@ export default function OrderSummary({
             className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
           />
           <span className="text-sm text-gray-700 group-hover:text-gray-900">
-            Recepta express (+19.99 PLN)
+            Konsultacja express (+19.99 PLN)
           </span>
         </label>
 
@@ -127,7 +127,7 @@ export default function OrderSummary({
             className="w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
           />
           <span className="text-sm text-gray-700 group-hover:text-gray-900">
-            Recepta refundowana (+10.00 PLN)
+            Konsultacja refundowana (+10.00 PLN)
           </span>
         </label>
       </div>
@@ -135,20 +135,20 @@ export default function OrderSummary({
       {/* Price breakdown */}
       <div className="mt-4 pt-4 border-t border-gray-100 space-y-2">
         <div className="flex justify-between text-sm text-gray-600">
-          <span>Recepta ({medicineCount} × {MEDICINE_PRICE.toFixed(2)} PLN)</span>
+          <span>Konsultacja ({medicineCount} × {MEDICINE_PRICE.toFixed(2)} PLN)</span>
           <span>{subtotal.toFixed(2)} PLN</span>
         </div>
         
         {expressFee > 0 && (
           <div className="flex justify-between text-sm text-gray-600">
-            <span>Recepta express</span>
+            <span>Konsultacja express</span>
             <span>+{expressFee.toFixed(2)} PLN</span>
           </div>
         )}
         
         {refundedFee > 0 && (
           <div className="flex justify-between text-sm text-gray-600">
-            <span>Recepta refundowana</span>
+            <span>Konsultacja refundowana</span>
             <span>+{refundedFee.toFixed(2)} PLN</span>
           </div>
         )}

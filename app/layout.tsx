@@ -9,8 +9,8 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'E-Recepta.pl - Recepta online bez wychodzenia z domu',
-  description: 'Nowoczesna platforma telemedyczna umożliwiająca szybki i bezpieczny dostęp do e-recept bez wychodzenia z domu.',
+  title: 'Platforma - Konsultacje online bez wychodzenia z domu',
+  description: 'Nowoczesna platforma telemedyczna umożliwiająca szybki i bezpieczny dostęp do profesjonalnych konsultacji zdrowotnych bez wychodzenia z domu.',
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
