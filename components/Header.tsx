@@ -75,7 +75,7 @@ export default function Header({ transparent = false }: HeaderProps) {
   const handleLogout = async () => {
     setLoading(true);
     try {
-      await fetch(`${API_URL}/api/auth/logout`, { 
+      await fetch(`${API_URL}/api/auth/logout`, {
         method: "POST",
         credentials: "include",
       });
@@ -92,7 +92,7 @@ export default function Header({ transparent = false }: HeaderProps) {
   };
 
   return (
-    <header 
+    <header
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${transparent ? 'bg-transparent border-b-0' : 'bg-white border-b border-stone-200'}`}
       role="banner"
     >
@@ -108,7 +108,7 @@ export default function Header({ transparent = false }: HeaderProps) {
           <Link href="/baza-wiedzy" className={`hover:text-blue-300 flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white' : 'text-slate-600'}`}>Baza wiedzy</Link>
           <Link href="/jak-to-dziala" className={`hover:text-blue-300 flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white' : 'text-slate-600'}`}>Jak to działa?</Link>
           {user?.role === "administrator" && (
-            <Link href="/admin" className="text-blue-300 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1">
+            <Link href="/admin" className={`hover:text-blue-300 flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-blue-300' : 'text-slate-600'}`}>
               Panel lekarza
             </Link>
           )}
@@ -135,9 +135,9 @@ export default function Header({ transparent = false }: HeaderProps) {
             </button>
 
             {showDropdown && (
-              <div 
+              <div
                 id="user-menu"
-                className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50" 
+                className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50"
                 role="menu"
               >
                 <Link
@@ -179,7 +179,7 @@ export default function Header({ transparent = false }: HeaderProps) {
             )}
           </div>
         ) : (
-          <Link 
+          <Link
             href="/login"
             className={`flex items-center cursor-pointer px-5 py-2 rounded-full text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 ${transparent ? 'bg-white text-blue-600 hover:bg-blue-50' : 'bg-blue-600 text-white hover:bg-blue-700'}`}
           >

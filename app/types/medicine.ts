@@ -58,6 +58,8 @@ export interface MedicalLeaveData {
   patientFirstName: string;
   patientLastName: string;
   patientPesel: string;
+  patientEmail: string;
+  patientPhone: string;
   patientAddress: string;
   patientPostalCode: string;
   patientCity: string;

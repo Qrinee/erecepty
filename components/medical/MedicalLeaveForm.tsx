@@ -42,6 +42,8 @@ export default function MedicalLeaveForm({
     patientFirstName: '',
     patientLastName: '',
     patientPesel: '',
+    patientEmail: '',
+    patientPhone: '',
     patientAddress: '',
     patientPostalCode: '',
     patientCity: '',
@@ -68,6 +70,7 @@ export default function MedicalLeaveForm({
         ...prev,
         patientFirstName: user.firstName || '',
         patientLastName: user.lastName || '',
+        patientEmail: user.email || '',
       }));
     }
   }, [user]);
@@ -86,6 +89,16 @@ export default function MedicalLeaveForm({
         newErrors.patientPesel = 'PESEL jest wymagany';
       } else if (!/^\d{11}$/.test(formData.patientPesel)) {
         newErrors.patientPesel = 'PESEL musi składać się z 11 cyfr';
+      }
+      if (!formData.patientEmail?.trim()) {
+        newErrors.patientEmail = 'Email jest wymagany';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.patientEmail)) {
+        newErrors.patientEmail = 'Podaj poprawny adres email';
+      }
+      if (!formData.patientPhone?.trim()) {
+        newErrors.patientPhone = 'Telefon jest wymagany';
+      } else if (!/^\d{9}$/.test(formData.patientPhone.replace(/\s/g, ''))) {
+        newErrors.patientPhone = 'Podaj poprawny, 9-cyfrowy numer telefonu';
       }
       if (!formData.patientAddress?.trim()) {
         newErrors.patientAddress = 'Adres jest wymagany';
@@ -225,6 +238,45 @@ export default function MedicalLeaveForm({
         {errors.patientPesel && (
           <p className="text-red-500 text-xs mt-1">{errors.patientPesel}</p>
         )}
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div>
+          <label className="block text-sm font-medium text-gray-900 mb-2">
+            Adres E-mail <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="email"
+            value={formData.patientEmail}
+            onChange={(e) => handleChange('patientEmail', e.target.value)}
+            placeholder="Twój adres e-mail"
+            className={`w-full px-4 py-3 rounded-lg border focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors ${
+              errors.patientEmail ? 'border-red-500' : 'border-gray-200'
+            }`}
+            required
+          />
+          {errors.patientEmail && (
+            <p className="text-red-500 text-xs mt-1">{errors.patientEmail}</p>
+          )}
+        </div>
+        <div>
+          <label className="block text-sm font-medium text-gray-900 mb-2">
+            Numer Telefonu <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="tel"
+            value={formData.patientPhone}
+            onChange={(e) => handleChange('patientPhone', e.target.value)}
+            placeholder="Twój numer telefonu"
+            className={`w-full px-4 py-3 rounded-lg border focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100 transition-colors ${
+              errors.patientPhone ? 'border-red-500' : 'border-gray-200'
+            }`}
+            required
+          />
+          {errors.patientPhone && (
+            <p className="text-red-500 text-xs mt-1">{errors.patientPhone}</p>
+          )}
+        </div>
       </div>
 
       <div>

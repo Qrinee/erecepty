@@ -46,6 +46,8 @@ export default function MedicalLeavePage() {
             firstName: data.patientFirstName,
             lastName: data.patientLastName,
             pesel: data.patientPesel,
+            email: data.patientEmail,
+            phone: data.patientPhone,
             street: data.patientAddress,
             postalCode: data.patientPostalCode,
             city: data.patientCity,
