@@ -9,8 +9,13 @@ const inter = Inter({
 });
 
 export const metadata = {
-  title: 'Platforma - Konsultacje online bez wychodzenia z domu',
+  title: 'Lekarze i terapeuci - Konsultacje online bez wychodzenia z domu',
   description: 'Nowoczesna platforma telemedyczna umożliwiająca szybki i bezpieczny dostęp do profesjonalnych konsultacji zdrowotnych bez wychodzenia z domu.',
+  icons: {
+    icon: [
+      { url: '/logo.png', sizes: 'any' }
+    ],
+  },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
