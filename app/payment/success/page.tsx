@@ -21,7 +21,7 @@ function SuccessContent() {
   }, []);
 
   return (
-    <div className="bg-white rounded-2xl shadow-sm p-8 max-w-2xl w-full text-center border border-gray-100">
+    <div className="bg-white mt-20 rounded-2xl shadow-sm p-8 max-w-2xl w-full text-center border border-gray-100">
       <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
         <CheckCircle2 className="w-10 h-10 text-green-600" />
       </div>
@@ -44,7 +44,7 @@ function SuccessContent() {
       <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
         <button
           onClick={() => router.push('/orders')}
-          className="w-full sm:w-auto px-8 py-3.5 bg-blue-600 text-white rounded-xl font-medium hover:bg-blue-700 transition flex items-center justify-center gap-2"
+          className="w-full sm:w-auto px-8 py-3.5 bg-[#064743] text-white rounded-xl font-medium hover:bg-[#064743] transition flex items-center justify-center gap-2"
         >
           Śledź status zgłoszenia
           <ArrowRight className="w-5 h-5" />

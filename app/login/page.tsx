@@ -81,7 +81,7 @@ export default function LoginPage() {
               onChange={(e) => setEmail(e.target.value)}
               required
               autoComplete="email"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
             />
           </div>
           
@@ -98,14 +98,14 @@ export default function LoginPage() {
               required
               minLength={6}
               autoComplete="current-password"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
             />
           </div>
           
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
+            className="w-full bg-[#064743] text-white py-3 rounded-lg font-medium hover:bg-[#064743] transition disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
           >
             {loading ? "Logowanie..." : "Zaloguj się"}
           </button>
@@ -113,7 +113,7 @@ export default function LoginPage() {
         
         <p className="mt-4 text-center text-sm text-gray-600">
           Nie masz konta?{" "}
-          <a href="/register" className="text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1">
+          <a href="/register" className="text-[#064743] hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1">
             Zarejestruj się
           </a>
         </p>

@@ -21,7 +21,7 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
         onClick={() => setOpen(!open)}
         aria-expanded={open}
         aria-controls={answerId}
-        className="cursor-pointer flex w-full items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-2 -mx-2"
+        className="cursor-pointer flex w-full items-center justify-between text-left focus:outline-none focus:ring-2 focus:ring-[#064743] focus:ring-offset-2 rounded px-2 -mx-2"
       >
         <span className="font-medium text-slate-900">
           {question}
@@ -29,7 +29,7 @@ export default function FAQItem({ question, answer }: FAQItemProps) {
         <ChevronDown
           size={18}
           aria-hidden="true"
-          className={`text-blue-600 transition-transform ${
+          className={`text-[#064743] transition-transform ${
             open ? "rotate-180" : ""
           }`}
         />

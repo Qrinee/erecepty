@@ -22,6 +22,7 @@ export default function Header({ transparent = false }: HeaderProps) {
   const [user, setUser] = useState<User | null>(null);
   const [loading, setLoading] = useState(false);
   const [showDropdown, setShowDropdown] = useState(false);
+  const [showMobileMenu, setShowMobileMenu] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
 
@@ -93,61 +94,95 @@ export default function Header({ transparent = false }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${transparent ? 'bg-transparent border-b-0' : 'bg-white border-b border-stone-200'}`}
+      className={`fixed pt-5 pb-5 top-0 left-0 right-0 z-50 transition-all duration-300 $ 'bg-white border-b border-stone-200 bg-white/90 backdrop-blur-sm' : 'bg-transparent text-white'}`}
       role="banner"
     >
-      <div className={`max-w-7xl mx-auto px-4 py-4 flex items-center justify-between ${transparent ? 'text-white' : ''}`}>
+      <div className="max-w-7xl mx-auto flex items-center justify-between h-16">
         <Link href="/" className={`flex items-center gap-2 font-semibold text-lg ${transparent ? 'text-white' : ''}`} aria-label="Konsultacje online - Strona główna">
-          <div className="w-6 h-6 bg-blue-600 rotate-45 rounded-sm flex items-center justify-center" aria-hidden="true">
-            <div className="w-2 h-2 bg-white rounded-sm" />
-          </div>
-          <span>Platforma</span>
+          <img src="/logo.png" alt="Lekarze i Terapeuci" className="w-25 h-25" />
         </Link>
 
-        <nav aria-label="Główna nawigacja" className={`hidden md:flex items-center gap-6 text-sm ${transparent ? 'text-white/90' : 'text-slate-600'}`}>
-          <Link href="/baza-wiedzy" className={`hover:text-blue-300 flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white' : 'text-slate-600'}`}>Baza wiedzy</Link>
-          <Link href="/jak-to-dziala" className={`hover:text-blue-300 flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white' : 'text-slate-600'}`}>Jak to działa?</Link>
-          {user?.role === "administrator" && (
-            <Link href="/admin" className={`hover:text-blue-300 flex items-center hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-blue-300' : 'text-slate-600'}`}>
-              Panel lekarza
-            </Link>
-          )}
+        <button
+          onClick={() => setShowMobileMenu(!showMobileMenu)}
+          className={`md:hidden p-2 ${transparent ? 'text-white' : 'text-gray-700'}`}
+          aria-label="Menu"
+        >
+          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+
+        <nav aria-label="Główna nawigacja" className={`hidden md:flex items-center justify-center gap-8 text-sm text-slate-700 h-16`}>
+          <div className="flex items-center gap-8 h-full">
+            <Link href="/#uslugi" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 text-slate-700 hover:text-[#064743] h-full flex items-center`}>Usługi</Link>
+            <Link href="/#specjalizacje" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 text-slate-700 hover:text-[#064743] h-full flex items-center`}>Specjalizacje</Link>
+            <Link href="/jak-to-dziala" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 text-slate-700 hover:text-[#064743] h-full flex items-center`}>Jak to działa?</Link>
+            <Link href="/baza-wiedzy" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 text-slate-700 hover:text-[#064743] h-full flex items-center`}>Baza wiedzy</Link>
+            <Link href="/#o-nas" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 text-slate-700 hover:text-[#064743] h-full flex items-center`}>O nas</Link>
+            <Link href="/#cennik" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white hover:text-[#DAE9E6]' : 'text-slate-700 hover:text-[#064743]'} h-full flex items-center`}>Cennik</Link>
+            <Link href="/#kontakt" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white hover:text-[#DAE9E6]' : 'text-slate-700 hover:text-[#064743]'} h-full flex items-center`}>Kontakt</Link>
+          </div>
         </nav>
 
-        {isAuthenticated ? (
-          <div className="relative" ref={dropdownRef}>
-            <button
-              onClick={() => setShowDropdown(!showDropdown)}
-              aria-expanded={showDropdown}
-              aria-haspopup="true"
-              aria-controls="user-menu"
-              className={`flex items-center gap-2 text-sm hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded-lg px-2 py-1 ${transparent ? 'text-white' : 'text-gray-700'}`}
-            >
-              <div className={`w-8 h-8 rounded-full flex items-center justify-center ${transparent ? 'bg-white/20' : 'bg-blue-100'}`} aria-hidden="true">
-                <span className={`font-medium ${transparent ? 'text-white' : 'text-blue-600'}`}>
-                  {user?.firstName?.[0]}{user?.lastName?.[0]}
-                </span>
-              </div>
-              <span className="hidden md:inline">{user?.firstName} {user?.lastName}</span>
-              <svg className="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-              </svg>
-            </button>
+        {showMobileMenu && (
+          <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-40">
+            <nav className="flex flex-col p-4 space-y-4" onClick={() => setShowMobileMenu(false)}>
+              <Link href="/#uslugi" className="text-slate-700 hover:text-[#064743] py-2">Usługi</Link>
+              <Link href="/#specjalizacje" className="text-slate-700 hover:text-[#064743] py-2">Specjalizacje</Link>
+              <Link href="/jak-to-dziala" className="text-slate-700 hover:text-[#064743] py-2">Jak to działa?</Link>
+              <Link href="/baza-wiedzy" className="text-slate-700 hover:text-[#064743] py-2">Baza wiedzy</Link>
+              <Link href="/#o-nas" className="text-slate-700 hover:text-[#064743] py-2">O nas</Link>
+              <Link href="/#cennik" className="text-slate-700 hover:text-[#064743] py-2">Cennik</Link>
+              <Link href="/#kontakt" className="text-slate-700 hover:text-[#064743] py-2">Kontakt</Link>
+              {!isAuthenticated && (
+                <>
+                  <hr className="my-2" />
+                  <Link href="/login" className="text-[#064743] hover:text-[#1A5D54] py-2 font-medium">Zaloguj się</Link>
+                  <Link href="/profile" className="text-slate-700 hover:text-[#064743] py-2">Panel pacjenta</Link>
+                </>
+              )}
+            </nav>
+          </div>
+        )}
 
-            {showDropdown && (
-              <div
-                id="user-menu"
-                className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50"
-                role="menu"
+        {isAuthenticated ? (
+          <div className="flex items-center gap-6">
+            <Link href="/profile" className={`text-sm font-medium ${transparent ? 'text-white hover:text-[#DAE9E6]' : 'text-slate-700 hover:text-[#064743]'} transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 flex justify-center items-center h-full`} aria-label="Panel pacjenta">
+              Panel pacjenta
+            </Link>
+            <div className="relative" ref={dropdownRef}>
+              <button
+                onClick={() => setShowDropdown(!showDropdown)}
+                aria-expanded={showDropdown}
+                aria-haspopup="true"
+                aria-controls="user-menu"
+                className={`flex items-center gap-2 text-sm hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded-lg px-2 py-1 ${transparent ? 'text-white' : 'text-gray-700'}`}
               >
-                <Link
-                  href="/profile"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
-                  role="menuitem"
-                  onClick={() => setShowDropdown(false)}
+                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${transparent ? 'bg-white/20' : 'bg-[#DAE9E6]'}`} aria-hidden="true">
+                  <span className={`font-medium ${transparent ? 'text-white' : 'text-[#064743]'}`}>
+                    {user?.firstName?.[0]}{user?.lastName?.[0]}
+                  </span>
+                </div>
+                <span className="hidden md:inline">{user?.firstName} {user?.lastName}</span>
+                <svg className="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+              </button>
+
+              {showDropdown && (
+                <div
+                  id="user-menu"
+                  className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-gray-100 py-1 z-50"
+                  role="menu"
                 >
-                  Mój profil
-                </Link>
+                  <Link
+                    href="/profile"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
+                    role="menuitem"
+                    onClick={() => setShowDropdown(false)}
+                  >
+                    Mój profil
+                  </Link>
                 <Link
                   href="/orders"
                   className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
@@ -157,14 +192,14 @@ export default function Header({ transparent = false }: HeaderProps) {
                   Moje recepty
                 </Link>
                 {user?.role === "administrator" && (
-                  <Link
-                    href="/admin"
-                    className="block px-4 py-2 text-sm text-blue-600 hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
-                    role="menuitem"
-                    onClick={() => setShowDropdown(false)}
-                  >
-                    Panel lekarza
-                  </Link>
+<Link
+                      href="/admin"
+                      className="block px-4 py-2 text-sm text-[#064743] hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
+                      role="menuitem"
+                      onClick={() => setShowDropdown(false)}
+                    >
+                      Panel lekarza
+                    </Link>
                 )}
                 <hr className="my-1" role="separator" />
                 <button
@@ -177,14 +212,17 @@ export default function Header({ transparent = false }: HeaderProps) {
                 </button>
               </div>
             )}
+            </div>
           </div>
         ) : (
-          <Link
-            href="/login"
-            className={`flex items-center cursor-pointer px-5 py-2 rounded-full text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 ${transparent ? 'bg-white text-blue-600 hover:bg-blue-50' : 'bg-blue-600 text-white hover:bg-blue-700'}`}
-          >
-            Zaloguj się
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/login"
+              className={`flex items-center cursor-pointer px-5 py-2 rounded-lg text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 ${transparent ? 'bg-white text-[#064743] hover:bg-[#DAE9E6]' : 'bg-[#064743] text-white hover:bg-[#1A5D54]'}`}
+            >
+              Zaloguj się
+            </Link>
+          </div>
         )}
       </div>
     </header>

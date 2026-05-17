@@ -3,10 +3,17 @@
 /* WCAG 2.4.7 - Focus Visible */
 /* Enhanced focus styles for keyboard navigation */
 *:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #0e4d11;
   outline-offset: 2px;
 }
 
+button{
+  cursor: pointer!important;
+}
+
+input[type="radio"], input[type="checkbox"] {
+  accent-color: #064743;
+}
 /* Remove default focus for mouse users */
 *:focus:not(:focus-visible) {
   outline: none;
@@ -19,14 +26,14 @@ select:focus-visible,
 textarea:focus-visible,
 a:focus-visible,
 [tabindex]:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #205718;
   outline-offset: 2px;
 }
 
 /* High contrast focus for interactive elements */
 a:focus-visible,
 button:focus-visible {
-  outline: 2px solid #2563eb;
+  outline: 2px solid #134b1a;
   outline-offset: 2px;
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
 }

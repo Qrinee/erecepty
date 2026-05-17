@@ -51,6 +51,15 @@ export interface MedicalConsultationData {
   allergies?: string;
   otherMedicalInfo?: string;
   pregnancyStatus: 'pregnant' | 'breastfeeding' | 'na' | null;
+  // Appointment scheduling
+  appointmentDate?: string;
+  appointmentTime?: string;
+  consultationMethod?: 'video' | 'audio' | null;
+  // Doctor specialization preference
+  specialization?: string;
+  // Assigned doctor info (filled by form after slot selection)
+  assignedDoctorName?: string;
+  assignedDoctorId?: string;
 }
 
 export interface MedicalLeaveData {
@@ -80,4 +89,7 @@ export interface MedicalLeaveData {
   additionalNotes: string;
   followUpVisit: 'yes' | 'no' | null;
   followUpDate?: string;
+
+  // Doctor specialization preference
+  specialization?: string;
 }

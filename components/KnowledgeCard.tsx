@@ -20,7 +20,7 @@ export default function KnowledgeCard({
   slug,
 }: KnowledgeCardProps) {
   return (
-    <article className="group overflow-hidden rounded-2xl bg-white border-2 border-slate-100 shadow-sm transition-all duration-300 hover:border-blue-200 hover:shadow-xl">
+    <article className="group overflow-hidden rounded-2xl bg-white border-2 border-slate-100 shadow-sm transition-all duration-300 hover:border-[#1A5D54] hover:shadow-xl">
       <div className="relative h-48 w-full">
         <span
           className={`absolute left-4 top-4 z-10 rounded-full px-3 py-1 text-xs font-semibold text-white ${tagColor}`}
@@ -40,7 +40,7 @@ export default function KnowledgeCard({
       </div>
 
       <div className="p-6">
-        <h3 className="mb-3 text-lg font-bold text-slate-900 group-hover:text-blue-600 transition-colors">
+        <h3 className="mb-3 text-lg font-bold text-slate-900 group-hover:text-[#064743] transition-colors">
           {title}
         </h3>
 
@@ -51,7 +51,7 @@ export default function KnowledgeCard({
         {slug ? (
           <Link
             href={`/baza-wiedzy/${slug}`}
-            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition-all group-hover:gap-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#064743] transition-all group-hover:gap-3 focus:outline-none focus:ring-2 focus:ring-[#064743] focus:ring-offset-2 rounded px-1"
             aria-label={`Czytaj więcej o ${title}`}
           >
             Czytaj więcej
@@ -60,7 +60,7 @@ export default function KnowledgeCard({
         ) : (
           <a
             href="#"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-blue-600 transition-all group-hover:gap-3 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-[#064743] transition-all group-hover:gap-3 focus:outline-none focus:ring-2 focus:ring-[#064743] focus:ring-offset-2 rounded px-1"
             aria-label={`Czytaj więcej o ${title}`}
           >
             Czytaj więcej

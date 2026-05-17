@@ -14,8 +14,8 @@ export default function ForWhoCard({
   description
 }: Props) {
   return (
-    <div className="bg-white rounded-2xl border-2 border-slate-100 p-6 transition-all duration-300 hover:border-blue-200 hover:shadow-xl group">
-      <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 text-blue-600 mb-4 group-hover:scale-110 transition-transform" aria-hidden="true">
+    <div className="bg-white rounded-2xl border-2 border-slate-100 p-6 transition-all duration-300 hover:border-[#1A5D54] hover:shadow-xl group">
+      <div className="w-14 h-14 flex items-center justify-center rounded-xl bg-gradient-to-br from-[#DAE9E6] to-[#DAE9E6]/50 text-[#064743] mb-4 group-hover:scale-110 transition-transform" aria-hidden="true">
         <Icon size={28} />
       </div>
 
@@ -29,7 +29,7 @@ export default function ForWhoCard({
 
       <Link 
         href="/jak-to-dziala"
-        className="inline-flex items-center gap-1 text-blue-600 font-medium text-sm hover:gap-2 transition-all"
+        className="inline-flex items-center gap-1 text-[#064743] font-medium text-sm hover:gap-2 transition-all"
       >
         Dowiedz się więcej
         <ArrowRight size={14} />

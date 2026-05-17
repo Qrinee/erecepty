@@ -312,7 +312,7 @@ export default function ContactForm({ onSubmit, onCancel, isSubmitting = false, 
         <button
           type="submit"
           disabled={isSubmitting}
-          className="flex-1 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors font-medium disabled:opacity-50"
+          className="flex-1 px-6 py-3  text-white rounded-lg hover:bg-[#DAE9E6] hover:text-[#064743] cursor-pointer bg-[#064743] transition-colors font-medium disabled:opacity-50"
         >
           {isSubmitting ? 'Przetwarzanie...' : 'Dalej: Płatność →'}
         </button>

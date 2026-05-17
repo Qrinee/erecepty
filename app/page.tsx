@@ -8,28 +8,40 @@ import Hero from "@/components/Hero";
 import KnowledgeCenter from "@/components/KnowledgeCenter";
 import TrustSection from "@/components/TrustSection";
 import TrustStats from "@/components/TrustStats";
+import ServicesPanel from "@/components/ServicesPanel";
+import ServicesSection from "@/components/ServicesSection";
+import SpecializationsSection from "@/components/SpecializationsSection";
+import HowItWorksSection from "@/components/HowItWorksSection";
+import ReviewsSection from "@/components/ReviewsSection";
+import ForCompaniesSection from "@/components/ForCompaniesSection";
+import ContactSection from "@/components/ContactSection";
+import PricingSection from "@/components/PricingSection";
+import AboutUsSection from "@/components/AboutUsSection";
 import { useEffect, useState } from 'react';
 
 export default function Home() {
-  const [scrolled, setScrolled] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
-    };
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
+
 
   return (
     <>
-      <Header transparent={!scrolled} />
+      <Header transparent={false} />
+      <div className="mb-20"></div>
       <main id="main-content" tabIndex={-1}>
         <Hero />
+        <ServicesPanel />
+        <ServicesSection />
+        <SpecializationsSection />
+        <HowItWorksSection />
+        <KnowledgeCenter />
+        <ReviewsSection />
+        <AboutUsSection />
+        <ForCompaniesSection />
+        <PricingSection />
+        <ContactSection />
+        <FAQSection />
         <ForWhoSection />
         <TrustSection />
-        <KnowledgeCenter/>
-        <FAQSection/>
       </main>
       <Footer />
     </>

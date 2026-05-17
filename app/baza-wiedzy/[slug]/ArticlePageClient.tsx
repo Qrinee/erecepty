@@ -54,7 +54,7 @@ interface ArticlePageClientProps {
 function FloatingBackground() {
   return (
     <div className="absolute inset-0 overflow-hidden pointer-events-none">
-      <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-100/30 to-transparent rounded-full blur-3xl" />
+      <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-[#DAE9E6]/30 to-transparent rounded-full blur-3xl" />
       <div className="absolute top-1/3 -left-20 w-60 h-60 bg-gradient-to-tr from-emerald-100/20 to-transparent rounded-full blur-3xl" />
       <div className="absolute bottom-40 right-1/4 w-40 h-40 bg-gradient-to-r from-orange-100/20 to-transparent rounded-full blur-3xl" />
     </div>
@@ -69,7 +69,7 @@ function Breadcrumb({ slug }: { slug: string }) {
         <li>
           <Link
             href="/baza-wiedzy"
-            className="text-slate-500 hover:text-blue-600 transition-colors flex items-center gap-1"
+            className="text-slate-500 hover:text-[#064743] transition-colors flex items-center gap-1"
           >
             <ArrowLeft size={14} />
             Baza wiedzy
@@ -87,7 +87,7 @@ function Breadcrumb({ slug }: { slug: string }) {
 // Article Hero Section
 function ArticleHero({ article }: { article: ArticleData }) {
   return (
-    <section className="relative bg-gradient-to-br from-slate-50 via-white to-blue-50 pt-8 pb-12">
+    <section className="relative bg-gradient-to-br from-slate-50 via-white to-[#DAE9E6] pt-8 pb-12">
       <FloatingBackground />
       <div className="max-w-4xl mx-auto px-6 relative">
         <Breadcrumb slug={article.slug} />
@@ -190,7 +190,7 @@ function KeyTakeaways({ sections }: { sections?: ArticleSection[] }) {
   }
 
   return (
-    <section className="py-12 bg-gradient-to-br from-blue-50 to-emerald-50">
+    <section className="py-12 bg-gradient-to-br from-[#DAE9E6] to-emerald-50">
       <div className="max-w-3xl mx-auto px-6">
         <div className="bg-white rounded-3xl p-8 shadow-lg">
           <h3 className="text-xl font-bold text-slate-900 mb-6 flex items-center gap-2">
@@ -236,7 +236,7 @@ function RelatedArticlesSection({
             <Link
               key={index}
               href={`/baza-wiedzy/${article.slug}`}
-              className="group block bg-white rounded-2xl border-2 border-slate-100 overflow-hidden hover:border-blue-200 hover:shadow-xl transition-all duration-300"
+              className="group block bg-white rounded-2xl border-2 border-slate-100 overflow-hidden hover:border-[#1A5D54] hover:shadow-xl transition-all duration-300"
             >
               <div className="relative h-40">
                 <Image
@@ -252,7 +252,7 @@ function RelatedArticlesSection({
                 </span>
               </div>
               <div className="p-5">
-                <h3 className="font-bold text-slate-900 mb-2 group-hover:text-blue-600 transition-colors line-clamp-2">
+                <h3 className="font-bold text-slate-900 mb-2 group-hover:text-[#064743] transition-colors line-clamp-2">
                   {article.title}
                 </h3>
                 <p className="text-sm text-slate-500 line-clamp-2">
@@ -270,19 +270,19 @@ function RelatedArticlesSection({
 // CTA Section
 function CTASection() {
   return (
-    <section className="py-16 bg-gradient-to-r from-blue-600 to-blue-700">
+    <section className="py-16 bg-gradient-to-r from-[#064743] to-[#1A5D54]">
       <div className="max-w-4xl mx-auto px-6 text-center">
         <h2 className="text-3xl font-bold text-white mb-4">
           Potrzebujesz konsultacji lekarskiej?
         </h2>
-        <p className="text-blue-100 mb-8 text-lg">
+        <p className="text-[#DAE9E6] mb-8 text-lg">
           Skorzystaj z telekonsultacji i otrzymaj e-receptę bez wychodzenia z
           domu. Szybko, bezpiecznie, online.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <Link
             href="/add-medicine"
-            className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold hover:bg-blue-50 transition-colors"
+            className="px-8 py-4 bg-white text-[#064743] rounded-full font-semibold hover:bg-[#DAE9E6] transition-colors"
           >
             Rozpocznij konsultację
           </Link>

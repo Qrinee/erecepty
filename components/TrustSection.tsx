@@ -10,10 +10,10 @@ import TrustItem from "./TrustItem";
 
 export default function TrustSection() {
   return (
-    <section className="bg-gradient-to-br from-slate-50 to-blue-50 py-20" aria-labelledby="trust-section-title">
+    <section className="bg-gradient-to-br from-slate-50 to-[#DAE9E6] py-20" aria-labelledby="trust-section-title">
       <div className="max-w-7xl mx-auto px-6 grid lg:grid-cols-2 gap-12">
         <div>
-          <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+          <span className="inline-flex items-center gap-2 bg-[#DAE9E6] text-[#064743] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
             <ShieldCheck size={16} aria-hidden="true" />
             Gwarancja bezpieczeństwa
           </span>
@@ -31,7 +31,7 @@ export default function TrustSection() {
           {/* Trust badges */}
           <div className="flex flex-wrap gap-3 mb-6">
             <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg border border-slate-200">
-              <UserCheck className="text-blue-600" size={18} />
+              <UserCheck className="text-[#064743]" size={18} />
               <span className="text-sm font-medium text-slate-700">Lekarze z PWZ</span>
             </div>
             <div className="flex items-center gap-2 bg-white px-3 py-2 rounded-lg border border-slate-200">
@@ -46,7 +46,7 @@ export default function TrustSection() {
 
           <Link
             href="/jak-to-dziala"
-            className="inline-flex items-center gap-2 mt-6 bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-lg shadow-blue-600/25"
+            className="inline-flex items-center gap-2 mt-6 bg-[#064743] text-white px-6 py-3 rounded-full font-medium hover:bg-[#1A5D54] transition shadow-lg shadow-[#064743]/25"
           >
             Dowiedz się więcej o procesie
             <ArrowRight size={18} />

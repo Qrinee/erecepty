@@ -5,8 +5,8 @@ const stats = [
     icon: Clock,
     title: "15 min",
     desc: "Średni czas oczekiwania",
-    color: "text-blue-600",
-    bgColor: "bg-blue-50"
+    color: "text-[#064743]",
+    bgColor: "bg-[#DAE9E6]"
   },
   {
     icon: CheckCircle,

@@ -111,7 +111,7 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 required
                 autoComplete="given-name"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
               />
             </div>
             <div>
@@ -127,7 +127,7 @@ export default function RegisterPage() {
                 onChange={handleChange}
                 required
                 autoComplete="family-name"
-                className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+                className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
               />
             </div>
           </div>
@@ -145,7 +145,7 @@ export default function RegisterPage() {
               onChange={handleChange}
               required
               autoComplete="email"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
             />
           </div>
           
@@ -161,7 +161,7 @@ export default function RegisterPage() {
               value={formData.phone}
               onChange={handleChange}
               autoComplete="tel"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
             />
           </div>
           
@@ -179,7 +179,7 @@ export default function RegisterPage() {
               required
               minLength={6}
               autoComplete="new-password"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
             />
           </div>
           
@@ -197,7 +197,7 @@ export default function RegisterPage() {
               required
               minLength={6}
               autoComplete="new-password"
-              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-blue-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
+              className="w-full px-4 py-2.5 rounded-lg border border-gray-200 focus:border-green-500 focus:outline-none focus:ring-2 focus:ring-blue-100"
             />
           </div>
           
@@ -207,15 +207,15 @@ export default function RegisterPage() {
               id="terms"
               checked={acceptTerms}
               onChange={(e) => setAcceptTerms(e.target.checked)}
-              className="mt-1 w-4 h-4 text-blue-600 rounded border-gray-300 focus:ring-blue-500"
+              className="mt-1 w-4 h-4 text-green-500 rounded border-gray-300 focus:ring-green-500"
             />
             <label htmlFor="terms" className="text-sm text-gray-600">
               Akceptuję{" "}
-              <a href="#" className="text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1">
+              <a href="#" className="text-green-700 hover:underline focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded px-1">
                 regulamin
               </a>{" "}
               i{" "}
-              <a href="#" className="text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1">
+              <a href="#" className="text-green-700 hover:underline focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 rounded px-1">
                 politykę prywatności
               </a>
             </label>
@@ -224,7 +224,7 @@ export default function RegisterPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
+            className="w-full bg-[#064743] text-white py-3 rounded-lg font-medium hover:bg-[#064743] transition disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2"
           >
             {loading ? "Rejestracja..." : "Zarejestruj się"}
           </button>
@@ -232,7 +232,7 @@ export default function RegisterPage() {
         
         <p className="mt-4 text-center text-sm text-gray-600">
           Masz już konto?{" "}
-          <a href="/login" className="text-blue-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1">
+          <a href="/login" className="text-green-600 hover:underline focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 rounded px-1">
             Zaloguj się
           </a>
         </p>

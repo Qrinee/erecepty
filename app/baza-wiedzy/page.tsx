@@ -24,21 +24,21 @@ export default function BazaWiedzyPage() {
       <Header />
       <main id="main-content" tabIndex={-1}>
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 pt-32 pb-16 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-[#DAE9E6] via-white to-purple-50 pt-32 pb-16 overflow-hidden">
           {/* Decorative elements */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-30 blur-2xl" />
+          <div className="absolute top-20 left-10 w-32 h-32 bg-[#DAE9E6] rounded-full opacity-30 blur-2xl" />
           <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-200 rounded-full opacity-30 blur-3xl" />
           
           <div className="max-w-7xl mx-auto px-6 relative">
             <div className="text-center max-w-3xl mx-auto">
-              <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
+              <span className="inline-flex items-center gap-2 bg-[#DAE9E6] text-[#064743] text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
                 <BookOpen size={16} />
                 BAZA WIEDZY
               </span>
               
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                 Wiedza o{" "}
-                <span className="text-blue-600">zdrowiu i konsultacjach</span>
+                <span className="text-[#064743]">zdrowiu i konsultacjach</span>
               </h1>
               
               <p className="text-lg text-slate-600 mb-8">
@@ -53,7 +53,7 @@ export default function BazaWiedzyPage() {
                   <input
                     type="text"
                     placeholder="Szukaj artykułów..."
-                    className="w-full pl-12 pr-4 py-4 rounded-full border-2 border-slate-200 focus:border-blue-500 focus:outline-none shadow-sm text-slate-900 placeholder:text-slate-400"
+                    className="w-full pl-12 pr-4 py-4 rounded-full border-2 border-slate-200 focus:border-[#064743] focus:outline-none shadow-sm text-slate-900 placeholder:text-slate-400"
                   />
                 </div>
               </div>
@@ -64,7 +64,7 @@ export default function BazaWiedzyPage() {
 
 
         {/* Articles Grid */}
-        <section className="py-16 bg-gradient-to-br from-white to-blue-50">
+        <section className="py-16 bg-gradient-to-br from-white to-[#DAE9E6]">
           <div className="max-w-7xl mx-auto px-6">
       
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">

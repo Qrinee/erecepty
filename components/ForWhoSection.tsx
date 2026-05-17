@@ -13,7 +13,7 @@ export default function ForWhoSection() {
   return (
     <section className="max-w-7xl mx-auto px-6 py-20" aria-labelledby="for-who-title">
       <div className="text-center max-w-2xl mx-auto mb-14">
-        <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
+        <span className="inline-flex items-center gap-2 bg-[#DAE9E6] text-[#064743] text-sm font-semibold px-4 py-1.5 rounded-full mb-4">
           <Heart size={16} />
           Dla kogo
         </span>
@@ -55,7 +55,7 @@ export default function ForWhoSection() {
       <div className="mt-12 text-center">
         <Link
           href="/jak-to-dziala"
-          className="inline-flex items-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-lg shadow-blue-600/25"
+          className="inline-flex items-center gap-2 bg-[#064743] text-white px-6 py-3 rounded-full font-medium hover:bg-[#1A5D54] transition shadow-lg shadow-[#064743]/25"
         >
           Zobacz jak to działa
           <ArrowRight size={18} />

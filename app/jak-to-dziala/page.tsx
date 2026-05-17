@@ -32,7 +32,7 @@ export default function JakToDzialaPage() {
       icon: Search,
       title: "Wyszukaj lek",
       description: "Wpisz nazwę leku lub substancji czynnej w wyszukiwarce. Podaj również dawkę i opakowanie.",
-      color: "bg-blue-500"
+      color: "bg-[#064743]"
     },
     {
       number: "02",
@@ -62,7 +62,7 @@ export default function JakToDzialaPage() {
       icon: Clock,
       title: "Szybko",
       description: "Szybka konsultacja w 15 minut",
-      color: "bg-blue-100 text-blue-600"
+      color: "bg-[#DAE9E6] text-[#064743]"
     },
     {
       icon: Shield,
@@ -153,24 +153,24 @@ export default function JakToDzialaPage() {
       <main id="main-content" tabIndex={-1}>
         {/* Hero Section with Illustration */}
         <div style={{ margin: '100px' }}></div>
-        <section className="relative bg-gradient-to-br from-blue-50 via-white to-purple-50 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-[#DAE9E6] via-white to-purple-50 overflow-hidden">
           {/* Decorative elements */}
-          <div className="absolute top-20 left-10 w-32 h-32 bg-blue-200 rounded-full opacity-30 blur-2xl" />
+          <div className="absolute top-20 left-10 w-32 h-32 bg-[#DAE9E6] rounded-full opacity-30 blur-2xl" />
           <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-200 rounded-full opacity-30 blur-3xl" />
-          <div className="absolute top-1/2 left-1/4 w-4 h-4 bg-blue-400 rounded-full opacity-50" />
+          <div className="absolute top-1/2 left-1/4 w-4 h-4 bg-[#064743] rounded-full opacity-50" />
           <div className="absolute top-1/3 right-1/3 w-3 h-3 bg-purple-400 rounded-full opacity-50" />
 
           <div className="max-w-7xl mx-auto px-4 py-20 relative">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="text-center lg:text-left">
-                <span className="inline-flex items-center gap-2 bg-blue-100 text-blue-700 text-sm font-medium px-4 py-1.5 rounded-full mb-6">
+                <span className="inline-flex items-center gap-2 bg-[#DAE9E6] text-[#064743] text-sm font-medium px-4 py-1.5 rounded-full mb-6">
                   <Clock size={16} />
                   Nawet w 15 minut
                 </span>
 
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-slate-900 mb-6 leading-tight">
                   Jak działa{" "}
-                  <span className="text-blue-600">konsultacja online?</span>
+                  <span className="text-[#064743]">konsultacja online?</span>
                 </h1>
 
                 <p className="text-lg text-slate-600 max-w-xl mx-auto lg:mx-0 mb-8">
@@ -181,7 +181,7 @@ export default function JakToDzialaPage() {
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                   <a
                     href="#kroki"
-                    className="inline-flex items-center justify-center gap-2 bg-blue-600 text-white px-6 py-3 rounded-full font-medium hover:bg-blue-700 transition shadow-lg shadow-blue-600/25"
+                    className="inline-flex items-center justify-center gap-2 bg-[#064743] text-white px-6 py-3 rounded-full font-medium hover:bg-[#1A5D54] transition shadow-lg shadow-[#064743]/25"
                   >
                     Zobacz jak to działa
                     <ArrowRight size={18} />
@@ -197,7 +197,7 @@ export default function JakToDzialaPage() {
                   <div className="w-full h-full bg-white rounded-[2.5rem] overflow-hidden relative">
                     {/* Phone screen mockup */}
                     <div className="p-4 h-full flex flex-col">
-                      <div className="bg-blue-600 text-white p-4 rounded-2xl mb-4">
+                      <div className="bg-[#064743] text-white p-4 rounded-2xl mb-4">
                         <div className="text-sm opacity-80">Twoja konsultacja</div>
                         <div className="text-2xl font-bold mt-1">Porada</div>
                       </div>
@@ -235,8 +235,8 @@ export default function JakToDzialaPage() {
                 </div>
                 <div className="absolute -bottom-4 -left-8 bg-white p-3 rounded-xl shadow-lg">
                   <div className="flex items-center gap-2">
-                    <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
-                      <Clock className="text-blue-600" size={16} />
+                    <div className="w-8 h-8 bg-[#DAE9E6] rounded-full flex items-center justify-center">
+                      <Clock className="text-[#064743]" size={16} />
                     </div>
                     <div>
                       <div className="text-sm font-medium text-slate-900">15 minut</div>
@@ -269,10 +269,10 @@ export default function JakToDzialaPage() {
               {steps.map((step, index) => (
                 <div key={index} className="relative group">
                   {index < steps.length - 1 && (
-                    <div className="hidden lg:block absolute top-20 left-1/2 w-full h-1 bg-gradient-to-r from-blue-200 to-purple-200 -translate-y-1/2 z-0" />
+                    <div className="hidden lg:block absolute top-20 left-1/2 w-full h-1 bg-gradient-to-r from-[#064743]/30 to-purple-200 -translate-y-1/2 z-0" />
                   )}
 
-                  <div className="relative bg-white rounded-2xl border-2 border-slate-100 p-6 h-full hover:border-blue-200 hover:shadow-xl transition-all duration-300">
+                  <div className="relative bg-white rounded-2xl border-2 border-slate-100 p-6 h-full hover:border-[#1A5D54] hover:shadow-xl transition-all duration-300">
                     <div className="flex items-center justify-between mb-4">
                       <div className={`w-14 h-14 flex items-center justify-center rounded-xl ${step.color} text-white shadow-lg`}>
                         <step.icon size={28} />
@@ -291,7 +291,7 @@ export default function JakToDzialaPage() {
                     </p>
 
                     {index < steps.length - 1 && (
-                      <div className="lg:hidden absolute bottom-6 right-4 text-blue-300">
+                      <div className="lg:hidden absolute bottom-6 right-4 text-[#064743]/60">
                         <ChevronRight size={24} />
                       </div>
                     )}
@@ -301,11 +301,11 @@ export default function JakToDzialaPage() {
             </div>
 
             {/* Process visualization */}
-            <div className="mt-16 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8">
+            <div className="mt-16 bg-gradient-to-r from-[#DAE9E6] to-purple-50 rounded-2xl p-8">
               <div className="grid md:grid-cols-3 gap-8 items-center">
                 <div className="text-center">
                   <div className="w-16 h-16 bg-white rounded-2xl shadow-md flex items-center justify-center mx-auto mb-4">
-                    <Video className="text-blue-600" size={32} />
+                    <Video className="text-[#064743]" size={32} />
                   </div>
                   <h4 className="font-semibold text-slate-900">Bez wizyty</h4>
                   <p className="text-sm text-slate-600 mt-1">Rozmowa online</p>
@@ -371,12 +371,12 @@ export default function JakToDzialaPage() {
 
             <div className="grid sm:grid-cols-2 gap-6">
               <a href="tel:+48000000000" className="bg-white/10 hover:bg-white/20 rounded-2xl p-6 transition">
-                <Phone className="mx-auto mb-3 text-blue-400" size={32} />
+                <Phone className="mx-auto mb-3 text-[#064743]" size={32} />
                 <div className="font-semibold">Telefon</div>
                 <div className="text-sm text-slate-300">+48 000 000 000</div>
               </a>
               <a href="mailto:kontakt@platforma.pl" className="bg-white/10 hover:bg-white/20 rounded-2xl p-6 transition">
-                <Mail className="mx-auto mb-3 text-blue-400" size={32} />
+                <Mail className="mx-auto mb-3 text-[#064743]" size={32} />
                 <div className="font-semibold">Email</div>
                 <div className="text-sm text-slate-300">kontakt@platforma.pl</div>
               </a>
@@ -388,7 +388,7 @@ export default function JakToDzialaPage() {
 
 
         {/* CTA Section */}
-        <section className="py-20 bg-gradient-to-r from-blue-600 to-purple-600 relative overflow-hidden">
+        <section className="py-20 bg-gradient-to-r from-[#064743] to-[#1A5D54] relative overflow-hidden">
           <div className="absolute top-0 left-0 w-full h-full">
             <div className="absolute top-10 left-10 w-32 h-32 bg-white/10 rounded-full" />
             <div className="absolute bottom-10 right-10 w-48 h-48 bg-white/10 rounded-full" />
@@ -398,13 +398,13 @@ export default function JakToDzialaPage() {
             <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
               Gotowy na konsultację online?
             </h2>
-            <p className="text-blue-100 mb-8 text-lg">
+            <p className="text-[#DAE9E6] mb-8 text-lg">
               Nie czekaj w kolejkach. Uzyskaj profesjonalną poradę w 15 minut,
               bez wychodzenia z domu.
             </p>
             <a
               href="/"
-              className="inline-flex items-center gap-2 bg-white text-blue-600 px-8 py-4 rounded-full font-medium hover:bg-blue-50 transition shadow-xl"
+              className="inline-flex items-center gap-2 bg-white text-[#064743] px-8 py-4 rounded-full font-medium hover:bg-[#DAE9E6] transition shadow-xl"
             >
               Zacznij konsultację
               <ArrowRight size={20} />

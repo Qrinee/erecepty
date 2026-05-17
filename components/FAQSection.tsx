@@ -27,10 +27,10 @@ export default function FAQSection() {
         </div>
 
         {/* CTA */}
-        <div className="mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border-2 border-blue-100 bg-gradient-to-br from-blue-50 to-purple-50 px-8 py-8 sm:flex-row">
+        <div className="mt-12 flex flex-col items-center justify-between gap-6 rounded-2xl border-2 border-[#DAE9E6] bg-gradient-to-br from-[#DAE9E6] to-purple-50 px-8 py-8 sm:flex-row">
           <div className="text-center sm:text-left">
             <div className="flex items-center gap-2 justify-center sm:justify-start mb-2">
-              <MessageCircle className="text-blue-600" size={20} />
+              <MessageCircle className="text-[#064743]" size={20} />
               <p className="font-bold text-slate-900 text-lg">
                 Nadal potrzebujesz pomocy?
               </p>
@@ -42,7 +42,7 @@ export default function FAQSection() {
 
           <Link 
             href="/jak-to-dziala"
-            className="cursor-pointer rounded-xl bg-blue-600 px-6 py-3 text-sm font-semibold text-white transition hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-300 focus:ring-offset-2 shadow-lg shadow-blue-600/25 inline-flex items-center gap-2"
+            className="cursor-pointer rounded-xl bg-[#064743] px-6 py-3 text-sm font-semibold text-white transition hover:bg-[#1A5D54] focus:outline-none focus:ring-2 focus:ring-[#064743]/30 focus:ring-offset-2 shadow-lg shadow-[#064743]/25 inline-flex items-center gap-2"
             aria-label="Skontaktuj się z nami"
           >
             Skontaktuj się z nami
