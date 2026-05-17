@@ -178,7 +178,7 @@ export default function SubmissionDetailPage() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 mt-25">
       <div className="max-w-4xl mx-auto px-4 py-8">
         <div className="mb-6">
           <Link href="/admin" className="text-[#064743] hover:underline text-sm">

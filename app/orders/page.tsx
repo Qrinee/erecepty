@@ -145,7 +145,7 @@ export default function OrdersPage() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       
-      <main className="max-w-5xl mx-auto px-4 py-8">
+      <main className="max-w-5xl mx-auto px-4 py-8 mt-25">
         {/* Page Header */}
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-gray-900 mb-2">Moje konsultacje</h1>
@@ -159,7 +159,7 @@ export default function OrdersPage() {
               <h3 className="text-lg font-semibold text-gray-900">Potrzebujesz konsultacji?</h3>
               <p className="text-gray-600">Rozpocznij nową konsultację online</p>
             </div>
-            <button onClick={() => router.push('/consultation')} className="w-full sm:w-auto px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition flex items-center gap-2 justify-center">
+            <button onClick={() => router.push('/consultation')} className="w-full sm:w-auto px-6 py-3 bg-[#064743] text-white rounded-lg font-medium hover:bg-[#064743] transition flex items-center gap-2 justify-center">
               <FileText className="w-5 h-5" />
               Nowa konsultacja
             </button>
@@ -205,7 +205,7 @@ export default function OrdersPage() {
                         </div>
 
                         {/* Details Grid */}
-                        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 text-sm">
+                        <div className="grid grid-cols-2 pt-5 sm:grid-cols-4 gap-3 text-sm">
                           <div>
                             <p className="text-gray-500 text-xs uppercase font-semibold">Data</p>
                             <p className="text-gray-900">{new Date(submission.submittedAt).toLocaleDateString('pl-PL')}</p>
@@ -259,8 +259,8 @@ export default function OrdersPage() {
                         {/* Doctor Notes */}
                         {submission.adminNotes && (
                           <div className="mt-3 p-3 bg-blue-50 border border-blue-200 rounded-lg">
-                            <p className="text-xs font-semibold text-blue-900 mb-1">Notatka od lekarza:</p>
-                            <p className="text-sm text-blue-800">{submission.adminNotes}</p>
+                            <p className="text-xs font-semibold text-green-900 mb-1">Notatka od lekarza:</p>
+                            <p className="text-sm text-green-800">{submission.adminNotes}</p>
                           </div>
                         )}
 
@@ -273,7 +273,7 @@ export default function OrdersPage() {
                               className={`px-6 py-2.5 rounded-lg text-sm font-medium transition flex items-center gap-2 ${
                                 payingId === submission.id 
                                   ? 'bg-gray-100 text-gray-400 cursor-not-allowed' 
-                                  : 'bg-blue-600 text-white hover:bg-blue-700'
+                                  : 'bg-[#064743] text-white hover:bg-[#064743]'
                               }`}
                             >
                               {payingId === submission.id ? (
