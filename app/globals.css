@@ -38,6 +38,10 @@ button:focus-visible {
   box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.2);
 }
 
+html{
+  scroll-behavior: smooth!important;
+}
+
 /* Ensure links are distinguishable */
 a {
   text-decoration-thickness: 1px;

@@ -7,18 +7,10 @@ import {
   Stethoscope,
   Pill,
   Clock,
-  Shield,
   CheckCircle,
   ArrowRight,
-  CreditCard,
-  Building2,
-  Users,
-  Star,
-  BadgeCheck,
   Phone,
   Mail,
-  MessageCircle,
-  Heart,
   Activity,
   Calendar,
   Video,
@@ -54,96 +46,6 @@ export default function JakToDzialaPage() {
       title: "Otrzymaj poradę",
       description: "Otrzymasz szczegółową poradę SMS-em i e-mailem. Wszystko w bezpieczny i dyskretny sposób.",
       color: "bg-orange-500"
-    }
-  ];
-
-  const features = [
-    {
-      icon: Clock,
-      title: "Szybko",
-      description: "Szybka konsultacja w 15 minut",
-      color: "bg-[#DAE9E6] text-[#064743]"
-    },
-    {
-      icon: Shield,
-      title: "Bezpiecznie",
-      description: "Dane chronione przez RODO",
-      color: "bg-green-100 text-green-600"
-    },
-    {
-      icon: Building2,
-      title: "Legalnie",
-      description: "Zgodnie z polskim prawem",
-      color: "bg-purple-100 text-purple-600"
-    },
-    {
-      icon: Users,
-      title: "Profesjonalnie",
-      description: "Weryfikowani lekarze z PWZ",
-      color: "bg-orange-100 text-orange-600"
-    }
-  ];
-
-  const stats = [
-    { value: "50 000+", label: "Przeprowadzonych konsultacji" },
-    { value: "1 200+", label: "Zadowolonych pacjentów" },
-    { value: "4.9/5", label: "Ocena w Google" },
-    { value: "24/7", label: "Dostępność" }
-  ];
-
-  const testimonials = [
-    {
-      name: "Anna K.",
-      text: "Bardzo szybka obsuga! Poświęcili mi dużo czasu, bez wychodzenia z domu.",
-      rating: 5
-    },
-    {
-      name: "Marek W.",
-      text: "Super aplikacja, wszystko działa bezproblemowo. Polecam każdemu.",
-      rating: 5
-    },
-    {
-      name: "Katarzyna P.",
-      text: "Wreszcie otrzymałam poradę bez czekania. To bardzo wygodne!",
-      rating: 5
-    }
-  ];
-
-  const pricing = [
-    {
-      title: "Konsultacja standardowa",
-      price: "od 49,99 zł",
-      description: "Dla większości leków stosowanych przewlekle",
-      features: [
-        "Konsultacja w 15 minut",
-        "Dostęp 24/7",
-        "Zwrot w ciągu 14 dni"
-      ],
-      popular: false
-    },
-    {
-      title: "Konsultacja priorytetowa",
-      price: "od 79,99 zł",
-      description: "Dla konsultacji wymagających szybszej oceny",
-      features: [
-        "Konsultacja w 30 minut",
-        "Dostęp 24/7",
-        "Konsultacja z lekarzem w ciągu 2h",
-        "Zwrot w ciągu 14 dni"
-      ],
-      popular: true
-    },
-    {
-      title: "Pakiet familia",
-      price: "od 119,99 zł",
-      description: "Dla rodzin - 3 konsultacje w pakiecie",
-      features: [
-        "3 konsultacje",
-        "Oszczędzasz do 30 zł",
-        "Ważne 90 dni",
-        "Dla całej rodziny"
-      ],
-      popular: false
     }
   ];
 

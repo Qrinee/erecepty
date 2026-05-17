@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Shield, Users, Zap, Clock, Heart } from "lucide-react";
 
 export default function Footer() {
+
   const benefits = [
     { icon: Shield, title: "Bezpieczenstw", desc: "RODO, szyfrowanie" },
     { icon: Users, title: "Lekarze z PWZ", desc: "Zawsze licencjonowani specjaliści" },
@@ -36,10 +37,7 @@ export default function Footer() {
           {/* Brand */}
           <div>
             <div className="mb-4 flex items-center gap-2 font-semibold text-white">
-              <div className="w-6 h-6 bg-[#064743] rotate-45 rounded-sm flex items-center justify-center">
-                <div className="w-2 h-2 bg-white rounded-sm" />
-              </div>
-              <span>Platforma</span>
+              <span>Lekarze i Terapeuci</span>
             </div>
             <p className="text-sm text-slate-400">
               Nowoczesna platforma telemedyczna z dostępem do konsultacji zdrowotnych bez wychodzenia z domu.
@@ -81,7 +79,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row items-center justify-between">
-          <p className="text-xs text-slate-400">© 2024 Platforma. Wszystkie prawa zastrzeżone.</p>
+          <p className="text-xs text-slate-400">© {new Date().getFullYear()} Lekarze i Terapeuci. Wszystkie prawa zastrzeżone.</p>
           <input
             type="email"
             placeholder="Wpisz email..."
