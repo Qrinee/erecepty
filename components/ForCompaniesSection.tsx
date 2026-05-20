@@ -25,7 +25,7 @@ export default function ForCompaniesSection() {
               <div className="w-12 h-1 bg-[#147A60] mt-3 rounded-full"></div>
             </div>
 
-            <p className="text-slate-850 text-xl md:text-2xl font-extrabold mb-8 max-w-xl leading-relaxed">
+            <p className="text-xl md:text-2xl text-gray-500 mb-8 max-w-xl leading-relaxed">
               Oferujemy rozwiązania dla pracodawców, którzy dbają o zdrowie swoich pracowników.
             </p>
 

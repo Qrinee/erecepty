@@ -46,7 +46,7 @@ export default function ContactSection() {
   };
 
   return (
-    <section id="kontakt" className="py-20 bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4] scroll-mt-20 relative overflow-hidden">
+    <section id="kontakt" className=" py-20 bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4] scroll-mt-20 relative overflow-hidden">
       
       {/* Decorative Background Plus Icons */}
       <div className="absolute top-12 left-10 text-emerald-100 text-3xl font-extrabold select-none pointer-events-none hidden lg:block">+</div>
@@ -54,14 +54,14 @@ export default function ContactSection() {
       <div className="absolute top-36 right-6 text-emerald-100 text-3xl font-extrabold select-none pointer-events-none hidden lg:block">+</div>
       <div className="absolute bottom-1/3 right-12 text-emerald-100 text-2xl font-extrabold select-none pointer-events-none hidden lg:block">+</div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[80vw] m-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Main Columns Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-8">
           
           {/* Left Column: Contact Cards */}
           <div>
-            <h2 className="text-4xl font-extrabold text-slate-900 mb-2 tracking-tight">Kontakt</h2>
+            <h2 className="text-6xl font-extrabold text-slate-900 mb-2 tracking-tight">Kontakt</h2>
             <h3 className="text-lg font-bold text-[#147A60] mb-2">Jesteśmy do Twojej dyspozycji</h3>
             <p className="text-slate-500 text-sm font-medium mb-8 max-w-md">
               Odpowiadamy szybko na pytania dotyczące konsultacji, recept i wizyt online.
