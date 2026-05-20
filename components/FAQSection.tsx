@@ -45,10 +45,10 @@ export default function FAQSection() {
             
             {/* Text block */}
             <div className="text-left">
-              <div className="text-[11px] font-extrabold text-slate-800 leading-snug">
+              <div className="text-xs sm:text-sm font-extrabold text-slate-800 leading-snug">
                 Twoje zdrowie <span className="text-[#147A60] block">w dobrych rękach</span>
               </div>
-              <div className="text-[9px] text-slate-400 font-bold mt-0.5 leading-tight">
+              <div className="text-[10px] sm:text-xs text-slate-400 font-bold mt-0.5 leading-tight">
                 Bezpiecznie, szybko i bez wychodzenia z domu.
               </div>
             </div>
@@ -63,7 +63,7 @@ export default function FAQSection() {
             <h2 id="faq-section-title" className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
               Najczęściej zadawane <span className="text-[#147A60]">pytania</span>
             </h2>
-            <div className="text-slate-500 text-sm sm:text-base font-semibold leading-relaxed">
+            <div className="text-slate-500 text-base sm:text-lg font-semibold leading-relaxed">
               <span>Szybkie odpowiedzi na to, co najważniejsze.</span>
               <span className="block mt-0.5">
                 Nie znalazłeś odpowiedzi?{" "}
@@ -92,10 +92,10 @@ export default function FAQSection() {
               <Headphones className="w-5 h-5" />
             </div>
             <div>
-              <p className="font-extrabold text-slate-800 text-sm leading-snug">
+              <p className="font-extrabold text-slate-800 text-base leading-snug">
                 Nie znalazłeś odpowiedzi?
               </p>
-              <p className="text-xs text-slate-500 font-bold mt-0.5 leading-snug">
+              <p className="text-sm text-slate-500 font-bold mt-0.5 leading-snug">
                 Skontaktuj się z nami – jesteśmy tu, aby Ci pomóc.
               </p>
             </div>
@@ -107,7 +107,7 @@ export default function FAQSection() {
             {/* Live Chat / WhatsApp Button */}
             <Link 
               href="#kontakt"
-              className="cursor-pointer rounded-full bg-white border border-slate-200/80 px-5 py-2.5 text-xs font-extrabold text-slate-700 hover:text-[#147A60] hover:border-[#147A60]/40 transition flex items-center gap-1.5 shadow-sm"
+              className="cursor-pointer rounded-full bg-white border border-slate-200/80 px-5 py-2.5 text-sm font-extrabold text-slate-700 hover:text-[#147A60] hover:border-[#147A60]/40 transition flex items-center gap-1.5 shadow-sm"
             >
               <MessageSquare className="w-4 h-4 text-emerald-600" />
               <span>Czat na żywo</span>
@@ -116,7 +116,7 @@ export default function FAQSection() {
             {/* Write to us Button */}
             <Link 
               href="#kontakt"
-              className="cursor-pointer rounded-full bg-[#147A60] hover:bg-[#064743] px-5 py-2.5 text-xs font-extrabold text-white transition flex items-center gap-1.5 shadow-sm shadow-emerald-800/10"
+              className="cursor-pointer rounded-full bg-[#147A60] hover:bg-[#064743] px-5 py-2.5 text-sm font-extrabold text-white transition flex items-center gap-1.5 shadow-sm shadow-emerald-800/10"
             >
               <Mail className="w-4 h-4" />
               <span>Napisz do nas</span>

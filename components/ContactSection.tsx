@@ -79,8 +79,8 @@ export default function ContactSection() {
                     <Mail className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs font-extrabold text-slate-800">E-mail</div>
-                    <div className="text-xs text-slate-500 font-semibold mt-0.5">kontakt@e-receptaonline.com</div>
+                    <div className="text-sm font-extrabold text-slate-800">E-mail</div>
+                    <div className="text-sm text-slate-500 font-semibold mt-0.5">kontakt@e-receptaonline.com</div>
                   </div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
@@ -96,8 +96,8 @@ export default function ContactSection() {
                     <Phone className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs font-extrabold text-slate-800">Telefon</div>
-                    <div className="text-xs text-slate-500 font-semibold mt-0.5">+48 123 456 789</div>
+                    <div className="text-sm font-extrabold text-slate-800">Telefon</div>
+                    <div className="text-sm text-slate-500 font-semibold mt-0.5">+48 123 456 789</div>
                   </div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
@@ -112,8 +112,8 @@ export default function ContactSection() {
                     <MessageCircle className="w-5 h-5 text-emerald-600" />
                   </div>
                   <div>
-                    <div className="text-xs font-extrabold text-slate-800">Live Chat / WhatsApp</div>
-                    <div className="text-xs text-slate-500 font-semibold mt-0.5">Dostępny codziennie 8:00–22:00</div>
+                    <div className="text-sm font-extrabold text-slate-800">Live Chat / WhatsApp</div>
+                    <div className="text-sm text-slate-500 font-semibold mt-0.5">Dostępny codziennie 8:00–22:00</div>
                   </div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
@@ -128,8 +128,8 @@ export default function ContactSection() {
                     <Clock className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-xs font-extrabold text-slate-800">Czas odpowiedzi</div>
-                    <div className="text-xs text-slate-500 font-semibold mt-0.5">Najczęściej poniżej 5 minut</div>
+                    <div className="text-sm font-extrabold text-slate-800">Czas odpowiedzi</div>
+                    <div className="text-sm text-slate-500 font-semibold mt-0.5">Najczęściej poniżej 5 minut</div>
                   </div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
@@ -144,12 +144,12 @@ export default function ContactSection() {
                     <ShieldCheck className="w-5 h-5 fill-[#064743] text-white" />
                   </div>
                   <div>
-                    <div className="text-xs font-extrabold text-slate-800">Wsparcie online 24/7</div>
-                    <div className="text-[11px] text-slate-500 font-semibold mt-0.5">Pomagamy każdego dnia, również w weekendy i święta.</div>
+                    <div className="text-sm font-extrabold text-slate-800">Wsparcie online 24/7</div>
+                    <div className="text-xs text-slate-500 font-semibold mt-0.5">Pomagamy każdego dnia, również w weekendy i święta.</div>
                   </div>
                 </div>
                 <div className="w-11 h-11 rounded-full border-2 border-emerald-600/30 flex items-center justify-center flex-shrink-0 bg-white shadow-sm">
-                  <span className="text-[10px] font-extrabold text-emerald-700">24/7</span>
+                  <span className="text-xs font-extrabold text-emerald-700">24/7</span>
                 </div>
               </div>
 
@@ -186,7 +186,7 @@ export default function ContactSection() {
               
               {/* Green Dot Response Badge */}
               <div className="mb-5 text-left">
-                <span className="inline-flex items-center px-3.5 py-1.5 bg-[#EAF3F0] text-[#147A60] font-extrabold rounded-full text-[9px] tracking-wider uppercase shadow-sm gap-1.5">
+                <span className="inline-flex items-center px-3.5 py-1.5 bg-[#EAF3F0] text-[#147A60] font-extrabold rounded-full text-[10px] sm:text-xs tracking-wider uppercase shadow-sm gap-1.5">
                   <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
                   • Odpowiadamy nawet w kilka minut
                 </span>
@@ -253,14 +253,14 @@ export default function ContactSection() {
                 </div>
 
                 {status === "error" && (
-                  <div className="flex items-center gap-2 text-xs font-bold text-red-600 bg-red-50 rounded-xl px-4 py-3 border border-red-100">
+                  <div className="flex items-center gap-2 text-sm font-bold text-red-600 bg-red-50 rounded-xl px-4 py-3 border border-red-100">
                     <AlertCircle className="w-4 h-4 flex-shrink-0" />
                     {errorMsg}
                   </div>
                 )}
 
                 {status === "success" && (
-                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-600 bg-emerald-50 rounded-xl px-4 py-3 border border-emerald-100">
+                  <div className="flex items-center gap-2 text-sm font-bold text-emerald-600 bg-emerald-50 rounded-xl px-4 py-3 border border-emerald-100">
                     <CheckCircle2 className="w-4 h-4 flex-shrink-0" />
                     Wiadomość wysłana! Odpowiemy najszybciej jak to możliwe.
                   </div>
@@ -276,7 +276,7 @@ export default function ContactSection() {
                 </button>
 
                 {/* Footer Security Text */}
-                <div className="flex items-center justify-center gap-1.5 text-[10px] text-slate-400 font-bold pt-3">
+                <div className="flex items-center justify-center gap-1.5 text-xs text-slate-400 font-bold pt-3">
                   <Lock className="w-3.5 h-3.5 text-slate-300" />
                   <span>Twoje dane są bezpieczne i szyfrowane</span>
                 </div>

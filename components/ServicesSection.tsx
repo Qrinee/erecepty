@@ -115,7 +115,7 @@ export default function ServicesSection() {
           
           {/* Green pill badge aligned to the left (desktop only, block on mobile) */}
           <div className="mb-6 lg:mb-8 text-left">
-            <span className="inline-flex items-center px-4 py-2 bg-[#EAF3F0] text-[#147A60] font-extrabold rounded-full text-[10px] tracking-wider uppercase shadow-sm">
+            <span className="inline-flex items-center px-4 py-2 bg-[#EAF3F0] text-[#147A60] font-extrabold rounded-full text-[11px] sm:text-xs tracking-wider uppercase shadow-sm">
               • DOSTĘPNE 24/7 • BEZ WYCHODZENIA Z DOMU
             </span>
           </div>
@@ -138,15 +138,15 @@ export default function ServicesSection() {
                     />
                   </div>
                   {/* Title */}
-                  <h3 className="font-extrabold text-slate-800 text-sm sm:text-base mb-1.5">{service.title}</h3>
+                  <h3 className="font-extrabold text-slate-800 text-base sm:text-lg mb-1.5">{service.title}</h3>
                   {/* Description */}
-                  <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed min-h-[36px]">{service.desc}</p>
+                  <p className="text-xs sm:text-sm text-slate-500 leading-relaxed min-h-[36px]">{service.desc}</p>
                 </div>
                 {/* Action Link */}
                 <div className="mt-4">
-                  <span className="text-[#147A60] hover:text-[#064743] font-bold text-xs inline-flex items-center gap-1 transition-colors">
+                  <span className="text-[#147A60] hover:text-[#064743] font-bold text-sm inline-flex items-center gap-1 transition-colors">
                     <span>Zamów</span>
-                    <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+                    <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
                   </span>
                 </div>
               </Link>
@@ -176,8 +176,8 @@ export default function ServicesSection() {
                     )}
                   </div>
                   <div>
-                    <div className="font-extrabold text-slate-800 text-xs sm:text-sm leading-snug">{item.title}</div>
-                    <div className="text-[11px] text-slate-500 mt-0.5 leading-snug font-semibold">{item.desc}</div>
+                    <div className="font-extrabold text-slate-800 text-sm sm:text-base leading-snug">{item.title}</div>
+                    <div className="text-xs sm:text-sm text-slate-500 mt-0.5 leading-snug font-semibold">{item.desc}</div>
                   </div>
                 </div>
               );

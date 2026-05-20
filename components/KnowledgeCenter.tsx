@@ -48,8 +48,8 @@ export default function KnowledgeCenter() {
               <div className="w-14 h-14 border-2 border-green-200 bg-green-50 text-[#138A56] rounded-full flex items-center justify-center mb-4">
                 <feature.icon size={26} strokeWidth={1.5} />
               </div>
-              <h4 className="text-[15px] font-bold text-slate-900 mb-1">{feature.title}</h4>
-              <p className="text-[13px] text-slate-500 max-w-[200px] leading-snug">{feature.subtitle}</p>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-1">{feature.title}</h4>
+              <p className="text-sm text-slate-500 max-w-[200px] leading-snug">{feature.subtitle}</p>
             </div>
           ))}
         </div>
@@ -68,8 +68,8 @@ export default function KnowledgeCenter() {
               <Search size={24} strokeWidth={2} />
             </div>
             <div>
-              <h4 className="text-base font-bold text-slate-900 mb-1">Nie znalazłeś odpowiedzi?</h4>
-              <p className="text-sm text-slate-500">Skorzystaj z wyszukiwarki lub skontaktuj się z nami.</p>
+              <h4 className="text-base sm:text-lg font-bold text-slate-900 mb-1">Nie znalazłeś odpowiedzi?</h4>
+              <p className="text-sm sm:text-base text-slate-500">Skorzystaj z wyszukiwarki lub skontaktuj się z nami.</p>
             </div>
           </div>
           
@@ -81,7 +81,7 @@ export default function KnowledgeCenter() {
               <input 
                 type="text" 
                 placeholder="Wyszukaj artykuł, temat..." 
-                className="w-full pl-11 pr-4 py-3.5 bg-white border border-slate-200 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-[#138A56]/20 focus:border-[#138A56] transition-all"
+                className="w-full pl-11 pr-4 py-3.5 bg-white border border-slate-200 rounded-xl text-base focus:outline-none focus:ring-2 focus:ring-[#138A56]/20 focus:border-[#138A56] transition-all"
               />
             </div>
             <Link

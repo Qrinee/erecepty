@@ -72,7 +72,7 @@ export default function TrustSection() {
                   <h3 className="font-bold text-slate-900 leading-tight">Weryfikowani lekarze</h3>
                 </div>
                 <div className="w-6 h-px bg-slate-200 mb-4"></div>
-                <p className="text-[13px] text-slate-500 leading-relaxed">
+                <p className="text-sm sm:text-[15px] text-slate-500 leading-relaxed">
                   Konsultacje prowadzą wyłącznie dyplomowani lekarze z aktywnym numerem PWZ, zweryfikowanym w NIL.
                 </p>
               </div>
@@ -88,7 +88,7 @@ export default function TrustSection() {
                   <h3 className="font-bold text-slate-900 leading-tight">Ochrona danych RODO</h3>
                 </div>
                 <div className="w-6 h-px bg-slate-200 mb-4"></div>
-                <p className="text-[13px] text-slate-500 leading-relaxed">
+                <p className="text-sm sm:text-[15px] text-slate-500 leading-relaxed">
                   Twoja dokumentacja medyczna jest w pełni zaszyfrowana i chroniona zgodnie z europejskimi standardami.
                 </p>
               </div>
@@ -104,7 +104,7 @@ export default function TrustSection() {
                   <h3 className="font-bold text-slate-900 leading-tight">Realizacja w 15 minut</h3>
                 </div>
                 <div className="w-6 h-px bg-slate-200 mb-4"></div>
-                <p className="text-[13px] text-slate-500 leading-relaxed">
+                <p className="text-sm sm:text-[15px] text-slate-500 leading-relaxed">
                   Dzięki automatyzacji i szybkiej analizie e-receptę możesz otrzymać nawet w kwadrans.
                 </p>
               </div>
@@ -120,7 +120,7 @@ export default function TrustSection() {
                   <h3 className="font-bold text-slate-900 leading-tight">Zgodność z przepisami</h3>
                 </div>
                 <div className="w-6 h-px bg-slate-200 mb-4"></div>
-                <p className="text-[13px] text-slate-500 leading-relaxed">
+                <p className="text-sm sm:text-[15px] text-slate-500 leading-relaxed">
                   Wszystkie dokumenty są honorowane przez polskie apteki i zintegrowane z systemem IKP.
                 </p>
               </div>
@@ -135,7 +135,7 @@ export default function TrustSection() {
               </div>
               <div>
                 <div className="font-bold text-xl text-[#138A56]">50 000+</div>
-                <div className="text-[13px] text-slate-600">zadowolonych pacjentów</div>
+                <div className="text-sm text-slate-600">zadowolonych pacjentów</div>
               </div>
             </div>
 
@@ -154,7 +154,7 @@ export default function TrustSection() {
                     ))}
                   </div>
                 </div>
-                <div className="text-[13px] text-slate-600">na podstawie 2000+ opinii</div>
+                <div className="text-sm text-slate-600">na podstawie 2000+ opinii</div>
               </div>
             </div>
 
@@ -166,7 +166,7 @@ export default function TrustSection() {
               </div>
               <div>
                 <div className="font-bold text-[15px] text-[#138A56] leading-tight max-w-[150px]">Bezpieczne i legalne</div>
-                <div className="text-[13px] text-slate-600">konsultacje online</div>
+                <div className="text-sm text-slate-600">konsultacje online</div>
               </div>
             </div>
           </div>

@@ -43,7 +43,7 @@ export default function FAQItem({ question, answer, icon }: FAQItemProps) {
           <div className="w-11 h-11 rounded-xl bg-[#E8F3F1] border border-[#D5EAE6] text-[#147A60] flex items-center justify-center flex-shrink-0 transition-colors group-hover:bg-[#d9ece8]">
             <IconComponent className="w-5 h-5" />
           </div>
-          <span className="font-extrabold text-slate-800 text-xs sm:text-[15px] tracking-tight transition-colors group-hover:text-[#147A60]">
+          <span className="font-extrabold text-slate-800 text-sm sm:text-base tracking-tight transition-colors group-hover:text-[#147A60]">
             {question}
           </span>
         </div>
@@ -61,7 +61,7 @@ export default function FAQItem({ question, answer, icon }: FAQItemProps) {
           id={answerId}
           role="region" 
           aria-labelledby={buttonId}
-          className="pl-[60px] pr-6 pb-5 -mt-1 text-xs sm:text-[13px] text-slate-500 font-semibold leading-relaxed"
+          className="pl-[60px] pr-6 pb-5 -mt-1 text-sm sm:text-[15px] text-slate-500 font-semibold leading-relaxed"
         >
           {answer}
         </div>

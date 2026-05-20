@@ -125,11 +125,11 @@ export default function ServicesPanel() {
 
                   {/* Consultation types (Telefon / Video) */}
                   <div className="flex gap-3 mb-8">
-                    <div className="flex items-center justify-center gap-2 py-2 px-3.5 bg-white border border-slate-200 rounded-[10px] text-[13px] font-bold text-slate-600 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+                    <div className="flex items-center justify-center gap-2 py-2 px-3.5 bg-white border border-slate-200 rounded-[10px] text-sm font-bold text-slate-600 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
                       <Phone className="w-4 h-4 text-slate-400" />
                       Telefon
                     </div>
-                    <div className="flex items-center justify-center gap-2 py-2 px-3.5 bg-white border border-slate-200 rounded-[10px] text-[13px] font-bold text-slate-600 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+                    <div className="flex items-center justify-center gap-2 py-2 px-3.5 bg-white border border-slate-200 rounded-[10px] text-sm font-bold text-slate-600 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
                       <Video className="w-4 h-4 text-slate-400" />
                       Wideo
                     </div>
@@ -146,14 +146,14 @@ export default function ServicesPanel() {
                   {/* CTA Button */}
                   <button
                     onClick={() => handleOrder(service.href)}
-                    className={`w-full ${service.buttonColor} text-white font-bold py-3.5 rounded-[14px] transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer shadow-sm text-sm`}
+                    className={`w-full ${service.buttonColor} text-white font-bold py-3.5 rounded-[14px] transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer shadow-sm text-base`}
                   >
                     <span>{service.buttonText}</span>
                   </button>
 
                   {/* Info text at the bottom */}
-                  <div className="flex items-center justify-center gap-1.5 text-xs text-slate-500 mt-4 font-medium">
-                    <Clock className="w-3.5 h-3.5" />
+                  <div className="flex items-center justify-center gap-1.5 text-sm text-slate-500 mt-4 font-medium">
+                    <Clock className="w-4 h-4" />
                     <span>Czas realizacji: nawet 15 min</span>
                   </div>
                 </div>

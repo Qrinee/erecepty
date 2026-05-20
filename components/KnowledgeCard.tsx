@@ -35,17 +35,17 @@ export default function KnowledgeCard({
       <div className="w-full sm:w-[55%] sm:pl-6 flex flex-col">
         <div className="mb-3">
           <span
-            className={`inline-block px-2 py-1 text-[10px] font-bold text-white rounded uppercase tracking-wider ${tagColor}`}
+            className={`inline-block px-2 py-1 text-[11px] sm:text-xs font-bold text-white rounded uppercase tracking-wider ${tagColor}`}
           >
             {tag}
           </span>
         </div>
 
-        <h3 className="mb-2 text-base font-bold text-slate-900 group-hover:text-[#064743] transition-colors leading-tight line-clamp-3">
+        <h3 className="mb-2 text-base sm:text-lg font-bold text-slate-900 group-hover:text-[#064743] transition-colors leading-tight line-clamp-3">
           {title}
         </h3>
 
-        <p className="mb-4 text-xs text-slate-500 leading-relaxed line-clamp-3">
+        <p className="mb-4 text-sm text-slate-500 leading-relaxed line-clamp-3">
           {description}
         </p>
 
@@ -53,7 +53,7 @@ export default function KnowledgeCard({
           {slug ? (
             <Link
               href={`/baza-wiedzy/${slug}`}
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#138A56] transition-all group-hover:gap-2 focus:outline-none"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-[#138A56] transition-all group-hover:gap-2 focus:outline-none"
               aria-label={`Czytaj więcej o ${title}`}
             >
               Czytaj więcej
@@ -62,7 +62,7 @@ export default function KnowledgeCard({
           ) : (
             <a
               href="#"
-              className="inline-flex items-center gap-1.5 text-xs font-bold text-[#138A56] transition-all group-hover:gap-2 focus:outline-none"
+              className="inline-flex items-center gap-1.5 text-sm font-bold text-[#138A56] transition-all group-hover:gap-2 focus:outline-none"
               aria-label={`Czytaj więcej o ${title}`}
             >
               Czytaj więcej
