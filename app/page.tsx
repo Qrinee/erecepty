@@ -36,6 +36,7 @@ export default function Home() {
         <KnowledgeCenter />
         <ReviewsSection />
         <ForCompaniesSection />
+        <TrustSection />
         <ContactSection />
         <FAQSection />
       </main>

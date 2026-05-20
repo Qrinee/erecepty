@@ -6,8 +6,24 @@ import {
   ShieldCheck, Lock, ArrowRight, Building2, Heart, Info, Calendar, Phone, Video, Loader2, UserCheck, Search, Trash2
 } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
+
+export const getServicePriceAndType = (serviceParam: string | null, fallbackType: string) => {
+  if (!serviceParam) return { amount: 7900, type: fallbackType };
+  const lower = serviceParam.toLowerCase();
+  
+  if (lower.includes("e-recepta")) return { amount: 5900, type: serviceParam };
+  if (lower.includes("l4") || lower.includes("zwolnienie")) return { amount: 7900, type: serviceParam };
+  if (lower.includes("kontynuacja")) return { amount: 5900, type: serviceParam };
+  if (lower.includes("psychiatr")) return { amount: 24900, type: serviceParam };
+  if (lower.includes("otyłoś")) return { amount: 9900, type: serviceParam };
+  if (lower.includes("dzień po") || lower.includes("antykoncepcja")) return { amount: 4500, type: serviceParam };
+  if (lower.includes("konsultacja")) return { amount: 7900, type: serviceParam };
+  
+  return { amount: 7900, type: serviceParam }; 
+}
 
 /* ─── Shared helpers ──────────────────────────────────────────── */
 const inputCls =
@@ -141,6 +157,9 @@ export function KonsultacjaForm() {
   const slotsTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone });
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams?.get("service");
+  const { amount, type } = getServicePriceAndType(serviceParam, "Konsultacja lekarska");
 
   const fetchSlots = React.useCallback(async (date: string) => {
     if (!date) { setSlotsData(null); return; }
@@ -173,7 +192,7 @@ export function KonsultacjaForm() {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
-          serviceType: "Konsultacja lekarska",
+          serviceType: type,
           patient: {
             firstName, lastName, pesel, phone, email, birthDate,
             contact: { firstName, lastName, pesel, phone, email, birthDate }
@@ -189,7 +208,7 @@ export function KonsultacjaForm() {
           specialization: specialization || null,
           accountPassword: createAccount ? accountPassword : null,
           consent: { rodoConsent: consentTruth, medicalConsent: consentTerms, contactConsent: consentContact, createAccount },
-          amount: 9900,
+          amount: amount,
         }),
       });
       const data = await res.json();
@@ -349,6 +368,9 @@ export function EReceptaForm() {
   const [specialization, setSpecialization] = useState("");
 
   const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone });
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams?.get("service");
+  const { amount, type } = getServicePriceAndType(serviceParam, "e-Recepta online");
 
   // Medicine Search
   const [medQ, setMedQ] = useState("");
@@ -398,7 +420,7 @@ export function EReceptaForm() {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
-          serviceType: "e-Recepta online",
+          serviceType: type,
           patient: { firstName, lastName, pesel, phone, email, contact: { firstName, lastName, pesel, phone, email } },
           medicines: selectedMeds.map(m => ({
             medicineId: m.medicineId,
@@ -413,7 +435,7 @@ export function EReceptaForm() {
           specialization: specialization || null,
           accountPassword: createAccount ? accountPassword : null,
           consent: { rodoConsent: consentTruth, medicalConsent: consentTerms, doctorDecisionConsent: consentDoctor, createAccount },
-          amount: 4900,
+          amount: amount,
         }),
       });
       const data = await res.json();
@@ -545,6 +567,9 @@ export function L4Form() {
   const [accountPassword, setAccountPassword] = useState("");
 
   const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone, setPesel });
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams?.get("service");
+  const { amount, type } = getServicePriceAndType(serviceParam, "L4 online");
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -558,7 +583,7 @@ export function L4Form() {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
-          serviceType: "L4 online",
+          serviceType: type,
           patientFirstName: firstName, patientLastName: lastName,
           patientPesel: pesel, patientPhone: phone, patientEmail: email, patientAddress: address,
           postalCode, city,
@@ -567,7 +592,7 @@ export function L4Form() {
           symptoms, symptomsFrom, ableToWork: ableToWork === "Tak", daysNeeded: parseInt(daysNeeded),
           accountPassword: createAccount ? accountPassword : null,
           consent: { rodoConsent: consentTruth, medicalConsent: consentTerms, doctorDecisionConsent: consentDoctor, createAccount },
-          amount: 9900,
+          amount: amount,
         }),
       });
       const data = await res.json();
@@ -681,6 +706,9 @@ export function KontynuacjaForm() {
   const [specialization, setSpecialization] = useState("");
 
   const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone });
+  const searchParams = useSearchParams();
+  const serviceParam = searchParams?.get("service");
+  const { amount, type } = getServicePriceAndType(serviceParam, "Kontynuacja leczenia");
 
   // Medicine Search
   const [medQ, setMedQ] = useState("");
@@ -730,7 +758,7 @@ export function KontynuacjaForm() {
         headers: { "Content-Type": "application/json" },
         credentials: "include",
         body: JSON.stringify({
-          serviceType: "Kontynuacja leczenia",
+          serviceType: type,
           patient: { firstName, lastName, pesel, phone, email, contact: { firstName, lastName, pesel, phone, email } },
           medicines: selectedMeds.map(m => ({
             medicineId: m.medicineId,
@@ -747,7 +775,7 @@ export function KontynuacjaForm() {
           specialization: specialization || null,
           accountPassword: createAccount ? accountPassword : null,
           consent: { rodoConsent: consentTruth, medicalConsent: consentTerms, doctorDecisionConsent: consentDoctor, createAccount },
-          amount: 5900,
+          amount: amount,
         }),
       });
       const data = await res.json();

@@ -7,9 +7,9 @@ export default function PricingSection() {
   const router = useRouter();
 
   const plans = [
-    { name: "e-Recepta", price: 79, icon: Pill, href: "/wypelnij-formularz" },
-    { name: "L4", price: 89, icon: ClipboardList, href: "/wypelnij-formularz?service=L4+online" },
-    { name: "Konsultacja", price: 79, icon: Stethoscope, href: "/wypelnij-formularz" },
+    { name: "e-Recepta", price: 59, icon: Pill, href: "/wypelnij-formularz?service=e-Recepta+online" },
+    { name: "L4", price: 79, icon: ClipboardList, href: "/wypelnij-formularz?service=L4+online" },
+    { name: "Konsultacja", price: 79, icon: Stethoscope, href: "/wypelnij-formularz?service=Konsultacja+lekarska" },
   ];
 
   return (
