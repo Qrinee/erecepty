@@ -32,16 +32,12 @@ export default function Home() {
         <ServicesPanel />
         <ServicesSection />
         <SpecializationsSection />
-        <HowItWorksSection />
         <KnowledgeCenter />
         <ReviewsSection />
-        <AboutUsSection />
         <ForCompaniesSection />
-        <PricingSection />
+
         <ContactSection />
         <FAQSection />
-        <ForWhoSection />
-        <TrustSection />
       </main>
       <Footer />
     </>

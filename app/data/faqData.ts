@@ -1,22 +1,43 @@
 export const faqData = [
   {
-    question: "Czy konsultacje online są w pełni legalne?",
-    answer:
-      "Tak. Wszystkie usługi są świadczone zgodnie z obowiązującymi przepisami prawa i przez uprawnionych specjalistów.",
+    question: "Czy otrzymam e-receptę po konsultacji?",
+    answer: "Tak, jeśli lekarz uzna to za zasadne, receptę otrzymasz SMS-em lub e-mailem nawet w kilka minut.",
+    icon: "ShieldCheck"
   },
   {
-    question: "Jak szybko otrzymam swoje dokumenty?",
-    answer:
-      "W większości przypadków dokumenty trafiają do pacjenta w ciągu kilkunastu minut od zakończenia konsultacji.",
+    question: "Jak szybko dostanę receptę?",
+    answer: "Większość e-recept wystawiamy nawet w 15 minut po zakończeniu formularza.",
+    icon: "Zap"
   },
   {
-    question: "Ile kosztuje konsultacja ze specjalistą?",
-    answer:
-      "Cena konsultacji zależy od rodzaju usługi i jest widoczna przed dokonaniem płatności.",
+    question: "Czy mogę dostać L4 online?",
+    answer: "Tak, lekarz może wystawić zwolnienie lekarskie podczas konsultacji online.",
+    icon: "User"
   },
   {
-    question: "Czy otrzymam wszystkie potrzebne dokumenty?",
-    answer:
-      "Specjalista podejmuje decyzję indywidualnie, na podstawie wywiadu zdrowotnego i aktualnych wskazań.",
+    question: "Jak wygląda konsultacja online?",
+    answer: "Po wypełnieniu formularza lekarz kontaktuje się z Tobą telefonicznie lub online.",
+    icon: "ClipboardList"
   },
+  {
+    question: "Czy konsultacje są legalne i bezpieczne?",
+    answer: "Tak, wszystkie konsultacje odbywają się zgodnie z obowiązującymi przepisami i standardami medycznymi.",
+    icon: "Lock"
+  },
+  {
+    question: "Czy lekarz oddzwoni do mnie telefonicznie?",
+    answer: "Tak, w zależności od wybranej usługi lekarz może skontaktować się telefonicznie lub online.",
+    icon: "Headphones"
+  },
+  {
+    question: "Ile trwa konsultacja?",
+    answer: "Większość konsultacji trwa od kilku do kilkunastu minut.",
+    icon: "Clock"
+  },
+  {
+    question: "Czy mogę przedłużyć leczenie online?",
+    answer: "Tak, oferujemy kontynuację leczenia i przedłużenie recept bez wychodzenia z domu.",
+    icon: "RefreshCw"
+  }
 ];
+

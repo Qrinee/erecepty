@@ -98,7 +98,7 @@ export default function ServicesSection() {
         <path d="M40 40 C 35 35 45 25 50 30 C 55 35 45 43 40 40 Z" />
       </svg>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="w-full px-4 sm:px-8 xl:px-16 relative z-10">
         
         {/* Headings */}
         <div className="text-center mb-10 relative">
@@ -111,7 +111,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Outer relative container to hold the left-aligned green badge & grid */}
-        <div className="max-w-6xl mx-auto relative mt-8">
+        <div className="w-full relative mt-8">
           
           {/* Green pill badge aligned to the left (desktop only, block on mobile) */}
           <div className="mb-6 lg:mb-8 text-left">
@@ -156,7 +156,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Bottom Trust/Guarantees Panel */}
-        <div className="max-w-6xl mx-auto bg-[#EAF3F0]/60 border border-[#D5EAE6]/45 rounded-[24px] p-6 mt-16">
+        <div className="w-full bg-[#EAF3F0]/60 border border-[#D5EAE6]/45 rounded-[24px] p-6 mt-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 divide-y md:divide-y-0 md:divide-x divide-[#D5EAE6]/80 items-center">
             {[
               { icon: Users, title: "Ponad 50 000", desc: "zadowolonych pacjentów" },
