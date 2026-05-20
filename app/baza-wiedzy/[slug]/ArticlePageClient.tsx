@@ -306,7 +306,7 @@ export default function ArticlePageClient({
   return (
     <>
       <Header />
-      <main className="min-h-screen bg-white">
+      <main className="min-h-screen bg-white pt-30">
         <ArticleHero article={article} />
         <ArticleImage image={article.image} title={article.title} />
         <ArticleContent sections={article.sections} />

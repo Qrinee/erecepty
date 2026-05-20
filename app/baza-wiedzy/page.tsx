@@ -24,7 +24,7 @@ export default function BazaWiedzyPage() {
       <Header />
       <main id="main-content" tabIndex={-1}>
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-[#DAE9E6] via-white to-purple-50 pt-32 pb-16 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-[#DAE9E6] via-white to-purple-50 pt-40 pb-16 overflow-hidden">
           {/* Decorative elements */}
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#DAE9E6] rounded-full opacity-30 blur-2xl" />
           <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-200 rounded-full opacity-30 blur-3xl" />
