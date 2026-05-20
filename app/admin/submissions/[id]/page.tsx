@@ -8,7 +8,7 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
 interface SubmissionDetail {
   id: string;
-  submissionType: "prescription" | "medical_leave";
+  submissionType: "prescription" | "medical_leave" | "consultation" | "treatment_continuation";
   status: "pending" | "reviewed" | "completed" | "cancelled";
   submittedAt: string;
   submissionDate: string;
@@ -274,63 +274,73 @@ export default function SubmissionDetailPage() {
           </div>
         </div>
 
-        {submission.submissionType === "prescription" && (
+        {submission.submissionType === "prescription" || submission.submissionType === "consultation" || submission.submissionType === "treatment_continuation" ? (
           <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
             <div className="px-6 py-4 border-b border-gray-100">
               <h2 className="text-lg font-semibold text-gray-900">
-                Wywiad medyczny
+                Wywiad medyczny / Szczegóły
               </h2>
             </div>
             <div className="p-6 space-y-4">
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Główna dolegliwość</p>
-                <p className="p-3 bg-gray-50 rounded-lg">
-                  {medical.mainComplaint || "Brak"}
-                </p>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Choroby przewlekłe</p>
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  {medical.hasChronicDiseases === "yes"
-                    ? medical.chronicDiseases || "Brak szczegółów"
-                    : "Brak"}
-                </div>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Przyjmowane leki</p>
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  {medical.takesMedications === "yes"
-                    ? medical.medications || "Brak szczegółów"
-                    : "Brak"}
-                </div>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Alergie</p>
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  {medical.hasAllergies === "yes"
-                    ? medical.allergies || "Brak szczegółów"
-                    : "Brak"}
-                </div>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Inne informacje</p>
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  {medical.otherMedicalInfo || "Brak"}
-                </div>
-              </div>
-              <div>
-                <p className="text-sm text-gray-500 mb-1">Ciąża/karmienie</p>
-                <div className="p-3 bg-gray-50 rounded-lg">
-                  {medical.pregnancyStatus === "pregnant"
-                    ? "W ciąży"
-                    : medical.pregnancyStatus === "breastfeeding"
-                    ? "Karmi piersią"
-                    : "Nie dotyczy"}
-                </div>
-              </div>
+              {Object.keys(medical).length === 0 ? (
+                <p className="text-gray-500">Brak danych medycznych</p>
+              ) : (
+                Object.entries(medical).map(([key, value]) => {
+                  if (key === 'medicinesExtra') return null; // We display medicines separately
+                  
+                  // Translate some known keys for better display
+                  let label = key;
+                  if (key === 'symptoms') label = 'Objawy';
+                  else if (key === 'symptomsFrom') label = 'Od kiedy występują objawy';
+                  else if (key === 'takingMedications') label = 'Czy przyjmuje leki';
+                  else if (key === 'medicationsName') label = 'Nazwy leków';
+                  else if (key === 'hasChronicDisease') label = 'Czy choruje przewlekle';
+                  else if (key === 'chronicDiseaseDetails') label = 'Szczegóły chorób';
+                  else if (key === 'treatmentContinue') label = 'Kontynuowane leczenie';
+                  else if (key === 'treatmentFrom') label = 'Leczenie od';
+                  else if (key === 'hasSideEffects') label = 'Skutki uboczne';
+                  else if (key === 'sideEffectsDesc') label = 'Opis skutków ubocznych';
+                  else if (key === 'healthChanged') label = 'Zmiana stanu zdrowia';
+                  else if (key === 'healthChangedDesc') label = 'Opis zmian w zdrowiu';
+                  else if (key === 'usedBefore') label = 'Lek stosowany wcześniej';
+                  else if (key === 'mainComplaint') label = 'Główna dolegliwość';
+                  else if (key === 'pregnancyStatus') label = 'Ciąża/Karmienie';
+                  
+                  let displayValue = String(value);
+                  if (typeof value === 'boolean') displayValue = value ? "Tak" : "Nie";
+                  if (value === null || value === undefined || value === '') displayValue = "Brak / Nie dotyczy";
+
+                  return (
+                    <div key={key}>
+                      <p className="text-sm text-gray-500 mb-1">{label}</p>
+                      <p className="p-3 bg-gray-50 rounded-lg">{displayValue}</p>
+                    </div>
+                  );
+                })
+              )}
             </div>
+            {submission.medicines && submission.medicines.length > 0 && (
+              <div className="p-6 border-t border-gray-100">
+                <h3 className="text-md font-semibold text-gray-900 mb-3">Wnioskowane leki</h3>
+                <div className="space-y-3">
+                  {submission.medicines.map((m, idx) => {
+                    const extra = Array.isArray((medical as any).medicinesExtra) ? (medical as any).medicinesExtra.find((x: any) => x.name === m.medicineName) : null;
+                    return (
+                      <div key={idx} className="p-4 bg-blue-50 border border-blue-100 rounded-lg">
+                        <div className="font-bold text-blue-900 mb-1">{m.medicineName || 'Nieznany lek'}</div>
+                        <div className="text-sm text-blue-800">
+                          Ilość opakowań: <strong>{m.quantity}</strong>
+                          {m.dosage && <span> | Dawka: <strong>{m.dosage}</strong></span>}
+                          {extra?.goal && <div className="mt-2 text-xs italic">Cel stosowania: {extra.goal}</div>}
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+            )}
           </div>
-        )}
+        ) : null}
 
         {submission.submissionType === "medical_leave" && submission.leaveDetails && (
           <div className="bg-white rounded-xl shadow-sm overflow-hidden mb-6">
@@ -341,44 +351,45 @@ export default function SubmissionDetailPage() {
             </div>
             <div className="p-6 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm text-gray-500 mb-1">Rozpoznanie (diagnoza)</p>
-                  <p className="p-3 bg-gray-50 rounded-lg font-medium">
-                    {submission.leaveDetails.diagnosis || "Brak"}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500 mb-1">Kod ICD-10</p>
-                  <p className="p-3 bg-gray-50 rounded-lg font-medium font-mono">
-                    {submission.leaveDetails.icd10Code || "Brak"}
-                  </p>
-                </div>
-              </div>
-              {submission.leaveDetails.diagnosisDescription && (
-                <div>
-                  <p className="text-sm text-gray-500 mb-1">Opis rozpoznania</p>
-                  <p className="p-3 bg-gray-50 rounded-lg whitespace-pre-wrap">
-                    {submission.leaveDetails.diagnosisDescription}
-                  </p>
-                </div>
-              )}
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                  <p className="text-sm text-gray-500 mb-1">Od dnia</p>
-                  <p className="p-3 bg-gray-50 rounded-lg font-medium">
-                    {submission.leaveDetails.leaveStartDate
-                      ? new Date(submission.leaveDetails.leaveStartDate).toLocaleDateString("pl-PL")
-                      : "Brak"}
-                  </p>
-                </div>
-                <div>
-                  <p className="text-sm text-gray-500 mb-1">Do dnia</p>
-                  <p className="p-3 bg-gray-50 rounded-lg font-medium">
-                    {submission.leaveDetails.leaveEndDate
-                      ? new Date(submission.leaveDetails.leaveEndDate).toLocaleDateString("pl-PL")
-                      : "Brak"}
-                  </p>
-                </div>
+                {Object.entries(submission.leaveDetails).map(([key, value]) => {
+                  // Skip these as they are duplicated or handled elsewhere
+                  if (key === 'normalizedMedical' || key === 'isHospitalizedFlag') return null;
+
+                  let label = key;
+                  if (key === 'diagnosis') label = 'Rozpoznanie (diagnoza)';
+                  else if (key === 'icd10Code') label = 'Kod ICD-10';
+                  else if (key === 'diagnosisDescription') label = 'Opis rozpoznania';
+                  else if (key === 'leaveStartDate') label = 'Od dnia';
+                  else if (key === 'leaveEndDate') label = 'Do dnia';
+                  else if (key === 'symptoms') label = 'Objawy';
+                  else if (key === 'symptomsFrom') label = 'Od kiedy występują objawy';
+                  else if (key === 'employerName') label = 'Nazwa pracodawcy';
+                  else if (key === 'employerNIP') label = 'NIP pracodawcy';
+                  else if (key === 'ableToWork') label = 'Czy jest zdolny(a) do pracy?';
+                  else if (key === 'daysNeeded') label = 'Wnioskowana liczba dni L4';
+                  else if (key === 'isHospitalized') label = 'Pobyt w szpitalu';
+                  else if (key === 'hospitalName') label = 'Nazwa szpitala';
+                  else if (key === 'additionalNotes') label = 'Dodatkowe notatki';
+                  else if (key === 'leaveReason') label = 'Powód zwolnienia';
+                  else if (key === 'followUpVisit') label = 'Wizyta kontrolna';
+                  else if (key === 'followUpDate') label = 'Data wizyty kontrolnej';
+
+                  let displayValue = String(value);
+                  if (typeof value === 'boolean') displayValue = value ? "Tak" : "Nie";
+                  if (value === null || value === undefined || value === '') displayValue = "Brak";
+                  if (key.includes('Date') && value && value !== "Brak") {
+                    try { displayValue = new Date(String(value)).toLocaleDateString("pl-PL"); } catch {}
+                  }
+
+                  return (
+                    <div key={key} className={key === 'diagnosisDescription' || key === 'symptoms' ? "md:col-span-2" : ""}>
+                      <p className="text-sm text-gray-500 mb-1">{label}</p>
+                      <p className="p-3 bg-gray-50 rounded-lg font-medium whitespace-pre-wrap">
+                        {displayValue}
+                      </p>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>

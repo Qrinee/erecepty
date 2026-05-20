@@ -17,6 +17,7 @@ import ForCompaniesSection from "@/components/ForCompaniesSection";
 import ContactSection from "@/components/ContactSection";
 import PricingSection from "@/components/PricingSection";
 import AboutUsSection from "@/components/AboutUsSection";
+import ServiceFormsSection from "@/components/ServiceFormsSection";
 import { useEffect, useState } from 'react';
 
 export default function Home() {

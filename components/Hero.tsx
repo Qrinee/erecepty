@@ -29,10 +29,10 @@ export default function Hero() {
   const todayStr = new Date().toISOString().split("T")[0];
 
   const serviceRoutes: Record<string, string> = {
-    "Wizyta lekarska ogólna": "/consultation",
-    "e-Recepta online": "/consultation",
-    "L4 online": "/medical-leave",
-    "Kontynuacja leczenia": "/consultation",
+    "Wizyta lekarska ogólna": "/wypelnij-formularz",
+    "e-Recepta online": "/wypelnij-formularz",
+    "L4 online": "/wypelnij-formularz",
+    "Kontynuacja leczenia": "/wypelnij-formularz",
   };
 
   const servicesList = [
