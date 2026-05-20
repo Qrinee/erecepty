@@ -101,7 +101,7 @@ export default function Hero() {
       if (leaveStartDate) params.set("leaveStart", leaveStartDate);
       if (leaveEndDate) params.set("leaveEnd", leaveEndDate);
     }
-    const route = serviceRoutes[selectedService] || "/consultation";
+    const route = serviceRoutes[selectedService] || "/wypelnij-formularz";
     router.push(`${route}?${params.toString()}`);
   };
 
@@ -114,12 +114,11 @@ export default function Hero() {
 
   return (
     <section className="relative bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4] overflow-hidden min-h-screen flex flex-col justify-between">
-      {/* Background Blur Blobs */}
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#DAE9E6]/30 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/4 pointer-events-none" />
       <div className="absolute bottom-20 right-0 w-[600px] h-[600px] bg-[#DAE9E6]/20 rounded-full blur-3xl translate-y-1/4 translate-x-1/4 pointer-events-none" />
 
       {/* Doctor Image (Desktop Center-Right) */}
-      <div className="absolute bottom-[200px] left-[52%] -translate-x-[45%] h-[82%] max-h-[660px] w-auto z-10 hidden lg:block pointer-events-none">
+      <div className="absolute top-[10%] bottom-[140px] xl:bottom-[200px] left-[52%] -translate-x-[45%] w-auto z-10 hidden lg:block pointer-events-none">
         <img 
           src="/imga.png" 
           alt="Lekarz" 
@@ -128,7 +127,7 @@ export default function Hero() {
       </div>
 
       {/* Main Content Area */}
-      <div className="relative z-20 w-full max-w-[80vw] mx-auto px-4 sm:px-6 lg:px-8  pb-12 flex-grow flex items-center">
+      <div className="relative z-20 w-full max-w-[95vw] lg:max-w-7xl xl:max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 pb-12 flex-grow flex items-center">
         <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           
           {/* Left Column: Headings, Features, CTA, Trust */}
@@ -182,7 +181,7 @@ export default function Hero() {
             {/* Action Buttons */}
             <div className="flex flex-wrap items-center gap-4 mb-8">
               <button
-                onClick={() => router.push("/consultation")}
+                onClick={() => router.push("/wypelnij-formularz")}
                 className="inline-flex items-center justify-center gap-2.5 bg-[#064743] hover:bg-[#053734] text-white font-bold px-7 py-4 rounded-xl shadow-lg shadow-[#064743]/15 transition-all hover:scale-[1.01] active:scale-[0.99] text-sm cursor-pointer"
               >
                 <span>Umów konsultację</span>

@@ -214,7 +214,7 @@ export default function SearchBar() {
 
           <button
             type="button"
-            onClick={() => router.push('/medical-leave')}
+            onClick={() => router.push('/wypelnij-formularz?service=L4+online')}
             className="
               h-10 px-4
               bg-indigo-600 text-white

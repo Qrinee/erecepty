@@ -140,7 +140,7 @@ export default function Header({ transparent = false }: HeaderProps) {
                 <>
                   <hr className="my-2" />
                   <Link href="/login" className="text-[#064743] hover:text-[#1A5D54] py-2 font-medium">Zaloguj się</Link>
-                  <Link href="/consultation" className="text-slate-700 hover:text-[#064743] py-2">Umów wizytę</Link>
+                  <Link href="/wypelnij-formularz" className="text-slate-700 hover:text-[#064743] py-2">Umów wizytę</Link>
                 </>
               )}
             </nav>
@@ -225,7 +225,7 @@ export default function Header({ transparent = false }: HeaderProps) {
               Zaloguj się
             </Link>
             <Link
-              href="/consultation"
+              href="/wypelnij-formularz"
               className="flex items-center justify-center cursor-pointer px-5 py-2 rounded-lg text-sm font-semibold text-white bg-[#064743] hover:bg-[#053734] transition focus:outline-none focus:ring-2 focus:ring-[#064743]/50 focus:ring-offset-2"
             >
               Umów wizytę

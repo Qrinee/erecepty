@@ -159,7 +159,7 @@ export default function OrdersPage() {
               <h3 className="text-lg font-semibold text-gray-900">Potrzebujesz konsultacji?</h3>
               <p className="text-gray-600">Rozpocznij nową konsultację online</p>
             </div>
-            <button onClick={() => router.push('/consultation')} className="w-full sm:w-auto px-6 py-3 bg-[#064743] text-white rounded-lg font-medium hover:bg-[#064743] transition flex items-center gap-2 justify-center">
+            <button onClick={() => router.push('/wypelnij-formularz')} className="w-full sm:w-auto px-6 py-3 bg-[#064743] text-white rounded-lg font-medium hover:bg-[#064743] transition flex items-center gap-2 justify-center">
               <FileText className="w-5 h-5" />
               Nowa konsultacja
             </button>
@@ -172,7 +172,7 @@ export default function OrdersPage() {
             <FileText className="w-16 h-16 text-gray-400 mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-900 mb-2">Brak konsultacji</h3>
             <p className="text-gray-600 mb-6">Nie masz jeszcze żadnych konsultacji</p>
-            <button onClick={() => router.push('/consultation')} className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
+            <button onClick={() => router.push('/wypelnij-formularz')} className="px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
               Rozpocznij pierwszą konsultację
             </button>
           </div>

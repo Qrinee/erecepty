@@ -93,25 +93,25 @@ export default function Footer() {
             <h4 className="text-white font-extrabold text-sm mb-6 uppercase tracking-wider">Usługi</h4>
             <ul className="space-y-3.5 text-xs sm:text-[13px] font-bold text-slate-400">
               <li>
-                <Link href="/consultation" className="hover:text-white transition flex items-center justify-between group py-0.5">
+                <Link href="/wypelnij-formularz" className="hover:text-white transition flex items-center justify-between group py-0.5">
                   <span>e-Recepta online</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#147A60] opacity-80 transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
               </li>
               <li>
-                <Link href="/medical-leave" className="hover:text-white transition flex items-center justify-between group py-0.5">
+                <Link href="/wypelnij-formularz?service=L4+online" className="hover:text-white transition flex items-center justify-between group py-0.5">
                   <span>L4 online</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#147A60] opacity-80 transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
               </li>
               <li>
-                <Link href="/consultation" className="hover:text-white transition flex items-center justify-between group py-0.5">
+                <Link href="/wypelnij-formularz" className="hover:text-white transition flex items-center justify-between group py-0.5">
                   <span>Konsultacja online</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#147A60] opacity-80 transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>
               </li>
               <li>
-                <Link href="/consultation" className="hover:text-white transition flex items-center justify-between group py-0.5">
+                <Link href="/wypelnij-formularz" className="hover:text-white transition flex items-center justify-between group py-0.5">
                   <span>Kontynuacja leczenia</span>
                   <ChevronRight className="w-3.5 h-3.5 text-[#147A60] opacity-80 transition-transform duration-200 group-hover:translate-x-1" />
                 </Link>

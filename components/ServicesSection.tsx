@@ -11,73 +11,73 @@ export default function ServicesSection() {
       title: "e-Recepta online", 
       desc: "Otrzymaj e-receptę nawet w 15 minut", 
       image: "/uslugi/ereceptaonline.png",
-      href: "/consultation?service=e-Recepta+online" 
+      href: "/wypelnij-formularz?service=e-Recepta+online" 
     },
     { 
       title: "L4 online", 
       desc: "Zwolnienie lekarskie bez wychodzenia z domu", 
       image: "/uslugi/l4online.png",
-      href: "/medical-leave" 
+      href: "/wypelnij-formularz?service=L4+online" 
     },
     { 
       title: "Kontynuacja leczenia", 
       desc: "Przedłuż leczenie bez zbędnej wizyty", 
       image: "/uslugi/konsultacjaonline.png",
-      href: "/consultation?service=Kontynuacja+leczenia" 
+      href: "/wypelnij-formularz?service=Kontynuacja+leczenia" 
     },
     { 
       title: "Skierowanie na badania", 
       desc: "Skierowania na badania i zabiegi", 
       image: "/uslugi/skierowaniaibadania.png",
-      href: "/consultation?service=Skierowanie+na+badania" 
+      href: "/wypelnij-formularz?service=Skierowanie+na+badania" 
     },
     { 
       title: "Leki psychiatryczne", 
       desc: "Konsultacja i e-recepta na leki psychiatryczne", 
       image: "/uslugi/lekipsychiatryczne.png",
-      href: "/consultation?service=Leki+psychiatryczne" 
+      href: "/wypelnij-formularz?service=Leki+psychiatryczne" 
     },
     { 
       title: "Leczenie otyłości", 
       desc: "Konsultacja i e-recepta na leczenie otyłości", 
       image: "/uslugi/leczenieotylosci.png",
-      href: "/consultation?service=Leczenie+oty%C5%82o%C5%9Bci" 
+      href: "/wypelnij-formularz?service=Leczenie+oty%C5%82o%C5%9Bci" 
     },
     { 
       title: "Dermatologia online", 
       desc: "Konsultacja dermatologiczna i e-recepta", 
       image: "/uslugi/dermatologiaonline.png",
-      href: "/consultation?service=Dermatologia+online" 
+      href: "/wypelnij-formularz?service=Dermatologia+online" 
     },
     { 
       title: "Ginekologia online", 
       desc: "Konsultacja ginekologiczna online", 
       image: "/uslugi/ginekologiaonline.png",
-      href: "/consultation?service=Ginekologia+online" 
+      href: "/wypelnij-formularz?service=Ginekologia+online" 
     },
     { 
       title: "Alergie i astma", 
       desc: "Konsultacja i e-recepta na leki alergiczne i wziewne", 
       image: "/uslugi/alergieiastma.png",
-      href: "/consultation?service=Alergie+i+astma" 
+      href: "/wypelnij-formularz?service=Alergie+i+astma" 
     },
     { 
       title: "Problemy żołądkowe", 
       desc: "Konsultacja i e-recepta na dolegliwości żołądkowe", 
       image: "/uslugi/problemyzoladkowe.png",
-      href: "/consultation?service=Problemy+%C5%BCo%C5%82%C4%85dkowe" 
+      href: "/wypelnij-formularz?service=Problemy+%C5%BCo%C5%82%C4%85dkowe" 
     },
     { 
       title: "Nadciśnienie i serce", 
       desc: "Konsultacja i e-recepta na nadciśnienie i choroby serca", 
       image: "/uslugi/nadcisnienieiserce.png",
-      href: "/consultation?service=Nadci%C5%9Bnienie+i+serce" 
+      href: "/wypelnij-formularz?service=Nadci%C5%9Bnienie+i+serce" 
     },
     { 
       title: "Infekcje i przeziębienia", 
       desc: "Szybka pomoc przy infekcjach, grypie i przeziębieniach", 
       image: "/uslugi/infekcjeiprzeziebienia.png",
-      href: "/consultation?service=Infekcje+i+przezi%C4%99bienia" 
+      href: "/wypelnij-formularz?service=Infekcje+i+przezi%C4%99bienia" 
     },
   ];
 

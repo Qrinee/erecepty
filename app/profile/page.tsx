@@ -132,7 +132,7 @@ export default function ProfilePage() {
         <div className="bg-white rounded-2xl border border-gray-200 p-6 mb-8 shadow-sm">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Szybkie akcje</h3>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <button onClick={() => router.push('/consultation')} className="flex flex-col items-center gap-2 p-4 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition text-center">
+            <button onClick={() => router.push('/wypelnij-formularz')} className="flex flex-col items-center gap-2 p-4 border-2 border-gray-200 rounded-xl hover:border-blue-500 hover:bg-blue-50 transition text-center">
               <FileText className="w-8 h-8 text-blue-600" />
               <span className="font-medium text-gray-900">Nowa konsultacja</span>
             </button>
@@ -154,7 +154,7 @@ export default function ProfilePage() {
             <div className="text-center py-8">
               <FileText className="w-12 h-12 text-gray-400 mx-auto mb-4" />
               <p className="text-gray-500">Nie masz jeszcze żadnych zgłoszeń</p>
-              <button onClick={() => router.push('/consultation')} className="mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
+              <button onClick={() => router.push('/wypelnij-formularz')} className="mt-4 px-6 py-3 bg-blue-600 text-white rounded-lg font-medium hover:bg-blue-700 transition">
                 Rozpocznij pierwszą konsultację
               </button>
             </div>

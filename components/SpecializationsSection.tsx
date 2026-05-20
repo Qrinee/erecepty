@@ -18,7 +18,7 @@ export default function SpecializationsSection() {
       desc: "Pomaga w diagnostyce i leczeniu infekcji oraz chorób wewnętrznych.",
       exp: 12,
       rating: "4.9",
-      href: "/consultation?specialization=Internista"
+      href: "/wypelnij-formularz?specialization=Internista"
     },
     { 
       name: "dr Paweł Nowak",
@@ -27,7 +27,7 @@ export default function SpecializationsSection() {
       desc: "Konsultacje i porady medyczne dla dzieci i młodzieży.",
       exp: 10,
       rating: "4.9",
-      href: "/consultation?specialization=Pediatra"
+      href: "/wypelnij-formularz?specialization=Pediatra"
     },
     { 
       name: "dr Michał Zieliński",
@@ -36,7 +36,7 @@ export default function SpecializationsSection() {
       desc: "Diagnostyka i leczenie chorób serca oraz nadciśnienia tętniczego.",
       exp: 14,
       rating: "4.9",
-      href: "/consultation?specialization=Kardiolog"
+      href: "/wypelnij-formularz?specialization=Kardiolog"
     },
     { 
       name: "dr Anna Woźniak",
@@ -45,7 +45,7 @@ export default function SpecializationsSection() {
       desc: "Pomoc w leczeniu depresji, lęków, ADHD i zaburzeń snu.",
       exp: 13,
       rating: "5.0",
-      href: "/consultation?specialization=Psychiatra"
+      href: "/wypelnij-formularz?specialization=Psychiatra"
     },
     { 
       name: "dr Martyna Lewandowska",
@@ -54,7 +54,7 @@ export default function SpecializationsSection() {
       desc: "Konsultacje zmian skórnych, leczenie trądziku i chorób skóry.",
       exp: 9,
       rating: "4.8",
-      href: "/consultation?specialization=Dermatolog"
+      href: "/wypelnij-formularz?specialization=Dermatolog"
     }
   ];
 
@@ -181,7 +181,7 @@ export default function SpecializationsSection() {
             <div>
               {/* CTA Button */}
               <button
-                onClick={() => router.push("/consultation")}
+                onClick={() => router.push("/wypelnij-formularz")}
                 className="border border-slate-200 bg-white hover:border-[#147A60] hover:text-[#147A60] rounded-xl py-3 w-full text-xs md:text-sm font-extrabold text-slate-700 flex items-center justify-center gap-1.5 transition-colors cursor-pointer shadow-sm"
               >
                 <span>Zobacz wszystkie</span>

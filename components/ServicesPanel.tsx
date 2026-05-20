@@ -2,7 +2,7 @@
 
 import { useRouter } from "next/navigation";
 import { 
-  Phone, Video, CheckCircle, Pill, ClipboardList, RefreshCw, 
+  Phone, Video, Pill, ClipboardList, RefreshCw, 
   Stethoscope, Clock, ShieldCheck, Percent, Lock 
 } from "lucide-react";
 
@@ -17,9 +17,9 @@ export default function ServicesPanel() {
       description: "Otrzymaj e-receptę nawet w 15 minut",
       price: 79,
       image: "/recipe_3d.png",
-      href: "/consultation?service=e-Recepta+online",
-      color: "bg-[#F0FAF7]/90 border-[#DAF2EB]",
-      buttonColor: "bg-[#108568] hover:bg-[#0E735A]",
+      href: "/wypelnij-formularz?service=e-Recepta+online",
+      color: "bg-[#F6FBF8] border-[#E8F1EC]",
+      buttonColor: "bg-[#138A56] hover:bg-[#0F7548]",
       buttonText: "Zamów →"
     },
     {
@@ -29,9 +29,9 @@ export default function ServicesPanel() {
       description: "Zwolnienie lekarskie bez wychodzenia z domu",
       price: 89,
       image: "/l4_3d.png",
-      href: "/medical-leave",
-      color: "bg-[#EFF6F5]/90 border-[#DAE9E6]",
-      buttonColor: "bg-[#064743] hover:bg-[#053734]",
+      href: "/wypelnij-formularz?service=L4+online",
+      color: "bg-[#F2F8FB] border-[#E1EEF3]",
+      buttonColor: "bg-[#0B3D3B] hover:bg-[#072625]",
       buttonText: "Zamów →"
     },
     {
@@ -41,9 +41,9 @@ export default function ServicesPanel() {
       description: "Przedłuż leczenie bez pośredniej wizyty",
       price: 79,
       image: "/continuation_3d.png",
-      href: "/consultation?service=Kontynuacja+leczenia",
-      color: "bg-[#F4F4FA]/90 border-[#E4E4F4]",
-      buttonColor: "bg-[#4F46E5] hover:bg-[#4338CA]",
+      href: "/wypelnij-formularz?service=Kontynuacja+leczenia",
+      color: "bg-[#F5F2FC] border-[#EAE3F5]",
+      buttonColor: "bg-[#4834D4] hover:bg-[#341F97]",
       buttonText: "Zamów →"
     },
     {
@@ -53,9 +53,9 @@ export default function ServicesPanel() {
       description: "Konsultacja z lekarzem specjalistą",
       price: 79,
       image: "/doctor_3d.png",
-      href: "/consultation?service=Wizyta+lekarska+og%C3%B3lna",
-      color: "bg-[#F0FAF7]/90 border-[#DAF2EB]",
-      buttonColor: "bg-[#108568] hover:bg-[#0E735A]",
+      href: "/wypelnij-formularz?service=Wizyta+lekarska+og%C3%B3lna",
+      color: "bg-[#F2F8FB] border-[#E1EEF3]",
+      buttonColor: "bg-[#138A56] hover:bg-[#0F7548]",
       buttonText: "Zamów →"
     }
   ];
@@ -65,7 +65,7 @@ export default function ServicesPanel() {
   };
 
   return (
-    <section className="bg-white py-20 relative overflow-hidden">
+    <section className="bg-white py-16 md:py-24 relative overflow-hidden">
       
       {/* Decorative leafy branch (Left - Desktop Only) */}
       <svg className="absolute top-6 left-6 w-24 h-24 text-[#064743]/10 hidden xl:block pointer-events-none select-none" viewBox="0 0 100 100" fill="currentColor">
@@ -81,84 +81,78 @@ export default function ServicesPanel() {
         <path d="M40 40 C 35 35 45 25 50 30 C 55 35 45 43 40 40 Z" />
       </svg>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Header */}
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
-            PANEL UMAWIANIA WIZYTY - DOSTĘPNY DLA KAŻDEJ USŁUGI
+        <div className="text-center mb-12">
+          <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-3 tracking-tight uppercase">
+            PANEL UMAWIANIA WIZYTY – DOSTĘPNY DLA KAŻDEJ USŁUGI
           </h2>
-          <p className="text-slate-500 text-base sm:text-lg">
+          <p className="text-slate-600 text-base md:text-lg">
             Wybierz usługę i umów wizytę w ciągu kilku minut
           </p>
         </div>
 
         {/* Service Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service) => {
             const Icon = service.icon;
             return (
               <div
                 key={service.id}
-                className={`rounded-[28px] border p-6 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-shadow relative overflow-hidden ${service.color}`}
+                className={`rounded-[28px] border p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative overflow-hidden ${service.color}`}
               >
                 <div>
                   {/* Top-left small circular icon badge */}
-                  <div className="w-8 h-8 rounded-full bg-white border border-slate-200/60 shadow-sm flex items-center justify-center text-slate-500 mb-4">
-                    <Icon className="w-4 h-4" />
+                  <div className="w-10 h-10 rounded-[14px] bg-white border border-slate-100 shadow-[0_2px_4px_rgba(0,0,0,0.02)] flex items-center justify-center text-slate-500 mb-2 absolute top-6 left-6 z-10">
+                    <Icon className="w-5 h-5" strokeWidth={1.5} />
                   </div>
 
-                  {/* 3D Illustration Container */}
-                  <div className="relative w-full h-44 mb-5 flex items-center justify-center bg-white/40 backdrop-blur-sm border border-white/60 rounded-2xl shadow-[inset_0_2px_4px_rgba(255,255,255,0.8)] overflow-hidden group">
+                  {/* 3D Illustration Container - No background box, floating directly */}
+                  <div className="relative w-full h-44 mb-4 mt-2 flex items-center justify-center overflow-hidden group">
                     <img 
                       src={service.image} 
                       alt={service.title} 
-                      className="max-h-[130px] w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
+                      className="max-h-[140px] w-auto object-contain transform group-hover:scale-105 transition-transform duration-300 drop-shadow-xl"
                     />
                   </div>
 
                   {/* Title */}
-                  <h3 className="text-xl font-extrabold text-slate-900 mb-1">{service.title}</h3>
+                  <h3 className="text-[22px] font-extrabold text-slate-900 mb-2">{service.title}</h3>
 
                   {/* Description */}
-                  <p className="text-xs text-slate-500 mb-5 leading-relaxed min-h-[32px]">{service.description}</p>
+                  <p className="text-[15px] text-slate-600 mb-6 leading-snug min-h-[44px]">{service.description}</p>
 
                   {/* Consultation types (Telefon / Video) */}
-                  <div className="grid grid-cols-2 gap-2 mb-5">
-                    <button
-                      onClick={() => handleOrder(service.href)}
-                      className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white border border-slate-200 rounded-xl text-[11px] font-extrabold text-slate-600 hover:border-[#064743] hover:text-[#064743] transition-colors shadow-sm cursor-pointer"
-                    >
-                      <Phone className="w-3.5 h-3.5" />
+                  <div className="flex gap-3 mb-8">
+                    <div className="flex items-center justify-center gap-2 py-2 px-3.5 bg-white border border-slate-200 rounded-[10px] text-[13px] font-bold text-slate-600 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+                      <Phone className="w-4 h-4 text-slate-400" />
                       Telefon
-                    </button>
-                    <button
-                      onClick={() => handleOrder(service.href)}
-                      className="flex items-center justify-center gap-1.5 py-2 px-3 bg-white border border-slate-200 rounded-xl text-[11px] font-extrabold text-slate-600 hover:border-[#064743] hover:text-[#064743] transition-colors shadow-sm cursor-pointer"
-                    >
-                      <Video className="w-3.5 h-3.5" />
+                    </div>
+                    <div className="flex items-center justify-center gap-2 py-2 px-3.5 bg-white border border-slate-200 rounded-[10px] text-[13px] font-bold text-slate-600 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+                      <Video className="w-4 h-4 text-slate-400" />
                       Wideo
-                    </button>
+                    </div>
                   </div>
                 </div>
 
                 <div>
                   {/* Price */}
-                  <div className="mb-4 flex items-baseline gap-1 text-[#147A60] font-extrabold">
-                    <span className="text-sm">od</span>
-                    <span className="text-3xl tracking-tight">{service.price} zł</span>
+                  <div className="mb-4 flex items-baseline gap-1.5 text-slate-900">
+                    <span className="text-[17px] font-bold text-slate-800">od</span>
+                    <span className="text-3xl font-extrabold tracking-tight">{service.price} zł</span>
                   </div>
 
                   {/* CTA Button */}
                   <button
                     onClick={() => handleOrder(service.href)}
-                    className={`w-full ${service.buttonColor} text-white font-extrabold py-3.5 rounded-xl transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer shadow-sm text-sm`}
+                    className={`w-full ${service.buttonColor} text-white font-bold py-3.5 rounded-[14px] transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer shadow-sm text-sm`}
                   >
                     <span>{service.buttonText}</span>
                   </button>
 
                   {/* Info text at the bottom */}
-                  <div className="flex items-center justify-center gap-1.5 text-[10px] font-bold text-slate-400 mt-4 uppercase tracking-wider">
+                  <div className="flex items-center justify-center gap-1.5 text-xs text-slate-500 mt-4 font-medium">
                     <Clock className="w-3.5 h-3.5" />
                     <span>Czas realizacji: nawet 15 min</span>
                   </div>
@@ -169,26 +163,22 @@ export default function ServicesPanel() {
         </div>
 
         {/* Bottom Trust/Guarantees Row under Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 pt-10 border-t border-slate-100">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 pt-8 border-t border-slate-100">
           {[
-            { icon: CheckCircle, title: "Bezpiecznie", desc: "Twoje dane są u nas bezpieczne" },
+            { icon: ShieldCheck, title: "Bezpiecznie", desc: "Twoje dane są u nas bezpieczne" },
             { icon: Clock, title: "Szybko", desc: "Wizyta nawet w 15 minut" },
             { icon: Percent, title: "Przystępnie", desc: "Atrakcyjne ceny bez ukrytych opłat" },
             { icon: Lock, title: "Bez wychodzenia z domu", desc: "Załatw wszystko online, bez kolejek" },
           ].map((item, idx) => {
             const Icon = item.icon;
             return (
-              <div key={idx} className="flex items-start gap-3.5">
-                <div className="w-9 h-9 rounded-full bg-[#E8F3F1] border border-[#D5EAE6] flex items-center justify-center text-[#064743] flex-shrink-0 shadow-sm">
-                  {idx === 0 ? (
-                    <Icon className="w-4.5 h-4.5 fill-[#064743] text-white" strokeWidth={2.5} />
-                  ) : (
-                    <Icon className="w-4.5 h-4.5" strokeWidth={2.5} />
-                  )}
+              <div key={idx} className="flex items-start gap-4">
+                <div className="w-12 h-12 rounded-full bg-[#138A56] flex items-center justify-center text-white flex-shrink-0 shadow-sm">
+                  <Icon className="w-5 h-5" strokeWidth={2.5} />
                 </div>
-                <div>
-                  <div className="font-extrabold text-slate-800 text-sm leading-snug">{item.title}</div>
-                  <div className="text-xs text-slate-500 mt-1 leading-snug">{item.desc}</div>
+                <div className="pt-0.5">
+                  <div className="font-bold text-slate-900 text-[15px] leading-snug">{item.title}</div>
+                  <div className="text-sm text-slate-600 mt-1 leading-snug pr-4">{item.desc}</div>
                 </div>
               </div>
             );
