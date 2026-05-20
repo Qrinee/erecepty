@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { validatePESEL } from '@/app/utils/pesel-validator';
 
 // Polish error messages for validation
 const ERROR_MESSAGES = {
@@ -82,10 +83,11 @@ export async function POST(request: NextRequest) {
       );
     }
     
-    // Validate PESEL format (11 digits)
-    if (!/^\d{11}$/.test(pesel)) {
+    // Validate PESEL format and check digit
+    const peselValidation = validatePESEL(pesel);
+    if (!peselValidation.valid) {
       return NextResponse.json(
-        { success: false, message: ERROR_MESSAGES.PESEL_INVALID, errorCode: 'PESEL_INVALID' },
+        { success: false, message: peselValidation.errors[0] || ERROR_MESSAGES.PESEL_INVALID, errorCode: 'PESEL_INVALID' },
         { status: 400 }
       );
     }

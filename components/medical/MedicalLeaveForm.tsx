@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { Calendar, User, Stethoscope } from "lucide-react";
 import { MedicalLeaveData } from '@/app/types/medicine';
 import { useCurrentUser } from '@/app/hooks/useCurrentUser';
+import { validatePESEL } from '@/app/utils/pesel-validator';
 
 interface MedicalLeaveFormProps {
   onSubmit: (data: MedicalLeaveData) => void;
@@ -49,7 +50,14 @@ export default function MedicalLeaveForm({ onSubmit, onCancel, initialData }: Me
     if (section === 1) {
       if (!formData.patientFirstName?.trim()) e.patientFirstName = 'Imię jest wymagane';
       if (!formData.patientLastName?.trim()) e.patientLastName = 'Nazwisko jest wymagane';
-      if (!formData.patientPesel?.trim()) e.patientPesel = 'PESEL jest wymagany'; else if (!/^\d{11}$/.test(formData.patientPesel)) e.patientPesel = 'PESEL musi mieć 11 cyfr';
+      if (!formData.patientPesel?.trim()) {
+        e.patientPesel = 'PESEL jest wymagany';
+      } else {
+        const peselValidation = validatePESEL(formData.patientPesel);
+        if (!peselValidation.valid) {
+          e.patientPesel = peselValidation.errors[0] || 'PESEL jest nieprawidłowy';
+        }
+      }
       if (!formData.patientEmail?.trim()) e.patientEmail = 'Email jest wymagany';
       if (!formData.patientPhone?.trim()) e.patientPhone = 'Telefon jest wymagany';
     }

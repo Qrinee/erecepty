@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from 'react';
+import { validatePESEL } from '@/app/utils/pesel-validator';
 
 interface ContactFormData {
   email: string;
@@ -75,8 +76,11 @@ export default function ContactForm({ onSubmit, onCancel, isSubmitting = false, 
 
     if (!formData.pesel?.trim()) {
       newErrors.pesel = 'PESEL jest wymagany';
-    } else if (!/^\d{11}$/.test(formData.pesel)) {
-      newErrors.pesel = 'PESEL musi mieć 11 cyfr';
+    } else {
+      const peselValidation = validatePESEL(formData.pesel);
+      if (!peselValidation.valid) {
+        newErrors.pesel = peselValidation.errors[0] || 'PESEL jest nieprawidłowy';
+      }
     }
 
     if (!formData.phone?.trim()) {

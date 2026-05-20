@@ -94,17 +94,21 @@ export default function Header({ transparent = false }: HeaderProps) {
 
   return (
     <header
-      className={`fixed pt-5 pb-5 top-0 left-0 right-0 z-50 transition-all duration-300 $ 'bg-white border-b border-stone-200 bg-white/90 backdrop-blur-sm' : 'bg-transparent text-white'}`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-100 ${
+        transparent
+          ? "bg-transparent text-white"
+          : "bg-white/90 backdrop-blur-md text-slate-900"
+      }`}
       role="banner"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between h-16">
-        <Link href="/" className={`flex items-center gap-2 font-semibold text-lg ${transparent ? 'text-white' : ''}`} aria-label="Konsultacje online - Strona główna">
-          <img src="/logo.png" alt="Lekarze i Terapeuci" className="w-25 h-25" />
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+        <Link href="/" className="flex items-center gap-2 font-semibold text-lg" aria-label="Konsultacje online - Strona główna">
+          <img src="/logo.png" alt="Lekarze i Terapeuci" className="h-30 w-auto object-contain" />
         </Link>
 
         <button
           onClick={() => setShowMobileMenu(!showMobileMenu)}
-          className={`md:hidden p-2 ${transparent ? 'text-white' : 'text-gray-700'}`}
+          className="md:hidden p-2 text-slate-700 hover:text-slate-900 focus:outline-none"
           aria-label="Menu"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -112,16 +116,14 @@ export default function Header({ transparent = false }: HeaderProps) {
           </svg>
         </button>
 
-        <nav aria-label="Główna nawigacja" className={`hidden md:flex items-center justify-center gap-8 text-sm text-slate-700 h-16`}>
-          <div className="flex items-center gap-8 h-full">
-            <Link href="/#uslugi" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 text-slate-700 hover:text-[#064743] h-full flex items-center`}>Usługi</Link>
-            <Link href="/#specjalizacje" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 text-slate-700 hover:text-[#064743] h-full flex items-center`}>Specjalizacje</Link>
-            <Link href="/jak-to-dziala" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 text-slate-700 hover:text-[#064743] h-full flex items-center`}>Jak to działa?</Link>
-            <Link href="/baza-wiedzy" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 text-slate-700 hover:text-[#064743] h-full flex items-center`}>Baza wiedzy</Link>
-            <Link href="/#o-nas" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 text-slate-700 hover:text-[#064743] h-full flex items-center`}>O nas</Link>
-            <Link href="/#cennik" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white hover:text-[#DAE9E6]' : 'text-slate-700 hover:text-[#064743]'} h-full flex items-center`}>Cennik</Link>
-            <Link href="/#kontakt" className={`hover:text-[#064743] transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 ${transparent ? 'text-white hover:text-[#DAE9E6]' : 'text-slate-700 hover:text-[#064743]'} h-full flex items-center`}>Kontakt</Link>
-          </div>
+        <nav aria-label="Główna nawigacja" className="hidden md:flex items-center justify-center gap-6 text-sm font-medium h-16">
+          <Link href="/#uslugi" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Usługi</Link>
+          <Link href="/#specjalizacje" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Specjalizacje</Link>
+          <Link href="/jak-to-dziala" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Jak to działa?</Link>
+          <Link href="/baza-wiedzy" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Baza wiedzy</Link>
+          <Link href="/#o-nas" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">O nas</Link>
+          <Link href="/#cennik" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Cennik</Link>
+          <Link href="/#kontakt" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Kontakt</Link>
         </nav>
 
         {showMobileMenu && (
@@ -138,7 +140,7 @@ export default function Header({ transparent = false }: HeaderProps) {
                 <>
                   <hr className="my-2" />
                   <Link href="/login" className="text-[#064743] hover:text-[#1A5D54] py-2 font-medium">Zaloguj się</Link>
-                  <Link href="/profile" className="text-slate-700 hover:text-[#064743] py-2">Panel pacjenta</Link>
+                  <Link href="/consultation" className="text-slate-700 hover:text-[#064743] py-2">Umów wizytę</Link>
                 </>
               )}
             </nav>
@@ -147,7 +149,7 @@ export default function Header({ transparent = false }: HeaderProps) {
 
         {isAuthenticated ? (
           <div className="flex items-center gap-6">
-            <Link href="/profile" className={`text-sm font-medium ${transparent ? 'text-white hover:text-[#DAE9E6]' : 'text-slate-700 hover:text-[#064743]'} transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded px-1 flex justify-center items-center h-full`} aria-label="Panel pacjenta">
+            <Link href="/profile" className="text-sm font-semibold text-slate-700 hover:text-[#064743] transition px-1 py-2 flex justify-center items-center h-full animate-fadeIn" aria-label="Panel pacjenta">
               Panel pacjenta
             </Link>
             <div className="relative" ref={dropdownRef}>
@@ -156,15 +158,15 @@ export default function Header({ transparent = false }: HeaderProps) {
                 aria-expanded={showDropdown}
                 aria-haspopup="true"
                 aria-controls="user-menu"
-                className={`flex items-center gap-2 text-sm hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 rounded-lg px-2 py-1 ${transparent ? 'text-white' : 'text-gray-700'}`}
+                className="flex items-center gap-2 text-sm font-semibold text-slate-700 hover:text-slate-900 focus:outline-none px-2 py-1"
               >
-                <div className={`w-8 h-8 rounded-full flex items-center justify-center ${transparent ? 'bg-white/20' : 'bg-[#DAE9E6]'}`} aria-hidden="true">
-                  <span className={`font-medium ${transparent ? 'text-white' : 'text-[#064743]'}`}>
+                <div className="w-8 h-8 rounded-full flex items-center justify-center bg-[#DAE9E6]" aria-hidden="true">
+                  <span className="font-semibold text-[#064743]">
                     {user?.firstName?.[0]}{user?.lastName?.[0]}
                   </span>
                 </div>
                 <span className="hidden md:inline">{user?.firstName} {user?.lastName}</span>
-                <svg className="w-4 h-4" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <svg className="w-4 h-4 text-slate-500" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
               </button>
@@ -183,16 +185,16 @@ export default function Header({ transparent = false }: HeaderProps) {
                   >
                     Mój profil
                   </Link>
-                <Link
-                  href="/orders"
-                  className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
-                  role="menuitem"
-                  onClick={() => setShowDropdown(false)}
-                >
-                  Moje recepty
-                </Link>
-                {user?.role === "administrator" && (
-<Link
+                  <Link
+                    href="/orders"
+                    className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
+                    role="menuitem"
+                    onClick={() => setShowDropdown(false)}
+                  >
+                    Moje recepty
+                  </Link>
+                  {user?.role === "administrator" && (
+                    <Link
                       href="/admin"
                       className="block px-4 py-2 text-sm text-[#064743] hover:bg-gray-50 focus:outline-none focus:bg-gray-50"
                       role="menuitem"
@@ -200,27 +202,33 @@ export default function Header({ transparent = false }: HeaderProps) {
                     >
                       Panel lekarza
                     </Link>
-                )}
-                <hr className="my-1" role="separator" />
-                <button
-                  onClick={handleLogout}
-                  disabled={loading}
-                  className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50"
-                  role="menuitem"
-                >
-                  {loading ? "Wylogowywanie..." : "Wyloguj się"}
-                </button>
-              </div>
-            )}
+                  )}
+                  <hr className="my-1" role="separator" />
+                  <button
+                    onClick={handleLogout}
+                    disabled={loading}
+                    className="w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-gray-50 focus:outline-none focus:bg-gray-50 disabled:opacity-50"
+                    role="menuitem"
+                  >
+                    {loading ? "Wylogowywanie..." : "Wyloguj się"}
+                  </button>
+                </div>
+              )}
             </div>
           </div>
         ) : (
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-3">
             <Link
               href="/login"
-              className={`flex items-center cursor-pointer px-5 py-2 rounded-lg text-sm font-medium transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2 ${transparent ? 'bg-white text-[#064743] hover:bg-[#DAE9E6]' : 'bg-[#064743] text-white hover:bg-[#1A5D54]'}`}
+              className="flex items-center justify-center cursor-pointer px-5 py-2 border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 bg-white hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2"
             >
               Zaloguj się
+            </Link>
+            <Link
+              href="/consultation"
+              className="flex items-center justify-center cursor-pointer px-5 py-2 rounded-lg text-sm font-semibold text-white bg-[#064743] hover:bg-[#053734] transition focus:outline-none focus:ring-2 focus:ring-[#064743]/50 focus:ring-offset-2"
+            >
+              Umów wizytę
             </Link>
           </div>
         )}

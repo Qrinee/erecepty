@@ -1,5 +1,6 @@
 // API utilities for patient form submission
 import { PatientFormData, PatientSubmission } from '@/app/types/patient';
+import { validatePESEL } from './pesel-validator';
 
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL + '/api';
 
@@ -77,8 +78,9 @@ export function validatePatientForm(data: PatientFormData): { valid: boolean; er
   if (!data.patient.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.patient.email)) {
     errors.push('Invalid email address');
   }
-  if (!data.patient.pesel || data.patient.pesel.length !== 11) {
-    errors.push('PESEL must be 11 digits');
+  const peselValidation = validatePESEL(data.patient.pesel);
+  if (!peselValidation.valid) {
+    errors.push(peselValidation.errors[0] || 'PESEL is invalid');
   }
   if (!data.patient.phone || data.patient.phone.length < 9) {
     errors.push('Invalid phone number');
