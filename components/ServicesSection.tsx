@@ -1,65 +1,192 @@
 "use client";
 
 import Link from "next/link";
-import {
-  ArrowRight,
-  Pill,
-  ClipboardList,
-  Stethoscope,
-  Activity,
-  Syringe,
-  Microscope,
+import { 
+  ArrowRight, Clock, Star, UserCheck, Lock, Users 
 } from "lucide-react";
 
 export default function ServicesSection() {
   const services = [
-    { icon: Pill, title: "e-Recepta", desc: "Otrzymaj receptę nawet w 15 minut", href: "/consultation" },
-    { icon: ClipboardList, title: "L4", desc: "Zwolnienie lekarskie online", href: "/medical-leave" },
-    { icon: Stethoscope, title: "Konsultacja", desc: "Porada specjalisty online", href: "/consultation" },
-    { icon: Activity, title: "Badania", desc: "Skierowanie na badania", href: "/consultation" },
-    { icon: Syringe, title: "Szczepienia", desc: "Konsultacja przed szczepieniem", href: "/consultation" },
-    { icon: Microscope, title: "Diagnostyka", desc: "Interpretacja wyników", href: "/consultation" },
+    { 
+      title: "e-Recepta online", 
+      desc: "Otrzymaj e-receptę nawet w 15 minut", 
+      image: "/uslugi/ereceptaonline.png",
+      href: "/consultation?service=e-Recepta+online" 
+    },
+    { 
+      title: "L4 online", 
+      desc: "Zwolnienie lekarskie bez wychodzenia z domu", 
+      image: "/uslugi/l4online.png",
+      href: "/medical-leave" 
+    },
+    { 
+      title: "Kontynuacja leczenia", 
+      desc: "Przedłuż leczenie bez zbędnej wizyty", 
+      image: "/uslugi/konsultacjaonline.png",
+      href: "/consultation?service=Kontynuacja+leczenia" 
+    },
+    { 
+      title: "Skierowanie na badania", 
+      desc: "Skierowania na badania i zabiegi", 
+      image: "/uslugi/skierowaniaibadania.png",
+      href: "/consultation?service=Skierowanie+na+badania" 
+    },
+    { 
+      title: "Leki psychiatryczne", 
+      desc: "Konsultacja i e-recepta na leki psychiatryczne", 
+      image: "/uslugi/lekipsychiatryczne.png",
+      href: "/consultation?service=Leki+psychiatryczne" 
+    },
+    { 
+      title: "Leczenie otyłości", 
+      desc: "Konsultacja i e-recepta na leczenie otyłości", 
+      image: "/uslugi/leczenieotylosci.png",
+      href: "/consultation?service=Leczenie+oty%C5%82o%C5%9Bci" 
+    },
+    { 
+      title: "Dermatologia online", 
+      desc: "Konsultacja dermatologiczna i e-recepta", 
+      image: "/uslugi/dermatologiaonline.png",
+      href: "/consultation?service=Dermatologia+online" 
+    },
+    { 
+      title: "Ginekologia online", 
+      desc: "Konsultacja ginekologiczna online", 
+      image: "/uslugi/ginekologiaonline.png",
+      href: "/consultation?service=Ginekologia+online" 
+    },
+    { 
+      title: "Alergie i astma", 
+      desc: "Konsultacja i e-recepta na leki alergiczne i wziewne", 
+      image: "/uslugi/alergieiastma.png",
+      href: "/consultation?service=Alergie+i+astma" 
+    },
+    { 
+      title: "Problemy żołądkowe", 
+      desc: "Konsultacja i e-recepta na dolegliwości żołądkowe", 
+      image: "/uslugi/problemyzoladkowe.png",
+      href: "/consultation?service=Problemy+%C5%BCo%C5%82%C4%85dkowe" 
+    },
+    { 
+      title: "Nadciśnienie i serce", 
+      desc: "Konsultacja i e-recepta na nadciśnienie i choroby serca", 
+      image: "/uslugi/nadcisnienieiserce.png",
+      href: "/consultation?service=Nadci%C5%9Bnienie+i+serce" 
+    },
+    { 
+      title: "Infekcje i przeziębienia", 
+      desc: "Szybka pomoc przy infekcjach, grypie i przeziębieniach", 
+      image: "/uslugi/infekcjeiprzeziebienia.png",
+      href: "/consultation?service=Infekcje+i+przezi%C4%99bienia" 
+    },
   ];
 
   return (
-    <section id="uslugi" className="py-16 md:py-24 bg-white scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4">
-        <div className="text-center mb-14">
-          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-            Usługi
+    <section id="uslugi" className="py-20 bg-white scroll-mt-20 relative overflow-hidden">
+      
+      {/* Decorative leafy branch (Left - Desktop Only) */}
+      <svg className="absolute top-6 left-6 w-24 h-24 text-[#064743]/10 hidden xl:block pointer-events-none select-none" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M10 80 Q 30 50 60 50 M 30 65 Q 25 50 40 45 M 45 58 Q 50 40 60 40" stroke="currentColor" strokeWidth="2" fill="none" />
+        <path d="M40 45 C 45 40 35 30 30 35 C 25 40 35 48 40 45 Z" />
+        <path d="M60 40 C 65 35 55 25 50 30 C 45 35 55 43 60 40 Z" />
+      </svg>
+
+      {/* Decorative leafy branch (Right - Desktop Only) */}
+      <svg className="absolute top-6 right-6 w-24 h-24 text-[#064743]/10 hidden xl:block pointer-events-none select-none" viewBox="0 0 100 100" fill="currentColor">
+        <path d="M90 80 Q 70 50 40 50 M 70 65 Q 75 50 60 45 M 55 58 Q 50 40 40 40" stroke="currentColor" strokeWidth="2" fill="none" />
+        <path d="M60 45 C 55 40 65 30 70 35 C 75 40 65 48 60 45 Z" />
+        <path d="M40 40 C 35 35 45 25 50 30 C 55 35 45 43 40 40 Z" />
+      </svg>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        
+        {/* Headings */}
+        <div className="text-center mb-10 relative">
+          <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
+            Nasze usługi
           </h2>
-          <p className="text-slate-600 text-lg">Wybierz usługę dostosowaną do Twoich potrzeb</p>
+          <p className="text-slate-500 text-base sm:text-lg">
+            Wybierz to, czego potrzebujesz
+          </p>
         </div>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
-          {services.map((service, idx) => {
-            const Icon = service.icon;
-            return (
+        {/* Outer relative container to hold the left-aligned green badge & grid */}
+        <div className="max-w-6xl mx-auto relative mt-8">
+          
+          {/* Green pill badge aligned to the left (desktop only, block on mobile) */}
+          <div className="mb-6 lg:mb-8 text-left">
+            <span className="inline-flex items-center px-4 py-2 bg-[#EAF3F0] text-[#147A60] font-extrabold rounded-full text-[10px] tracking-wider uppercase shadow-sm">
+              • DOSTĘPNE 24/7 • BEZ WYCHODZENIA Z DOMU
+            </span>
+          </div>
+
+          {/* 12-Card Grid (4 columns on large screens) */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+            {services.map((service, idx) => (
               <Link
                 key={idx}
                 href={service.href}
-                className="bg-gradient-to-br from-slate-50 to-[#DAE9E6] rounded-xl p-6 text-center hover:shadow-lg transition-all cursor-pointer border border-slate-200 group"
+                className="bg-white rounded-[24px] p-6 flex flex-col justify-between border border-slate-100 hover:shadow-lg transition-all duration-300 group"
               >
-                <div className="w-11 h-11 rounded-lg bg-[#DAE9E6] flex items-center justify-center mx-auto mb-3 group-hover:bg-[#DAE9E6] transition-colors">
-                  <Icon className="w-5 h-5 text-[#064743]" />
+                <div>
+                  {/* Illustration Container */}
+                  <div className="w-full h-32 flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-slate-50/50">
+                    <img
+                      src={service.image}
+                      alt={service.title}
+                      className="max-h-[110px] w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                  {/* Title */}
+                  <h3 className="font-extrabold text-slate-800 text-sm sm:text-base mb-1.5">{service.title}</h3>
+                  {/* Description */}
+                  <p className="text-[11px] sm:text-xs text-slate-500 leading-relaxed min-h-[36px]">{service.desc}</p>
                 </div>
-                <h3 className="font-bold text-slate-900 mb-2">{service.title}</h3>
-                <p className="text-xs text-slate-600">{service.desc}</p>
+                {/* Action Link */}
+                <div className="mt-4">
+                  <span className="text-[#147A60] hover:text-[#064743] font-bold text-xs inline-flex items-center gap-1 transition-colors">
+                    <span>Zamów</span>
+                    <ArrowRight className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" />
+                  </span>
+                </div>
               </Link>
-            );
-          })}
+            ))}
+          </div>
+
         </div>
 
-        <div className="text-center mt-12">
-          <Link
-            href="/consultation"
-            className="bg-[#064743] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#1A5D54] transition inline-flex items-center gap-2"
-          >
-            Poznaj wszystkie usługi
-            <ArrowRight className="w-4 h-4" />
-          </Link>
+        {/* Bottom Trust/Guarantees Panel */}
+        <div className="max-w-6xl mx-auto bg-[#EAF3F0]/60 border border-[#D5EAE6]/45 rounded-[24px] p-6 mt-16">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 divide-y md:divide-y-0 md:divide-x divide-[#D5EAE6]/80 items-center">
+            {[
+              { icon: Users, title: "Ponad 50 000", desc: "zadowolonych pacjentów" },
+              { icon: Star, title: "98% pacjentów", desc: "poleca nasze usługi" },
+              { icon: UserCheck, title: "Lekarze z uprawnieniami", desc: "i wieloletnim doświadczeniem" },
+              { icon: Lock, title: "Twoje dane są bezpieczne", desc: "zgodne z RODO" },
+              { icon: Clock, title: "Dostęp 24/7", desc: "7 dni w tygodniu" },
+            ].map((item, idx) => {
+              const Icon = item.icon;
+              return (
+                <div key={idx} className={`flex items-center gap-3 px-4 ${idx > 0 ? 'pt-4 md:pt-0' : ''}`}>
+                  <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center text-[#064743] flex-shrink-0 shadow-sm">
+                    {idx === 1 ? (
+                      <Icon className="w-4.5 h-4.5 fill-[#064743] text-[#064743]" />
+                    ) : (
+                      <Icon className="w-4.5 h-4.5" />
+                    )}
+                  </div>
+                  <div>
+                    <div className="font-extrabold text-slate-800 text-xs sm:text-sm leading-snug">{item.title}</div>
+                    <div className="text-[11px] text-slate-500 mt-0.5 leading-snug font-semibold">{item.desc}</div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
         </div>
+
       </div>
     </section>
   );
 }
+
