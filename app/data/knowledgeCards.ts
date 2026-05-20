@@ -22,12 +22,12 @@ export interface KnowledgeCardData {
 export const knowledgeCards: KnowledgeCardData[] = [
   {
     tag: "PORADNIK",
-    tagColor: "bg-blue-600",
+    tagColor: "bg-[#3B82F6]",
     title: "Jak przygotować się do telekonsultacji?",
     subtitle: "Przewodnik krok po kroku",
     description:
       "Kilka prostych kroków, które pomogą Ci maksymalnie wykorzystać czas ze specjalistą online i uniknąć stresu.",
-    image: "/doctor.jpg",
+    image: "/doctor_3d.png",
     slug: "jak-sie-przygotowac-do-telekonsultacji",
     author: "Dr Anna Kowalska",
     publishedDate: "15 stycznia 2025",
@@ -84,12 +84,12 @@ export const knowledgeCards: KnowledgeCardData[] = [
   },
   {
     tag: "KOMPENDIUM",
-    tagColor: "bg-emerald-500",
+    tagColor: "bg-[#22C55E]",
     title: "Wszystko o konsultacjach online. Jak zrealizować dokumenty?",
     subtitle: "Kompletny przewodnik",
     description:
       "Przewodnik po systemie e-zdrowia. Dowiedz się jak działa kod PIN i jak sprawdzić historię swoich konsultacji.",
-    image: "/consultation.jpg",
+    image: "/l4_3d.png",
     slug: "wszystko-o-konsultacjach-online",
     author: "Mgr Piotr Nowak",
     publishedDate: "10 stycznia 2025",
@@ -148,12 +148,12 @@ export const knowledgeCards: KnowledgeCardData[] = [
   },
   {
     tag: "BEZPIECZEŃSTWO",
-    tagColor: "bg-orange-500",
+    tagColor: "bg-[#EF4444]",
     title: "Kontynuacja terapii chorób przewlekłych online",
     subtitle: "Bezpiecznie i wygodnie",
     description:
       "Czy wiesz, że możesz przedłużyć terapię bez wychodzenia z domu? Sprawdź, jakie dokumenty są potrzebne.",
-    image: "/security.jpg",
+    image: "/recipe_3d.png",
     slug: "kontynuacja-terapii-online",
     author: "Dr Marta Wiśniewska",
     publishedDate: "5 stycznia 2025",
