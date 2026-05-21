@@ -84,9 +84,8 @@ function MedicalLeavePageInner() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 pt-28 lg:pt-32 pb-8">
       <Header/>
-      <div className='h-20'></div>
       <main className="mx-auto max-w-3xl px-6">
         <div className="bg-white rounded-xl shadow-sm p-6">
           {error && (

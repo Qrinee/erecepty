@@ -27,7 +27,6 @@ export default function Home() {
   return (
     <>
       <Header transparent={false} />
-      <div className="mb-20"></div>
       <main id="main-content" tabIndex={-1}>
         <Hero />
         <ServicesPanel />

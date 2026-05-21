@@ -113,12 +113,12 @@ export default function Hero() {
   const visibleSlots = showAllSlots ? displayedSlots : displayedSlots.slice(0, 4);
 
   return (
-    <section className="relative bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4] overflow-hidden min-h-screen flex flex-col justify-between">
+    <section className="relative bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4] overflow-hidden min-h-screen flex flex-col justify-between pt-[110px] sm:pt-[120px] lg:pt-[130px]">
       <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#DAE9E6]/30 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/4 pointer-events-none" />
       <div className="absolute bottom-20 right-0 w-[600px] h-[600px] bg-[#DAE9E6]/20 rounded-full blur-3xl translate-y-1/4 translate-x-1/4 pointer-events-none" />
 
       {/* Doctor Image (Desktop Center-Right) */}
-      <div className="absolute top-[10%] bottom-[140px] xl:bottom-[200px] left-[52%] -translate-x-[45%] w-auto z-10 hidden lg:block pointer-events-none">
+      <div className="absolute top-[130px] bottom-[140px] xl:bottom-[200px] left-[52%] -translate-x-[45%] w-auto z-10 hidden lg:block pointer-events-none">
         <img 
           src="/imga.png" 
           alt="Lekarz" 

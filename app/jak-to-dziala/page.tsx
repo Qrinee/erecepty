@@ -54,8 +54,7 @@ export default function JakToDzialaPage() {
       <Header />
       <main id="main-content" tabIndex={-1}>
         {/* Hero Section with Illustration */}
-        <div style={{ margin: '100px' }}></div>
-        <section className="relative bg-gradient-to-br from-[#DAE9E6] via-white to-purple-50 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-[#DAE9E6] via-white to-purple-50 overflow-hidden pt-[110px] sm:pt-[120px] lg:pt-[130px]">
           {/* Decorative elements */}
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#DAE9E6] rounded-full opacity-30 blur-2xl" />
           <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-200 rounded-full opacity-30 blur-3xl" />

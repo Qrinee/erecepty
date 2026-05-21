@@ -79,8 +79,7 @@ function ConsultationPageInner() {
   return (
     <div className="min-h-screen bg-gray-50">
       <Header />
-      <main className="mx-auto max-w-3xl px-4 py-8">
-        <div style={{ marginTop: "80px" }} />
+      <main className="mx-auto max-w-3xl px-4 pb-8 pt-28 lg:pt-32">
         {prefillService && step === "medical" && (
           <div className="bg-[#DAE9E6] rounded-2xl p-5 mb-6 flex flex-wrap items-center gap-4 text-sm">
             <div className="flex items-center gap-2"><Sparkles className="w-5 h-5 text-[#064743]" /><span className="font-semibold text-[#064743]">{prefillService}</span></div>

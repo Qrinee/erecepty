@@ -129,7 +129,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="text-sm font-extrabold text-slate-800">Czas odpowiedzi</div>
-                    <div className="text-sm text-slate-500 font-semibold mt-0.5">Najczęściej poniżej 5 minut</div>
+                    <div className="text-sm text-slate-500 font-semibold mt-0.5">Najczęściej około godziny</div>
                   </div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />

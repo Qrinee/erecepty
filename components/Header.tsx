@@ -103,7 +103,7 @@ export default function Header({ transparent = false }: HeaderProps) {
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
         <Link href="/" className="flex items-center gap-2 font-semibold text-lg" aria-label="Konsultacje online - Strona główna">
-          <img src="/logo.png" alt="Lekarze i Terapeuci" className="h-30 w-auto object-contain" />
+          <img src="/logo.png" alt="Lekarze i Terapeuci" className="h-25 w-auto object-contain" />
         </Link>
 
         <button
@@ -131,8 +131,6 @@ export default function Header({ transparent = false }: HeaderProps) {
               <Link href="/#specjalizacje" className="text-slate-700 hover:text-[#064743] py-2">Specjalizacje</Link>
               <Link href="/jak-to-dziala" className="text-slate-700 hover:text-[#064743] py-2">Jak to działa?</Link>
               <Link href="/baza-wiedzy" className="text-slate-700 hover:text-[#064743] py-2">Baza wiedzy</Link>
-              <Link href="/#o-nas" className="text-slate-700 hover:text-[#064743] py-2">O nas</Link>
-              <Link href="/#cennik" className="text-slate-700 hover:text-[#064743] py-2">Cennik</Link>
               <Link href="/#kontakt" className="text-slate-700 hover:text-[#064743] py-2">Kontakt</Link>
               {!isAuthenticated && (
                 <>
