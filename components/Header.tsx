@@ -121,8 +121,6 @@ export default function Header({ transparent = false }: HeaderProps) {
           <Link href="/#specjalizacje" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Specjalizacje</Link>
           <Link href="/jak-to-dziala" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Jak to działa?</Link>
           <Link href="/baza-wiedzy" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Baza wiedzy</Link>
-          <Link href="/#o-nas" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">O nas</Link>
-          <Link href="/#cennik" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Cennik</Link>
           <Link href="/#kontakt" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Kontakt</Link>
         </nav>
 
