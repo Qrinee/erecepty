@@ -7,6 +7,7 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { validatePESEL } from "@/app/utils/pesel-validator";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
@@ -30,7 +31,35 @@ const inputCls =
   "w-full bg-[#F5F7FA] border border-transparent hover:border-slate-200 focus:border-slate-300 focus:bg-white rounded-lg px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none transition-all";
 const textareaCls =
   "w-full bg-[#F5F7FA] border border-transparent hover:border-slate-200 focus:border-slate-300 focus:bg-white rounded-lg px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none transition-all resize-none";
+const inputErrorCls =
+  "w-full bg-red-50/50 border border-red-300 focus:border-red-500 focus:bg-white rounded-lg px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none transition-all";
+const textareaErrorCls =
+  "w-full bg-red-50/50 border border-red-300 focus:border-red-500 focus:bg-white rounded-lg px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none transition-all resize-none";
 const labelCls = "block text-[11px] font-bold text-slate-500 mb-1";
+
+function FormErrorAlert({ errors }: { errors: Record<string, string> }) {
+  const errorList = Object.entries(errors).filter(([key]) => key !== "submit");
+  const submitError = errors.submit;
+  
+  if (errorList.length === 0 && !submitError) return null;
+  
+  return (
+    <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex gap-3 text-red-800">
+      <Info className="w-5.5 h-5.5 text-red-500 flex-shrink-0 mt-0.5" />
+      <div>
+        <h4 className="text-sm font-extrabold text-red-900">
+          Formularz zawiera błędy walidacji:
+        </h4>
+        <ul className="list-disc list-inside text-xs mt-1.5 space-y-1 font-medium">
+          {submitError && <li className="text-red-700 font-bold">{submitError}</li>}
+          {errorList.map(([key, value]) => (
+            <li key={key}>{value}</li>
+          ))}
+        </ul>
+      </div>
+    </div>
+  );
+}
 
 function SectionHeader({ icon: Icon, title, color }: { icon: any; title: string; color: string }) {
   return (
@@ -146,6 +175,7 @@ export function KonsultacjaForm() {
   const [consentContact, setConsentContact] = useState(false);
   const [createAccount, setCreateAccount] = useState(false);
   const [accountPassword, setAccountPassword] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   // Scheduling & Specialization
   const [appointmentDate, setAppointmentDate] = useState("");
@@ -182,10 +212,76 @@ export function KonsultacjaForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!consentTruth || !consentTerms) return alert("Proszę zaakceptować wymagane zgody.");
+    
+    // Clear previous errors
+    const newErrors: Record<string, string> = {};
+    
+    // Validate fullName (first and last name)
+    const nameParts = fullName.trim().split(/\s+/);
+    if (!fullName.trim()) {
+      newErrors.fullName = "Imię i nazwisko są wymagane.";
+    } else if (nameParts.length < 2) {
+      newErrors.fullName = "Imię i nazwisko musi zawierać co najmniej dwa wyrazy.";
+    }
+    
+    // Validate PESEL
+    if (!pesel) {
+      newErrors.pesel = "PESEL jest wymagany.";
+    } else {
+      const peselVal = validatePESEL(pesel);
+      if (!peselVal.valid) {
+        newErrors.pesel = peselVal.errors[0] || "Nieprawidłowy numer PESEL.";
+      }
+    }
+    
+    // Validate Phone (at least 9 digits)
+    const cleanPhone = phone.replace(/\s+/g, "");
+    if (!cleanPhone) {
+      newErrors.phone = "Numer telefonu jest wymagany.";
+    } else if (!/^\+?[0-9]{9,15}$/.test(cleanPhone)) {
+      newErrors.phone = "Numer telefonu musi zawierać od 9 do 15 cyfr.";
+    }
+    
+    // Validate Email
+    if (!email) {
+      newErrors.email = "Adres e-mail jest wymagany.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Adres e-mail jest nieprawidłowy.";
+    }
+    
+    // Validate appointment date/time
+    if (!appointmentDate) {
+      newErrors.appointmentDate = "Data wizyty jest wymagana.";
+    }
+    if (slotsData?.availableSlots?.length > 0 && !appointmentTime) {
+      newErrors.appointmentTime = "Godzina wizyty jest wymagana.";
+    }
+    
+    // Validate consents
+    if (!consentTruth) {
+      newErrors.consentTruth = "Musisz oświadczyć zgodność danych z prawdą.";
+    }
+    if (!consentTerms) {
+      newErrors.consentTerms = "Musisz zaakceptować regulamin i politykę prywatności.";
+    }
+    
+    // Validate password if creating account
+    if (createAccount && (!accountPassword || accountPassword.length < 6)) {
+      newErrors.accountPassword = "Hasło musi mieć co najmniej 6 znaków.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      // Scroll to the top of the form
+      const formEl = e.currentTarget as HTMLFormElement;
+      formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
     setLoading(true);
+    setErrors({});
     try {
-      const [firstName, ...lastParts] = fullName.trim().split(" ");
+      const [firstName, ...lastParts] = fullName.trim().split(/\s+/);
       const lastName = lastParts.join(" ");
       const res = await fetch(`${API_URL}/api/patient/submissions`, {
         method: "POST",
@@ -212,6 +308,12 @@ export function KonsultacjaForm() {
         }),
       });
       const data = await res.json();
+      if (!res.ok || data.success === false) {
+        setErrors({ submit: data.message || "Wystąpił błąd podczas wysyłania zgłoszenia." });
+        const formEl = e.currentTarget as HTMLFormElement;
+        formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
       if (data?.data?.payment?.paymentUrl) {
         window.location.href = data.data.payment.paymentUrl;
       } else if (data?.data?.submissionId) {
@@ -219,6 +321,9 @@ export function KonsultacjaForm() {
       }
     } catch (err) {
       console.error(err);
+      setErrors({ submit: "Błąd połączenia z serwerem. Spróbuj ponownie później." });
+      const formEl = e.currentTarget as HTMLFormElement;
+      formEl.scrollIntoView({ behavior: "smooth", block: "start" });
     } finally {
       setLoading(false);
     }
@@ -226,16 +331,82 @@ export function KonsultacjaForm() {
 
   return (
     <form onSubmit={handleSubmit}>
+      <FormErrorAlert errors={errors} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Col 1: Dane pacjenta */}
         <div>
           <SectionHeader icon={User} title="Dane pacjenta" color="bg-blue-500" />
           <div className="space-y-3">
-            <div><label className={labelCls}>Imię i nazwisko</label><input className={inputCls} placeholder="Wpisz imię i nazwisko" value={fullName} onChange={e => setFullName(e.target.value)} required /></div>
-            <div><label className={labelCls}>PESEL</label><input className={inputCls} placeholder="Wpisz PESEL" value={pesel} onChange={e => setPesel(e.target.value)} /></div>
-            <div><label className={labelCls}>Data urodzenia</label><input type="date" className={inputCls} value={birthDate} onChange={e => setBirthDate(e.target.value)} /></div>
-            <div><label className={labelCls}>Telefon kontaktowy</label><input className={inputCls} placeholder="Wpisz numer telefonu" value={phone} onChange={e => setPhone(e.target.value)} /></div>
-            <div><label className={labelCls}>Adres e-mail</label><input type="email" className={inputCls} placeholder="Wpisz adres e-mail" value={email} onChange={e => setEmail(e.target.value)} required /></div>
+            <div>
+              <label className={labelCls}>Imię i nazwisko <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.fullName ? inputErrorCls : inputCls} 
+                placeholder="Wpisz imię i nazwisko" 
+                value={fullName} 
+                onChange={e => {
+                  setFullName(e.target.value);
+                  if (errors.fullName) setErrors(prev => { const n = {...prev}; delete n.fullName; return n; });
+                }} 
+              />
+              {errors.fullName && <p className="text-xs text-red-500 font-medium mt-1">{errors.fullName}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>PESEL <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.pesel ? inputErrorCls : inputCls} 
+                placeholder="Wpisz PESEL" 
+                value={pesel} 
+                onChange={e => {
+                  setPesel(e.target.value);
+                  if (errors.pesel) setErrors(prev => { const n = {...prev}; delete n.pesel; return n; });
+                }} 
+              />
+              {errors.pesel && <p className="text-xs text-red-500 font-medium mt-1">{errors.pesel}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>Data urodzenia</label>
+              <input 
+                type="date" 
+                className={errors.birthDate ? inputErrorCls : inputCls} 
+                value={birthDate} 
+                onChange={e => {
+                  setBirthDate(e.target.value);
+                  if (errors.birthDate) setErrors(prev => { const n = {...prev}; delete n.birthDate; return n; });
+                }} 
+              />
+              {errors.birthDate && <p className="text-xs text-red-500 font-medium mt-1">{errors.birthDate}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>Telefon kontaktowy <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.phone ? inputErrorCls : inputCls} 
+                placeholder="Wpisz numer telefonu" 
+                value={phone} 
+                onChange={e => {
+                  setPhone(e.target.value);
+                  if (errors.phone) setErrors(prev => { const n = {...prev}; delete n.phone; return n; });
+                }} 
+              />
+              {errors.phone && <p className="text-xs text-red-500 font-medium mt-1">{errors.phone}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>Adres e-mail <span className="text-red-500">*</span></label>
+              <input 
+                type="email" 
+                className={errors.email ? inputErrorCls : inputCls} 
+                placeholder="Wpisz adres e-mail" 
+                value={email} 
+                onChange={e => {
+                  setEmail(e.target.value);
+                  if (errors.email) setErrors(prev => { const n = {...prev}; delete n.email; return n; });
+                }} 
+              />
+              {errors.email && <p className="text-xs text-red-500 font-medium mt-1">{errors.email}</p>}
+            </div>
           </div>
         </div>
 
@@ -273,7 +444,20 @@ export function KonsultacjaForm() {
                 <option value="Endokrynolog">Endokrynolog</option>
               </select>
             </div>
-            <div><label className={labelCls}>Data wizyty</label><input type="date" className={inputCls} min={new Date().toISOString().split("T")[0]} value={appointmentDate} onChange={e => setAppointmentDate(e.target.value)} required /></div>
+            <div>
+              <label className={labelCls}>Data wizyty <span className="text-red-500">*</span></label>
+              <input 
+                type="date" 
+                className={errors.appointmentDate ? inputErrorCls : inputCls} 
+                min={new Date().toISOString().split("T")[0]} 
+                value={appointmentDate} 
+                onChange={e => {
+                  setAppointmentDate(e.target.value);
+                  if (errors.appointmentDate) setErrors(prev => { const n = {...prev}; delete n.appointmentDate; return n; });
+                }} 
+              />
+              {errors.appointmentDate && <p className="text-xs text-red-500 font-medium mt-1">{errors.appointmentDate}</p>}
+            </div>
             
             {appointmentDate && (
               <div>
@@ -290,11 +474,19 @@ export function KonsultacjaForm() {
                     
                     {slotsData.availableSlots.length > 0 ? (
                       <div>
-                        <label className={labelCls}>Wybierz godzinę</label>
-                        <select className={`${inputCls} bg-white`} value={appointmentTime} onChange={e => setAppointmentTime(e.target.value)} required>
+                        <label className={labelCls}>Wybierz godzinę <span className="text-red-500">*</span></label>
+                        <select 
+                          className={`${errors.appointmentTime ? inputErrorCls : inputCls} bg-white`} 
+                          value={appointmentTime} 
+                          onChange={e => {
+                            setAppointmentTime(e.target.value);
+                            if (errors.appointmentTime) setErrors(prev => { const n = {...prev}; delete n.appointmentTime; return n; });
+                          }} 
+                        >
                           <option value="">Wybierz godzinę</option>
                           {slotsData.availableSlots.map((s: string) => <option key={s} value={s}>{s}</option>)}
                         </select>
+                        {errors.appointmentTime && <p className="text-xs text-red-500 font-medium mt-1">{errors.appointmentTime}</p>}
                       </div>
                     ) : slotsData.doctorName && <div className="text-xs text-orange-600 font-medium">Brak wolnych godzin u tego lekarza.</div>}
                   </div>
@@ -324,8 +516,18 @@ export function KonsultacjaForm() {
         <div>
           <SectionHeader icon={ShieldCheck} title="Zgody" color="bg-blue-500" />
           <div className="space-y-3">
-            <ConsentCheckbox id="k_c1" checked={consentTruth} onChange={setConsentTruth}>Oświadczam, że podane informacje są zgodne z prawdą</ConsentCheckbox>
-            <ConsentCheckbox id="k_c2" checked={consentTerms} onChange={setConsentTerms}>Akceptuję <Link href="/regulamin" className="text-blue-600 underline">regulamin i politykę prywatności</Link></ConsentCheckbox>
+            <ConsentCheckbox id="k_c1" checked={consentTruth} onChange={v => {
+              setConsentTruth(v);
+              if (errors.consentTruth) setErrors(prev => { const n = {...prev}; delete n.consentTruth; return n; });
+            }}>Oświadczam, że podane informacje są zgodne z prawdą <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentTruth && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentTruth}</p>}
+
+            <ConsentCheckbox id="k_c2" checked={consentTerms} onChange={v => {
+              setConsentTerms(v);
+              if (errors.consentTerms) setErrors(prev => { const n = {...prev}; delete n.consentTerms; return n; });
+            }}>Akceptuję <Link href="/regulamin" className="text-blue-600 underline">regulamin i politykę prywatności</Link> <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentTerms && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentTerms}</p>}
+
             <ConsentCheckbox id="k_c3" checked={consentContact} onChange={setConsentContact}>Wyrażam zgodę na kontakt telefoniczny lub online</ConsentCheckbox>
           </div>
         </div>
@@ -340,7 +542,17 @@ export function KonsultacjaForm() {
           {createAccount && (
             <div className="mt-3 w-full md:w-1/3">
               <label className={labelCls}>Ustaw hasło do konta <span className="text-red-500">*</span></label>
-              <input type="password" minLength={6} className={inputCls} placeholder="Minimum 6 znaków" value={accountPassword} onChange={e => setAccountPassword(e.target.value)} required />
+              <input 
+                type="password" 
+                className={errors.accountPassword ? inputErrorCls : inputCls} 
+                placeholder="Minimum 6 znaków" 
+                value={accountPassword} 
+                onChange={e => {
+                  setAccountPassword(e.target.value);
+                  if (errors.accountPassword) setErrors(prev => { const n = {...prev}; delete n.accountPassword; return n; });
+                }} 
+              />
+              {errors.accountPassword && <p className="text-xs text-red-500 font-medium mt-1">{errors.accountPassword}</p>}
             </div>
           )}
         </div>
@@ -366,6 +578,7 @@ export function EReceptaForm() {
   const [createAccount, setCreateAccount] = useState(false);
   const [accountPassword, setAccountPassword] = useState("");
   const [specialization, setSpecialization] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone });
   const searchParams = useSearchParams();
@@ -402,6 +615,7 @@ export function EReceptaForm() {
     const name = prod.suggestion || prod.nazwa || prod.nazwaProduktuLeczniczego || 'Lek';
     setSelectedMeds(prev => [...prev, { medicineId: id, name }]);
     setMedQ(""); setMedResults([]);
+    if (errors.selectedMeds) setErrors(prev => { const n = {...prev}; delete n.selectedMeds; return n; });
   };
 
   const removeMed = (id: string) => {
@@ -410,10 +624,76 @@ export function EReceptaForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!consentTruth || !consentTerms) return alert("Proszę zaakceptować wymagane zgody.");
+    
+    // Clear previous errors
+    const newErrors: Record<string, string> = {};
+    
+    // Validate fullName (first and last name)
+    const nameParts = fullName.trim().split(/\s+/);
+    if (!fullName.trim()) {
+      newErrors.fullName = "Imię i nazwisko są wymagane.";
+    } else if (nameParts.length < 2) {
+      newErrors.fullName = "Imię i nazwisko musi zawierać co najmniej dwa wyrazy.";
+    }
+    
+    // Validate PESEL
+    if (!pesel) {
+      newErrors.pesel = "PESEL jest wymagany.";
+    } else {
+      const peselVal = validatePESEL(pesel);
+      if (!peselVal.valid) {
+        newErrors.pesel = peselVal.errors[0] || "Nieprawidłowy numer PESEL.";
+      }
+    }
+    
+    // Validate Phone (at least 9 digits)
+    const cleanPhone = phone.replace(/\s+/g, "");
+    if (!cleanPhone) {
+      newErrors.phone = "Numer telefonu jest wymagany.";
+    } else if (!/^\+?[0-9]{9,15}$/.test(cleanPhone)) {
+      newErrors.phone = "Numer telefonu musi zawierać od 9 do 15 cyfr.";
+    }
+    
+    // Validate Email
+    if (!email) {
+      newErrors.email = "Adres e-mail jest wymagany.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Adres e-mail jest nieprawidłowy.";
+    }
+    
+    // Validate selectedMeds
+    if (selectedMeds.length === 0) {
+      newErrors.selectedMeds = "Musisz wyszukać i wybrać co najmniej jeden lek.";
+    }
+    
+    // Validate consents
+    if (!consentTruth) {
+      newErrors.consentTruth = "Musisz oświadczyć zgodność danych z prawdą.";
+    }
+    if (!consentTerms) {
+      newErrors.consentTerms = "Musisz zaakceptować regulamin i politykę prywatności.";
+    }
+    if (!consentDoctor) {
+      newErrors.consentDoctor = "Musisz potwierdzić zrozumienie, że o wystawieniu recepty decyduje lekarz.";
+    }
+    
+    // Validate password if creating account
+    if (createAccount && (!accountPassword || accountPassword.length < 6)) {
+      newErrors.accountPassword = "Hasło musi mieć co najmniej 6 znaków.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      // Scroll to the top of the form
+      const formEl = e.currentTarget as HTMLFormElement;
+      formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
     setLoading(true);
+    setErrors({});
     try {
-      const [firstName, ...lastParts] = fullName.trim().split(" ");
+      const [firstName, ...lastParts] = fullName.trim().split(/\s+/);
       const lastName = lastParts.join(" ");
       const res = await fetch(`${API_URL}/api/patient/submissions`, {
         method: "POST",
@@ -439,23 +719,88 @@ export function EReceptaForm() {
         }),
       });
       const data = await res.json();
+      if (!res.ok || data.success === false) {
+        setErrors({ submit: data.message || "Wystąpił błąd podczas wysyłania zgłoszenia." });
+        const formEl = e.currentTarget as HTMLFormElement;
+        formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
       if (data?.data?.payment?.paymentUrl) window.location.href = data.data.payment.paymentUrl;
       else if (data?.data?.submissionId) window.location.href = `/payment/success?submissionId=${data.data.submissionId}`;
-    } catch (err) { console.error(err); }
+    } catch (err) {
+      console.error(err);
+      setErrors({ submit: "Błąd połączenia z serwerem. Spróbuj ponownie później." });
+      const formEl = e.currentTarget as HTMLFormElement;
+      formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     finally { setLoading(false); }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <FormErrorAlert errors={errors} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Col 1: Dane pacjenta */}
         <div>
           <SectionHeader icon={User} title="Dane pacjenta" color="bg-[#147A60]" />
           <div className="space-y-3">
-            <div><label className={labelCls}>Imię i nazwisko</label><input className={inputCls} placeholder="Wpisz imię i nazwisko" value={fullName} onChange={e => setFullName(e.target.value)} required /></div>
-            <div><label className={labelCls}>PESEL</label><input className={inputCls} placeholder="Wpisz PESEL" value={pesel} onChange={e => setPesel(e.target.value)} /></div>
-            <div><label className={labelCls}>Telefon</label><input className={inputCls} placeholder="Wpisz numer telefonu" value={phone} onChange={e => setPhone(e.target.value)} /></div>
-            <div><label className={labelCls}>E-mail</label><input type="email" className={inputCls} placeholder="Wpisz adres e-mail" value={email} onChange={e => setEmail(e.target.value)} required /></div>
+            <div>
+              <label className={labelCls}>Imię i nazwisko <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.fullName ? inputErrorCls : inputCls} 
+                placeholder="Wpisz imię i nazwisko" 
+                value={fullName} 
+                onChange={e => {
+                  setFullName(e.target.value);
+                  if (errors.fullName) setErrors(prev => { const n = {...prev}; delete n.fullName; return n; });
+                }} 
+              />
+              {errors.fullName && <p className="text-xs text-red-500 font-medium mt-1">{errors.fullName}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>PESEL <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.pesel ? inputErrorCls : inputCls} 
+                placeholder="Wpisz PESEL" 
+                value={pesel} 
+                onChange={e => {
+                  setPesel(e.target.value);
+                  if (errors.pesel) setErrors(prev => { const n = {...prev}; delete n.pesel; return n; });
+                }} 
+              />
+              {errors.pesel && <p className="text-xs text-red-500 font-medium mt-1">{errors.pesel}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>Telefon <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.phone ? inputErrorCls : inputCls} 
+                placeholder="Wpisz numer telefonu" 
+                value={phone} 
+                onChange={e => {
+                  setPhone(e.target.value);
+                  if (errors.phone) setErrors(prev => { const n = {...prev}; delete n.phone; return n; });
+                }} 
+              />
+              {errors.phone && <p className="text-xs text-red-500 font-medium mt-1">{errors.phone}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>E-mail <span className="text-red-500">*</span></label>
+              <input 
+                type="email" 
+                className={errors.email ? inputErrorCls : inputCls} 
+                placeholder="Wpisz adres e-mail" 
+                value={email} 
+                onChange={e => {
+                  setEmail(e.target.value);
+                  if (errors.email) setErrors(prev => { const n = {...prev}; delete n.email; return n; });
+                }} 
+              />
+              {errors.email && <p className="text-xs text-red-500 font-medium mt-1">{errors.email}</p>}
+            </div>
+            
             <div className="pt-2 border-t border-slate-100">
               <label className={labelCls}>Wybierz specjalizację lekarza (opcjonalnie)</label>
               <select className={`${inputCls} bg-white`} value={specialization} onChange={e => setSpecialization(e.target.value)}>
@@ -474,7 +819,7 @@ export function EReceptaForm() {
         <div className="md:col-span-2">
           <SectionHeader icon={Pill} title="Informacje do recepty" color="bg-[#147A60]" />
           
-          <div className="bg-[#EAF3F0]/50 border border-[#147A60]/20 rounded-xl p-4 relative mb-4">
+          <div className={`${errors.selectedMeds ? "bg-red-50/30 border border-red-200" : "bg-[#EAF3F0]/50 border border-[#147A60]/20"} rounded-xl p-4 relative mb-4`}>
             <label className={labelCls}>Wyszukaj lek po nazwie <span className="text-red-500">*</span></label>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -491,6 +836,8 @@ export function EReceptaForm() {
                 </div>
               )}
             </div>
+            
+            {errors.selectedMeds && <p className="text-xs text-red-500 font-medium mt-2">{errors.selectedMeds}</p>}
             
             {selectedMeds.length > 0 && (
               <div className="mt-4 space-y-3">
@@ -516,9 +863,23 @@ export function EReceptaForm() {
         <div>
           <SectionHeader icon={ShieldCheck} title="Zgody" color="bg-[#147A60]" />
           <div className="space-y-3">
-            <ConsentCheckbox id="r_c1" checked={consentTruth} onChange={setConsentTruth}>Oświadczam, że podane informacje są zgodne z prawdą</ConsentCheckbox>
-            <ConsentCheckbox id="r_c2" checked={consentTerms} onChange={setConsentTerms}>Akceptuję <Link href="/regulamin" className="text-[#147A60] underline">regulamin i politykę prywatności</Link></ConsentCheckbox>
-            <ConsentCheckbox id="r_c3" checked={consentDoctor} onChange={setConsentDoctor}>Rozumiem, że decyzję o wystawieniu recepty podejmuje lekarz</ConsentCheckbox>
+            <ConsentCheckbox id="r_c1" checked={consentTruth} onChange={v => {
+              setConsentTruth(v);
+              if (errors.consentTruth) setErrors(prev => { const n = {...prev}; delete n.consentTruth; return n; });
+            }}>Oświadczam, że podane informacje są zgodne z prawdą <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentTruth && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentTruth}</p>}
+
+            <ConsentCheckbox id="r_c2" checked={consentTerms} onChange={v => {
+              setConsentTerms(v);
+              if (errors.consentTerms) setErrors(prev => { const n = {...prev}; delete n.consentTerms; return n; });
+            }}>Akceptuję <Link href="/regulamin" className="text-[#147A60] underline">regulamin i politykę prywatności</Link> <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentTerms && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentTerms}</p>}
+
+            <ConsentCheckbox id="r_c3" checked={consentDoctor} onChange={v => {
+              setConsentDoctor(v);
+              if (errors.consentDoctor) setErrors(prev => { const n = {...prev}; delete n.consentDoctor; return n; });
+            }}>Rozumiem, że decyzję o wystawieniu recepty podejmuje lekarz <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentDoctor && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentDoctor}</p>}
           </div>
         </div>
       </div>
@@ -531,7 +892,17 @@ export function EReceptaForm() {
           {createAccount && (
             <div className="mt-3 w-full md:w-1/3">
               <label className={labelCls}>Ustaw hasło do konta <span className="text-red-500">*</span></label>
-              <input type="password" minLength={6} className={inputCls} placeholder="Minimum 6 znaków" value={accountPassword} onChange={e => setAccountPassword(e.target.value)} required />
+              <input 
+                type="password" 
+                className={errors.accountPassword ? inputErrorCls : inputCls} 
+                placeholder="Minimum 6 znaków" 
+                value={accountPassword} 
+                onChange={e => {
+                  setAccountPassword(e.target.value);
+                  if (errors.accountPassword) setErrors(prev => { const n = {...prev}; delete n.accountPassword; return n; });
+                }} 
+              />
+              {errors.accountPassword && <p className="text-xs text-red-500 font-medium mt-1">{errors.accountPassword}</p>}
             </div>
           )}
         </div>
@@ -565,6 +936,7 @@ export function L4Form() {
   const [consentDoctor, setConsentDoctor] = useState(false);
   const [createAccount, setCreateAccount] = useState(false);
   const [accountPassword, setAccountPassword] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
   const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone, setPesel });
   const searchParams = useSearchParams();
@@ -573,10 +945,97 @@ export function L4Form() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!consentTruth || !consentTerms) return alert("Proszę zaakceptować wymagane zgody.");
+    
+    // Clear previous errors
+    const newErrors: Record<string, string> = {};
+    
+    // Validate fullName (first and last name)
+    const nameParts = fullName.trim().split(/\s+/);
+    if (!fullName.trim()) {
+      newErrors.fullName = "Imię i nazwisko są wymagane.";
+    } else if (nameParts.length < 2) {
+      newErrors.fullName = "Imię i nazwisko musi zawierać co najmniej dwa wyrazy.";
+    }
+    
+    // Validate PESEL
+    if (!pesel) {
+      newErrors.pesel = "PESEL jest wymagany.";
+    } else {
+      const peselVal = validatePESEL(pesel);
+      if (!peselVal.valid) {
+        newErrors.pesel = peselVal.errors[0] || "Nieprawidłowy numer PESEL.";
+      }
+    }
+    
+    // Validate Address, Postal Code, City
+    if (!address.trim()) {
+      newErrors.address = "Adres zamieszkania jest wymagany.";
+    }
+    if (!postalCode.trim()) {
+      newErrors.postalCode = "Kod pocztowy jest wymagany.";
+    } else if (!/^\d{2}-\d{3}$/.test(postalCode.trim())) {
+      newErrors.postalCode = "Kod pocztowy musi mieć format XX-XXX.";
+    }
+    if (!city.trim()) {
+      newErrors.city = "Miasto jest wymagane.";
+    }
+    
+    // Validate Phone (at least 9 digits)
+    const cleanPhone = phone.replace(/\s+/g, "");
+    if (!cleanPhone) {
+      newErrors.phone = "Numer telefonu jest wymagany.";
+    } else if (!/^\+?[0-9]{9,15}$/.test(cleanPhone)) {
+      newErrors.phone = "Numer telefonu musi zawierać od 9 do 15 cyfr.";
+    }
+    
+    // Validate Email
+    if (!email) {
+      newErrors.email = "Adres e-mail jest wymagany.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Adres e-mail jest nieprawidłowy.";
+    }
+    
+    // Validate Symptoms
+    if (!symptoms.trim()) {
+      newErrors.symptoms = "Opis objawów jest wymagany.";
+    }
+    
+    // Validate Days Needed
+    const days = parseInt(daysNeeded);
+    if (!daysNeeded) {
+      newErrors.daysNeeded = "Liczba dni zwolnienia jest wymagana.";
+    } else if (isNaN(days) || days < 1 || days > 182) {
+      newErrors.daysNeeded = "Liczba dni musi być wartością od 1 do 182.";
+    }
+    
+    // Validate consents
+    if (!consentTruth) {
+      newErrors.consentTruth = "Musisz oświadczyć zgodność danych z prawdą.";
+    }
+    if (!consentTerms) {
+      newErrors.consentTerms = "Musisz zaakceptować regulamin i politykę prywatności.";
+    }
+    if (!consentDoctor) {
+      newErrors.consentDoctor = "Musisz potwierdzić zrozumienie, że o wystawieniu L4 decyduje lekarz.";
+    }
+    
+    // Validate password if creating account
+    if (createAccount && (!accountPassword || accountPassword.length < 6)) {
+      newErrors.accountPassword = "Hasło musi mieć co najmniej 6 znaków.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      // Scroll to the top of the form
+      const formEl = e.currentTarget as HTMLFormElement;
+      formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
     setLoading(true);
+    setErrors({});
     try {
-      const [firstName, ...lastParts] = fullName.trim().split(" ");
+      const [firstName, ...lastParts] = fullName.trim().split(/\s+/);
       const lastName = lastParts.join(" ");
       const res = await fetch(`${API_URL}/api/patient/medical-leave`, {
         method: "POST",
@@ -596,28 +1055,132 @@ export function L4Form() {
         }),
       });
       const data = await res.json();
+      if (!res.ok || data.success === false) {
+        setErrors({ submit: data.message || "Wystąpił błąd podczas wysyłania zgłoszenia." });
+        const formEl = e.currentTarget as HTMLFormElement;
+        formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
       if (data?.data?.payment?.paymentUrl) window.location.href = data.data.payment.paymentUrl;
       else if (data?.data?.submissionId) window.location.href = `/payment/success?submissionId=${data.data.submissionId}`;
-    } catch (err) { console.error(err); }
+    } catch (err) {
+      console.error(err);
+      setErrors({ submit: "Błąd połączenia z serwerem. Spróbuj ponownie później." });
+      const formEl = e.currentTarget as HTMLFormElement;
+      formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     finally { setLoading(false); }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <FormErrorAlert errors={errors} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
         {/* Col 1: Dane pacjenta */}
         <div>
           <SectionHeader icon={User} title="Dane pacjenta" color="bg-indigo-500" />
           <div className="space-y-3">
-            <div><label className={labelCls}>Imię i nazwisko</label><input className={inputCls} placeholder="Wpisz imię i nazwisko" value={fullName} onChange={e => setFullName(e.target.value)} required /></div>
-            <div><label className={labelCls}>PESEL</label><input className={inputCls} placeholder="Wpisz PESEL" value={pesel} onChange={e => setPesel(e.target.value)} /></div>
-            <div><label className={labelCls}>Adres zamieszkania</label><input className={inputCls} placeholder="Ulica i numer" value={address} onChange={e => setAddress(e.target.value)} required /></div>
-            <div className="grid grid-cols-2 gap-3">
-              <div><label className={labelCls}>Kod pocztowy</label><input className={inputCls} placeholder="00-000" value={postalCode} onChange={e => setPostalCode(e.target.value)} required /></div>
-              <div><label className={labelCls}>Miasto</label><input className={inputCls} placeholder="Miejscowość" value={city} onChange={e => setCity(e.target.value)} required /></div>
+            <div>
+              <label className={labelCls}>Imię i nazwisko <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.fullName ? inputErrorCls : inputCls} 
+                placeholder="Wpisz imię i nazwisko" 
+                value={fullName} 
+                onChange={e => {
+                  setFullName(e.target.value);
+                  if (errors.fullName) setErrors(prev => { const n = {...prev}; delete n.fullName; return n; });
+                }} 
+              />
+              {errors.fullName && <p className="text-xs text-red-500 font-medium mt-1">{errors.fullName}</p>}
             </div>
-            <div><label className={labelCls}>Telefon</label><input className={inputCls} placeholder="Numer telefonu" value={phone} onChange={e => setPhone(e.target.value)} /></div>
-            <div><label className={labelCls}>E-mail</label><input type="email" className={inputCls} placeholder="Adres e-mail" value={email} onChange={e => setEmail(e.target.value)} required /></div>
+            
+            <div>
+              <label className={labelCls}>PESEL <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.pesel ? inputErrorCls : inputCls} 
+                placeholder="Wpisz PESEL" 
+                value={pesel} 
+                onChange={e => {
+                  setPesel(e.target.value);
+                  if (errors.pesel) setErrors(prev => { const n = {...prev}; delete n.pesel; return n; });
+                }} 
+              />
+              {errors.pesel && <p className="text-xs text-red-500 font-medium mt-1">{errors.pesel}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>Adres zamieszkania <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.address ? inputErrorCls : inputCls} 
+                placeholder="Ulica i numer" 
+                value={address} 
+                onChange={e => {
+                  setAddress(e.target.value);
+                  if (errors.address) setErrors(prev => { const n = {...prev}; delete n.address; return n; });
+                }} 
+              />
+              {errors.address && <p className="text-xs text-red-500 font-medium mt-1">{errors.address}</p>}
+            </div>
+            
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className={labelCls}>Kod pocztowy <span className="text-red-500">*</span></label>
+                <input 
+                  className={errors.postalCode ? inputErrorCls : inputCls} 
+                  placeholder="00-000" 
+                  value={postalCode} 
+                  onChange={e => {
+                    setPostalCode(e.target.value);
+                    if (errors.postalCode) setErrors(prev => { const n = {...prev}; delete n.postalCode; return n; });
+                  }} 
+                />
+                {errors.postalCode && <p className="text-xs text-red-500 font-medium mt-1">{errors.postalCode}</p>}
+              </div>
+              
+              <div>
+                <label className={labelCls}>Miasto <span className="text-red-500">*</span></label>
+                <input 
+                  className={errors.city ? inputErrorCls : inputCls} 
+                  placeholder="Miejscowość" 
+                  value={city} 
+                  onChange={e => {
+                    setCity(e.target.value);
+                    if (errors.city) setErrors(prev => { const n = {...prev}; delete n.city; return n; });
+                  }} 
+                />
+                {errors.city && <p className="text-xs text-red-500 font-medium mt-1">{errors.city}</p>}
+              </div>
+            </div>
+            
+            <div>
+              <label className={labelCls}>Telefon <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.phone ? inputErrorCls : inputCls} 
+                placeholder="Numer telefonu" 
+                value={phone} 
+                onChange={e => {
+                  setPhone(e.target.value);
+                  if (errors.phone) setErrors(prev => { const n = {...prev}; delete n.phone; return n; });
+                }} 
+              />
+              {errors.phone && <p className="text-xs text-red-500 font-medium mt-1">{errors.phone}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>E-mail <span className="text-red-500">*</span></label>
+              <input 
+                type="email" 
+                className={errors.email ? inputErrorCls : inputCls} 
+                placeholder="Adres e-mail" 
+                value={email} 
+                onChange={e => {
+                  setEmail(e.target.value);
+                  if (errors.email) setErrors(prev => { const n = {...prev}; delete n.email; return n; });
+                }} 
+              />
+              {errors.email && <p className="text-xs text-red-500 font-medium mt-1">{errors.email}</p>}
+            </div>
+            
             <div className="pt-2 border-t border-slate-100">
               <label className={labelCls}>Wybierz specjalizację lekarza (opcjonalnie)</label>
               <select className={`${inputCls} bg-white`} value={specialization} onChange={e => setSpecialization(e.target.value)}>
@@ -645,13 +1208,44 @@ export function L4Form() {
         <div>
           <SectionHeader icon={Heart} title="Informacje zdrowotne" color="bg-purple-600" />
           <div className="space-y-3">
-            <div><label className={labelCls}>Jakie masz objawy?</label><textarea className={textareaCls} rows={3} placeholder="Opisz swoje objawy" value={symptoms} onChange={e => setSymptoms(e.target.value)} /></div>
+            <div>
+              <label className={labelCls}>Jakie masz objawy? <span className="text-red-500">*</span></label>
+              <textarea 
+                className={errors.symptoms ? textareaErrorCls : textareaCls} 
+                rows={3} 
+                placeholder="Opisz swoje objawy" 
+                value={symptoms} 
+                onChange={e => {
+                  setSymptoms(e.target.value);
+                  if (errors.symptoms) setErrors(prev => { const n = {...prev}; delete n.symptoms; return n; });
+                }} 
+              />
+              {errors.symptoms && <p className="text-xs text-red-500 font-medium mt-1">{errors.symptoms}</p>}
+            </div>
+            
             <div><label className={labelCls}>Od kiedy występują objawy?</label><input type="date" className={inputCls} value={symptomsFrom} onChange={e => setSymptomsFrom(e.target.value)} /></div>
+            
             <div>
               <label className={labelCls}>Czy jesteś obecnie zdolny/a do pracy?</label>
               <RadioGroup name="l4_work" options={["Nie", "Tak"]} value={ableToWork} onChange={setAbleToWork} />
             </div>
-            <div><label className={labelCls}>Ile dni potrzebujesz zwolnienia?</label><input type="number" min="1" max="182" className={inputCls} placeholder="Np. 7" value={daysNeeded} onChange={e => setDaysNeeded(e.target.value)} /></div>
+            
+            <div>
+              <label className={labelCls}>Ile dni potrzebujesz zwolnienia? <span className="text-red-500">*</span></label>
+              <input 
+                type="number" 
+                min="1" 
+                max="182" 
+                className={errors.daysNeeded ? inputErrorCls : inputCls} 
+                placeholder="Np. 7" 
+                value={daysNeeded} 
+                onChange={e => {
+                  setDaysNeeded(e.target.value);
+                  if (errors.daysNeeded) setErrors(prev => { const n = {...prev}; delete n.daysNeeded; return n; });
+                }} 
+              />
+              {errors.daysNeeded && <p className="text-xs text-red-500 font-medium mt-1">{errors.daysNeeded}</p>}
+            </div>
           </div>
         </div>
 
@@ -659,9 +1253,23 @@ export function L4Form() {
         <div>
           <SectionHeader icon={ShieldCheck} title="Zgody" color="bg-purple-600" />
           <div className="space-y-3">
-            <ConsentCheckbox id="l4_c1" checked={consentTruth} onChange={setConsentTruth}>Oświadczam, że podane informacje są zgodne z prawdą</ConsentCheckbox>
-            <ConsentCheckbox id="l4_c2" checked={consentTerms} onChange={setConsentTerms}>Akceptuję <Link href="/regulamin" className="text-purple-600 underline">regulamin i politykę prywatności</Link></ConsentCheckbox>
-            <ConsentCheckbox id="l4_c3" checked={consentDoctor} onChange={setConsentDoctor}>Rozumiem, że decyzję o wystawieniu L4 podejmuje lekarz</ConsentCheckbox>
+            <ConsentCheckbox id="l4_c1" checked={consentTruth} onChange={v => {
+              setConsentTruth(v);
+              if (errors.consentTruth) setErrors(prev => { const n = {...prev}; delete n.consentTruth; return n; });
+            }}>Oświadczam, że podane informacje są zgodne z prawdą <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentTruth && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentTruth}</p>}
+
+            <ConsentCheckbox id="l4_c2" checked={consentTerms} onChange={v => {
+              setConsentTerms(v);
+              if (errors.consentTerms) setErrors(prev => { const n = {...prev}; delete n.consentTerms; return n; });
+            }}>Akceptuję <Link href="/regulamin" className="text-purple-600 underline">regulamin i politykę prywatności</Link> <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentTerms && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentTerms}</p>}
+
+            <ConsentCheckbox id="l4_c3" checked={consentDoctor} onChange={v => {
+              setConsentDoctor(v);
+              if (errors.consentDoctor) setErrors(prev => { const n = {...prev}; delete n.consentDoctor; return n; });
+            }}>Rozumiem, że decyzję o wystawieniu L4 podejmuje lekarz <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentDoctor && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentDoctor}</p>}
           </div>
         </div>
       </div>
@@ -674,7 +1282,17 @@ export function L4Form() {
           {createAccount && (
             <div className="mt-3 w-full md:w-1/3">
               <label className={labelCls}>Ustaw hasło do konta <span className="text-red-500">*</span></label>
-              <input type="password" minLength={6} className={inputCls} placeholder="Minimum 6 znaków" value={accountPassword} onChange={e => setAccountPassword(e.target.value)} required />
+              <input 
+                type="password" 
+                className={errors.accountPassword ? inputErrorCls : inputCls} 
+                placeholder="Minimum 6 znaków" 
+                value={accountPassword} 
+                onChange={e => {
+                  setAccountPassword(e.target.value);
+                  if (errors.accountPassword) setErrors(prev => { const n = {...prev}; delete n.accountPassword; return n; });
+                }} 
+              />
+              {errors.accountPassword && <p className="text-xs text-red-500 font-medium mt-1">{errors.accountPassword}</p>}
             </div>
           )}
         </div>
@@ -704,8 +1322,9 @@ export function KontynuacjaForm() {
   const [createAccount, setCreateAccount] = useState(false);
   const [accountPassword, setAccountPassword] = useState("");
   const [specialization, setSpecialization] = useState("");
+  const [errors, setErrors] = useState<Record<string, string>>({});
 
-  const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone });
+  const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone, setPesel });
   const searchParams = useSearchParams();
   const serviceParam = searchParams?.get("service");
   const { amount, type } = getServicePriceAndType(serviceParam, "Kontynuacja leczenia");
@@ -740,6 +1359,7 @@ export function KontynuacjaForm() {
     const name = prod.suggestion || prod.nazwa || prod.nazwaProduktuLeczniczego || 'Lek';
     setSelectedMeds(prev => [...prev, { medicineId: id, name }]);
     setMedQ(""); setMedResults([]);
+    if (errors.selectedMeds) setErrors(prev => { const n = {...prev}; delete n.selectedMeds; return n; });
   };
 
   const removeMed = (id: string) => {
@@ -748,10 +1368,76 @@ export function KontynuacjaForm() {
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!consentTruth || !consentTerms) return alert("Proszę zaakceptować wymagane zgody.");
+    
+    // Clear previous errors
+    const newErrors: Record<string, string> = {};
+    
+    // Validate fullName (first and last name)
+    const nameParts = fullName.trim().split(/\s+/);
+    if (!fullName.trim()) {
+      newErrors.fullName = "Imię i nazwisko są wymagane.";
+    } else if (nameParts.length < 2) {
+      newErrors.fullName = "Imię i nazwisko musi zawierać co najmniej dwa wyrazy.";
+    }
+    
+    // Validate PESEL
+    if (!pesel) {
+      newErrors.pesel = "PESEL jest wymagany.";
+    } else {
+      const peselVal = validatePESEL(pesel);
+      if (!peselVal.valid) {
+        newErrors.pesel = peselVal.errors[0] || "Nieprawidłowy numer PESEL.";
+      }
+    }
+    
+    // Validate Phone (at least 9 digits)
+    const cleanPhone = phone.replace(/\s+/g, "");
+    if (!cleanPhone) {
+      newErrors.phone = "Numer telefonu jest wymagany.";
+    } else if (!/^\+?[0-9]{9,15}$/.test(cleanPhone)) {
+      newErrors.phone = "Numer telefonu musi zawierać od 9 do 15 cyfr.";
+    }
+    
+    // Validate Email
+    if (!email) {
+      newErrors.email = "Adres e-mail jest wymagany.";
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      newErrors.email = "Adres e-mail jest nieprawidłowy.";
+    }
+    
+    // Validate selectedMeds
+    if (selectedMeds.length === 0) {
+      newErrors.selectedMeds = "Musisz wyszukać i wybrać co najmniej jeden lek.";
+    }
+    
+    // Validate consents
+    if (!consentTruth) {
+      newErrors.consentTruth = "Musisz oświadczyć zgodność danych z prawdą.";
+    }
+    if (!consentTerms) {
+      newErrors.consentTerms = "Musisz zaakceptować regulamin i politykę prywatności.";
+    }
+    if (!consentDoctor) {
+      newErrors.consentDoctor = "Musisz potwierdzić zrozumienie, że kontynuacja leczenia wymaga decyzji lekarza.";
+    }
+    
+    // Validate password if creating account
+    if (createAccount && (!accountPassword || accountPassword.length < 6)) {
+      newErrors.accountPassword = "Hasło musi mieć co najmniej 6 znaków.";
+    }
+
+    if (Object.keys(newErrors).length > 0) {
+      setErrors(newErrors);
+      // Scroll to the top of the form
+      const formEl = e.currentTarget as HTMLFormElement;
+      formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      return;
+    }
+
     setLoading(true);
+    setErrors({});
     try {
-      const [firstName, ...lastParts] = fullName.trim().split(" ");
+      const [firstName, ...lastParts] = fullName.trim().split(/\s+/);
       const lastName = lastParts.join(" ");
       const res = await fetch(`${API_URL}/api/patient/submissions`, {
         method: "POST",
@@ -779,23 +1465,88 @@ export function KontynuacjaForm() {
         }),
       });
       const data = await res.json();
+      if (!res.ok || data.success === false) {
+        setErrors({ submit: data.message || "Wystąpił błąd podczas wysyłania zgłoszenia." });
+        const formEl = e.currentTarget as HTMLFormElement;
+        formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+        return;
+      }
       if (data?.data?.payment?.paymentUrl) window.location.href = data.data.payment.paymentUrl;
       else if (data?.data?.submissionId) window.location.href = `/payment/success?submissionId=${data.data.submissionId}`;
-    } catch (err) { console.error(err); }
+    } catch (err) {
+      console.error(err);
+      setErrors({ submit: "Błąd połączenia z serwerem. Spróbuj ponownie później." });
+      const formEl = e.currentTarget as HTMLFormElement;
+      formEl.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
     finally { setLoading(false); }
   };
 
   return (
     <form onSubmit={handleSubmit}>
+      <FormErrorAlert errors={errors} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
         {/* Col 1: Dane pacjenta */}
         <div>
           <SectionHeader icon={User} title="Dane pacjenta" color="bg-orange-500" />
           <div className="space-y-3">
-            <div><label className={labelCls}>Imię i nazwisko</label><input className={inputCls} placeholder="Wpisz imię i nazwisko" value={fullName} onChange={e => setFullName(e.target.value)} required /></div>
-            <div><label className={labelCls}>PESEL</label><input className={inputCls} placeholder="Wpisz PESEL" value={pesel} onChange={e => setPesel(e.target.value)} /></div>
-            <div><label className={labelCls}>Telefon kontaktowy</label><input className={inputCls} placeholder="Wpisz numer telefonu" value={phone} onChange={e => setPhone(e.target.value)} /></div>
-            <div><label className={labelCls}>Adres e-mail</label><input type="email" className={inputCls} placeholder="Wpisz adres e-mail" value={email} onChange={e => setEmail(e.target.value)} required /></div>
+            <div>
+              <label className={labelCls}>Imię i nazwisko <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.fullName ? inputErrorCls : inputCls} 
+                placeholder="Wpisz imię i nazwisko" 
+                value={fullName} 
+                onChange={e => {
+                  setFullName(e.target.value);
+                  if (errors.fullName) setErrors(prev => { const n = {...prev}; delete n.fullName; return n; });
+                }} 
+              />
+              {errors.fullName && <p className="text-xs text-red-500 font-medium mt-1">{errors.fullName}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>PESEL <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.pesel ? inputErrorCls : inputCls} 
+                placeholder="Wpisz PESEL" 
+                value={pesel} 
+                onChange={e => {
+                  setPesel(e.target.value);
+                  if (errors.pesel) setErrors(prev => { const n = {...prev}; delete n.pesel; return n; });
+                }} 
+              />
+              {errors.pesel && <p className="text-xs text-red-500 font-medium mt-1">{errors.pesel}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>Telefon kontaktowy <span className="text-red-500">*</span></label>
+              <input 
+                className={errors.phone ? inputErrorCls : inputCls} 
+                placeholder="Wpisz numer telefonu" 
+                value={phone} 
+                onChange={e => {
+                  setPhone(e.target.value);
+                  if (errors.phone) setErrors(prev => { const n = {...prev}; delete n.phone; return n; });
+                }} 
+              />
+              {errors.phone && <p className="text-xs text-red-500 font-medium mt-1">{errors.phone}</p>}
+            </div>
+            
+            <div>
+              <label className={labelCls}>Adres e-mail <span className="text-red-500">*</span></label>
+              <input 
+                type="email" 
+                className={errors.email ? inputErrorCls : inputCls} 
+                placeholder="Wpisz adres e-mail" 
+                value={email} 
+                onChange={e => {
+                  setEmail(e.target.value);
+                  if (errors.email) setErrors(prev => { const n = {...prev}; delete n.email; return n; });
+                }} 
+              />
+              {errors.email && <p className="text-xs text-red-500 font-medium mt-1">{errors.email}</p>}
+            </div>
+            
             <div className="pt-2 border-t border-slate-100">
               <label className={labelCls}>Wybierz specjalizację lekarza (opcjonalnie)</label>
               <select className={`${inputCls} bg-white`} value={specialization} onChange={e => setSpecialization(e.target.value)}>
@@ -814,7 +1565,7 @@ export function KontynuacjaForm() {
         <div className="md:col-span-2">
           <SectionHeader icon={RefreshCw} title="Informacje o leczeniu" color="bg-orange-500" />
           
-          <div className="bg-[#FFF4ED] border border-orange-200 rounded-xl p-4 relative mb-4">
+          <div className={`${errors.selectedMeds ? "bg-red-50/30 border border-red-200" : "bg-[#FFF4ED] border border-orange-200"} rounded-xl p-4 relative mb-4`}>
             <label className={labelCls}>Wyszukaj kontynuowany lek <span className="text-red-500">*</span></label>
             <div className="relative">
               <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
@@ -831,6 +1582,8 @@ export function KontynuacjaForm() {
                 </div>
               )}
             </div>
+            
+            {errors.selectedMeds && <p className="text-xs text-red-500 font-medium mt-2">{errors.selectedMeds}</p>}
             
             {selectedMeds.length > 0 && (
               <div className="mt-4 space-y-2">
@@ -863,9 +1616,23 @@ export function KontynuacjaForm() {
         <div>
           <SectionHeader icon={ShieldCheck} title="Zgody" color="bg-orange-500" />
           <div className="space-y-3">
-            <ConsentCheckbox id="ko_c1" checked={consentTruth} onChange={setConsentTruth}>Oświadczam, że podane informacje są zgodne z prawdą</ConsentCheckbox>
-            <ConsentCheckbox id="ko_c2" checked={consentTerms} onChange={setConsentTerms}>Akceptuję <Link href="/regulamin" className="text-orange-600 underline">regulamin i politykę prywatności</Link></ConsentCheckbox>
-            <ConsentCheckbox id="ko_c3" checked={consentDoctor} onChange={setConsentDoctor}>Rozumiem, że kontynuacja leczenia wymaga decyzji lekarza</ConsentCheckbox>
+            <ConsentCheckbox id="ko_c1" checked={consentTruth} onChange={v => {
+              setConsentTruth(v);
+              if (errors.consentTruth) setErrors(prev => { const n = {...prev}; delete n.consentTruth; return n; });
+            }}>Oświadczam, że podane informacje są zgodne z prawdą <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentTruth && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentTruth}</p>}
+
+            <ConsentCheckbox id="ko_c2" checked={consentTerms} onChange={v => {
+              setConsentTerms(v);
+              if (errors.consentTerms) setErrors(prev => { const n = {...prev}; delete n.consentTerms; return n; });
+            }}>Akceptuję <Link href="/regulamin" className="text-orange-600 underline">regulamin i politykę prywatności</Link> <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentTerms && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentTerms}</p>}
+
+            <ConsentCheckbox id="ko_c3" checked={consentDoctor} onChange={v => {
+              setConsentDoctor(v);
+              if (errors.consentDoctor) setErrors(prev => { const n = {...prev}; delete n.consentDoctor; return n; });
+            }}>Rozumiem, że kontynuacja leczenia wymaga decyzji lekarza <span className="text-red-500">*</span></ConsentCheckbox>
+            {errors.consentDoctor && <p className="text-xs text-red-500 font-medium mt-0.5">{errors.consentDoctor}</p>}
           </div>
         </div>
       </div>
@@ -878,7 +1645,17 @@ export function KontynuacjaForm() {
           {createAccount && (
             <div className="mt-3 w-full md:w-1/3">
               <label className={labelCls}>Ustaw hasło do konta <span className="text-red-500">*</span></label>
-              <input type="password" minLength={6} className={inputCls} placeholder="Minimum 6 znaków" value={accountPassword} onChange={e => setAccountPassword(e.target.value)} required />
+              <input 
+                type="password" 
+                className={errors.accountPassword ? inputErrorCls : inputCls} 
+                placeholder="Minimum 6 znaków" 
+                value={accountPassword} 
+                onChange={e => {
+                  setAccountPassword(e.target.value);
+                  if (errors.accountPassword) setErrors(prev => { const n = {...prev}; delete n.accountPassword; return n; });
+                }} 
+              />
+              {errors.accountPassword && <p className="text-xs text-red-500 font-medium mt-1">{errors.accountPassword}</p>}
             </div>
           )}
         </div>

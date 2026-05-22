@@ -16,7 +16,7 @@ export default function ServicesPanel() {
       title: "Recepta Online",
       description: "Otrzymaj e-receptę nawet w 15 minut",
       price: 59,
-      image: "/recipe_3d.png",
+      image: "/receptaonline.jpeg",
       href: "/wypelnij-formularz?service=e-Recepta+online",
       color: "bg-[#F6FBF8] border-[#E8F1EC]",
       buttonColor: "bg-[#138A56] hover:bg-[#0F7548]",
@@ -28,7 +28,7 @@ export default function ServicesPanel() {
       title: "L4 Online",
       description: "Zwolnienie lekarskie bez wychodzenia z domu",
       price: 79,
-      image: "/l4_3d.png",
+      image: "/l4online.jpeg",
       href: "/wypelnij-formularz?service=L4+online",
       color: "bg-[#F2F8FB] border-[#E1EEF3]",
       buttonColor: "bg-[#0B3D3B] hover:bg-[#072625]",
@@ -40,7 +40,7 @@ export default function ServicesPanel() {
       title: "Kontynuacja",
       description: "Przedłuż leczenie bez pośredniej wizyty",
       price: 59,
-      image: "/continuation_3d.png",
+      image: "/kontynuacja leczenia.jpeg",
       href: "/wypelnij-formularz?service=Kontynuacja+leczenia",
       color: "bg-[#F5F2FC] border-[#EAE3F5]",
       buttonColor: "bg-[#4834D4] hover:bg-[#341F97]",
@@ -52,7 +52,7 @@ export default function ServicesPanel() {
       title: "Wizyta Lekarska",
       description: "Konsultacja z lekarzem specjalistą",
       price: 79,
-      image: "/doctor_3d.png",
+      image: "/konsultacjalekarska.jpeg",
       href: "/wypelnij-formularz?service=Wizyta+lekarska+og%C3%B3lna",
       color: "bg-[#F2F8FB] border-[#E1EEF3]",
       buttonColor: "bg-[#138A56] hover:bg-[#0F7548]",
@@ -108,12 +108,12 @@ export default function ServicesPanel() {
                     <Icon className="w-5 h-5" strokeWidth={1.5} />
                   </div>
 
-                  {/* 3D Illustration Container - No background box, floating directly */}
-                  <div className="relative w-full h-44 mb-4 mt-2 flex items-center justify-center overflow-hidden group">
+                  {/* Image Container - Beautifully rounded and masked photo */}
+                  <div className="relative w-full aspect-[16/10] mb-6 mt-2 rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 flex items-center justify-center group">
                     <img 
                       src={service.image} 
                       alt={service.title} 
-                      className="max-h-[140px] w-auto object-contain transform group-hover:scale-105 transition-transform duration-300 drop-shadow-xl"
+                      className="w-full h-full object-cover transform group-hover:scale-102 transition-transform duration-500"
                     />
                   </div>
 

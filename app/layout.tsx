@@ -2,6 +2,7 @@
 import { Inter } from "next/font/google";
 import './globals.css';
 import SkipLink from '@/components/SkipLink';
+import PWARegistration from "@/components/PWARegistration";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -11,6 +12,7 @@ const inter = Inter({
 export const metadata = {
   title: 'Lekarze i terapeuci - Konsultacje online bez wychodzenia z domu',
   description: 'Nowoczesna platforma telemedyczna umożliwiająca szybki i bezpieczny dostęp do profesjonalnych konsultacji zdrowotnych bez wychodzenia z domu.',
+  manifest: '/manifest.json',
   icons: {
     icon: [
       { url: '/logo.png', sizes: 'any' }
@@ -22,9 +24,11 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pl">
       <body className={inter.className}>
+        <PWARegistration />
         <SkipLink />
         {children}
       </body>
     </html>
   );
 }
+

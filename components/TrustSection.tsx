@@ -51,7 +51,7 @@ export default function TrustSection() {
               </div>
 
               <Link
-                href="/jak-to-dziala"
+                href="/dlaczego-warto-nam-zaufac"
                 className="inline-flex items-center gap-2 bg-[#0A4740] text-white px-8 py-4 rounded-xl font-medium hover:bg-[#083530] transition shadow-md whitespace-nowrap"
               >
                 Dowiedz się więcej o procesie

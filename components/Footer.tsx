@@ -127,8 +127,9 @@ export default function Footer() {
               <li><Link href="/baza-wiedzy" className="hover:text-white transition block py-0.5">Baza wiedzy</Link></li>
               <li><Link href="#o-nas" className="hover:text-white transition block py-0.5">O nas</Link></li>
               <li><Link href="#kariera" className="hover:text-white transition block py-0.5">Praca</Link></li>
-              <li><Link href="#dla-lekarzy" className="hover:text-white transition block py-0.5">Dla lekarzy</Link></li>
-              <li><Link href="#dla-firm" className="hover:text-white transition block py-0.5">Dla firm</Link></li>
+              <li><Link href="/dla-lekarzy" className="hover:text-white transition block py-0.5">Dla lekarzy</Link></li>
+              <li><Link href="/dla-firm" className="hover:text-white transition block py-0.5">Dla firm</Link></li>
+              <li><Link href="/dla-kobiet-i-mezczyzn" className="hover:text-white transition block py-0.5">Dla kobiet i mężczyzn</Link></li>
             </ul>
           </nav>
 

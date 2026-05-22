@@ -120,6 +120,8 @@ export default function Header({ transparent = false }: HeaderProps) {
           <Link href="/#uslugi" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Usługi</Link>
           <Link href="/#specjalizacje" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Specjalizacje</Link>
           <Link href="/jak-to-dziala" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Jak to działa?</Link>
+          <Link href="/dla-kobiet-i-mezczyzn" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Dla kobiet i mężczyzn</Link>
+          <Link href="/dla-lekarzy" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Dla lekarzy</Link>
           <Link href="/baza-wiedzy" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Baza wiedzy</Link>
           <Link href="/#kontakt" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Kontakt</Link>
         </nav>
@@ -130,6 +132,8 @@ export default function Header({ transparent = false }: HeaderProps) {
               <Link href="/#uslugi" className="text-slate-700 hover:text-[#064743] py-2">Usługi</Link>
               <Link href="/#specjalizacje" className="text-slate-700 hover:text-[#064743] py-2">Specjalizacje</Link>
               <Link href="/jak-to-dziala" className="text-slate-700 hover:text-[#064743] py-2">Jak to działa?</Link>
+              <Link href="/dla-kobiet-i-mezczyzn" className="text-slate-700 hover:text-[#064743] py-2">Dla kobiet i mężczyzn</Link>
+              <Link href="/dla-lekarzy" className="text-slate-700 hover:text-[#064743] py-2">Dla lekarzy</Link>
               <Link href="/baza-wiedzy" className="text-slate-700 hover:text-[#064743] py-2">Baza wiedzy</Link>
               <Link href="/#kontakt" className="text-slate-700 hover:text-[#064743] py-2">Kontakt</Link>
               {!isAuthenticated && (

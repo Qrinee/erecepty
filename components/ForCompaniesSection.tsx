@@ -4,6 +4,7 @@ import {
   ArrowRight, Building2, Users, TrendingUp, BriefcaseMedical, 
   ShieldCheck, Clock, Stethoscope, Zap, Star, Heart 
 } from "lucide-react";
+import Link from "next/link";
 
 export default function ForCompaniesSection() {
   return (
@@ -72,10 +73,10 @@ export default function ForCompaniesSection() {
 
             </div>
 
-            <button className="mt-8 bg-[#147A60] hover:bg-[#064743] text-white px-7 py-4 rounded-xl font-extrabold flex items-center justify-center gap-2 cursor-pointer text-sm md:text-base shadow-md shadow-emerald-800/10 transition-colors">
+            <Link href="/dla-firm" className="mt-8 bg-[#147A60] hover:bg-[#064743] text-white px-7 py-4 rounded-xl font-extrabold inline-flex items-center justify-center gap-2 cursor-pointer text-sm md:text-base shadow-md shadow-emerald-800/10 transition-colors">
               <span>Dowiedz się więcej</span>
               <ArrowRight className="w-4 h-4" />
-            </button>
+            </Link>
           </div>
 
           {/* Right Column: Office photo card and metrics */}

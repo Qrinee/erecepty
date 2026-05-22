@@ -13,6 +13,7 @@ import ServicesSection from "@/components/ServicesSection";
 import SpecializationsSection from "@/components/SpecializationsSection";
 import HowItWorksSection from "@/components/HowItWorksSection";
 import ReviewsSection from "@/components/ReviewsSection";
+import AppPromotionSection from "@/components/AppPromotionSection";
 import ForCompaniesSection from "@/components/ForCompaniesSection";
 import ContactSection from "@/components/ContactSection";
 import PricingSection from "@/components/PricingSection";
@@ -32,8 +33,11 @@ export default function Home() {
         <ServicesPanel />
         <ServicesSection />
         <SpecializationsSection />
+        <HowItWorksSection />
+        <ForWhoSection />
         <KnowledgeCenter />
         <ReviewsSection />
+        <AppPromotionSection />
         <ForCompaniesSection />
         <TrustSection />
         <ContactSection />
