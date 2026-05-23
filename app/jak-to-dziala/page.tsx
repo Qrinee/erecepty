@@ -3,6 +3,7 @@
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
+import Image from "next/image";
 import {
   ClipboardList,
   UserCheck,
@@ -55,7 +56,7 @@ export default function JakToDzialaPage() {
       <main id="main-content" tabIndex={-1} className="bg-slate-50/50">
         
         {/* HERO SECTION */}
-        <section className="relative bg-gradient-to-br from-[#F5FAF9] via-[#F8FBFB] to-white overflow-hidden pt-[110px] sm:pt-[130px] lg:pt-[140px] pb-16 border-b border-slate-100">
+        <section className="relative bg-gradient-to-br from-[#F5FAF9] via-[#F8FBFB] to-white overflow-hidden pt-[110px] sm:pt-[130px] lg:pt-[140px] pb-16 lg:pb-0 border-b border-slate-100">
           {/* Subtle backgrounds */}
           <div className="absolute top-20 left-10 w-64 h-64 bg-[#DAE9E6]/30 rounded-full blur-3xl -z-10" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#DAE9E6]/25 rounded-full blur-3xl -z-10" />
@@ -64,13 +65,13 @@ export default function JakToDzialaPage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               
               {/* Left Column: Heading and info */}
-              <div className="col-span-1 lg:col-span-6 text-center lg:text-left flex flex-col items-center lg:items-start">
-                <span className="inline-flex items-center gap-2 bg-[#DAE9E6] text-[#064743] text-xs font-bold px-3 py-1.5 rounded-full mb-6">
+              <div className="col-span-1 lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start pb-0 lg:pb-16 relative z-10">
+                <span className="inline-flex items-center gap-2 bg-[#DAE9E6] text-[#064743] text-xs font-bold px-3 py-1.5 rounded-full mb-6 shadow-sm">
                   <Clock className="w-3.5 h-3.5" />
                   Nawet w 15 minut
                 </span>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
                   Jak działa <br />
                   <span className="text-[#064743] relative inline-block">
                     konsultacja online?
@@ -78,7 +79,7 @@ export default function JakToDzialaPage() {
                   </span>
                 </h1>
 
-                <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl mb-8">
+                <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl mb-8 font-semibold">
                   To proste! Wystarczą 4 kroki, aby uzyskać profesjonalną poradę bez wychodzenia z domu, bez kolejek i bez zbędnego stresu.
                 </p>
 
@@ -112,14 +113,30 @@ export default function JakToDzialaPage() {
               </div>
 
               {/* Right Column: Combined Image (Doctor, Phone, Arrow) */}
-              <div className="col-span-1 lg:col-span-6 flex justify-center items-center select-none">
-                <div className="relative group max-w-xl w-full">
-                  <div className="absolute inset-0 bg-[#064743]/5 rounded-3xl blur-2xl group-hover:bg-[#064743]/10 transition-all duration-500" />
-                  <img
+              <div className="col-span-1 lg:col-span-5 flex justify-center items-center select-none relative lg:static">
+                {/* Mobile version: normal flow */}
+                <div className="block lg:hidden relative w-full aspect-[4/3] max-w-md">
+                  <Image
                     src="/image.png"
-                    alt="Konsultacja lekarska online - lekarz, telefon i recepta"
-                    className="w-full h-auto object-contain relative transform group-hover:scale-[1.01] transition-all duration-500 ease-out"
+                    alt="Konsultacja lekarska online"
+                    fill
+                    className="object-contain object-center"
                   />
+                </div>
+
+                {/* Desktop version: absolute overlay aligned with left-to-right fade */}
+                <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[50%] z-0 pointer-events-none">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/image.png"
+                      alt="Konsultacja lekarska online"
+                      fill
+                      priority
+                      className="object-cover object-right"
+                    />
+                    {/* Left-to-right fade overlay to blend the image into the background gradient of the section */}
+                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#F5FAF9] via-[#F8FBFB]/90 to-transparent z-10" />
+                  </div>
                 </div>
               </div>
 

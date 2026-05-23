@@ -127,7 +127,7 @@ export default function ServicesSection() {
               <Link
                 key={idx}
                 href={service.href}
-                className="min-w-[85vw] sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center shrink-0 bg-white rounded-[24px] p-6 flex flex-col justify-between border border-slate-100 hover:shadow-lg transition-all duration-300 group"
+                className="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] min-w-[85vw] sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] max-w-[85vw] sm:max-w-[calc(50%-12px)] lg:max-w-[calc(25%-18px)] snap-center shrink-0 bg-white rounded-[24px] p-6 flex flex-col justify-between border border-slate-100 hover:shadow-lg transition-all duration-300 group"
               >
                 <div>
                   {/* Illustration Container */}

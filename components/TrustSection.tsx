@@ -14,7 +14,7 @@ import Link from "next/link";
 export default function TrustSection() {
   return (
     <section className="bg-white py-20" aria-labelledby="trust-section-title">
-      <div className="w-[80vw] mx-auto px-4 sm:px-6 lg:px-8">
+      <div className="w-[95vw] mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-[#F8FAF9]  rounded-[40px] p-8 md:p-12 relative">
           
           <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 mb-12">
@@ -25,7 +25,7 @@ export default function TrustSection() {
               </span>
 
               <h2 id="trust-section-title" className="text-4xl md:text-5xl font-bold text-slate-900 mb-6 leading-tight">
-                Dlaczego warto <br /> nam zaufać?
+                Dlaczego warto <br /> <span className="text-[#138A56]">nam zaufać?</span>
               </h2>
 
               <p className="text-slate-600 text-lg mb-8 leading-relaxed">
@@ -52,7 +52,7 @@ export default function TrustSection() {
 
               <Link
                 href="/dlaczego-warto-nam-zaufac"
-                className="inline-flex items-center gap-2 bg-[#0A4740] text-white px-8 py-4 rounded-xl font-medium hover:bg-[#083530] transition shadow-md whitespace-nowrap"
+                className="inline-flex items-center gap-2 bg-[#138A56] text-white px-8 py-4 rounded-xl font-medium hover:bg-[#083530] transition shadow-md whitespace-nowrap"
               >
                 Dowiedz się więcej o procesie
                 <ArrowRight size={18} />

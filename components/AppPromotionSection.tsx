@@ -73,73 +73,73 @@ export default function AppPromotionSection() {
   const qrCodeUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodeURIComponent(origin)}`;
 
   return (
-    <section className="py-20 bg-gradient-to-br from-[#F5FAF8] to-[#EAF3F0] border-y border-[#D5EAE6]/50 overflow-hidden relative">
+    <section className="py-6 lg:py-8 bg-gradient-to-br from-[#F5FAF8] to-[#EAF3F0] border-y border-[#D5EAE6]/50 overflow-hidden relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
           {/* Left Column: Benefits & Install Prompts */}
           <div className="lg:col-span-7 text-left">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-[#E4F2EE] text-[#064743] font-bold text-xs uppercase tracking-wider mb-6">
-              <Smartphone className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#E4F2EE] text-[#064743] font-bold text-[10px] uppercase tracking-wider mb-2.5 shadow-sm">
+              <Smartphone className="w-3 h-3" />
               <span>Strona jako Aplikacja</span>
             </div>
 
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-slate-900 leading-tight mb-6">
+            <h2 className="text-xl sm:text-2xl md:text-[28px] font-extrabold text-slate-900 leading-tight mb-2.5">
               Dodaj nas do ekranu głównego i zamawiaj{" "}
               <span className="text-[#147A60] bg-[#E4F2EE]/60 px-2 rounded-md">20% taniej!</span>
             </h2>
 
-            <p className="text-gray-500 font-semibold text-base sm:text-lg mb-8 max-w-xl leading-relaxed">
-              Zyskaj błyskawiczny dostęp do konsultacji medycznych, e-recept i e-zwolnień bezpośrednio z pulpitu swojego telefonu. Działa dokładnie jak aplikacja mobilna, bez zajmowania pamięci w telefonie!
+            <p className="text-gray-500 font-semibold text-xs sm:text-sm mb-4 max-w-xl leading-relaxed">
+              Zyskaj błyskawiczny dostęp do konsultacji medycznych, e-recept i e-zwolnień bezpośrednio z pulpitu swojego telefonu. Działa dokładnie jak aplikacja mobilna, bez zajmowania pamięci!
             </p>
 
-            {/* Benefits List */}
-            <div className="space-y-4 mb-8">
+            {/* Benefits List (2-column grid for compactness) */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-4.5">
               {[
                 "Łatwiejsze i szybsze składanie zamówień",
                 "Minimum formalności przy kontynuacji leczenia",
                 "Priorytetowa obsługa zgłoszeń",
-                "Działa natychmiast, bez konieczności pobierania z App Store / Google Play"
+                "Działa natychmiast, bez pobierania z App Store / GP"
               ].map((benefit, index) => (
-                <div key={index} className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-[#E4F2EE] text-[#147A60] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                <div key={index} className="flex items-start gap-2">
+                  <div className="w-4.5 h-4.5 rounded-full bg-[#E4F2EE] text-[#147A60] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-2.5 h-2.5 stroke-[3]" />
                   </div>
-                  <span className="text-slate-700 font-semibold text-sm sm:text-base">{benefit}</span>
+                  <span className="text-slate-700 font-semibold text-[11px] sm:text-xs">{benefit}</span>
                 </div>
               ))}
             </div>
 
             {/* Install Button & QR Code Section */}
-            <div className="flex flex-col sm:flex-row gap-8 items-start sm:items-center border-t border-[#D5EAE6]/50 pt-8">
+            <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center border-t border-[#D5EAE6]/50 pt-4">
               
               {/* Install Trigger Button */}
               <div className="w-full sm:w-auto">
                 {isInstalled ? (
-                  <div className="inline-flex items-center gap-2 bg-[#E4F2EE] text-[#064743] px-6 py-4 rounded-xl font-extrabold text-sm sm:text-base border border-[#D5EAE6]">
-                    <Check className="w-5 h-5 stroke-[3]" />
-                    <span>Aplikacja jest już zainstalowana</span>
+                  <div className="inline-flex items-center gap-2 bg-[#E4F2EE] text-[#064743] px-4.5 py-2.5 rounded-lg font-extrabold text-xs border border-[#D5EAE6]">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                    <span>Aplikacja jest zainstalowana</span>
                   </div>
                 ) : (
                   <button
                     onClick={handleInstallClick}
-                    className="w-full sm:w-auto bg-[#147A60] hover:bg-[#064743] text-white px-8 py-4 rounded-xl font-extrabold flex items-center justify-center gap-2.5 transition duration-300 shadow-md shadow-emerald-950/10 cursor-pointer text-sm sm:text-base"
+                    className="w-full sm:w-auto bg-[#147A60] hover:bg-[#064743] text-white px-5 py-2.5 rounded-lg font-extrabold flex items-center justify-center gap-2 transition duration-300 shadow-md shadow-emerald-950/10 cursor-pointer text-xs"
                   >
-                    <Download className="w-5 h-5" />
+                    <Download className="w-4 h-4" />
                     <span>Dodaj do ekranu głównego</span>
                   </button>
                 )}
                 
-                <p className="text-xs text-gray-400 mt-2 font-medium">
+                <p className="text-[9px] text-gray-400 mt-1 font-medium">
                   {isIos 
-                    ? "Dla systemów iOS (Safari): wymaga ręcznego dodania" 
-                    : "Szybka instalacja jednym kliknięciem na Androidzie / Chrome"}
+                    ? "System iOS (Safari): wymaga ręcznego dodania" 
+                    : "Instalacja jednym kliknięciem na Androidzie / Chrome"}
                 </p>
               </div>
 
-              {/* QR Code (Visible on screens larger than mobile) */}
-              <div className="hidden md:flex items-center gap-4 bg-white border border-[#D5EAE6]/60 rounded-2xl p-4 shadow-sm relative group">
-                <div className="w-[100px] h-[100px] bg-slate-50 border border-slate-100 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
+              {/* QR Code */}
+              <div className="hidden md:flex items-center gap-2.5 bg-white border border-[#D5EAE6]/60 rounded-xl p-2 shadow-sm relative group">
+                <div className="w-[64px] h-[64px] bg-slate-50 border border-slate-100 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
                   <img
                     src={qrCodeUrl}
                     alt="Kod QR do dodania strony"
@@ -147,17 +147,17 @@ export default function AppPromotionSection() {
                   />
                 </div>
                 <div>
-                  <div className="flex items-center gap-1.5 text-slate-800 font-extrabold text-xs mb-1">
+                  <div className="flex items-center gap-1.5 text-slate-800 font-extrabold text-[10px] mb-0.5">
                     <QrCode className="w-3.5 h-3.5 text-[#147A60]" />
                     <span>Skanuj kod telefonem</span>
                   </div>
-                  <p className="text-[11px] text-gray-500 font-semibold max-w-[150px] leading-normal">
-                    Otwórz aparat w telefonie, aby szybko otworzyć stronę i dodać ją do pulpitu.
+                  <p className="text-[9px] text-gray-500 font-semibold max-w-[120px] leading-normal">
+                    Otwórz aparat w telefonie, aby szybko przejść na komórkę.
                   </p>
                 </div>
 
                 {/* Curved visual arrow pointing to mockup */}
-                <div className="absolute top-1/2 -right-16 -translate-y-1/2 translate-x-1 hidden lg:block pointer-events-none w-14 h-12 text-[#147A60] opacity-40">
+                <div className="absolute top-1/2 -right-10 -translate-y-1/2 translate-x-1 hidden lg:block pointer-events-none w-8 h-6.5 text-[#147A60] opacity-40">
                   <svg className="w-full h-full" viewBox="0 0 50 40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                     <path d="M5 20 C 15 5, 35 5, 42 16" />
                     <polyline points="37 16 43 17 42 11" />
@@ -168,96 +168,96 @@ export default function AppPromotionSection() {
             </div>
           </div>
 
-          {/* Right Column: Smartphone Mockup */}
+          {/* Right Column: Smartphone Mockup (More Compact Version) */}
           <div className="lg:col-span-5 flex justify-center items-center">
-            <div className="relative w-[280px] h-[560px] bg-slate-900 border-[10px] border-slate-800 rounded-[44px] shadow-[0_25px_60px_rgba(6,71,67,0.15)] overflow-hidden ring-1 ring-white/10">
+            <div className="relative w-[190px] h-[380px] bg-slate-900 border-[6px] border-slate-800 rounded-[32px] shadow-[0_15px_35px_rgba(6,71,67,0.1)] overflow-hidden ring-1 ring-white/10">
               
               {/* Dynamic Island */}
-              <div className="absolute top-3 left-1/2 -translate-x-1/2 w-28 h-6 bg-black rounded-full z-30 flex items-center justify-between px-3">
-                <div className="w-1.5 h-1.5 bg-[#064743] rounded-full animate-pulse" />
-                <div className="w-2.5 h-1 bg-slate-900 rounded-full" />
+              <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-4 bg-black rounded-full z-30 flex items-center justify-between px-2.5">
+                <div className="w-0.75 h-0.75 bg-[#064743] rounded-full animate-pulse" />
+                <div className="w-1.5 h-0.75 bg-slate-900 rounded-full" />
               </div>
 
               {/* Status Bar */}
-              <div className="absolute top-0.5 left-0 right-0 h-8 px-6 flex items-center justify-between z-20 text-[10px] text-slate-800 font-bold select-none">
+              <div className="absolute top-0.5 left-0 right-0 h-5 px-4 flex items-center justify-between z-20 text-[8px] text-slate-800 font-bold select-none">
                 <span>9:41</span>
-                <div className="flex items-center gap-1.5">
-                  <svg className="w-3 h-3" fill="currentColor" viewBox="0 0 16 16">
+                <div className="flex items-center gap-0.5">
+                  <svg className="w-2 h-2" fill="currentColor" viewBox="0 0 16 16">
                     <path d="M2 11.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 0 1h-11a.5.5 0 0 1-.5-.5z"/>
                   </svg>
                   <span>LTE</span>
-                  <div className="w-5 h-2.5 border border-slate-800 rounded-sm p-px flex items-center">
-                    <div className="h-full w-4 bg-slate-800 rounded-2xs" />
+                  <div className="w-3.5 h-1.75 border border-slate-800 rounded-xs p-px flex items-center">
+                    <div className="h-full w-2.5 bg-slate-800 rounded-3xs" />
                   </div>
                 </div>
               </div>
 
               {/* Phone Content Screen */}
-              <div className="w-full h-full bg-white pt-8 pb-4 px-4 flex flex-col justify-between overflow-y-auto select-none no-scrollbar">
+              <div className="w-full h-full bg-white pt-5 pb-2 px-3 flex flex-col justify-between overflow-y-auto select-none no-scrollbar">
                 
                 <div>
                   {/* App Mockup Header */}
-                  <div className="flex items-center justify-between pb-3 border-b border-slate-100 mt-2 mb-4">
-                    <div className="flex items-center gap-1.5">
+                  <div className="flex items-center justify-between pb-1.5 border-b border-slate-100 mt-1.5 mb-2">
+                    <div className="flex items-center gap-1">
                       <img
                         src="/logo.png"
                         alt="Lekarze i Terapeuci Logo"
-                        className="w-7 h-7 object-contain rounded-md"
+                        className="w-4 h-4 object-contain rounded-md"
                       />
-                      <span className="font-extrabold text-xs text-[#064743] tracking-tight">
+                      <span className="font-extrabold text-[8.5px] text-[#064743] tracking-tight">
                         Lekarze i Terapeuci
                       </span>
                     </div>
                   </div>
 
                   {/* Promo Banner inside Mockup */}
-                  <div className="bg-[#064743] text-white text-center py-2 px-3 rounded-xl mb-4 text-[10px] font-bold tracking-tight">
+                  <div className="bg-[#064743] text-white text-center py-1 px-1.5 rounded-md mb-2 text-[8px] font-bold tracking-tight">
                     W aplikacji 20% taniej!
                   </div>
 
                   {/* Trust Pill */}
-                  <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-[#EBF5F2] text-[#147A60] text-[9px] font-extrabold mb-3">
-                    <span className="w-1.5 h-1.5 bg-[#10B981] rounded-full animate-ping" />
+                  <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-[#EBF5F2] text-[#147A60] text-[7.5px] font-extrabold mb-2">
+                    <span className="w-0.75 h-0.75 bg-[#10B981] rounded-full animate-ping" />
                     <span>• 12 lekarzy online</span>
                   </div>
 
                   {/* Heading inside Screen */}
-                  <h3 className="font-extrabold text-[#064743] text-base leading-snug mb-1">
-                    Wybierz usługę i wypełnij wywiad medyczny
+                  <h3 className="font-extrabold text-[#064743] text-[9.5px] leading-tight mb-0.5">
+                    Wybierz usługę i wypełnij wywiad
                   </h3>
                   
                   {/* Mock Rating */}
-                  <div className="flex items-center gap-1 mb-4">
+                  <div className="flex items-center gap-1 mb-2">
                     <div className="flex gap-0.5">
                       {[...Array(5)].map((_, i) => (
-                        <Star key={i} className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />
+                        <Star key={i} className="w-1.5 h-1.5 fill-yellow-400 text-yellow-400" />
                       ))}
                     </div>
-                    <span className="text-[9px] text-slate-400 font-bold">150k+ pacjentów</span>
+                    <span className="text-[7.5px] text-slate-400 font-bold">150k+ pacjentów</span>
                   </div>
 
                   {/* Interactive Button Shortcuts */}
-                  <div className="space-y-2">
+                  <div className="space-y-1">
                     {[
                       { label: "E-recepta", sub: "Wypełnij formularz online" },
                       { label: "E-zwolnienie (L4)", sub: "Wizyta i zwolnienie lekarskie" },
-                      { label: "Antykoncepcja", sub: "Dobór i przedłużenie recepty" }
+                      { label: "Antykoncepcja", sub: "Przedłużenie recepty" }
                     ].map((item, idx) => (
                       <Link
                         key={idx}
                         href="/wypelnij-formularz"
-                        className="w-full flex items-center justify-between p-3 bg-slate-50 hover:bg-[#EBF3F1] border border-slate-100 rounded-xl transition duration-200 text-left group/btn"
+                        className="w-full flex items-center justify-between p-2 bg-slate-50 hover:bg-[#EBF3F1] border border-slate-100 rounded-lg transition duration-200 text-left group/btn"
                       >
                         <div>
-                          <div className="font-extrabold text-xs text-slate-800 tracking-tight">
+                          <div className="font-extrabold text-[8.5px] text-slate-800 tracking-tight">
                             {item.label}
                           </div>
-                          <div className="text-[9px] text-slate-400 font-semibold mt-0.5">
+                          <div className="text-[7.5px] text-slate-400 font-semibold mt-0.5">
                             {item.sub}
                           </div>
                         </div>
-                        <div className="w-5 h-5 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-400 group-hover/btn:text-[#147A60] group-hover/btn:border-[#D5EAE6] transition duration-200">
-                          <ArrowRight className="w-3 h-3" />
+                        <div className="w-4 h-4 rounded-full bg-white border border-slate-100 flex items-center justify-center text-slate-400 group-hover/btn:text-[#147A60] group-hover/btn:border-[#D5EAE6] transition duration-200">
+                          <ArrowRight className="w-2 h-2" />
                         </div>
                       </Link>
                     ))}
@@ -266,17 +266,16 @@ export default function AppPromotionSection() {
                 </div>
 
                 {/* Micro Footer inside phone mockup */}
-                <div className="text-center text-[8px] text-slate-400 font-bold border-t border-slate-100 pt-3 mt-4">
-                  © Lekarze i Terapeuci. Platforma telemedyczna
+                <div className="text-center text-[6.5px] text-slate-400 font-bold border-t border-slate-100 pt-1.5 mt-1.5">
+                  © Lekarze i Terapeuci
                 </div>
 
               </div>
 
               {/* Screen Bezel Gloss */}
-              <div className="absolute inset-0 border border-white/5 rounded-[34px] pointer-events-none" />
+              <div className="absolute inset-0 border border-white/5 rounded-[26px] pointer-events-none" />
             </div>
           </div>
-
         </div>
       </div>
 
@@ -317,7 +316,7 @@ export default function AppPromotionSection() {
                     <div>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">Otwórz menu udostępniania</h4>
                       <p className="text-slate-500 text-xs font-semibold leading-relaxed">
-                        Naciśnij ikonę <span className="inline-flex items-center gap-0.5 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 text-slate-800 font-bold"><Share className="w-3.5 h-3.5" /> Udostępnij</span> na dolnym pasku nawigacyjnym przeglądarki Safari.
+                        Naciśnij ikonę <span className="inline-flex items-center gap-0.5 bg-slate-100 px-1.5 py-0.5 rounded border border-slate-200 text-slate-800 font-bold"><Share className="w-3.5 h-3.5" /> Udostępnij</span> Safari.
                       </p>
                     </div>
                   </div>
@@ -329,7 +328,7 @@ export default function AppPromotionSection() {
                     <div>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">Wybierz opcję zapisu</h4>
                       <p className="text-slate-500 text-xs font-semibold leading-relaxed">
-                        Przewiń menu w dół i wybierz opcję <span className="font-bold text-slate-800">"Do ekranu początkowego"</span> (lub <span className="font-bold text-slate-800">"Dodaj do ekranu głównego"</span> z ikoną <span className="inline-flex items-center gap-0.5 bg-slate-100 px-1 py-0.5 rounded border border-slate-200 text-slate-800 font-bold"><Plus className="w-3.5 h-3.5" /></span>).
+                        Wybierz opcję <span className="font-bold text-slate-800">"Do ekranu początkowego"</span> (<span className="font-bold text-slate-800">"Dodaj do ekranu głównego"</span> <span className="inline-flex items-center gap-0.5 bg-slate-100 px-1 py-0.5 rounded border border-slate-200 text-slate-800 font-bold"><Plus className="w-3.5 h-3.5" /></span>).
                       </p>
                     </div>
                   </div>
@@ -341,13 +340,13 @@ export default function AppPromotionSection() {
                     <div>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">Potwierdź dodanie</h4>
                       <p className="text-slate-500 text-xs font-semibold leading-relaxed">
-                        Kliknij przycisk <span className="font-bold text-emerald-700">"Dodaj"</span> w prawym górnym rogu ekranu, aby utworzyć ikonę skrótu na pulpicie.
+                        Kliknij <span className="font-bold text-emerald-700">"Dodaj"</span> w prawym górnym rogu ekranu.
                       </p>
                     </div>
                   </div>
                 </>
               ) : (
-                // General Fallback (Chrome, Edge, desktop or other browsers)
+                // General Fallback
                 <>
                   <div className="flex gap-4 items-start">
                     <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 text-[#147A60] flex items-center justify-center flex-shrink-0 text-sm font-extrabold">
@@ -356,7 +355,7 @@ export default function AppPromotionSection() {
                     <div>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">Znajdź menu przeglądarki</h4>
                       <p className="text-slate-500 text-xs font-semibold leading-relaxed">
-                        Kliknij ikonę trzech kropek (lub menu opcji) w prawym górnym rogu okna przeglądarki.
+                        Kliknij ikonę trzech kropek w prawym górnym rogu.
                       </p>
                     </div>
                   </div>
@@ -368,7 +367,7 @@ export default function AppPromotionSection() {
                     <div>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">Wybierz zainstalowanie aplikacji</h4>
                       <p className="text-slate-500 text-xs font-semibold leading-relaxed">
-                        Kliknij opcję <span className="font-bold text-slate-800">"Zainstaluj aplikację"</span> lub <span className="font-bold text-slate-800">"Dodaj do ekranu głównego"</span>.
+                        Kliknij <span className="font-bold text-slate-800">"Zainstaluj aplikację"</span> lub <span className="font-bold text-slate-800">"Dodaj do ekranu głównego"</span>.
                       </p>
                     </div>
                   </div>
@@ -380,7 +379,7 @@ export default function AppPromotionSection() {
                     <div>
                       <h4 className="font-bold text-slate-800 text-sm mb-1">Skanowanie kodu QR</h4>
                       <p className="text-slate-500 text-xs font-semibold leading-relaxed">
-                        Jeśli jesteś na komputerze, użyj smartfona i zeskanuj kod QR widoczny w sekcji promocyjnej, aby natychmiast otworzyć stronę na telefonie.
+                        Na komputerze zeskanuj kod QR smartfonem, aby otworzyć stronę.
                       </p>
                     </div>
                   </div>

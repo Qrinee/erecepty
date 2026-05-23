@@ -265,9 +265,9 @@ export default function DlaczegoWartoNamZaufacPage() {
               {/* Graphic details */}
               <div className="absolute top-0 right-0 w-[45%] h-full hidden lg:block select-none pointer-events-none">
                 <img
-                  src="/two_doctors_banner.png"
+                  src="/doctor_recruitment.png"
                   alt="Lekarze"
-                  className="w-full h-full object-cover object-center translate-y-4"
+                  className="w-full h-full object-cover object-center "
                 />
                 
                 {/* Floating trust badge inside image container */}

@@ -109,7 +109,7 @@ export default function SpecializationsSection() {
             return (
               <div
                 key={idx}
-                className="min-w-[85vw] sm:min-w-[calc(33.333%-16px)] lg:min-w-[calc(16.666%-20px)] snap-center shrink-0 bg-white rounded-[28px] border border-slate-100 p-6 md:p-8 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-shadow relative overflow-hidden group"
+                className="w-[88vw] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] min-w-[88vw] sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] max-w-[88vw] sm:max-w-[calc(50%-12px)] lg:max-w-[calc(25%-18px)] snap-center shrink-0 bg-white rounded-[28px] border border-slate-100 p-6 md:p-8 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-shadow relative overflow-hidden group"
               >
                 <div>
                   {/* Top-left small circular icon badge */}
@@ -158,7 +158,7 @@ export default function SpecializationsSection() {
           })}
 
           {/* Card 12 - Więcej specjalizacji */}
-          <div className="min-w-[85vw] sm:min-w-[calc(33.333%-16px)] lg:min-w-[calc(16.666%-20px)] snap-center shrink-0 bg-white rounded-[28px] border border-slate-100 p-6 md:p-8 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div className="w-[88vw] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] min-w-[88vw] sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] max-w-[88vw] sm:max-w-[calc(50%-12px)] lg:max-w-[calc(25%-18px)] snap-center shrink-0 bg-white rounded-[28px] border border-slate-100 p-6 md:p-8 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-shadow relative overflow-hidden group">
             <div>
               {/* Top-left small circular icon badge */}
               <div className="w-9 h-9 rounded-full bg-[#E8F3F1] border border-[#D5EAE6] text-[#064743] flex items-center justify-center absolute top-4 left-4 shadow-sm">

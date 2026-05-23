@@ -8,7 +8,7 @@ import Link from "next/link";
 
 export default function ForCompaniesSection() {
   return (
-    <section id="dla-firm" className="py-20 bg-white scroll-mt-20 max-w-[80vw] m-auto">
+    <section id="dla-firm" className="py-20 bg-white scroll-mt-20 max-w-[95vw] m-auto">
       <div className="w-full px-4 sm:px-8 xl:px-16">
         
         {/* Main Grid */}
