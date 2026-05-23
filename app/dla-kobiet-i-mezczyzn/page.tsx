@@ -123,9 +123,11 @@ export default function DlaKobietIMezczyznPage() {
             
             {/* Card 1: Tabletka "dzień po" */}
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-rose-100 transition-all duration-300">
-              <div className="p-8">
+              
+              {/* Header with integrated image overlay */}
+              <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center">
                 {/* Badge & Title */}
-                <div className="flex justify-start mb-6">
+                <div className="flex justify-start mb-4">
                   <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
                     Dla kobiet
                   </span>
@@ -139,56 +141,66 @@ export default function DlaKobietIMezczyznPage() {
                   Dyskretna pomoc, kiedy liczy się czas.
                 </p>
                 
-                <p className="text-sm text-slate-500 leading-relaxed mb-6">
+                <p className="text-sm text-slate-500 leading-relaxed">
                   Konsultacja online z e-receptą na tabletkę „dzień po”.
                 </p>
 
-                {/* Graphic */}
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-50 mb-8 flex items-center justify-center">
-                  <Image
-                    src="/tabletkadzienpo.jpeg"
-                    alt="Tabletka dzień po"
-                    fill
-                    className="object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
+                {/* Absolute Image Overlay on the right */}
+                <div className="absolute top-0 right-0 bottom-0 w-[45%] overflow-hidden pointer-events-none select-none">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/tabletkadzienpo.jpeg"
+                      alt="Tabletka dzień po"
+                      fill
+                      priority
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Left-to-right fade overlay using gradient */}
+                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+                  </div>
                 </div>
+              </div>
 
-                {/* Checklist */}
-                <ul className="space-y-3 mb-8">
-                  {[
-                    "Konsultacja online 24/7",
-                    "E-recepta w kilka minut",
-                    "Dyskrecja i pełne bezpieczeństwo",
-                    "Bez konieczności wizyty stacjonarnej"
-                  ].map((text, idx) => (
-                    <li key={idx} className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center flex-shrink-0">
-                        <Check size={12} strokeWidth={3} />
+              {/* Body content with remaining details */}
+              <div className="px-8 pb-8 flex-grow flex flex-col justify-between">
+                <div>
+                  {/* Checklist */}
+                  <ul className="space-y-3 mb-8">
+                    {[
+                      "Konsultacja online 24/7",
+                      "E-recepta w kilka minut",
+                      "Dyskrecja i pełne bezpieczeństwo",
+                      "Bez konieczności wizyty stacjonarnej"
+                    ].map((text, idx) => (
+                      <li key={idx} className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center flex-shrink-0">
+                          <Check size={12} strokeWidth={3} />
+                        </div>
+                        <span className="text-sm font-semibold text-slate-700">{text}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Sub icons info bar */}
+                  <div className="grid grid-cols-3 gap-2 border-t border-slate-100 pt-6">
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
+                        <MessageSquarePlus size={18} />
                       </div>
-                      <span className="text-sm font-semibold text-slate-700">{text}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Sub icons info bar */}
-                <div className="grid grid-cols-3 gap-2 border-t border-slate-100 pt-6">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
-                      <MessageSquarePlus size={18} />
+                      <span className="text-[10px] font-bold text-slate-600 leading-tight">Konsultacja online</span>
                     </div>
-                    <span className="text-[10px] font-bold text-slate-600 leading-tight">Konsultacja online</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
-                      <FileText size={18} />
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
+                        <FileText size={18} />
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-600 leading-tight">E-recepta od ręki</span>
                     </div>
-                    <span className="text-[10px] font-bold text-slate-600 leading-tight">E-recepta od ręki</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
-                      <ShieldCheck size={18} />
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
+                        <ShieldCheck size={18} />
+                      </div>
+                      <span className="text-[10px] font-bold text-slate-600 leading-tight">Bezpiecznie i dyskretnie</span>
                     </div>
-                    <span className="text-[10px] font-bold text-slate-600 leading-tight">Bezpiecznie i dyskretnie</span>
                   </div>
                 </div>
               </div>
@@ -211,9 +223,11 @@ export default function DlaKobietIMezczyznPage() {
 
             {/* Card 2: Antykoncepcja */}
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-rose-100 transition-all duration-300">
-              <div className="p-8">
+              
+              {/* Header with integrated image overlay */}
+              <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center">
                 {/* Badge & Title */}
-                <div className="flex justify-start mb-6">
+                <div className="flex justify-start mb-4">
                   <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
                     Dla kobiet
                   </span>
@@ -227,62 +241,72 @@ export default function DlaKobietIMezczyznPage() {
                   Dobierz antykoncepcję dopasowaną do Ciebie.
                 </p>
                 
-                <p className="text-sm text-slate-500 leading-relaxed mb-6">
+                <p className="text-sm text-slate-500 leading-relaxed">
                   Konsultacja online z lekarzem i e-recepta na antykoncepcję.
                 </p>
 
-                {/* Graphic */}
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-50 mb-8 flex items-center justify-center">
-                  <Image
-                    src="/antykoncepcja.jpeg"
-                    alt="Antykoncepcja"
-                    fill
-                    className="object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
+                {/* Absolute Image Overlay on the right */}
+                <div className="absolute top-0 right-0 bottom-0 w-[45%] overflow-hidden pointer-events-none select-none">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/antykoncepcja.jpeg"
+                      alt="Antykoncepcja"
+                      fill
+                      priority
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Left-to-right fade overlay using gradient */}
+                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+                  </div>
                 </div>
+              </div>
 
-                {/* Checklist */}
-                <ul className="space-y-3 mb-8">
-                  {[
-                    "Dobór metod antykoncepcji",
-                    "E-recepta na tabletki antykoncepcyjne",
-                    "Regularne kontrole i wsparcie lekarza",
-                    "Dyskrecja i wygoda konsultacji online"
-                  ].map((text, idx) => (
-                    <li key={idx} className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center flex-shrink-0">
-                        <Check size={12} strokeWidth={3} />
+              {/* Body content with remaining details */}
+              <div className="px-8 pb-8 flex-grow flex flex-col justify-between">
+                <div>
+                  {/* Checklist */}
+                  <ul className="space-y-3 mb-8">
+                    {[
+                      "Dobór metod antykoncepcji",
+                      "E-recepta na tabletki antykoncepcyjne",
+                      "Regularne kontrole i wsparcie lekarza",
+                      "Dyskrecja i wygoda konsultacji online"
+                    ].map((text, idx) => (
+                      <li key={idx} className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center flex-shrink-0">
+                          <Check size={12} strokeWidth={3} />
+                        </div>
+                        <span className="text-sm font-semibold text-slate-700">{text}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Sub icons info bar */}
+                  <div className="grid grid-cols-4 gap-1 border-t border-slate-100 pt-6">
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
+                        <MessageSquarePlus size={16} />
                       </div>
-                      <span className="text-sm font-semibold text-slate-700">{text}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Sub icons info bar */}
-                <div className="grid grid-cols-4 gap-1 border-t border-slate-100 pt-6">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
-                      <MessageSquarePlus size={16} />
+                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Konsultacja 24/7</span>
                     </div>
-                    <span className="text-[9px] font-bold text-slate-600 leading-tight">Konsultacja 24/7</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
-                      <FileText size={16} />
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
+                        <FileText size={16} />
+                      </div>
+                      <span className="text-[9px] font-bold text-slate-600 leading-tight">E-recepta w minuty</span>
                     </div>
-                    <span className="text-[9px] font-bold text-slate-600 leading-tight">E-recepta w minuty</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
-                      <UserCheck size={16} />
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
+                        <UserCheck size={16} />
+                      </div>
+                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Regularna opieka</span>
                     </div>
-                    <span className="text-[9px] font-bold text-slate-600 leading-tight">Regularna opieka</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
-                      <ShieldCheck size={16} />
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
+                        <ShieldCheck size={16} />
+                      </div>
+                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Bezpiecznie i dyskretnie</span>
                     </div>
-                    <span className="text-[9px] font-bold text-slate-600 leading-tight">Bezpiecznie i dyskretnie</span>
                   </div>
                 </div>
               </div>
@@ -305,9 +329,11 @@ export default function DlaKobietIMezczyznPage() {
 
             {/* Card 3: Testosteron */}
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-blue-100 transition-all duration-300">
-              <div className="p-8">
+              
+              {/* Header with integrated image overlay */}
+              <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center">
                 {/* Badge & Title */}
-                <div className="flex justify-start mb-6">
+                <div className="flex justify-start mb-4">
                   <span className="bg-blue-50 border border-blue-100 text-blue-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
                     Dla mężczyzn
                   </span>
@@ -321,62 +347,72 @@ export default function DlaKobietIMezczyznPage() {
                   Zadbaj o energię, siłę i dobre samopoczucie.
                 </p>
                 
-                <p className="text-sm text-slate-500 leading-relaxed mb-6">
+                <p className="text-sm text-slate-500 leading-relaxed">
                   Diagnoza, plan leczenia i e-recepta na terapię testosteronem online.
                 </p>
 
-                {/* Graphic */}
-                <div className="relative w-full aspect-[4/3] rounded-2xl overflow-hidden bg-slate-50 mb-8 flex items-center justify-center">
-                  <Image
-                    src="/testosteron.jpeg"
-                    alt="Testosteron"
-                    fill
-                    className="object-cover group-hover:scale-102 transition-transform duration-500"
-                  />
+                {/* Absolute Image Overlay on the right */}
+                <div className="absolute top-0 right-0 bottom-0 w-[45%] overflow-hidden pointer-events-none select-none">
+                  <div className="relative w-full h-full">
+                    <Image
+                      src="/testosteron.jpeg"
+                      alt="Testosteron"
+                      fill
+                      priority
+                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                    />
+                    {/* Left-to-right fade overlay using gradient */}
+                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+                  </div>
                 </div>
+              </div>
 
-                {/* Checklist */}
-                <ul className="space-y-3 mb-8">
-                  {[
-                    "Badanie i konsultacja online",
-                    "Terapia testosteronem dopasowana do Ciebie",
-                    "Poprawa energii, libido i koncentracji",
-                    "Dyskretna i bezpieczna opieka medyczna"
-                  ].map((text, idx) => (
-                    <li key={idx} className="flex items-center gap-3">
-                      <div className="w-5 h-5 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center flex-shrink-0">
-                        <Check size={12} strokeWidth={3} />
+              {/* Body content with remaining details */}
+              <div className="px-8 pb-8 flex-grow flex flex-col justify-between">
+                <div>
+                  {/* Checklist */}
+                  <ul className="space-y-3 mb-8">
+                    {[
+                      "Badanie i konsultacja online",
+                      "Terapia testosteronem dopasowana do Ciebie",
+                      "Poprawa energii, libido i koncentracji",
+                      "Dyskretna i bezpieczna opieka medyczna"
+                    ].map((text, idx) => (
+                      <li key={idx} className="flex items-center gap-3">
+                        <div className="w-5 h-5 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center flex-shrink-0">
+                          <Check size={12} strokeWidth={3} />
+                        </div>
+                        <span className="text-sm font-semibold text-slate-700">{text}</span>
+                      </li>
+                    ))}
+                  </ul>
+
+                  {/* Sub icons info bar */}
+                  <div className="grid grid-cols-4 gap-1 border-t border-slate-100 pt-6">
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
+                        <Clock size={16} />
                       </div>
-                      <span className="text-sm font-semibold text-slate-700">{text}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* Sub icons info bar */}
-                <div className="grid grid-cols-4 gap-1 border-t border-slate-100 pt-6">
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
-                      <Clock size={16} />
+                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Konsultacja 24/7</span>
                     </div>
-                    <span className="text-[9px] font-bold text-slate-600 leading-tight">Konsultacja 24/7</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
-                      <FlaskConical size={16} />
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
+                        <FlaskConical size={16} />
+                      </div>
+                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Diagnostyka online</span>
                     </div>
-                    <span className="text-[9px] font-bold text-slate-600 leading-tight">Diagnostyka online</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
-                      <TrendingUp size={16} />
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
+                        <TrendingUp size={16} />
+                      </div>
+                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Terapia dopasowana</span>
                     </div>
-                    <span className="text-[9px] font-bold text-slate-600 leading-tight">Terapia dopasowana</span>
-                  </div>
-                  <div className="flex flex-col items-center text-center">
-                    <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
-                      <ShieldCheck size={16} />
+                    <div className="flex flex-col items-center text-center">
+                      <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
+                        <ShieldCheck size={16} />
+                      </div>
+                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Dyskrecja i bezp.</span>
                     </div>
-                    <span className="text-[9px] font-bold text-slate-600 leading-tight">Dyskrecja i bezp.</span>
                   </div>
                 </div>
               </div>

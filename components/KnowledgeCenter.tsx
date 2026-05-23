@@ -2,6 +2,7 @@ import { knowledgeCards } from "@/app/data/knowledgeCards";
 import KnowledgeCard from "@/components/KnowledgeCard";
 import { BookMarked, ShieldCheck, HeartHandshake, Clock, Search, ArrowRight } from "lucide-react";
 import Link from "next/link";
+import DesktopCarousel from "@/components/ui/DesktopCarousel";
 
 export default function KnowledgeCenter() {
   const trustFeatures = [
@@ -41,10 +42,11 @@ export default function KnowledgeCenter() {
           </p>
         </div>
 
-        {/* Trust Features Row */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+        {/* Trust Features Desktop Carousel */}
+        <div className="mb-16">
+          <DesktopCarousel>
           {trustFeatures.map((feature, idx) => (
-            <div key={idx} className="flex flex-col items-center text-center">
+            <div key={idx} className="min-w-[75vw] sm:min-w-[calc(50%-16px)] lg:min-w-[calc(25%-24px)] snap-center shrink-0 flex flex-col items-center text-center">
               <div className="w-14 h-14 border-2 border-green-200 bg-green-50 text-[#138A56] rounded-full flex items-center justify-center mb-4">
                 <feature.icon size={26} strokeWidth={1.5} />
               </div>
@@ -52,14 +54,17 @@ export default function KnowledgeCenter() {
               <p className="text-sm text-slate-500 max-w-[200px] leading-snug">{feature.subtitle}</p>
             </div>
           ))}
+          </DesktopCarousel>
         </div>
 
-        {/* Cards Grid */}
-        <div className="grid gap-6 lg:grid-cols-3">
+        {/* Cards Desktop Carousel */}
+        <DesktopCarousel>
           {knowledgeCards.map((card, index) => (
-            <KnowledgeCard key={index} {...card} />
+            <div key={index} className="min-w-[85vw] sm:min-w-full lg:min-w-[calc(33.333%-16px)] snap-center shrink-0 h-full flex">
+              <KnowledgeCard {...card} />
+            </div>
           ))}
-        </div>
+        </DesktopCarousel>
 
         {/* Bottom Search/Contact Banner */}
         <div className="mt-12 bg-[#F8FAF9] border border-slate-100 rounded-2xl p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-sm">

@@ -4,6 +4,7 @@ import {
   Star, MapPin, Clock, UserCheck, Users, FileText, 
   ShieldCheck, Lock, CheckCircle, Quote 
 } from "lucide-react";
+import DesktopCarousel from "@/components/ui/DesktopCarousel";
 
 export default function ReviewsSection() {
   const reviews = [
@@ -141,12 +142,13 @@ export default function ReviewsSection() {
           </div>
         </div>
 
-        {/* 3 Review Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12 max-w-6xl mx-auto">
+        {/* 3 Review Cards Desktop Carousel */}
+        <div className="mb-12 max-w-6xl mx-auto">
+          <DesktopCarousel>
           {reviews.map((review, idx) => (
             <div
               key={idx}
-              className="bg-white rounded-[28px] p-7 border border-slate-100 shadow-[0_15px_40px_rgba(0,0,0,0.015)] relative flex flex-col justify-between hover:shadow-md transition-shadow group overflow-hidden"
+              className="min-w-[85vw] sm:min-w-[calc(33.333%-16px)] snap-center shrink-0 bg-white rounded-[28px] p-7 border border-slate-100 shadow-[0_15px_40px_rgba(0,0,0,0.015)] relative flex flex-col justify-between hover:shadow-md transition-shadow group overflow-hidden"
             >
               {/* Giant background quotation mark */}
               <Quote className="absolute top-6 right-6 w-12 h-12 text-[#064743]/5 rotate-180 pointer-events-none" />
@@ -186,6 +188,7 @@ export default function ReviewsSection() {
               </div>
             </div>
           ))}
+          </DesktopCarousel>
         </div>
 
         {/* Bottom Trust Banner inside Section */}

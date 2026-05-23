@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import DesktopCarousel from "@/components/ui/DesktopCarousel";
 import { 
   ArrowRight, Clock, Star, UserCheck, Lock, Users 
 } from "lucide-react";
@@ -120,13 +121,13 @@ export default function ServicesSection() {
             </span>
           </div>
 
-          {/* 12-Card Grid (4 columns on large screens) */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          {/* 12-Card Desktop Carousel */}
+          <DesktopCarousel>
             {services.map((service, idx) => (
               <Link
                 key={idx}
                 href={service.href}
-                className="bg-white rounded-[24px] p-6 flex flex-col justify-between border border-slate-100 hover:shadow-lg transition-all duration-300 group"
+                className="min-w-[85vw] sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] snap-center shrink-0 bg-white rounded-[24px] p-6 flex flex-col justify-between border border-slate-100 hover:shadow-lg transition-all duration-300 group"
               >
                 <div>
                   {/* Illustration Container */}
@@ -151,7 +152,7 @@ export default function ServicesSection() {
                 </div>
               </Link>
             ))}
-          </div>
+          </DesktopCarousel>
 
         </div>
 

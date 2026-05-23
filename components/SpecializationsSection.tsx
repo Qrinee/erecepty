@@ -1,6 +1,7 @@
 "use client";
 
 import { useRouter } from "next/navigation";
+import DesktopCarousel from "@/components/ui/DesktopCarousel";
 import { 
   ArrowRight, Clock, Star, UserCheck, Lock, ShieldCheck, Percent,
   Stethoscope, Baby, Activity, Brain, ScanSearch, Eye, Ear, Pill, 
@@ -100,15 +101,15 @@ export default function SpecializationsSection() {
           </p>
         </div>
 
-        {/* Doctor Grid (6 columns on desktop, 3 on tablet, 1 on mobile) */}
-        <div className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-6 gap-6 w-full mx-auto">
+        {/* Doctor Desktop Carousel */}
+        <DesktopCarousel>
           
           {specialties.map((spec, idx) => {
             const Icon = spec.icon;
             return (
               <div
                 key={idx}
-                className="bg-white rounded-[28px] border border-slate-100 p-6 md:p-8 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-shadow relative overflow-hidden group"
+                className="min-w-[85vw] sm:min-w-[calc(33.333%-16px)] lg:min-w-[calc(16.666%-20px)] snap-center shrink-0 bg-white rounded-[28px] border border-slate-100 p-6 md:p-8 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-shadow relative overflow-hidden group"
               >
                 <div>
                   {/* Top-left small circular icon badge */}
@@ -157,7 +158,7 @@ export default function SpecializationsSection() {
           })}
 
           {/* Card 12 - Więcej specjalizacji */}
-          <div className="bg-white rounded-[28px] border border-slate-100 p-6 md:p-8 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div className="min-w-[85vw] sm:min-w-[calc(33.333%-16px)] lg:min-w-[calc(16.666%-20px)] snap-center shrink-0 bg-white rounded-[28px] border border-slate-100 p-6 md:p-8 flex flex-col justify-between shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-shadow relative overflow-hidden group">
             <div>
               {/* Top-left small circular icon badge */}
               <div className="w-9 h-9 rounded-full bg-[#E8F3F1] border border-[#D5EAE6] text-[#064743] flex items-center justify-center absolute top-4 left-4 shadow-sm">
@@ -190,7 +191,7 @@ export default function SpecializationsSection() {
             </div>
           </div>
 
-        </div>
+        </DesktopCarousel>
 
         {/* Bottom Trust/Guarantees Row under Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 pt-10 border-t border-slate-100">
