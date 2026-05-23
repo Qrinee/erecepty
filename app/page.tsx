@@ -15,6 +15,7 @@ import HowItWorksSection from "@/components/HowItWorksSection";
 import ReviewsSection from "@/components/ReviewsSection";
 import AppPromotionSection from "@/components/AppPromotionSection";
 import ForCompaniesSection from "@/components/ForCompaniesSection";
+import WhyChooseUsSection from "@/components/WhyChooseUsSection";
 import ContactSection from "@/components/ContactSection";
 import PricingSection from "@/components/PricingSection";
 import AboutUsSection from "@/components/AboutUsSection";
@@ -39,6 +40,7 @@ export default function Home() {
         <ReviewsSection />
         <AppPromotionSection />
         <ForCompaniesSection />
+        <WhyChooseUsSection />
         <TrustSection />
         <ContactSection />
         <FAQSection />

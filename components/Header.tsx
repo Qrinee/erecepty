@@ -101,7 +101,7 @@ export default function Header({ transparent = false }: HeaderProps) {
       }`}
       role="banner"
     >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8">
+      <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 ">
         <Link href="/" className="flex items-center gap-2 font-semibold text-lg" aria-label="Konsultacje online - Strona główna">
           <img src="/logo.png" alt="Lekarze i Terapeuci" className="h-25 w-auto object-contain" />
         </Link>
@@ -191,7 +191,7 @@ export default function Header({ transparent = false }: HeaderProps) {
                     role="menuitem"
                     onClick={() => setShowDropdown(false)}
                   >
-                    Moje recepty
+                    Moje konsultacje
                   </Link>
                   {user?.role === "administrator" && (
                     <Link

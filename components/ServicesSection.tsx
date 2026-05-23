@@ -26,9 +26,9 @@ export default function ServicesSection() {
       href: "/wypelnij-formularz?service=Kontynuacja+leczenia" 
     },
     { 
-      title: "Skierowanie na badania", 
-      desc: "Skierowania na badania i zabiegi", 
-      image: "/uslugi/skierowaniaibadania.png",
+      title: "Skierowanie", 
+      desc: "Skierowanie na badania, zabiegi lub do specjalisty.", 
+      image: "/skierowanie.png",
       href: "/wypelnij-formularz?service=Skierowanie+na+badania" 
     },
     { 

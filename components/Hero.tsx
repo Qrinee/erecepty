@@ -5,9 +5,8 @@ import { useRouter } from "next/navigation";
 import Link from "next/link";
 import {
   Clock, Lock, FileText, CheckCircle,
-  Phone, Calendar, Video, Pill, ClipboardList, RefreshCw,
-  FileSearch, CalendarClock, ShieldCheck, ChevronRight, Info, Sparkles, Loader2, UserCheck,
-  ChevronDown, Play, Users, Award, Star, ArrowRight
+  Calendar, Pill, ClipboardList, Loader2, UserCheck,
+  ChevronDown, Users, Star, ArrowRight, ShieldCheck, Headphones, Activity, FileSearch, Shield, Zap, Home, Globe
 } from "lucide-react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
@@ -16,16 +15,14 @@ export default function Hero() {
   const router = useRouter();
   const [selectedService, setSelectedService] = useState("Wizyta lekarska ogólna");
   const [selectedTime, setSelectedTime] = useState("08:00");
-  const [selectedMethod, setSelectedMethod] = useState<"audio" | "video">("audio");
   const [selectedDate, setSelectedDate] = useState("");
-  const [leaveStartDate, setLeaveStartDate] = useState("");
-  const [leaveEndDate, setLeaveEndDate] = useState("");
   const [availableSlotsData, setAvailableSlotsData] = useState<any>(null);
   const [loadingSlots, setLoadingSlots] = useState(false);
   const [showAllSlots, setShowAllSlots] = useState(false);
   const [publicDoctors, setPublicDoctors] = useState<any[]>([]);
-  const [loadingDoctors, setLoadingDoctors] = useState(true);
+  const [selectedDoctor, setSelectedDoctor] = useState<any>(null);
   const slotsTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  
   const todayStr = new Date().toISOString().split("T")[0];
 
   const serviceRoutes: Record<string, string> = {
@@ -61,19 +58,29 @@ export default function Hero() {
   }, [selectedTime]);
 
   const fetchPublicDoctors = useCallback(async () => {
-    setLoadingDoctors(true);
     try {
       const res = await fetch(`${API_URL}/api/doctor/public-list?date=${todayStr}`);
       const data = await res.json();
-      if (data.success && Array.isArray(data.data)) {
+      if (data.success && Array.isArray(data.data) && data.data.length > 0) {
         setPublicDoctors(data.data);
+        setSelectedDoctor(data.data[0]);
       } else {
         setPublicDoctors([]);
+        setSelectedDoctor({
+          firstName: "Anna",
+          lastName: "Nowak",
+          specialization: "Lekarz rodzinny",
+          avatar: null
+        });
       }
     } catch {
       setPublicDoctors([]);
-    } finally {
-      setLoadingDoctors(false);
+      setSelectedDoctor({
+        firstName: "Anna",
+        lastName: "Nowak",
+        specialization: "Lekarz rodzinny",
+        avatar: null
+      });
     }
   }, [todayStr]);
 
@@ -86,8 +93,8 @@ export default function Hero() {
   }, [selectedDate, fetchSlots, isNoScheduling]);
 
   useEffect(() => {
-    // Default to the date in the screenshot for beautiful rendering, fall back to today
-    setSelectedDate("2026-05-19");
+    const today = new Date().toISOString().split("T")[0];
+    setSelectedDate(today);
     fetchPublicDoctors();
   }, []);
 
@@ -95,237 +102,258 @@ export default function Hero() {
     const params = new URLSearchParams();
     params.set("service", selectedService);
     params.set("time", selectedTime);
-    params.set("method", selectedMethod);
+    params.set("method", "audio");
     if (selectedDate) params.set("date", selectedDate);
-    if (selectedService === "L4 online") {
-      if (leaveStartDate) params.set("leaveStart", leaveStartDate);
-      if (leaveEndDate) params.set("leaveEnd", leaveEndDate);
-    }
     const route = serviceRoutes[selectedService] || "/wypelnij-formularz";
     router.push(`${route}?${params.toString()}`);
   };
 
-  // Mock time slots fallback to guarantee a beautiful UI when the backend is offline
-  const mockSlots = ["08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30"];
+  const mockSlots = ["08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30"];
   const displayedSlots = (availableSlotsData?.availableSlots && availableSlotsData.availableSlots.length > 0) 
     ? availableSlotsData.availableSlots 
     : mockSlots;
   const visibleSlots = showAllSlots ? displayedSlots : displayedSlots.slice(0, 4);
 
   return (
-    <section className="relative bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4] overflow-hidden min-h-screen flex flex-col justify-between pt-[110px] sm:pt-[120px] lg:pt-[130px]">
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-[#DAE9E6]/30 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/4 pointer-events-none" />
-      <div className="absolute bottom-20 right-0 w-[600px] h-[600px] bg-[#DAE9E6]/20 rounded-full blur-3xl translate-y-1/4 translate-x-1/4 pointer-events-none" />
-
-      {/* Doctor Image (Desktop Center-Right) */}
-      <div className="absolute top-[130px] bottom-[140px] xl:bottom-[200px] left-[52%] -translate-x-[45%] w-auto z-10 hidden lg:block pointer-events-none">
-        <img 
-          src="/imga.png" 
-          alt="Lekarz" 
-          className="h-full w-auto object-contain object-bottom filter drop-shadow-[0_10px_15px_rgba(0,0,0,0.03)]" 
-        />
+    <section className="relative bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4] overflow-hidden h-auto min-h-screen  mt-[14vh] pb-6">
+      
+      {/* Background Ornaments */}
+      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#DAE9E6]/30 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/4 pointer-events-none z-0" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#DAE9E6]/20 rounded-full blur-3xl translate-y-1/4 translate-x-1/4 pointer-events-none z-0" />
+      
+      {/* Background Shapes behind the doctor */}
+      <div className="absolute top-[10%] bottom-[10%] left-[45%] -translate-x-1/2 aspect-square rounded-full bg-[#EBF5F2] z-0 pointer-events-none hidden lg:block" />
+      <div className="absolute top-[35%] left-[30%] w-64 h-64 bg-[#10B981] rounded-[40px] rotate-12 opacity-10 z-0 pointer-events-none hidden lg:block blur-sm" />
+      <div className="absolute top-[38%] left-[27%] z-0 hidden lg:flex pointer-events-none w-[110px] h-[110px] bg-[#10B981] rounded-[24px] items-center justify-center rotate-[-8deg] shadow-2xl shadow-emerald-500/30 overflow-hidden">
+        <svg className="w-14 h-14 text-white z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="4">
+          <polyline points="20 6 9 17 4 12" />
+        </svg>
+        <div className="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-full opacity-20 blur-md"></div>
       </div>
 
-      {/* Main Content Area */}
-      <div className="relative z-20 w-full max-w-[95vw] lg:max-w-7xl xl:max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 pb-12 flex-grow flex items-center">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+      {/* Doctor Image (Desktop Center) */}
+      <div className="absolute top-0 left-[61%] -translate-x-[47%] h-[82%] w-auto z-10 hidden lg:block pointer-events-none select-none">
+        <img 
+          src="/gpt.png" 
+          alt="Lekarz" 
+          className="h-full w-auto object-contain object-bottom filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.025)]" 
+        />
+        
+        {/* Floating Trust Badge */}
+        <div className="absolute bottom-[28%] right-[25%] bg-white/95 border border-slate-100/80 rounded-xl p-2.5 shadow-lg z-20 flex flex-col items-center gap-1 backdrop-blur-sm select-none pointer-events-none">
+          <div className="flex items-center -space-x-1.5">
+            <img className="w-5 h-5 rounded-full border border-white object-cover" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=60&h=60&q=80" alt="Avatar" />
+            <img className="w-5 h-5 rounded-full border border-white object-cover" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=60&h=60&q=80" alt="Avatar" />
+            <img className="w-5 h-5 rounded-full border border-white object-cover" src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=60&h=60&q=80" alt="Avatar" />
+          </div>
+          <div className="flex gap-0.5 mt-0.5">
+            {[...Array(5)].map((_, i) => (
+              <Star key={i} className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />
+            ))}
+          </div>
+          <span className="text-[10px] text-slate-800 font-extrabold leading-none mt-0.5">4.9/5</span>
+          <span className="text-[7px] text-slate-400 font-bold whitespace-nowrap">ponad 20 000 zadowolonych pacjentów</span>
+        </div>
+      </div>
+
+      {/* Main Container */}
+      <div className="relative z-20 w-full max-w-full mx-auto px-4 sm:px-8 lg:px-10 h-full flex">
+        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-3 items-start pt-4 lg:pt-0">
           
-          {/* Left Column: Headings, Features, CTA, Trust */}
-          <div className="lg:col-span-6 xl:col-span-7 flex flex-col justify-center animate-fadeIn">
-            {/* Top Pill Badge */}
-            <div className="mb-5 flex">
-              <span className="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-[#E8F3F1] border border-[#D5EAE6] text-[10px] sm:text-xs font-bold text-[#064743] tracking-wide uppercase">
-                <span className="relative flex h-2 w-2">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#064743] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-[#064743]" />
+          {/* Left Column */}
+          <div className="lg:col-span-7 flex flex-col text-left pt-2">
+            
+            {/* Online Badge */}
+            <div className="mb-2 lg:mb-1.5 flex">
+              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 lg:px-2 lg:py-1 rounded-full bg-[#EBF5F2] border border-[#D5EAE6]/50 text-xs lg:text-[9px] font-extrabold text-[#147A60] tracking-wider uppercase">
+                <span className="relative flex h-2 w-2 lg:h-1.5 lg:w-1.5">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
+                  <span className="relative inline-flex rounded-full h-full w-full bg-[#10B981]" />
                 </span>
-                • Dostępne 24/7 • Bez wychodzenia z domu
+                KONSULTACJE ONLINE 24H
               </span>
             </div>
 
-            {/* Main Title Heading */}
-            <h1 className="text-4xl sm:text-5xl xl:text-[54px] font-extrabold text-slate-900 leading-[1.1] mb-5 tracking-tight">
-              Porozmawiaj <br />
-              z lekarzem <span className="text-[#064743]">online</span> <br />
-              bez wychodzenia z domu
+            {/* Main Heading */}
+            <h1 className="text-3xl mt-0 sm:text-4xl lg:text-[2.5rem] lg:leading-[1.1] font-extrabold text-slate-900 mb-2 lg:mb-2 tracking-tight">
+              Porozmawiaj z lekarzem <br />
+             <span className="text-3xl"><span className="text-[#10B981]">online</span> bez wychodzenia z domu</span> 
             </h1>
 
-            {/* Subheading description */}
-            <p className="text-slate-500 text-sm sm:text-base md:text-lg mb-8 max-w-xl leading-relaxed">
-              Szybka, bezpieczna i wygodna konsultacja z lekarzem kiedy tylko jej potrzebujesz.
+            {/* Subtext */}
+            <p className="text-slate-500 font-semibold text-sm sm:text-base lg:text-md mb-4 lg:mb-3 max-w-xl leading-relaxed">
+              Szybka, bezpieczna i wygodna konsultacja z lekarzem <br/> kiedy tylko jej potrzebujesz.
             </p>
 
-            {/* Features list (Grid of 4 items) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-y-4 gap-x-6 mb-10 max-w-2xl">
+            {/* 3 Horizontal Tags */}
+            <div className="flex flex-wrap gap-2 lg:gap-1.5 mb-5 lg:mb-4">
+              <div className="flex items-center gap-1.5 text-xs lg:text-[11px] text-slate-800 font-extrabold bg-white border border-[#E1EFEB] rounded-full px-3 py-1 lg:px-2.5 lg:py-1 shadow-sm">
+                <div className="w-5 h-5 lg:w-4.5 lg:h-4.5 flex items-center justify-center rounded-full bg-yellow-100">
+                  <Zap className="w-3 h-3 lg:w-5 lg:h-5 text-[#064743]" />
+                </div> Szybko <span className="text-slate-450 font-semibold hidden sm:inline">nawet w 15 min</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs lg:text-[11px] text-slate-800 font-extrabold bg-white border border-[#E1EFEB] rounded-full px-3 py-1 lg:px-2.5 lg:py-1 shadow-sm">
+                <div className="w-5 h-5 lg:w-4.5 lg:h-4.5 flex items-center justify-center rounded-full bg-amber-100">
+                  <Home className="w-3 h-3 lg:w-5 lg:h-5 text-[#064743]" />
+                </div> Wygodnie <span className="text-slate-450 font-semibold hidden sm:inline">bez wychodzenia z domu</span>
+              </div>
+              <div className="flex items-center gap-1.5 text-xs lg:text-[11px] text-slate-800 font-extrabold bg-white border border-[#E1EFEB] rounded-full px-3 py-1 lg:px-2.5 lg:py-3 shadow-sm">
+                <div className="w-5 h-5 lg:w-4.5 lg:h-4.5 flex items-center justify-center rounded-full bg-emerald-100">
+                  <ShieldCheck className="w-3 h-3 lg:w-5 lg:h-5 text-[#064743]" />
+                </div> Bezpiecznie <span className="text-slate-450 font-semibold hidden sm:inline">szyfrowane dane</span>
+              </div>
+            </div>
+
+            {/* 3x2 Grid of Cards */}
+            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-2 mb-5 lg:mb-4 lg:w-[45vw]">
               {[
-                { icon: Clock, title: "Konsultacja", desc: "nawet w 15 min" },
-                { icon: Pill, title: "Recepta online", desc: "e-recepta SMS/e-mail" },
-                { icon: ClipboardList, title: "L4 online", desc: "bez wychodzenia z domu" },
-                { icon: ShieldCheck, title: "Bezpiecznie", desc: "100% online i poufnie" },
-              ].map((feat, i) => {
-                const Icon = feat.icon;
+                { icon: UserCheck, title: "Konsultacja 24h", desc: "Porozmawiaj z lekarzem kiedy tylko potrzebujesz." },
+                { icon: Pill, title: "Recepta online 24h", desc: "Otrzymaj e-receptę SMS-em lub e-mailem." },
+                { icon: ClipboardList, title: "L4 online 24h", desc: "Zwolnienie lekarskie bez wychodzenia z domu." },
+                { icon: FileSearch, title: "Skierowanie 24h", desc: "Skierowanie na badania lub do specjalisty." },
+                { icon: Activity, title: "Konsultacja wyników 24h", desc: "Omów swoje wyniki z lekarzem online." },
+                { icon: Headphones, title: "Wsparcie pacjenta 24h", desc: "Jesteśmy dostępni 7 dni w tygodniu." }
+              ].map((card, i) => {
+                const Icon = card.icon;
                 return (
-                  <div key={i} className="flex items-start gap-3">
-                    <div className="w-5 h-5 text-[#064743] flex-shrink-0 mt-0.5">
-                      <Icon className="w-5 h-5" strokeWidth={2} />
-                    </div>
-                    <div className="flex flex-col">
-                      <span className="font-bold text-slate-900 text-sm sm:text-base leading-snug">{feat.title}</span>
-                      <span className="text-xs sm:text-sm text-slate-500 mt-0.5">{feat.desc}</span>
+                  <div key={i} className="bg-white  rounded-2xl lg:rounded-xl p-4 lg:p-2 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.015)] relative overflow-hidden flex flex-col justify-between group hover:shadow-md transition duration-300">
+                    <span className="absolute top-2.5 right-2.5 lg:top-1.5 lg:right-1.5 bg-[#E8F3EE] text-[#138A56] text-[9px] lg:text-[8px] font-extrabold px-1.5 py-0.5 lg:px-1 lg:py-0 rounded-full border border-green-50/50">
+                      24H
+                    </span>
+                    <div>
+                      <div className="w-8.5 h-8.5 lg:w-6 lg:h-6 rounded-full bg-[#E8F3EE] text-[#064743] flex items-center justify-center mb-2.5 lg:mb-1.5 flex-shrink-0 group-hover:scale-105 transition duration-300">
+                        <Icon className="w-4.5 h-4.5 lg:w-3.5 lg:h-3.5" />
+                      </div>
+                      <h4 className="font-extrabold text-slate-800 text-xs sm:text-sm lg:text-xs tracking-tight mb-1 lg:mb-0.5">{card.title}</h4>
+                      <p className="text-slate-500 text-[10px] sm:text-xs lg:text-[9px] font-semibold leading-snug">{card.desc}</p>
                     </div>
                   </div>
                 );
               })}
             </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap items-center gap-4 mb-8">
-              <button
-                onClick={() => router.push("/wypelnij-formularz")}
-                className="inline-flex items-center justify-center gap-2.5 bg-[#064743] hover:bg-[#053734] text-white font-bold px-7 py-4 rounded-xl shadow-lg shadow-[#064743]/15 transition-all hover:scale-[1.01] active:scale-[0.99] text-sm cursor-pointer"
-              >
-                <span>Umów konsultację</span>
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              
-              <Link
-                href="/jak-to-dziala"
-                className="inline-flex items-center justify-center gap-2 bg-white hover:bg-slate-50 border border-slate-200 text-slate-900 font-bold px-7 py-4 rounded-xl shadow-sm transition-all hover:scale-[1.01] text-sm"
-              >
-                <span>Jak to działa?</span>
-                <span className="w-5 h-5 rounded-full border border-slate-300 flex items-center justify-center ml-1">
-                  <Play className="w-2.5 h-2.5 text-slate-600 fill-slate-600 ml-0.5" />
-                </span>
-              </Link>
+            {/* Bottom Security Banner */}
+            <div className="bg-[#064743] rounded-2xl lg:rounded-xl p-3 px-5 lg:p-2 lg:px-3 flex items-center justify-between gap-4 lg:gap-2 w-full border border-[#125D58] shadow-sm">
+              <div className="flex items-center gap-3 lg:gap-2">
+                <div className="w-9 h-9 lg:w-6 lg:h-6 rounded-lg lg:rounded-md bg-[#0E5B55] border border-[#126B63] text-emerald-400 flex items-center justify-center flex-shrink-0">
+                  <ShieldCheck className="w-5 h-5 lg:w-3.5 lg:h-3.5" />
+                </div>
+                <p className="text-slate-200 font-semibold text-[10px] sm:text-xs lg:text-[12px] leading-relaxed w-full">
+                  Twoje dane są w pełni bezpieczne. Stosujemy szyfrowanie SSL i najwyższe standardy ochrony danych zgodnie z RODO.
+                </p>
+              </div>
+              <div className="bg-[#0E5B55] text-yellow-400 border border-yellow-400/50 px-2.5 py-1 lg:px-1.5 lg:py-0.5 rounded-md text-[10px] lg:text-[8px] font-extrabold flex items-center gap-1.5 lg:gap-1 flex-shrink-0 uppercase tracking-wide shadow-sm">
+                <Lock className="w-3 h-3 lg:w-2.5 lg:h-2.5 text-yellow-400" />
+                <span>RODO Zgodne</span>
+              </div>
             </div>
 
-            {/* Overlapping Trust Stars Block */}
-            <div className="flex items-center gap-3.5">
-              <div className="flex items-center -space-x-2.5">
-                <img className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?auto=format&fit=crop&w=100&h=100&q=80" alt="Pacjentka" />
-                <img className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=100&h=100&q=80" alt="Pacjent" />
-                <img className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=100&h=100&q=80" alt="Pacjentka" />
-                <img className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=100&h=100&q=80" alt="Pacjent" />
-                <img className="w-8 h-8 rounded-full border-2 border-white object-cover shadow-sm" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=100&h=100&q=80" alt="Pacjentka" />
-              </div>
-              <div className="flex flex-col gap-0.5">
-                <div className="flex gap-0.5">
-                  {[...Array(5)].map((_, i) => (
-                    <Star key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" />
-                  ))}
-                </div>
-                <span className="text-[11px] sm:text-xs text-slate-500 font-semibold leading-none">
-                  4.9/5 na podstawie 2000+ opinii
-                </span>
-              </div>
-            </div>
           </div>
 
-          {/* Right Column: Premium Booking Card Widget */}
-          <div className="lg:col-span-6 xl:col-span-5 flex justify-end items-center relative z-20">
-            <div className="bg-white rounded-[28px] shadow-[0_20px_50px_rgba(0,0,0,0.04)] border border-slate-100/80 p-7 w-full max-w-[420px] animate-fadeIn">
+          {/* Right Column: 4-Step Booking Wizard Widget */}
+          <div className="lg:col-span-5 mt-10 flex justify-center lg:justify-end items-start relative z-20">
+            <div className="bg-white rounded-[28px] lg:rounded-[24px] shadow-[0_0_50px_rgba(16,185,129,0.3)] border-2 lg:border-[3px] border-[#10B981] w-full max-w-[380px] lg:max-w-[340px] relative flex flex-col h-auto">
               
-              <h2 className="text-xl sm:text-2xl font-extrabold text-slate-900 mb-6">
-                Umów wizytę online
-              </h2>
-
-              <div className="space-y-4">
-                {/* Field 1: Wybierz usługę */}
+  
+              <div className="p-4 sm:p-5 lg:p-4">
+                <div className="space-y-3 lg:space-y-3">
+                
+                {/* Step 1: Wybierz usługę */}
                 <div>
-                  <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
-                    Wybierz usługę
+                  <label className="block text-[11px] lg:text-[9px] font-extrabold text-slate-400 uppercase tracking-wider mb-1 lg:mb-1">
+                    1. WYBIERZ USŁUGĘ
                   </label>
                   <div className="relative">
                     <select 
                       value={selectedService} 
                       onChange={(e) => setSelectedService(e.target.value)} 
-                      className="w-full pl-4 pr-10 py-3.5 border border-slate-200 rounded-xl bg-white text-slate-800 text-sm font-medium focus:outline-none focus:border-[#064743] focus:ring-1 focus:ring-[#064743] appearance-none cursor-pointer shadow-sm hover:border-slate-300 transition-colors"
+                      className="w-full pl-8 pr-8 py-2 border border-slate-200 rounded-lg bg-white text-slate-800 text-xs sm:text-sm lg:text-xs font-semibold focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] appearance-none cursor-pointer shadow-sm hover:border-slate-300 transition-colors"
                     >
                       {servicesList.map((s) => (
                         <option key={s.value} value={s.value}>{s.label}</option>
                       ))}
                     </select>
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
-                      <ChevronDown className="w-4 h-4" />
+                    <div className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#10B981] pointer-events-none">
+                      <UserCheck className="w-4 h-4 lg:w-3.5 lg:h-3.5 text-[#10B981]" />
+                    </div>
+                    <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                      <ChevronDown className="w-4 h-4 lg:w-3.5 lg:h-3.5 text-slate-400" />
                     </div>
                   </div>
                 </div>
 
-                {/* Field 2: Custom L4 date ranges if L4 online selected */}
-                {selectedService === "L4 online" && (
-                  <div className="grid grid-cols-2 gap-3 animate-fadeIn">
-                    <div>
-                      <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Od dnia</label>
-                      <input 
-                        type="date" 
-                        value={leaveStartDate} 
-                        onChange={(e) => setLeaveStartDate(e.target.value)} 
-                        min={todayStr} 
-                        className="w-full px-3 py-3 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-[#064743] focus:ring-1 focus:ring-[#064743] bg-white shadow-sm" 
-                      />
-                    </div>
-                    <div>
-                      <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-1.5">Do dnia</label>
-                      <input 
-                        type="date" 
-                        value={leaveEndDate} 
-                        onChange={(e) => setLeaveEndDate(e.target.value)} 
-                        min={leaveStartDate || todayStr} 
-                        className="w-full px-3 py-3 border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-[#064743] focus:ring-1 focus:ring-[#064743] bg-white shadow-sm" 
-                      />
+                {/* Step 2: Wybierz termin */}
+                <div>
+                  <label className="block text-[11px] lg:text-[9px] font-extrabold text-slate-400 uppercase tracking-wider mb-1 lg:mb-1">
+                    2. WYBIERZ TERMIN
+                  </label>
+                  <div className="relative">
+                    <input 
+                      type="date" 
+                      value={selectedDate} 
+                      onChange={(e) => setSelectedDate(e.target.value)} 
+                      min={todayStr} 
+                      className="w-full pl-3 pr-8 py-2 border border-slate-200 rounded-lg bg-white text-slate-800 text-xs sm:text-sm lg:text-xs font-semibold focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] cursor-pointer shadow-sm hover:border-slate-300 transition-colors" 
+                    />
+                    <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
+                      <Calendar className="w-4 h-4 lg:w-3.5 lg:h-3.5" />
                     </div>
                   </div>
-                )}
+                </div>
 
-                {/* Field 3: Wybierz termin (Hidden for instant e-recipe / instant L4 in standard route, but selectable) */}
-                {!isNoScheduling && (
-                  <div>
-                    <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
-                      Wybierz termin
-                    </label>
-                    <div className="relative">
-                      <input 
-                        type="date" 
-                        value={selectedDate} 
-                        onChange={(e) => setSelectedDate(e.target.value)} 
-                        min={todayStr} 
-                        className="w-full pl-4 pr-12 py-3.5 border border-slate-200 rounded-xl bg-white text-slate-800 text-sm font-medium focus:outline-none focus:border-[#064743] focus:ring-1 focus:ring-[#064743] cursor-pointer shadow-sm hover:border-slate-300 transition-colors" 
-                      />
-                      <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-slate-500">
-                        <Calendar className="w-4 h-4" />
+                {/* Step 3: Wybierz lekarza */}
+                <div>
+                  <label className="block text-[11px] lg:text-[9px] font-extrabold text-slate-400 uppercase tracking-wider mb-1 lg:mb-1">
+                    3. WYBIERZ LEKARZA
+                  </label>
+                  <div className="w-full flex items-center justify-between p-2 lg:p-1.5 bg-slate-50 border border-slate-100 rounded-lg relative">
+                    <div className="flex items-center gap-2">
+                      <div className="w-8 h-8 lg:w-7 lg:h-7 rounded-full overflow-hidden bg-slate-200 border border-slate-100 flex-shrink-0">
+                        {selectedDoctor?.avatar ? (
+                          <img src={selectedDoctor.avatar} alt="Lekarz avatar" className="w-full h-full object-cover" />
+                        ) : (
+                          <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=150&h=150&q=80" alt="Default avatar" className="w-full h-full object-cover" />
+                        )}
+                      </div>
+                      <div className="text-left leading-tight">
+                        <div className="font-extrabold text-[11px] lg:text-[10px] text-slate-800">
+                          {selectedDoctor ? `dr ${selectedDoctor.firstName} ${selectedDoctor.lastName}` : "dr Anna Nowak"}
+                        </div>
+                        <div className="text-[9px] lg:text-[8px] text-slate-400 font-semibold mt-0.5">
+                          {selectedDoctor?.specialization || "Lekarz rodzinny"}
+                        </div>
                       </div>
                     </div>
-                    {selectedDate && availableSlotsData?.doctorName && (
-                      <div className="mt-2 p-2.5 bg-green-50 rounded-xl border border-green-200 flex items-center gap-2 text-xs">
-                        <UserCheck className="w-3.5 h-3.5 text-green-600" />
-                        <span className="font-semibold text-green-800">{availableSlotsData.doctorName}</span>
-                      </div>
-                    )}
+                    <div className="w-4 h-4 lg:w-4 lg:h-4 rounded-full bg-[#10B981] flex items-center justify-center flex-shrink-0 mr-1 shadow-sm">
+                      <svg className="w-2.5 h-2.5 lg:w-2.5 lg:h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
+                        <polyline points="20 6 9 17 4 12" />
+                      </svg>
+                    </div>
                   </div>
-                )}
+                </div>
 
-                {/* Field 4: Godzina slots list */}
+                {/* Step 4: Wybierz godzinę */}
                 {!isNoScheduling && (
                   <div>
-                    <label className="block text-[11px] font-bold text-slate-400 uppercase tracking-wider mb-2">
-                      Godzina
+                    <label className="block text-[11px] lg:text-[9px] font-extrabold text-slate-400 uppercase tracking-wider mb-1 lg:mb-1">
+                      4. WYBIERZ GODZINĘ
                     </label>
                     {loadingSlots ? (
-                      <div className="flex items-center gap-2 text-xs text-gray-400 py-3">
-                        <Loader2 className="w-4 h-4 animate-spin text-[#064743]" />
-                        <span>Ładowanie wolnych terminów...</span>
+                      <div className="flex items-center gap-1.5 text-xs lg:text-[10px] text-gray-400 py-1">
+                        <Loader2 className="w-3.5 h-3.5 lg:w-3.5 lg:h-3.5 animate-spin text-[#10B981]" />
+                        <span>Terminy...</span>
                       </div>
                     ) : (
-                      <div className="flex flex-wrap items-center gap-2">
+                      <div className="flex flex-wrap items-center gap-1.5 lg:gap-1.5">
                         {visibleSlots.map((t: string) => (
                           <button 
                             key={t} 
                             type="button"
                             onClick={() => setSelectedTime(t)} 
-                            className={`px-3.5 py-2 rounded-xl font-bold border text-xs transition-all cursor-pointer ${
+                            className={`px-3 py-1.5 lg:px-2.5 lg:py-1 rounded-md font-bold border text-[11px] lg:text-[9px] transition-all cursor-pointer ${
                               t === selectedTime 
-                                ? "bg-[#064743] text-white border-[#064743] shadow-md shadow-[#064743]/10" 
-                                : "border-slate-200 text-slate-700 bg-white hover:border-[#064743] shadow-sm"
+                                ? "bg-[#064743] text-white border-[#064743] shadow-sm" 
+                                : "border-slate-200 text-slate-700 bg-white hover:border-[#10B981] shadow-sm"
                             }`}
                           >
                             {t}
@@ -335,86 +363,45 @@ export default function Hero() {
                           <button 
                             type="button" 
                             onClick={() => setShowAllSlots(!showAllSlots)} 
-                            className="flex items-center gap-0.5 px-2.5 py-2 text-slate-500 hover:text-slate-800 font-extrabold text-xs transition-all cursor-pointer"
+                            className="flex items-center text-[#10B981] hover:text-[#064743] font-bold text-[10px] lg:text-[9px] transition-all cursor-pointer px-1 py-1"
                           >
-                            <span>{showAllSlots ? "Mniej" : `+${displayedSlots.length - 4} więcej`}</span>
-                            <ArrowRight className="w-3 h-3 ml-0.5" />
+                            <span>+ więcej terminów</span>
                           </button>
                         )}
                       </div>
                     )}
                   </div>
                 )}
+                </div>
 
-                {/* Form CTA Button */}
-                <button 
-                  onClick={handleBooking} 
-                  className="w-full bg-[#064743] hover:bg-[#053734] text-white font-extrabold py-4 rounded-2xl shadow-lg shadow-[#064743]/15 hover:shadow-[#064743]/25 active:scale-[0.99] transition-all flex items-center justify-center gap-2 mt-6 cursor-pointer text-sm"
+                <div className="pt-4 lg:pt-3">
+                  {/* Large yellow CTA action button */}
+                  <button 
+                    onClick={handleBooking} 
+                  className="w-full bg-[#FFD400] hover:bg-[#F0C700] text-slate-900 font-extrabold py-3 lg:py-2.5 rounded-lg shadow-md hover:shadow-lg active:scale-[0.99] transition-all flex items-center justify-center gap-2 mt-2 lg:mt-2 cursor-pointer text-sm lg:text-xs uppercase tracking-wide"
                 >
-                  <span>Dalej</span>
-                  <ArrowRight className="w-4 h-4" />
+                  <span className="font-extrabold text-slate-900">Umów wizytę teraz</span>
+                  <ArrowRight className="w-4 h-4 lg:w-3.5 lg:h-3.5 text-slate-900" />
                 </button>
 
                 {/* Sub-CTA text */}
-                <div className="text-center text-xs text-slate-400 font-semibold mt-3">
+                <div className="text-center text-[10px] lg:text-[9px] text-slate-400 font-bold mt-1">
                   Zarezerwuj wizytę w 2 minuty
                 </div>
-              </div>
 
+                {/* Bottom Badges */}
+                <div className="flex items-center justify-between border-t border-slate-100 pt-2 lg:pt-2 mt-2 lg:mt-2 text-[9px] lg:text-[8px] text-slate-400 font-bold px-1 select-none">
+                  <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3 lg:w-2.5 lg:h-2.5 text-slate-300" /> Bez rejestracji</span>
+                  <span className="flex items-center gap-1"><Zap className="w-3 h-3 lg:w-2.5 lg:h-2.5 text-slate-300" /> Szybka realizacja</span>
+                  <span className="flex items-center gap-1"><Globe className="w-3 h-3 lg:w-2.5 lg:h-2.5 text-slate-300" /> 100% online</span>
+                </div>
+                </div>
+
+              </div>
             </div>
           </div>
-
         </div>
       </div>
-
-      {/* Bottom Trust Banner (Guarantees Bar) */}
-      <div className="relative z-30 w-full border-t border-slate-100 bg-[#FCFDFD] py-6 sm:py-8">
-        <div className="w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
-            {[
-              { 
-                icon: Users, 
-                boldText: "Ponad 50 000", 
-                normalText: "zadowolonych pacjentów" 
-              },
-              { 
-                icon: Star, 
-                boldText: "98% pacjentów", 
-                normalText: "poleca nasze usługi" 
-              },
-              { 
-                icon: Award, 
-                boldText: "Lekarze z uprawnieniami", 
-                normalText: "i wieloletnim doświadczeniem" 
-              },
-              { 
-                icon: ShieldCheck, 
-                boldText: "Twoje dane są bezpieczne", 
-                normalText: "zgodne z RODO" 
-              },
-            ].map((item, idx) => {
-              const Icon = item.icon;
-              return (
-                <div key={idx} className="flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-full border border-[#D5EAE6] bg-[#E8F3F1] flex items-center justify-center text-[#064743] flex-shrink-0 shadow-sm">
-                    {idx === 1 ? (
-                      // Custom fill for star icon in bottom bar
-                      <Icon className="w-5 h-5 fill-[#064743]" strokeWidth={2} />
-                    ) : (
-                      <Icon className="w-5 h-5" strokeWidth={2} />
-                    )}
-                  </div>
-                  <div className="text-xs sm:text-sm text-slate-600 leading-snug">
-                    <span className="font-extrabold text-slate-800">{item.boldText}</span>{" "}
-                    <span>{item.normalText}</span>
-                  </div>
-                </div>
-              );
-            })}
-          </div>
-        </div>
-      </div>
-
     </section>
   );
 }
