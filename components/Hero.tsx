@@ -158,10 +158,10 @@ export default function Hero() {
 
       {/* Main Container */}
       <div className="relative z-20 w-full max-w-full mx-auto px-4 sm:px-8 lg:px-10 h-full flex">
-        <div className="w-full grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-3 items-start pt-4 lg:pt-0">
+        <div className="w-full flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-3 items-start pt-4 lg:pt-0">
           
-          {/* Left Column */}
-          <div className="lg:col-span-7 flex flex-col text-left pt-2">
+          {/* Top Left Block */}
+          <div className="lg:col-span-7 flex flex-col text-left pt-2 order-1 lg:order-1">
             
             {/* Online Badge */}
             <div className="mb-2 lg:mb-1.5 flex">
@@ -204,6 +204,10 @@ export default function Hero() {
               </div>
             </div>
 
+          </div>
+
+          {/* Bottom Left Block */}
+          <div className="lg:col-span-7 flex flex-col text-left order-3 lg:order-3">
             {/* 3x2 Grid of Cards */}
             <div className="grid grid-cols-2 lg:grid-cols-3 gap-3 lg:gap-2 mb-5 lg:mb-4 lg:w-[45vw]">
               {[
@@ -251,7 +255,7 @@ export default function Hero() {
           </div>
 
           {/* Right Column: 4-Step Booking Wizard Widget */}
-          <div className="lg:col-span-5 mt-10 flex justify-center lg:justify-end items-start relative z-20">
+          <div className="lg:col-span-5 lg:row-span-2 mt-2 lg:mt-10 flex justify-center lg:justify-end items-start relative z-20 order-2 lg:order-2 w-full">
             <div className="bg-white rounded-[28px] lg:rounded-[24px] shadow-[0_0_50px_rgba(16,185,129,0.3)] border-2 lg:border-[3px] border-[#10B981] w-full max-w-[380px] lg:max-w-[340px] relative flex flex-col h-auto">
               
   
