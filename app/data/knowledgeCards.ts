@@ -73,7 +73,7 @@ export const knowledgeCards: KnowledgeCardData[] = [
     subtitle: "Kompletny przewodnik",
     description:
       "Dowiedz się jak działają e-wizyty, recepty online i konsultacje ze specjalistami.",
-    image: "/receptaonline.jpeg",
+    image: "/wszystkookonsultacjach.png",
     slug: "wszystko-o-konsultacjach-online",
     author: "Mgr Piotr Nowak",
     publishedDate: "10 stycznia 2025",

@@ -65,7 +65,7 @@ export default function ServicesPanel() {
   };
 
   return (
-    <section className="bg-white relative overflow-hidden pt-10">
+    <section className="bg-white relative overflow-hidden pt-10" id="cennik">
 
       {/* Decorative leafy branch (Left - Desktop Only) */}
       <svg className="absolute top-6 left-6 w-24 h-24 text-[#064743]/10 hidden xl:block pointer-events-none select-none" viewBox="0 0 100 100" fill="currentColor">
