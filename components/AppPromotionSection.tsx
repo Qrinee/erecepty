@@ -79,33 +79,33 @@ export default function AppPromotionSection() {
           
           {/* Left Column: Benefits & Install Prompts */}
           <div className="lg:col-span-7 text-left">
-            <div className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#E4F2EE] text-[#064743] font-bold text-[10px] uppercase tracking-wider mb-2.5 shadow-sm">
-              <Smartphone className="w-3 h-3" />
+            <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#E4F2EE] text-[#064743] font-bold text-xs sm:text-sm uppercase tracking-wider mb-3 shadow-sm">
+              <Smartphone className="w-4 h-4" />
               <span>Strona jako Aplikacja</span>
             </div>
 
-            <h2 className="text-xl sm:text-2xl md:text-[28px] font-extrabold text-slate-900 leading-tight mb-2.5">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 leading-[1.15] mb-4">
               Dodaj nas do ekranu głównego i zamawiaj{" "}
               <span className="text-[#147A60] bg-[#E4F2EE]/60 px-2 rounded-md">20% taniej!</span>
             </h2>
 
-            <p className="text-gray-500 font-semibold text-xs sm:text-sm mb-4 max-w-xl leading-relaxed">
+            <p className="text-slate-600 font-medium text-sm sm:text-base md:text-lg mb-8 max-w-2xl leading-relaxed">
               Zyskaj błyskawiczny dostęp do konsultacji medycznych, e-recept i e-zwolnień bezpośrednio z pulpitu swojego telefonu. Działa dokładnie jak aplikacja mobilna, bez zajmowania pamięci!
             </p>
 
             {/* Benefits List (2-column grid for compactness) */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-2 mb-4.5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 mb-8">
               {[
                 "Łatwiejsze i szybsze składanie zamówień",
                 "Minimum formalności przy kontynuacji leczenia",
                 "Priorytetowa obsługa zgłoszeń",
                 "Działa natychmiast, bez pobierania z App Store / GP"
               ].map((benefit, index) => (
-                <div key={index} className="flex items-start gap-2">
-                  <div className="w-4.5 h-4.5 rounded-full bg-[#E4F2EE] text-[#147A60] flex items-center justify-center flex-shrink-0 mt-0.5">
-                    <Check className="w-2.5 h-2.5 stroke-[3]" />
+                <div key={index} className="flex items-start gap-3">
+                  <div className="w-6 h-6 rounded-full bg-[#E4F2EE] text-[#147A60] flex items-center justify-center flex-shrink-0 mt-0.5">
+                    <Check className="w-3.5 h-3.5 stroke-[3]" />
                   </div>
-                  <span className="text-slate-700 font-semibold text-[11px] sm:text-xs">{benefit}</span>
+                  <span className="text-slate-700 font-semibold text-sm sm:text-base leading-snug">{benefit}</span>
                 </div>
               ))}
             </div>
@@ -116,21 +116,21 @@ export default function AppPromotionSection() {
               {/* Install Trigger Button */}
               <div className="w-full sm:w-auto">
                 {isInstalled ? (
-                  <div className="inline-flex items-center gap-2 bg-[#E4F2EE] text-[#064743] px-4.5 py-2.5 rounded-lg font-extrabold text-xs border border-[#D5EAE6]">
-                    <Check className="w-3.5 h-3.5 stroke-[3]" />
+                  <div className="inline-flex items-center gap-2 bg-[#E4F2EE] text-[#064743] px-6 py-3 rounded-xl font-extrabold text-sm sm:text-base border border-[#D5EAE6]">
+                    <Check className="w-5 h-5 stroke-[3]" />
                     <span>Aplikacja jest zainstalowana</span>
                   </div>
                 ) : (
                   <button
                     onClick={handleInstallClick}
-                    className="w-full sm:w-auto bg-[#147A60] hover:bg-[#064743] text-white px-5 py-2.5 rounded-lg font-extrabold flex items-center justify-center gap-2 transition duration-300 shadow-md shadow-emerald-950/10 cursor-pointer text-xs"
+                    className="w-full sm:w-auto bg-[#147A60] hover:bg-[#064743] text-white px-6 py-3.5 rounded-xl font-extrabold flex items-center justify-center gap-2.5 transition duration-300 shadow-md shadow-emerald-950/10 cursor-pointer text-sm sm:text-base"
                   >
-                    <Download className="w-4 h-4" />
+                    <Download className="w-5 h-5" />
                     <span>Dodaj do ekranu głównego</span>
                   </button>
                 )}
                 
-                <p className="text-[9px] text-gray-400 mt-1 font-medium">
+                <p className="text-xs text-gray-500 mt-2.5 font-medium">
                   {isIos 
                     ? "System iOS (Safari): wymaga ręcznego dodania" 
                     : "Instalacja jednym kliknięciem na Androidzie / Chrome"}
@@ -138,8 +138,8 @@ export default function AppPromotionSection() {
               </div>
 
               {/* QR Code */}
-              <div className="hidden md:flex items-center gap-2.5 bg-white border border-[#D5EAE6]/60 rounded-xl p-2 shadow-sm relative group">
-                <div className="w-[64px] h-[64px] bg-slate-50 border border-slate-100 rounded-lg flex items-center justify-center overflow-hidden flex-shrink-0">
+              <div className="hidden md:flex items-center gap-4 bg-white border border-[#D5EAE6]/60 rounded-2xl p-3 shadow-sm relative group">
+                <div className="w-[80px] h-[80px] bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0 p-1">
                   <img
                     src={qrCodeUrl}
                     alt="Kod QR do dodania strony"
@@ -147,12 +147,12 @@ export default function AppPromotionSection() {
                   />
                 </div>
                 <div>
-                  <div className="flex items-center gap-1.5 text-slate-800 font-extrabold text-[10px] mb-0.5">
-                    <QrCode className="w-3.5 h-3.5 text-[#147A60]" />
+                  <div className="flex items-center gap-2 text-slate-800 font-extrabold text-sm mb-1">
+                    <QrCode className="w-4 h-4 text-[#147A60]" />
                     <span>Skanuj kod telefonem</span>
                   </div>
-                  <p className="text-[9px] text-gray-500 font-semibold max-w-[120px] leading-normal">
-                    Otwórz aparat w telefonie, aby szybko przejść na komórkę.
+                  <p className="text-xs text-gray-500 font-medium max-w-[150px] leading-relaxed">
+                    Otwórz aparat w telefonie, aby szybko przejść na wersję mobilną.
                   </p>
                 </div>
 
