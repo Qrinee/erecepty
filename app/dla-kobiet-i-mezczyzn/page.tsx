@@ -76,7 +76,7 @@ export default function DlaKobietIMezczyznPage() {
       <main id="main-content" className="bg-[#FAFBFB] min-h-screen pt-24 pb-20" tabIndex={-1}>
 
         {/* Breadcrumbs */}
-        <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-slate-500 flex items-center gap-2">
+        <nav className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-slate-500 flex items-center gap-2">
           <Link href="/" className="hover:text-slate-800 flex items-center gap-1 transition-colors">
             <Home size={14} className="mt-[-2px]" />
             Strona główna
@@ -86,7 +86,7 @@ export default function DlaKobietIMezczyznPage() {
         </nav>
 
         {/* Top Header section */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
+        <section className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 border-b border-slate-200/60 pb-10">
             <div className="max-w-2xl space-y-4">
               <h1 className="text-4xl md:text-5xl font-black text-slate-900 tracking-tight leading-tight">
@@ -118,7 +118,7 @@ export default function DlaKobietIMezczyznPage() {
         </section>
 
         {/* Three Columns Grid of Services */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <section className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <div className="grid gap-8 lg:grid-cols-3">
 
             {/* Card 1: Tabletka "dzień po" */}
@@ -134,7 +134,7 @@ export default function DlaKobietIMezczyznPage() {
                 </div>
 
                 <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                  Tabletka „dzień po”
+                  Tabletka <br /> „dzień po”
                 </h2>
 
                 <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
@@ -437,7 +437,7 @@ export default function DlaKobietIMezczyznPage() {
         </section>
 
         {/* Contact Banner Bar */}
-        <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <section className=" mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <div className="bg-white border border-slate-100 rounded-[32px] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
             <div className="flex items-start gap-4 max-w-2xl">
               <div className="w-12 h-12 rounded-2xl bg-[#DAE9E6]/40 text-[#064743] flex items-center justify-center flex-shrink-0">
@@ -464,7 +464,7 @@ export default function DlaKobietIMezczyznPage() {
         </section>
 
         {/* Bottom Trust Items Bar */}
-        <section className="border-t border-slate-200/60 pt-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <section className="border-t border-slate-200/60 pt-16  mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {bottomTrustItems.map((item, idx) => {
               const TrustIcon = item.icon;

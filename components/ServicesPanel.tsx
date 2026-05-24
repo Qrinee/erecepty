@@ -1,9 +1,9 @@
 "use client";
 
 import { useRouter } from "next/navigation";
-import { 
-  Phone, Video, Pill, ClipboardList, RefreshCw, 
-  Stethoscope, Clock, ShieldCheck, Percent, Lock 
+import {
+  Phone, Video, Pill, ClipboardList, RefreshCw,
+  Stethoscope, Clock, ShieldCheck, Percent, Lock
 } from "lucide-react";
 
 export default function ServicesPanel() {
@@ -65,8 +65,8 @@ export default function ServicesPanel() {
   };
 
   return (
-    <section className="bg-white relative overflow-hidden">
-      
+    <section className="bg-white relative overflow-hidden pt-10">
+
       {/* Decorative leafy branch (Left - Desktop Only) */}
       <svg className="absolute top-6 left-6 w-24 h-24 text-[#064743]/10 hidden xl:block pointer-events-none select-none" viewBox="0 0 100 100" fill="currentColor">
         <path d="M10 80 Q 30 50 60 50 M 30 65 Q 25 50 40 45 M 45 58 Q 50 40 60 40" stroke="currentColor" strokeWidth="2" fill="none" />
@@ -82,7 +82,7 @@ export default function ServicesPanel() {
       </svg>
 
       <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-3 tracking-tight uppercase">
@@ -110,9 +110,9 @@ export default function ServicesPanel() {
 
                   {/* Image Container - Beautifully rounded and masked photo */}
                   <div className="relative w-full aspect-[16/10] mb-6 mt-2 rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 flex items-center justify-center group">
-                    <img 
-                      src={service.image} 
-                      alt={service.title} 
+                    <img
+                      src={service.image}
+                      alt={service.title}
                       className="w-full h-full object-cover transform group-hover:scale-102 transition-transform duration-500"
                     />
                   </div>

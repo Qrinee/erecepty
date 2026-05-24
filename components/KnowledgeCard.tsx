@@ -20,7 +20,7 @@ export default function KnowledgeCard({
   slug,
 }: KnowledgeCardProps) {
   return (
-    <article className="group flex flex-col items-stretch rounded-[24px] bg-white border border-slate-100 shadow-sm p-5 hover:shadow-lg hover:border-[#1A5D54]/20 transition-all duration-300">
+    <article className="w-full h-full group flex flex-col items-stretch rounded-[24px] bg-white border border-slate-100 shadow-sm p-5 hover:shadow-lg hover:border-[#1A5D54]/20 transition-all duration-300">
       <div className="w-full flex-shrink-0 flex items-center justify-center bg-[#F8FAF9] rounded-2xl p-4 mb-5">
         <div className="relative w-full aspect-[16/10] sm:aspect-[16/9]">
           <Image

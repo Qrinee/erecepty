@@ -60,7 +60,7 @@ export default function KnowledgeCenter() {
         {/* Cards Desktop Carousel */}
         <DesktopCarousel>
           {knowledgeCards.map((card, index) => (
-            <div key={index} className="min-w-[85vw] sm:min-w-full lg:min-w-[calc(33.333%-16px)] snap-center shrink-0 h-full flex">
+            <div key={index} className="min-w-[290px] sm:min-w-[360px] w-[290px] sm:w-[360px] h-[480px] snap-center shrink-0 flex">
               <KnowledgeCard {...card} />
             </div>
           ))}

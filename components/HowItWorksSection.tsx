@@ -6,10 +6,10 @@ import Image from "next/image";
 export default function HowItWorksSection() {
   return (
     <section id="jak-to-dziala" className="py-20 bg-white relative overflow-hidden">
-      <div className="max-w-7xl mx-auto px-4">
+      <div className="mx-auto px-4">
         {/* Header grid containing Clock (left), Center content (title + horizontal trust badges), Phone mockup (right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
-          
+
           {/* Column 1: Clock (desktop only) */}
           <div className="hidden lg:flex lg:col-span-3 justify-center select-none animate-fadeIn">
             <div className="relative group">
@@ -22,13 +22,13 @@ export default function HowItWorksSection() {
               />
             </div>
           </div>
-          
+
           {/* Column 2: Main title & horizontal trust badges */}
           <div className="col-span-1 lg:col-span-6 text-center flex flex-col items-center">
             <h2 className="text-3xl md:text-[38px] font-extrabold text-[#052840] tracking-tight leading-[1.15] mb-4">
               Zamów konsultację online w kilka minut
             </h2>
-            <p className="text-slate-600 max-w-xl mb-10 text-[15px] md:text-base font-medium">
+            <p className="text-slate-600  mb-10 text-[15px] md:text-base font-medium">
               Szybka pomoc medyczna w 4 prostych krokach — bez kolejek i bez wychodzenia z domu
             </p>
 
@@ -41,7 +41,7 @@ export default function HowItWorksSection() {
                   </div>
                   <p className="text-[13px] font-extrabold text-[#052840]">Bezpiecznie</p>
                 </div>
-                <p className="text-[11px] font-medium text-slate-500 leading-snug">Twoje dane są u nas<br/>bezpieczne</p>
+                <p className="text-[11px] font-medium text-slate-500 leading-snug">Twoje dane są u nas<br />bezpieczne</p>
               </div>
 
               <div className="flex flex-col items-start text-left gap-2">
@@ -51,7 +51,7 @@ export default function HowItWorksSection() {
                   </div>
                   <p className="text-[13px] font-extrabold text-[#052840]">Szybko</p>
                 </div>
-                <p className="text-[11px] font-medium text-slate-500 leading-snug">Konsultacja nawet<br/>w 15 minut</p>
+                <p className="text-[11px] font-medium text-slate-500 leading-snug">Konsultacja nawet<br />w 15 minut</p>
               </div>
 
               <div className="flex flex-col items-start text-left gap-2">
@@ -61,7 +61,7 @@ export default function HowItWorksSection() {
                   </div>
                   <p className="text-[13px] font-extrabold text-[#052840]">Przystępnie</p>
                 </div>
-                <p className="text-[11px] font-medium text-slate-500 leading-snug">Atrakcyjne ceny<br/>bez ukrytych opłat</p>
+                <p className="text-[11px] font-medium text-slate-500 leading-snug">Atrakcyjne ceny<br />bez ukrytych opłat</p>
               </div>
 
               <div className="flex flex-col items-start text-left gap-2">
@@ -69,13 +69,13 @@ export default function HowItWorksSection() {
                   <div className="w-6 h-6 rounded-full bg-[#0CA953] text-white flex items-center justify-center shrink-0">
                     <Home className="w-3 h-3" strokeWidth={3} />
                   </div>
-                  <p className="text-[13px] font-extrabold text-[#052840] leading-tight">Bez wychodzenia<br/>z domu</p>
+                  <p className="text-[13px] font-extrabold text-[#052840] leading-tight">Bez wychodzenia<br />z domu</p>
                 </div>
-                <p className="text-[11px] font-medium text-slate-500 leading-snug">Załatw wszystko online,<br/>bez kolejek</p>
+                <p className="text-[11px] font-medium text-slate-500 leading-snug">Załatw wszystko online,<br />bez kolejek</p>
               </div>
             </div>
           </div>
-          
+
           {/* Column 3: Floating Phone mockup (desktop only) */}
           <div className="hidden lg:flex lg:col-span-3 justify-center select-none animate-fadeIn">
             <div className="relative group">
@@ -92,21 +92,22 @@ export default function HowItWorksSection() {
         </div>
 
         {/* Stepper Grid */}
-        <div className="relative mt-24 max-w-6xl mx-auto">
-          
+        <div className="relative mt-24  mx-auto">
+
           {/* Connecting Dotted Line for Desktop (horizontal) */}
-          <div className="hidden lg:block absolute top-0 left-[12.5%] right-[12.5%] h-0 border-t-[3px] border-dotted border-[#0CA953] opacity-50 z-0" />
-          
+          <div className="hidden lg:block absolute top-5 left-[12.5%] right-[12.5%] h-0 border-t-[5px] border-dotted border-[#0CA953] opacity-50 z-0" />
+
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
-            
+
             {/* Step 1 */}
-            <div className="relative flex flex-col bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-12 text-left h-full group">
+            <div className="relative pt-10 flex flex-col group h-full">
               {/* Step Number Circle */}
-              <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center font-bold text-lg z-10 group-hover:bg-[#0A8742] transition-colors duration-300 shadow-sm">
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center font-bold text-lg z-10 group-hover:bg-[#0A8742] transition-colors duration-300 shadow-sm">
                 1
               </div>
-              
-              {/* Step Illustration */}
+              {/* Card Body */}
+              <div className="mt-5 bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-8 text-left flex-grow flex flex-col">
+                {/* Step Illustration */}
               <div className="h-[120px] flex items-center justify-center mb-6">
                 <img
                   src="/hiw_step1.png"
@@ -114,12 +115,12 @@ export default function HowItWorksSection() {
                   className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              
+
               <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Wybierz usługę</h3>
               <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
                 Określ, czego potrzebujesz — e-recepty, L4 lub konsultacji ze specjalistą.
               </p>
-              
+
               {/* Pills row (Service selector mockup) */}
               <div className="mt-auto pt-4 flex flex-col gap-2">
                 <span className="text-[11px] font-semibold text-slate-400">Przykłady usług:</span>
@@ -139,15 +140,17 @@ export default function HowItWorksSection() {
                 </div>
               </div>
             </div>
+          </div>
 
             {/* Step 2 */}
-            <div className="relative flex flex-col bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-12 text-left h-full group">
+            <div className="relative pt-10 flex flex-col group h-full">
               {/* Step Number Circle */}
-              <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center font-bold text-lg z-10 group-hover:bg-[#0A8742] transition-colors duration-300 shadow-sm">
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center font-bold text-lg z-10 group-hover:bg-[#0A8742] transition-colors duration-300 shadow-sm">
                 2
               </div>
-              
-              {/* Step Illustration */}
+              {/* Card Body */}
+              <div className="mt-5 bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-8 text-left flex-grow flex flex-col">
+                {/* Step Illustration */}
               <div className="h-[120px] flex items-center justify-center mb-6">
                 <img
                   src="/hiw_step2.png"
@@ -155,32 +158,34 @@ export default function HowItWorksSection() {
                   className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              
+
               <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Wybierz specjalistę</h3>
               <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
                 Znajdź lekarza dopasowanego do swoich potrzeb i sprawdź jego dostępne terminy.
               </p>
-              
+
               {/* Trust Badge / Info Box */}
               <div className="mt-auto pt-4">
                 <div className="flex items-center gap-3 bg-[#F4F9F7] px-4 py-3 rounded-xl w-full">
                   <Users className="w-5 h-5 text-[#0CA953] shrink-0" strokeWidth={2.5} />
                   <span className="text-[11px] font-bold text-[#052840] leading-[1.3]">
-                    Ponad 50 specjalistów<br/>
+                    Ponad 50 specjalistów<br />
                     <span className="font-medium text-slate-600">do Twojej dyspozycji</span>
                   </span>
                 </div>
               </div>
             </div>
+          </div>
 
             {/* Step 3 */}
-            <div className="relative flex flex-col bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-12 text-left h-full group">
+            <div className="relative pt-10 flex flex-col group h-full">
               {/* Step Number Circle */}
-              <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center font-bold text-lg z-10 group-hover:bg-[#0A8742] transition-colors duration-300 shadow-sm">
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center font-bold text-lg z-10 group-hover:bg-[#0A8742] transition-colors duration-300 shadow-sm">
                 3
               </div>
-              
-              {/* Step Illustration */}
+              {/* Card Body */}
+              <div className="mt-5 bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-8 text-left flex-grow flex flex-col">
+                {/* Step Illustration */}
               <div className="h-[120px] flex items-center justify-center mb-6">
                 <img
                   src="/hiw_step3.png"
@@ -188,32 +193,34 @@ export default function HowItWorksSection() {
                   className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              
+
               <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Umów termin online</h3>
               <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
                 Wybierz dogodną datę i godzinę konsultacji telefonicznej lub wideo.
               </p>
-              
+
               {/* Trust Badge / Info Box */}
               <div className="mt-auto pt-4">
                 <div className="flex items-center gap-3 bg-[#F4F9F7] px-4 py-3 rounded-xl w-full">
                   <Calendar className="w-5 h-5 text-[#0CA953] shrink-0" strokeWidth={2.5} />
                   <span className="text-[11px] font-bold text-[#052840] leading-[1.3]">
-                    Konsultacje nawet<br/>
+                    Konsultacje nawet<br />
                     <span className="font-medium text-slate-600">tego samego dnia</span>
                   </span>
                 </div>
               </div>
             </div>
+          </div>
 
             {/* Step 4 */}
-            <div className="relative flex flex-col bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-12 text-left h-full group">
+            <div className="relative pt-10 flex flex-col group h-full">
               {/* Step Number Circle */}
-              <div className="absolute -top-5 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center font-bold text-lg z-10 group-hover:bg-[#0A8742] transition-colors duration-300 shadow-sm">
+              <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center font-bold text-lg z-10 group-hover:bg-[#0A8742] transition-colors duration-300 shadow-sm">
                 4
               </div>
-              
-              {/* Step Illustration */}
+              {/* Card Body */}
+              <div className="mt-5 bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-8 text-left flex-grow flex flex-col">
+                {/* Step Illustration */}
               <div className="h-[120px] flex items-center justify-center mb-6">
                 <img
                   src="/hiw_step4.png"
@@ -221,23 +228,24 @@ export default function HowItWorksSection() {
                   className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
                 />
               </div>
-              
+
               <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Rozmawiaj z lekarzem</h3>
               <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
                 Skonsultuj się z lekarzem online i otrzymaj e-receptę lub dokumenty bez wychodzenia z domu.
               </p>
-              
+
               {/* Trust Badge / Info Box */}
               <div className="mt-auto pt-4">
                 <div className="flex items-center gap-3 bg-[#F4F9F7] px-4 py-3 rounded-xl w-full">
                   <Send className="w-5 h-5 text-[#0CA953] shrink-0" strokeWidth={2.5} />
                   <span className="text-[11px] font-bold text-[#052840] leading-[1.3]">
-                    e-Recepty i zwolnienia<br/>
+                    e-Recepty i zwolnienia<br />
                     <span className="font-medium text-slate-600">wysyłane online</span>
                   </span>
                 </div>
               </div>
             </div>
+          </div>
 
           </div>
         </div>
