@@ -80,7 +80,7 @@ export default function ForWhoSection() {
   ];
 
   return (
-    <section className="bg-white py-20 px-6 relative overflow-hidden" aria-labelledby="for-who-title">
+    <section className="bg-gradient-to-b from-[#EBF5F2] to-white py-20 px-6 relative overflow-hidden" aria-labelledby="for-who-title">
       {/* Background decorative elements */}
       <div className="absolute top-10 left-5 2xl:left-10 pointer-events-none hidden xl:block z-0">
         <Image src="/for_who_left_phone.png" alt="" width={240} height={240} className="object-contain" />

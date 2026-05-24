@@ -2,89 +2,95 @@
 
 import Link from "next/link";
 import DesktopCarousel from "@/components/ui/DesktopCarousel";
-import { 
-  ArrowRight, Clock, Star, UserCheck, Lock, Users 
+import {
+  ArrowRight, Clock, Star, UserCheck, Lock, Users
 } from "lucide-react";
 
 export default function ServicesSection() {
   const services = [
-    { 
-      title: "e-Recepta online", 
-      desc: "Otrzymaj e-receptę nawet w 15 minut", 
+    {
+      title: "e-Recepta online",
+      desc: "Otrzymaj e-receptę nawet w 15 minut",
       image: "/uslugi/ereceptaonline.png",
-      href: "/wypelnij-formularz?service=e-Recepta+online" 
+      href: "/wypelnij-formularz?service=e-Recepta+online"
     },
-    { 
-      title: "L4 online", 
-      desc: "Zwolnienie lekarskie bez wychodzenia z domu", 
+    {
+      title: "L4 online",
+      desc: "Zwolnienie lekarskie bez wychodzenia z domu",
       image: "/uslugi/l4online.png",
-      href: "/wypelnij-formularz?service=L4+online" 
+      href: "/wypelnij-formularz?service=L4+online"
     },
-    { 
-      title: "Kontynuacja leczenia", 
-      desc: "Przedłuż leczenie bez zbędnej wizyty", 
+    {
+      title: "Omówienie wyników badań",
+      desc: "Szczegółowa analiza wyników badań z lekarzem",
+      image: "/kontynuacjaleczenia.jpeg",
+      href: "/wypelnij-formularz?service=L4+online"
+    },
+    {
+      title: "Kontynuacja leczenia",
+      desc: "Przedłuż leczenie bez zbędnej wizyty",
       image: "/uslugi/konsultacjaonline.png",
-      href: "/wypelnij-formularz?service=Kontynuacja+leczenia" 
+      href: "/wypelnij-formularz?service=Kontynuacja+leczenia"
     },
-    { 
-      title: "Skierowanie", 
-      desc: "Skierowanie na badania, zabiegi lub do specjalisty.", 
+    {
+      title: "Skierowanie",
+      desc: "Skierowanie na badania, zabiegi lub do specjalisty.",
       image: "/skierowanie.png",
-      href: "/wypelnij-formularz?service=Skierowanie+na+badania" 
+      href: "/wypelnij-formularz?service=Skierowanie+na+badania"
     },
-    { 
-      title: "Leki psychiatryczne", 
-      desc: "Konsultacja i e-recepta na leki psychiatryczne", 
+    {
+      title: "Leki psychiatryczne",
+      desc: "Konsultacja i e-recepta na leki psychiatryczne",
       image: "/uslugi/lekipsychiatryczne.png",
-      href: "/wypelnij-formularz?service=Leki+psychiatryczne" 
+      href: "/wypelnij-formularz?service=Leki+psychiatryczne"
     },
-    { 
-      title: "Leczenie otyłości", 
-      desc: "Konsultacja i e-recepta na leczenie otyłości", 
+    {
+      title: "Leczenie otyłości",
+      desc: "Konsultacja i e-recepta na leczenie otyłości",
       image: "/uslugi/leczenieotylosci.png",
-      href: "/wypelnij-formularz?service=Leczenie+oty%C5%82o%C5%9Bci" 
+      href: "/wypelnij-formularz?service=Leczenie+oty%C5%82o%C5%9Bci"
     },
-    { 
-      title: "Dermatologia online", 
-      desc: "Konsultacja dermatologiczna i e-recepta", 
+    {
+      title: "Dermatologia online",
+      desc: "Konsultacja dermatologiczna i e-recepta",
       image: "/uslugi/dermatologiaonline.png",
-      href: "/wypelnij-formularz?service=Dermatologia+online" 
+      href: "/wypelnij-formularz?service=Dermatologia+online"
     },
-    { 
-      title: "Ginekologia online", 
-      desc: "Konsultacja ginekologiczna online", 
+    {
+      title: "Ginekologia online",
+      desc: "Konsultacja ginekologiczna online",
       image: "/uslugi/ginekologiaonline.png",
-      href: "/wypelnij-formularz?service=Ginekologia+online" 
+      href: "/wypelnij-formularz?service=Ginekologia+online"
     },
-    { 
-      title: "Alergie i astma", 
-      desc: "Konsultacja i e-recepta na leki alergiczne i wziewne", 
+    {
+      title: "Alergie i astma",
+      desc: "Konsultacja i e-recepta na leki alergiczne i wziewne",
       image: "/uslugi/alergieiastma.png",
-      href: "/wypelnij-formularz?service=Alergie+i+astma" 
+      href: "/wypelnij-formularz?service=Alergie+i+astma"
     },
-    { 
-      title: "Problemy żołądkowe", 
-      desc: "Konsultacja i e-recepta na dolegliwości żołądkowe", 
+    {
+      title: "Problemy żołądkowe",
+      desc: "Konsultacja i e-recepta na dolegliwości żołądkowe",
       image: "/uslugi/problemyzoladkowe.png",
-      href: "/wypelnij-formularz?service=Problemy+%C5%BCo%C5%82%C4%85dkowe" 
+      href: "/wypelnij-formularz?service=Problemy+%C5%BCo%C5%82%C4%85dkowe"
     },
-    { 
-      title: "Nadciśnienie i serce", 
-      desc: "Konsultacja i e-recepta na nadciśnienie i choroby serca", 
+    {
+      title: "Nadciśnienie i serce",
+      desc: "Konsultacja i e-recepta na nadciśnienie i choroby serca",
       image: "/uslugi/nadcisnienieiserce.png",
-      href: "/wypelnij-formularz?service=Nadci%C5%9Bnienie+i+serce" 
+      href: "/wypelnij-formularz?service=Nadci%C5%9Bnienie+i+serce"
     },
-    { 
-      title: "Infekcje i przeziębienia", 
-      desc: "Szybka pomoc przy infekcjach, grypie i przeziębieniach", 
+    {
+      title: "Infekcje i przeziębienia",
+      desc: "Szybka pomoc przy infekcjach, grypie i przeziębieniach",
       image: "/uslugi/infekcjeiprzeziebienia.png",
-      href: "/wypelnij-formularz?service=Infekcje+i+przezi%C4%99bienia" 
+      href: "/wypelnij-formularz?service=Infekcje+i+przezi%C4%99bienia"
     },
   ];
 
   return (
     <section id="uslugi" className="py-20 bg-white scroll-mt-20 relative overflow-hidden">
-      
+
       {/* Decorative leafy branch (Left - Desktop Only) */}
       <svg className="absolute top-6 left-6 w-24 h-24 text-[#064743]/10 hidden xl:block pointer-events-none select-none" viewBox="0 0 100 100" fill="currentColor">
         <path d="M10 80 Q 30 50 60 50 M 30 65 Q 25 50 40 45 M 45 58 Q 50 40 60 40" stroke="currentColor" strokeWidth="2" fill="none" />
@@ -100,7 +106,7 @@ export default function ServicesSection() {
       </svg>
 
       <div className="w-full px-4 sm:px-8 xl:px-16 relative z-10">
-        
+
         {/* Headings */}
         <div className="text-center mb-10 relative">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
@@ -113,7 +119,7 @@ export default function ServicesSection() {
 
         {/* Outer relative container to hold the left-aligned green badge & grid */}
         <div className="w-full relative mt-8">
-          
+
           {/* Green pill badge aligned to the left (desktop only, block on mobile) */}
           <div className="mb-6 lg:mb-8 text-left">
             <span className="inline-flex items-center px-4 py-2 bg-[#EAF3F0] text-[#147A60] font-extrabold rounded-full text-[11px] sm:text-xs tracking-wider uppercase shadow-sm">

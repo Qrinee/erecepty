@@ -6,7 +6,7 @@ import Link from "next/link";
 export default function WhyChooseUsSection() {
   return (
     <section className="py-20 bg-[#F8FAF9] overflow-hidden scroll-mt-20">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div className=" mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Main Grid: Left Laptop Image, Right Content (Title + 2x2 Cards Grid) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
@@ -17,7 +17,7 @@ export default function WhyChooseUsSection() {
               <img
                 src="/dlaczegopacjenci.jpeg"
                 alt="Konsultacja z lekarzem w Lekarze i Terapeuci"
-                className="w-full h-auto object-contain rounded-[24px]"
+                className="w-full h-[80vh] object-cover rounded-[24px]"
               />
             </div>
           </div>
@@ -27,7 +27,7 @@ export default function WhyChooseUsSection() {
 
             <div className="mb-8">
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#064743] leading-tight mb-4 tracking-tight">
-                Dlaczego pacjenci <br /> wybierają nas?
+                Dlaczego pacjenci <br /> <span className="text-[#138A56]"> wybierają nas?</span>
               </h2>
               <p className="text-slate-500 font-semibold text-base sm:text-lg max-w-xl">
                 Szybka konsultacja online, doświadczeni lekarze i pomoc medyczna dostępna bez wychodzenia z domu.

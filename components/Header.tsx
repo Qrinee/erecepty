@@ -94,9 +94,9 @@ export default function Header({ transparent = false }: HeaderProps) {
 
   return (
     <header
-      className={`top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-100 ${transparent
-          ? "bg-transparent text-white"
-          : "bg-white/90 backdrop-blur-md text-slate-900"
+      className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-100 ${transparent
+        ? "bg-transparent text-white"
+        : "bg-white/90 backdrop-blur-md text-slate-900"
         }`}
       role="banner"
     >

@@ -27,7 +27,7 @@ export const knowledgeCards: KnowledgeCardData[] = [
     subtitle: "Kilka prostych kroków",
     description:
       "Kilka prostych kroków, dzięki którym konsultacja online przebiegnie szybko, komfortowo i skutecznie.",
-    image: "/doctor_3d.png",
+    image: "/nxt.jpeg",
     slug: "jak-sie-przygotowac-do-telekonsultacji",
     author: "Dr Anna Kowalska",
     publishedDate: "15 stycznia 2025",
@@ -73,7 +73,7 @@ export const knowledgeCards: KnowledgeCardData[] = [
     subtitle: "Kompletny przewodnik",
     description:
       "Dowiedz się jak działają e-wizyty, recepty online i konsultacje ze specjalistami.",
-    image: "/how_it_works_phone.png",
+    image: "/receptaonline.jpeg",
     slug: "wszystko-o-konsultacjach-online",
     author: "Mgr Piotr Nowak",
     publishedDate: "10 stycznia 2025",
@@ -125,7 +125,7 @@ export const knowledgeCards: KnowledgeCardData[] = [
     subtitle: "Bezpiecznie i wygodnie",
     description:
       "Bezpieczne przedłużenie leczenia dla osób przewlekle chorych.",
-    image: "/how_it_works_senior_woman.png",
+    image: "/kontynuacjaleczenia.jpeg",
     slug: "kontynuacja-terapii-online",
     author: "Dr Marta Wiśniewska",
     publishedDate: "5 stycznia 2025",

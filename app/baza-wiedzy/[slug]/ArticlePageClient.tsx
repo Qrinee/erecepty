@@ -31,7 +31,10 @@ import {
   Heart,
   Activity,
   Check,
-  Stethoscope
+  Stethoscope,
+  Monitor,
+  FolderOpen,
+  CreditCard
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -75,8 +78,8 @@ interface ArticlePageClientProps {
 // -------------------------------------------------------------
 function TeleconsultationPrepPage() {
   return (
-    <div className="bg-slate-50/50 min-h-screen pt-[30px] sm:pt-[30px] pb-16">
-      <div className="w-full max-w-7xl px-4 sm:px-8 md:px-12 lg:px-16 mx-auto">
+    <div className="bg-slate-50/50 min-h-screen pt-8 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumbs */}
         <nav className="mb-6" aria-label="Breadcrumb">
@@ -95,11 +98,8 @@ function TeleconsultationPrepPage() {
 
             {/* Left text */}
             <div className="col-span-1 lg:col-span-7">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] mb-4">
-                PORADNIK
-              </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
-                Jak przygotować się do telekonsultacji?
+                Jak przygotować się <br />do telekonsultacji?
               </h1>
               <p className="text-slate-600 text-sm md:text-base mb-8 leading-relaxed">
                 Kilka prostych kroków, dzięki którym konsultacja online przebiegnie szybko, komfortowo i skutecznie.
@@ -107,43 +107,28 @@ function TeleconsultationPrepPage() {
 
               {/* 3 badges row */}
               <div className="flex flex-wrap gap-3">
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-xs font-bold px-3.5 py-2 rounded-xl border border-[#DAE9E6]">
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-xs font-bold px-3.5 py-2 rounded-full border border-[#DAE9E6]">
                   <Clock className="w-4 h-4 text-[#064743]" />
                   5 minut przygotowania
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-xs font-bold px-3.5 py-2 rounded-xl border border-[#DAE9E6]">
-                  <Cloud className="w-4 h-4 text-[#064743]" />
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-xs font-bold px-3.5 py-2 rounded-full border border-[#DAE9E6]">
+                  <CheckCircle className="w-4 h-4 text-[#064743]" />
                   100% online
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-xs font-bold px-3.5 py-2 rounded-xl border border-[#DAE9E6]">
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-xs font-bold px-3.5 py-2 rounded-full border border-[#DAE9E6]">
                   <Home className="w-4 h-4 text-[#064743]" />
                   Bez wychodzenia z domu
                 </span>
               </div>
             </div>
 
-            {/* Right graphic: Doctor inside laptop screen */}
-            <div className="col-span-1 lg:col-span-5 flex justify-center">
-              <div className="relative w-full max-w-[340px] aspect-[4/3] bg-slate-900 rounded-t-2xl p-2.5 pb-0 shadow-2xl border-4 border-slate-800">
-                {/* Screen content */}
-                <div className="w-full h-full bg-[#E8F3F1] rounded-t-lg overflow-hidden relative border border-slate-700">
-                  <img
-                    src="/doctor_3d.png"
-                    alt="Lekarz na ekranie komputera"
-                    className="w-full h-full object-cover"
-                  />
-                  {/* Call overlay */}
-                  <div className="absolute bottom-3 left-1/2 -translate-x-1/2 bg-slate-950/80 text-white text-[10px] px-3 py-1.5 rounded-full flex items-center gap-3">
-                    <span className="flex h-2 w-2 relative">
-                      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-400 opacity-75"></span>
-                      <span className="relative inline-flex rounded-full h-2 w-2 bg-red-500"></span>
-                    </span>
-                    <span>Połączenie wideo...</span>
-                  </div>
-                </div>
-                {/* Laptop base */}
-                <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 w-[112%] h-3 bg-slate-700 rounded-b-xl shadow-md border-t border-slate-600" />
-              </div>
+            {/* Right graphic: Doctor laptop mockup image */}
+            <div className="col-span-1 lg:col-span-5 flex justify-center select-none">
+              <img
+                src="/hiw_step4.png"
+                alt="Jak przygotować się do telekonsultacji"
+                className="w-full h-auto max-w-[420px] object-contain"
+              />
             </div>
 
           </div>
@@ -154,48 +139,48 @@ function TeleconsultationPrepPage() {
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
 
           {/* Card 1 */}
-          <div className="bg-white border border-[#DAE9E6] p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4 shadow-sm">
+          <div className="bg-white border border-[#DAE9E6]/60 p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-all duration-300">
+            <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center mb-4 shadow-sm">
               <ClipboardList className="w-6 h-6" />
             </div>
             <h3 className="font-extrabold text-sm text-slate-800 mb-1.5">Przygotuj informacje</h3>
-            <p className="text-[11px] text-slate-500 leading-relaxed">Zbierz informacje o zdrowiu, lekach i objawach.</p>
+            <p className="text-[11px] text-slate-500 leading-relaxed">Zbierz najważniejsze informacje o swoim zdrowiu, lekach i objawach.</p>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-white border border-[#DAE9E6] p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4 shadow-sm">
+          <div className="bg-white border border-[#DAE9E6]/60 p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-all duration-300">
+            <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center mb-4 shadow-sm">
               <Home className="w-6 h-6" />
             </div>
             <h3 className="font-extrabold text-sm text-slate-800 mb-1.5">Zadbaj o miejsce</h3>
-            <p className="text-[11px] text-slate-500 leading-relaxed">Wybierz ciche, dobrze oświetlone miejsce w domu.</p>
+            <p className="text-[11px] text-slate-500 leading-relaxed">Wybierz ciche, dobrze oświetlone miejsce z dostępem do internetu.</p>
           </div>
 
           {/* Card 3 */}
-          <div className="bg-white border border-[#DAE9E6] p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4 shadow-sm">
-              <FileText className="w-6 h-6" />
+          <div className="bg-white border border-[#DAE9E6]/60 p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-all duration-300">
+            <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center mb-4 shadow-sm">
+              <FolderOpen className="w-6 h-6" />
             </div>
             <h3 className="font-extrabold text-sm text-slate-800 mb-1.5">Przygotuj dokumenty</h3>
-            <p className="text-[11px] text-slate-500 leading-relaxed">Miej pod ręką dowód, wyniki badań i recepty.</p>
+            <p className="text-[11px] text-slate-500 leading-relaxed">Miej pod ręką dowód osobisty, wyniki badań i wcześniejsze recepty.</p>
           </div>
 
           {/* Card 4 */}
-          <div className="bg-white border border-[#DAE9E6] p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4 shadow-sm">
-              <Clock className="w-6 h-6" />
+          <div className="bg-white border border-[#DAE9E6]/60 p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-all duration-300">
+            <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center mb-4 shadow-sm">
+              <Monitor className="w-6 h-6" />
             </div>
             <h3 className="font-extrabold text-sm text-slate-800 mb-1.5">Sprawdź sprzęt</h3>
-            <p className="text-[11px] text-slate-500 leading-relaxed">Upewnij się, że kamera i mikrofon działają.</p>
+            <p className="text-[11px] text-slate-500 leading-relaxed">Upewnij się, że kamera, mikrofon i internet działają prawidłowo.</p>
           </div>
 
           {/* Card 5 */}
-          <div className="bg-white border border-[#DAE9E6] p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-            <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4 shadow-sm">
-              <CheckCircle className="w-6 h-6" />
+          <div className="bg-white border border-[#DAE9E6]/60 p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-all duration-300">
+            <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center mb-4 shadow-sm">
+              <ShieldCheck className="w-6 h-6" />
             </div>
             <h3 className="font-extrabold text-sm text-slate-800 mb-1.5">Po konsultacji</h3>
-            <p className="text-[11px] text-slate-500 leading-relaxed">Otrzymasz e-receptę lub e-zwolnienie online.</p>
+            <p className="text-[11px] text-slate-500 leading-relaxed">Otrzymujesz e-receptę, e-zwolnienie lub inne zalecenia online.</p>
           </div>
 
         </section>
@@ -210,10 +195,10 @@ function TeleconsultationPrepPage() {
               Szczegółowy przewodnik
             </h2>
 
-            <div className="space-y-6">
+            <div className="relative border-l-2 border-dashed border-[#DAE9E6] ml-5 pl-10 space-y-8 py-2">
               {/* Step 1 */}
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
+              <div className="relative">
+                <div className="absolute -left-[57px] top-0.5 w-8 h-8 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm shadow-sm">
                   1
                 </div>
                 <div>
@@ -225,8 +210,8 @@ function TeleconsultationPrepPage() {
               </div>
 
               {/* Step 2 */}
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
+              <div className="relative">
+                <div className="absolute -left-[57px] top-0.5 w-8 h-8 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm shadow-sm">
                   2
                 </div>
                 <div>
@@ -238,8 +223,8 @@ function TeleconsultationPrepPage() {
               </div>
 
               {/* Step 3 */}
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
+              <div className="relative">
+                <div className="absolute -left-[57px] top-0.5 w-8 h-8 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm shadow-sm">
                   3
                 </div>
                 <div>
@@ -251,8 +236,8 @@ function TeleconsultationPrepPage() {
               </div>
 
               {/* Step 4 */}
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
+              <div className="relative">
+                <div className="absolute -left-[57px] top-0.5 w-8 h-8 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm shadow-sm">
                   4
                 </div>
                 <div>
@@ -264,8 +249,8 @@ function TeleconsultationPrepPage() {
               </div>
 
               {/* Step 5 */}
-              <div className="flex gap-4">
-                <div className="w-10 h-10 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm shrink-0 shadow-sm">
+              <div className="relative">
+                <div className="absolute -left-[57px] top-0.5 w-8 h-8 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm shadow-sm">
                   5
                 </div>
                 <div>
@@ -280,15 +265,15 @@ function TeleconsultationPrepPage() {
 
           {/* Right: Co Możesz Otrzymać */}
           <div className="col-span-1 lg:col-span-4">
-            <div className="bg-[#DAE9E6]/30 border border-[#DAE9E6] p-6 rounded-3xl shadow-sm h-full flex flex-col">
+            <div className="bg-white border border-[#DAE9E6]/60 p-6 rounded-3xl shadow-sm h-full flex flex-col">
               <h3 className="font-extrabold text-slate-900 text-base mb-6 border-b border-[#DAE9E6] pb-3">
                 Co możesz otrzymać?
               </h3>
 
-              <div className="space-y-5 flex-1">
+              <div className="space-y-4 flex-1">
                 {/* Item 1 */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-white text-[#064743] flex items-center justify-center shrink-0 shadow-sm">
+                <div className="flex items-start gap-3.5 p-3 rounded-2xl border border-slate-100 hover:border-[#DAE9E6] hover:bg-slate-50/50 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-[#E8F3F1] border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0 shadow-sm">
                     <Pill className="w-4 h-4" />
                   </div>
                   <div>
@@ -298,8 +283,8 @@ function TeleconsultationPrepPage() {
                 </div>
 
                 {/* Item 2 */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-white text-[#064743] flex items-center justify-center shrink-0 shadow-sm">
+                <div className="flex items-start gap-3.5 p-3 rounded-2xl border border-slate-100 hover:border-[#DAE9E6] hover:bg-slate-50/50 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-[#E8F3F1] border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0 shadow-sm">
                     <FileText className="w-4 h-4" />
                   </div>
                   <div>
@@ -309,8 +294,8 @@ function TeleconsultationPrepPage() {
                 </div>
 
                 {/* Item 3 */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-white text-[#064743] flex items-center justify-center shrink-0 shadow-sm">
+                <div className="flex items-start gap-3.5 p-3 rounded-2xl border border-slate-100 hover:border-[#DAE9E6] hover:bg-slate-50/50 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-[#E8F3F1] border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0 shadow-sm">
                     <Stethoscope className="w-4 h-4" />
                   </div>
                   <div>
@@ -320,8 +305,8 @@ function TeleconsultationPrepPage() {
                 </div>
 
                 {/* Item 4 */}
-                <div className="flex items-start gap-3.5">
-                  <div className="w-8 h-8 rounded-lg bg-white text-[#064743] flex items-center justify-center shrink-0 shadow-sm">
+                <div className="flex items-start gap-3.5 p-3 rounded-2xl border border-slate-100 hover:border-[#DAE9E6] hover:bg-slate-50/50 transition-all duration-300">
+                  <div className="w-8 h-8 rounded-lg bg-[#E8F3F1] border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0 shadow-sm">
                     <CheckCircle className="w-4 h-4" />
                   </div>
                   <div>
@@ -372,33 +357,39 @@ function OnlineConsultationsOverviewPage() {
   const faqs = [
     {
       q: "Jak działa konsultacja online?",
-      a: "Wybierasz usługę, wypełniasz formularz medyczny i kontaktujesz się z lekarzem bez wychodzenia z domu. Lekarz analizuje informacje i udziela konsultacji online."
+      a: "Wybierasz usługę, wypełniasz formularz medyczny i kontaktujesz się z lekarzem bez wychodzenia z domu. Lekarz analizuje informacje i udziela konsultacji online.",
+      icon: UserCheck
     },
     {
       q: "Czy konsultacja jest legalna?",
-      a: "Tak, wszystkie e-wizyty i e-recepty w Polsce są w pełni legalne i regulowane odpowiednimi przepisami Ministerstwa Zdrowia."
+      a: "Tak, wszystkie e-wizyty i e-recepty w Polsce są w pełni legalne i regulowane odpowiednimi przepisami Ministerstwa Zdrowia.",
+      icon: ShieldCheck
     },
     {
       q: "Czy lekarz może wystawić receptę?",
-      a: "Tak, na podstawie wywiadu lekarskiego specjalista ma prawo wystawić e-receptę na potrzebne leki stałe lub doraźne."
+      a: "Tak, na podstawie wywiadu lekarskiego specjalista ma prawo wystawić e-receptę na potrzebne leki stałe lub doraźne.",
+      icon: Pill
     },
     {
       q: "Ile trwa konsultacja?",
-      a: "Średni czas weryfikacji i wdrożenia decyzji przez lekarza wynosi około 15 minut od momentu przesłania formularza medycznego."
+      a: "Średni czas weryfikacji i wdrożenia decyzji przez lekarza wynosi około 15 minut od momentu przesłania formularza medycznego.",
+      icon: Clock
     },
     {
       q: "Jak wygląda płatność?",
-      a: "Płatność odbywa się bezpiecznie online przy użyciu systemów BLIK, karty płatniczej lub szybkiego przelewu internetowego bezpośrednio po wypełnieniu wywiadu."
+      a: "Płatność odbywa się bezpiecznie online przy użyciu systemów BLIK, karty płatniczej lub szybkiego przelewu internetowego bezpośrednio po wypełnieniu wywiadu.",
+      icon: CreditCard
     },
     {
       q: "Czy moje dane są bezpieczne?",
-      a: "Tak, całe połączenie i przesył danych są szyfrowane certyfikatem SSL. Twoje dane medyczne są ściśle chronione zgodnie z wytycznymi RODO."
+      a: "Tak, całe połączenie i przesył danych są szyfrowane certyfikatem SSL. Twoje dane medyczne są ściśle chronione zgodnie z wytycznymi RODO.",
+      icon: Lock
     }
   ];
 
   return (
-    <div className="bg-slate-50/50 min-h-screen pt-[90px] sm:pt-[110px] pb-16">
-      <div className="w-full max-w-7xl px-4 sm:px-8 md:px-12 lg:px-16 mx-auto">
+    <div className="bg-slate-50/50 min-h-screen pt-8 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumbs */}
         <nav className="mb-6" aria-label="Breadcrumb">
@@ -417,31 +408,28 @@ function OnlineConsultationsOverviewPage() {
 
             {/* Left text */}
             <div className="col-span-1 lg:col-span-7">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] mb-4">
-                KOMPENDIUM
-              </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
                 Wszystko o <br />konsultacjach online
               </h1>
               <p className="text-slate-600 text-sm md:text-base mb-8 leading-relaxed">
-                Dowiedz się jak działają e-wizyty, recepty online i konsultacje ze specjalistami w jednym miejscu.
+                Dowiedz się jak działają e-wizyty, recepty online i konsultacje ze specjalistami.
               </p>
 
               {/* 4 badges row */}
               <div className="flex flex-wrap gap-2.5">
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3 py-2 rounded-xl border border-[#DAE9E6]">
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3 py-2 rounded-full border border-[#DAE9E6]">
                   <CheckCircle className="w-4 h-4 text-[#064743]" />
                   Bez kolejek
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3 py-2 rounded-xl border border-[#DAE9E6]">
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3 py-2 rounded-full border border-[#DAE9E6]">
                   <Clock className="w-4 h-4 text-[#064743]" />
                   Dostępne 24/7
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3 py-2 rounded-xl border border-[#DAE9E6]">
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3 py-2 rounded-full border border-[#DAE9E6]">
                   <ShieldCheck className="w-4 h-4 text-[#064743]" />
                   Bezpieczne
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3 py-2 rounded-xl border border-[#DAE9E6]">
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3 py-2 rounded-full border border-[#DAE9E6]">
                   <UserCheck className="w-4 h-4 text-[#064743]" />
                   Certyfikowani lekarze
                 </span>
@@ -477,19 +465,23 @@ function OnlineConsultationsOverviewPage() {
           <div className="space-y-3">
             {faqs.map((faq, idx) => {
               const isOpen = openIndex === idx;
+              const IconComponent = faq.icon;
               return (
                 <div key={idx} className="border border-slate-100 rounded-xl overflow-hidden shadow-sm transition-all duration-300 bg-white">
                   <button
                     onClick={() => setOpenIndex(isOpen ? null : idx)}
                     className="w-full flex items-center justify-between gap-4 p-4 text-left font-bold text-slate-800 text-xs sm:text-sm hover:bg-slate-50 transition-colors"
                   >
-                    <span>{faq.q}</span>
+                    <div className="w-8 h-8 rounded-lg bg-[#E8F3F1] border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0 shadow-sm">
+                      <IconComponent className="w-4 h-4" />
+                    </div>
+                    <span className="flex-1">{faq.q}</span>
                     <span className={`transition-transform duration-300 ${isOpen ? "rotate-90 text-[#064743]" : "text-slate-400"}`}>
                       <ChevronRight className="w-4.5 h-4.5" />
                     </span>
                   </button>
                   {isOpen && (
-                    <div className="p-4 pt-1 border-t border-slate-50 bg-[#F5FAF9]/20 text-slate-600 text-xs leading-relaxed animate-fadeIn">
+                    <div className="p-4 pl-16 pt-1 border-t border-slate-50 bg-[#F5FAF9]/20 text-slate-600 text-xs leading-relaxed animate-fadeIn">
                       {faq.a}
                     </div>
                   )}
@@ -506,32 +498,32 @@ function OnlineConsultationsOverviewPage() {
             Co możesz otrzymać podczas konsultacji?
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white border border-[#DAE9E6] p-6 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4">
+            <div className="bg-white border border-[#DAE9E6]/60 p-6 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center mb-4">
                 <Pill className="w-6 h-6" />
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1">e-recepta</h4>
               <p className="text-[11px] text-slate-500 leading-relaxed">Recepty online na potrzebne leki.</p>
             </div>
 
-            <div className="bg-white border border-[#DAE9E6] p-6 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4">
+            <div className="bg-white border border-[#DAE9E6]/60 p-6 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center mb-4">
                 <FileText className="w-6 h-6" />
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1">e-zwolnienie (L4)</h4>
               <p className="text-[11px] text-slate-500 leading-relaxed">Zwolnienie lekarskie bez wychodzenia.</p>
             </div>
 
-            <div className="bg-white border border-[#DAE9E6] p-6 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4">
+            <div className="bg-white border border-[#DAE9E6]/60 p-6 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center mb-4">
                 <Stethoscope className="w-6 h-6" />
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1">Skierowanie</h4>
               <p className="text-[11px] text-slate-500 leading-relaxed">Skierowanie na badania laboratoryjne.</p>
             </div>
 
-            <div className="bg-white border border-[#DAE9E6] p-6 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
-              <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4">
+            <div className="bg-white border border-[#DAE9E6]/60 p-6 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
+              <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center mb-4">
                 <CheckCircle className="w-6 h-6" />
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1">Zalecenia lekarskie</h4>
@@ -632,22 +624,45 @@ function OnlineConsultationsOverviewPage() {
 
 
         {/* Security badges at bottom */}
-        <section className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
-          <div className="bg-[#DAE9E6]/30 border border-[#DAE9E6]/60 p-4 rounded-xl">
-            <span className="font-extrabold text-[#064743] text-xs">Dostępne 24/7</span>
-            <p className="text-[10px] text-slate-500 mt-0.5">Konsultacje o każdej porze</p>
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="bg-[#DAE9E6]/25 border border-[#DAE9E6]/50 p-4 rounded-2xl flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#E8F3F1] border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0">
+              <Clock className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="font-extrabold text-[#064743] text-xs block">Dostępne 24/7</span>
+              <p className="text-[10px] text-slate-500 leading-normal mt-0.5">Konsultacja online w każdej porze.</p>
+            </div>
           </div>
-          <div className="bg-[#DAE9E6]/30 border border-[#DAE9E6]/60 p-4 rounded-xl">
-            <span className="font-extrabold text-[#064743] text-xs">Bez wychodzenia</span>
-            <p className="text-[10px] text-slate-500 mt-0.5">100% z Twojego domu</p>
+
+          <div className="bg-[#DAE9E6]/25 border border-[#DAE9E6]/50 p-4 rounded-2xl flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#E8F3F1] border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0">
+              <Home className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="font-extrabold text-[#064743] text-xs block">Bez wychodzenia z domu</span>
+              <p className="text-[10px] text-slate-500 leading-normal mt-0.5">Oszczędź czas i zadbaj o zdrowie.</p>
+            </div>
           </div>
-          <div className="bg-[#DAE9E6]/30 border border-[#DAE9E6]/60 p-4 rounded-xl">
-            <span className="font-extrabold text-[#064743] text-xs">Bezpieczne dane</span>
-            <p className="text-[10px] text-slate-500 mt-0.5">Szyfrowanie SSL i RODO</p>
+
+          <div className="bg-[#DAE9E6]/25 border border-[#DAE9E6]/50 p-4 rounded-2xl flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#E8F3F1] border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0">
+              <ShieldCheck className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="font-extrabold text-[#064743] text-xs block">Bezpieczne dane</span>
+              <p className="text-[10px] text-slate-500 leading-normal mt-0.5">Twoje dane są chronione zgodnie z RODO.</p>
+            </div>
           </div>
-          <div className="bg-[#DAE9E6]/30 border border-[#DAE9E6]/60 p-4 rounded-xl">
-            <span className="font-extrabold text-[#064743] text-xs">Certyfikowani lekarze</span>
-            <p className="text-[10px] text-slate-500 mt-0.5">Polskie PWZ weryfikowane</p>
+
+          <div className="bg-[#DAE9E6]/25 border border-[#DAE9E6]/50 p-4 rounded-2xl flex items-center gap-3">
+            <div className="w-10 h-10 rounded-full bg-[#E8F3F1] border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0">
+              <UserCheck className="w-5 h-5" />
+            </div>
+            <div>
+              <span className="font-extrabold text-[#064743] text-xs block">Doświadczeni lekarze</span>
+              <p className="text-[10px] text-slate-500 leading-normal mt-0.5">Tylko certyfikowani lekarze.</p>
+            </div>
           </div>
         </section>
 
@@ -656,13 +671,11 @@ function OnlineConsultationsOverviewPage() {
   );
 }
 
-// -------------------------------------------------------------
-// GUIDE 3: Kontynuacja terapii chorób przewlekłych online
-// -------------------------------------------------------------
+// ---------------------------------------------------------
 function TherapyContinuationPage() {
   return (
-    <div className="bg-slate-50/50 min-h-screen pt-[90px] sm:pt-[110px] pb-16">
-      <div className="w-full max-w-7xl px-4 sm:px-8 md:px-12 lg:px-16 mx-auto">
+    <div className="bg-slate-50/50 min-h-screen pt-8 pb-16">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* Breadcrumbs */}
         <nav className="mb-6" aria-label="Breadcrumb">
@@ -681,31 +694,28 @@ function TherapyContinuationPage() {
 
             {/* Left text */}
             <div className="col-span-1 lg:col-span-7">
-              <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] mb-4">
-                BEZPIECZEŃSTWO
-              </span>
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-extrabold text-slate-900 mb-4 leading-tight">
                 Kontynuacja terapii <br />bez wychodzenia z domu
               </h1>
               <p className="text-slate-600 text-sm md:text-base mb-8 leading-relaxed">
-                Bezpieczne przedłużenie leczenia dla pacjentów ze zdiagnozowanymi chorobami przewlekłymi.
+                Bezpieczne przedłużenie leczenia dla osób przewlekle chorych.
               </p>
 
               {/* 4 badges row */}
               <div className="flex flex-wrap gap-2.5">
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3.5 py-2 rounded-xl border border-[#DAE9E6]">
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3.5 py-2 rounded-full border border-[#DAE9E6]">
                   <Check className="w-4 h-4 text-[#064743]" />
                   Bez kolejek
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3.5 py-2 rounded-xl border border-[#DAE9E6]">
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3.5 py-2 rounded-full border border-[#DAE9E6]">
                   <Clock className="w-4 h-4 text-[#064743]" />
                   Dostępne 24/7
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3.5 py-2 rounded-xl border border-[#DAE9E6]">
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3.5 py-2 rounded-full border border-[#DAE9E6]">
                   <ShieldCheck className="w-4 h-4 text-[#064743]" />
                   Bezpieczne
                 </span>
-                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3.5 py-2 rounded-xl border border-[#DAE9E6]">
+                <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#064743] text-[10px] sm:text-xs font-bold px-3.5 py-2 rounded-full border border-[#DAE9E6]">
                   <Heart className="w-4 h-4 text-[#064743]" />
                   Dla przewlekle chorych
                 </span>
@@ -715,8 +725,8 @@ function TherapyContinuationPage() {
             {/* Right graphic: Portrait of senior woman using phone */}
             <div className="col-span-1 lg:col-span-5 flex justify-center">
               <div className="relative group max-w-[280px]">
-                {/* Floating green checkmark badge overlapping the senior woman's image */}
-                <div className="absolute -top-3 -right-3 w-10 h-10 rounded-full bg-[#064743] text-white border-2 border-white flex items-center justify-center shadow-lg z-10">
+                {/* Floating green checkmark badge overlapping the senior woman's image shoulder */}
+                <div className="absolute -bottom-3 -left-3 w-11 h-11 rounded-full bg-[#064743] text-white border-2 border-white flex items-center justify-center shadow-lg z-10">
                   <Check className="w-5 h-5 stroke-[3]" />
                 </div>
                 <div className="absolute inset-0 bg-[#064743]/5 rounded-3xl blur-2xl group-hover:bg-[#064743]/10 transition-all duration-500" />
@@ -737,26 +747,26 @@ function TherapyContinuationPage() {
           {/* Left: Kiedy warto skorzystać */}
           <div className="col-span-1 lg:col-span-6 bg-white border border-slate-100 p-6 md:p-8 rounded-3xl shadow-sm">
             <h3 className="font-extrabold text-slate-900 text-lg mb-4">Kiedy warto skorzystać?</h3>
-            <p className="text-slate-600 text-xs mb-6">Jeśli stale przyjmujesz leki i potrzebujesz szybkiego, bezpiecznego przedłużenia leczenia:</p>
+            <p className="text-slate-600 text-xs mb-6">Jeśli stale przyjmujesz leki i potrzebujesz:</p>
 
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-slate-700 text-xs">
                 <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5" />
                 </div>
-                <span>Przedłużenia recepty na przyjmowane leki stałe</span>
+                <span>przedłużenia recepty</span>
               </li>
               <li className="flex items-center gap-3 text-slate-700 text-xs">
                 <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5" />
                 </div>
-                <span>Konsultacji kontrolnej dotyczącej postępu terapii</span>
+                <span>konsultacji kontrolnej</span>
               </li>
               <li className="flex items-center gap-3 text-slate-700 text-xs">
                 <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
                   <Check className="w-3.5 h-3.5" />
                 </div>
-                <span>Omówienia wyników okresowych badań kontrolnych</span>
+                <span>omówienia leczenia</span>
               </li>
             </ul>
           </div>
@@ -766,33 +776,33 @@ function TherapyContinuationPage() {
             <div className="flex flex-col sm:flex-row gap-6 justify-between items-center h-full">
               <div className="flex-1 w-full">
                 <h3 className="font-extrabold text-slate-900 text-lg mb-4">Dla kogo?</h3>
-                <p className="text-slate-600 text-xs mb-6">Usługa skierowana do pacjentów z chorobami przewlekłymi, takimi jak:</p>
+                <p className="text-slate-600 text-xs mb-6">Usługa dla pacjentów z chorobami przewlekłymi m.in.:</p>
 
                 <div className="grid grid-cols-2 gap-3.5 text-slate-700 text-xs">
                   <div className="flex items-center gap-2">
                     <Activity className="w-4.5 h-4.5 text-[#064743]" />
-                    <span>Nadciśnienie</span>
+                    <span>nadciśnienie</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Activity className="w-4.5 h-4.5 text-[#064743]" />
-                    <span>Cukrzyca</span>
+                    <span>cukrzyca</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Activity className="w-4.5 h-4.5 text-[#064743]" />
-                    <span>Astma</span>
+                    <span>astma</span>
                   </div>
                   <div className="flex items-center gap-2">
                     <Activity className="w-4.5 h-4.5 text-[#064743]" />
-                    <span>Choroby tarczycy</span>
+                    <span>choroby tarczycy</span>
                   </div>
                   <div className="flex items-center gap-2 col-span-2">
                     <Activity className="w-4.5 h-4.5 text-[#064743]" />
-                    <span>Inne schorzenia stałe</span>
+                    <span>i inne</span>
                   </div>
                 </div>
               </div>
 
-              {/* Vector Group Icon placeholder next to diseases grid */}
+              {/* Vector Group Icon next to diseases grid */}
               <div className="hidden sm:flex w-24 h-24 rounded-2xl bg-[#E8F3F1] border border-[#DAE9E6] items-center justify-center shrink-0">
                 <Stethoscope className="w-12 h-12 text-[#064743]" />
               </div>
@@ -808,16 +818,16 @@ function TherapyContinuationPage() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative mb-8">
             {/* Step 1 */}
             <div className="text-center flex flex-col items-center relative">
-              <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center font-extrabold text-base mb-4 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center font-extrabold text-base mb-4 shadow-sm">
                 1
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1.5">Wypełnij formularz</h4>
               <p className="text-[11px] text-slate-500 leading-relaxed max-w-xs">
-                Krótki wywiad medyczny online. Opisz swój stan i aktualnie stosowane leczenie.
+                Krótki wywiad medyczny online. Opisz swój stan i aktualne leczenie.
               </p>
 
               {/* Layout Arrow 1 -> 2 */}
-              <div className="hidden md:block absolute top-6 -right-4 translate-x-1/2 text-[#DAE9E6]">
+              <div className="hidden md:block absolute top-6 -right-4 translate-x-1/2 text-[#DAE9E6]/70">
                 <ArrowRight className="w-6 h-6" />
               </div>
             </div>
@@ -825,28 +835,28 @@ function TherapyContinuationPage() {
             {/* Step 2 */}
             <div className="text-center flex flex-col items-center relative">
               {/* ClipboardList icon badge on Step 2 */}
-              <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center mb-4 shadow-sm">
                 <ClipboardList className="w-5 h-5" />
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1.5">Lekarz analizuje zgłoszenie</h4>
               <p className="text-[11px] text-slate-500 leading-relaxed max-w-xs">
-                Weryfikacja historii leczenia, dokumentacji oraz analiza przesłanych informacji.
+                Weryfikacja historii leczenia i analiza informacji przez lekarza.
               </p>
 
               {/* Layout Arrow 2 -> 3 */}
-              <div className="hidden md:block absolute top-6 -right-4 translate-x-1/2 text-[#DAE9E6]">
+              <div className="hidden md:block absolute top-6 -right-4 translate-x-1/2 text-[#DAE9E6]/70">
                 <ArrowRight className="w-6 h-6" />
               </div>
             </div>
 
             {/* Step 3 */}
             <div className="text-center flex flex-col items-center">
-              <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center font-extrabold text-base mb-4 shadow-sm">
+              <div className="w-12 h-12 rounded-full bg-[#E8F3F1]/80 text-[#064743] border border-[#DAE9E6]/50 flex items-center justify-center font-extrabold text-base mb-4 shadow-sm">
                 3
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1.5">Otrzymujesz dokumenty</h4>
               <p className="text-[11px] text-slate-500 leading-relaxed max-w-xs">
-                Kod e-recepty w wiadomości SMS oraz dokumentacja medyczna na wskazany adres e-mail.
+                E-recepta lub dalsze zalecenia trafiają do Ciebie online.
               </p>
             </div>
           </div>
@@ -857,7 +867,7 @@ function TherapyContinuationPage() {
             <div>
               <span className="font-extrabold text-slate-800 text-[10px] uppercase tracking-wider block">Bezpieczeństwo terapii</span>
               <p className="text-[11px] text-slate-600 leading-relaxed mt-0.5">
-                Każda konsultacja realizowana jest indywidualnie przez lekarza, zgodnie z aktualną dokumentacją medyczną pacjenta i obowiązującymi w Polsce standardami etyki lekarskiej.
+                Każda konsultacja realizowana jest indywidualnie przez lekarza zgodnie z aktualną dokumentacją medyczną i obowiązującymi standardami.
               </p>
             </div>
           </div>
@@ -870,7 +880,7 @@ function TherapyContinuationPage() {
             <div className="col-span-1 md:col-span-7 text-left">
               <h3 className="text-xl md:text-2xl font-extrabold text-slate-900 mb-2">Kontynuuj leczenie bez wychodzenia z domu</h3>
               <p className="text-xs text-slate-600 mb-6 leading-relaxed">
-                Szybko, wygodnie i w pełni bezpiecznie przedłużysz swoje stałe leczenie online.
+                Szybko, wygodnie i bezpiecznie.
               </p>
               <a
                 href="/wypelnij-formularz"
@@ -904,7 +914,7 @@ function TherapyContinuationPage() {
                 <Clock className="w-5 h-5" />
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1">Oszczędność czasu</h4>
-              <p className="text-[10px] text-slate-500 leading-relaxed">Bez stania w długich kolejkach w przychodni.</p>
+              <p className="text-[10px] text-slate-500 leading-relaxed">Bez kolejek i długiego oczekiwania.</p>
             </div>
 
             <div className="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
@@ -912,7 +922,7 @@ function TherapyContinuationPage() {
                 <Home className="w-5 h-5" />
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1">Wygoda</h4>
-              <p className="text-[10px] text-slate-500 leading-relaxed">Przedłużenie leczenia z dowolnego miejsca.</p>
+              <p className="text-[10px] text-slate-500 leading-relaxed">Konsultacja z każdego miejsca na świecie.</p>
             </div>
 
             <div className="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
@@ -920,7 +930,7 @@ function TherapyContinuationPage() {
                 <Activity className="w-5 h-5" />
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1">Stałość leczenia</h4>
-              <p className="text-[10px] text-slate-500 leading-relaxed">Nie przerywaj terapii chorób stałych.</p>
+              <p className="text-[10px] text-slate-500 leading-relaxed">Nie przerywaj terapii przewlekłych.</p>
             </div>
 
             <div className="bg-white border border-slate-100 p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
@@ -928,11 +938,10 @@ function TherapyContinuationPage() {
                 <Stethoscope className="w-5 h-5" />
               </div>
               <h4 className="font-extrabold text-sm text-slate-800 mb-1">Profesjonalna opieka</h4>
-              <p className="text-[10px] text-slate-500 leading-relaxed">Opieka wykwalifikowanych, sprawdzonych lekarzy.</p>
+              <p className="text-[10px] text-slate-500 leading-relaxed">Opieka doświadczonych lekarzy.</p>
             </div>
           </div>
         </section>
-
 
       </div>
     </div>
@@ -1105,7 +1114,7 @@ function DefaultRelatedArticlesSection({
 
   return (
     <section className="py-16 bg-white">
-      <div className="max-w-6xl mx-auto px-6">
+      <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-2xl font-bold text-slate-900 mb-8">
           Powiązane artykuły
         </h2>

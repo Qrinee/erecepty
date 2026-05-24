@@ -54,39 +54,38 @@ export default function JakToDzialaPage() {
     <>
       <Header />
       <main id="main-content" tabIndex={-1} className="bg-slate-50/50">
-        
+
         {/* HERO SECTION */}
-        <section className="relative bg-gradient-to-br from-[#F5FAF9] via-[#F8FBFB] to-white overflow-hidden pt-[110px] sm:pt-[130px] lg:pt-[140px] pb-16 lg:pb-0 border-b border-slate-100">
+        <section className="relative bg-gradient-to-br from-[#F5FAF9] via-[#F8FBFB] to-white overflow-hidden pb-0 border-b border-slate-100">
           {/* Subtle backgrounds */}
           <div className="absolute top-20 left-10 w-64 h-64 bg-[#DAE9E6]/30 rounded-full blur-3xl -z-10" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#DAE9E6]/25 rounded-full blur-3xl -z-10" />
 
-          <div className="max-w-7xl mx-auto px-4 relative">
+          <div className="max-w-7xl mx-auto px-4 relative z-10">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-              
+
               {/* Left Column: Heading and info */}
-              <div className="col-span-1 lg:col-span-7 text-center lg:text-left flex flex-col items-center lg:items-start pb-0 lg:pb-16 relative z-10">
-                <span className="inline-flex items-center gap-2 bg-[#DAE9E6] text-[#064743] text-xs font-bold px-3 py-1.5 rounded-full mb-6 shadow-sm">
+              <div className="col-span-1 lg:col-span-6 text-center lg:text-left flex flex-col items-center lg:items-start pt-4 pb-12 lg:pb-16 relative z-10">
+                <span className="inline-flex items-center gap-2 bg-[#EAF5F2] text-[#0E6C5F] text-xs font-bold px-3 py-1.5 rounded-full mb-6 shadow-sm">
                   <Clock className="w-3.5 h-3.5" />
                   Nawet w 15 minut
                 </span>
 
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
+                <h1 className="text-4xl md:text-5xl lg:text-5xl xl:text-6xl font-extrabold text-slate-900 mb-6 leading-tight tracking-tight">
                   Jak działa <br />
-                  <span className="text-[#064743] relative inline-block">
+                  <span className="text-[#0E6C5F]">
                     konsultacja online?
-                    <span className="absolute bottom-1 left-0 w-full h-2 bg-[#DAE9E6] -z-10 rounded" />
                   </span>
                 </h1>
 
-                <p className="text-slate-600 text-sm md:text-base leading-relaxed max-w-xl mb-8 font-semibold">
+                <p className="text-slate-500 text-sm md:text-base leading-relaxed max-w-xl mb-8">
                   To proste! Wystarczą 4 kroki, aby uzyskać profesjonalną poradę bez wychodzenia z domu, bez kolejek i bez zbędnego stresu.
                 </p>
 
                 <div className="w-full flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
                   <a
                     href="/wypelnij-formularz"
-                    className="inline-flex items-center justify-center gap-2 bg-[#064743] hover:bg-[#1A5D54] text-white px-8 py-3.5 rounded-xl font-bold text-sm transition shadow-md hover:shadow-lg group min-h-[44px]"
+                    className="inline-flex items-center justify-center gap-2 bg-[#0E6C5F] hover:bg-[#0A4E45] text-white px-8 py-4 rounded-2xl font-extrabold text-sm transition shadow-md hover:shadow-lg group min-h-[44px]"
                   >
                     Rozpocznij konsultację
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -94,52 +93,56 @@ export default function JakToDzialaPage() {
                 </div>
 
                 {/* Trust Badges under CTA */}
-                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-5 text-slate-500 text-xs font-medium">
-                  <div className="flex items-center gap-1.5">
-                    <Clock className="w-4 h-4 text-[#1A5D54]" />
-                    <span>Nawet w 15 minut</span>
+                <div className="flex flex-wrap items-center justify-center lg:justify-start gap-3 mt-4">
+                  {/* Badge 1 */}
+                  <div className="flex items-center gap-2 bg-white border border-[#E3ECEB]/80 px-4 py-2.5 rounded-xl shadow-sm">
+                    <Clock className="w-4 h-4 text-[#0E6C5F] shrink-0" />
+                    <span className="text-slate-700 text-xs font-bold">Nawet w 15 minut</span>
                   </div>
-                  <div className="w-1.5 h-1.5 rounded-full bg-slate-300 hidden sm:inline" />
-                  <div className="flex items-center gap-1.5">
-                    <UserCheck className="w-4 h-4 text-[#1A5D54]" />
-                    <span>Lekarze z PWZ</span>
+                  {/* Badge 2 */}
+                  <div className="flex items-center gap-2 bg-white border border-[#E3ECEB]/80 px-4 py-2.5 rounded-xl shadow-sm">
+                    <UserCheck className="w-4 h-4 text-[#0E6C5F] shrink-0" />
+                    <span className="text-slate-700 text-xs font-bold">Lekarze z PWZ</span>
                   </div>
-                  <div className="w-1.5 h-1.5 rounded-full bg-slate-300 hidden sm:inline" />
-                  <div className="flex items-center gap-1.5">
-                    <Home className="w-4 h-4 text-[#1A5D54]" />
-                    <span>Bez wychodzenia z domu</span>
+                  {/* Badge 3 */}
+                  <div className="flex items-center gap-2 bg-white border border-[#E3ECEB]/80 px-4 py-2.5 rounded-xl shadow-sm">
+                    <Home className="w-4 h-4 text-[#0E6C5F] shrink-0" />
+                    <span className="text-slate-700 text-xs font-bold">Bez wychodzenia z domu</span>
                   </div>
                 </div>
               </div>
 
-              {/* Right Column: Combined Image (Doctor, Phone, Arrow) */}
-              <div className="col-span-1 lg:col-span-5 flex justify-center items-center select-none relative lg:static">
-                {/* Mobile version: normal flow */}
-                <div className="block lg:hidden relative w-full aspect-[4/3] max-w-md">
+              {/* Mobile Image (rendered in normal flow only on mobile) */}
+              <div className="block lg:hidden col-span-1 w-full pb-8">
+                <div className="relative w-full aspect-[2.27/1] overflow-hidden">
                   <Image
-                    src="/image.png"
+                    src="/how_it_works_hero_new.png"
                     alt="Konsultacja lekarska online"
                     fill
-                    className="object-contain object-center"
+                    className="object-contain"
                   />
-                </div>
-
-                {/* Desktop version: absolute overlay aligned with left-to-right fade */}
-                <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[42%] z-0 pointer-events-none">
-                  <div className="relative w-full h-full">
-                    <Image
-                      src="/image.png"
-                      alt="Konsultacja lekarska online"
-                      fill
-                      priority
-                      className="object-cover object-right"
-                    />
-                    {/* Left-to-right fade overlay to blend the image into the background gradient of the section */}
-                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#F5FAF9] via-[#F8FBFB]/90 to-transparent z-10" />
-                  </div>
+                  {/* Smooth fades to blend image edges on mobile */}
+                  <div className="absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#F5FAF9] to-transparent z-10" />
+                  <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-[#F5FAF9] to-transparent z-10" />
+                  <div className="absolute inset-y-0 right-0 w-12 bg-gradient-to-l from-white to-transparent z-10" />
                 </div>
               </div>
 
+            </div>
+          </div>
+
+          {/* Desktop version: absolute overlay on the right, fully visible, aligned to bottom-right */}
+          <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[60%] xl:w-[55%] z-0 pointer-events-none">
+            <div className="relative w-full h-full overflow-hidden">
+              <Image
+                src="/how_it_works_hero_new.png"
+                alt="Konsultacja lekarska online"
+                fill
+                priority
+                className="object-cover object-right-bottom"
+              />
+              {/* Left-to-right fade overlay to blend the image's left edge into the section background */}
+              <div className="absolute inset-y-0 left-0 w-[35%] bg-gradient-to-r from-[#F5FAF9] via-[#F8FBFB]/80 to-transparent z-10" />
             </div>
           </div>
         </section>
@@ -148,7 +151,7 @@ export default function JakToDzialaPage() {
         {/* 4 PROSTE KROKI SECTION */}
         <section className="py-20 bg-white border-b border-slate-100">
           <div className="max-w-7xl mx-auto px-4">
-            
+
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
                 4 proste kroki do recepty
@@ -165,7 +168,7 @@ export default function JakToDzialaPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                 {steps.map((step, idx) => (
                   <div key={idx} className="relative flex flex-col bg-white rounded-2xl border border-slate-100 p-6 pt-12 shadow-sm hover:shadow-xl hover:border-[#DAE9E6] transition-all duration-300 group">
-                    
+
                     {/* Circle number */}
                     <div className="absolute -top-6 left-6 w-12 h-12 rounded-full bg-[#064743] group-hover:bg-[#1A5D54] text-white flex items-center justify-center font-bold text-lg border-4 border-white shadow-md transition-colors duration-300">
                       {step.number}
@@ -200,7 +203,7 @@ export default function JakToDzialaPage() {
         {/* DLACZEGO PACJENCI WYBIERAJĄ NAS */}
         <section className="py-20 bg-slate-50/30 border-b border-slate-100">
           <div className="max-w-7xl mx-auto px-4">
-            
+
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-4">
                 Dlaczego pacjenci wybierają nas?
@@ -211,7 +214,7 @@ export default function JakToDzialaPage() {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              
+
               {/* Item 1 */}
               <div className="flex items-start gap-4 bg-white border border-slate-100 p-5 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300">
                 <div className="w-12 h-12 rounded-xl bg-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0">
@@ -263,88 +266,88 @@ export default function JakToDzialaPage() {
 
 
         {/* QUESTIONS / SUPPORT SECTION */}
-        <section className="py-20 bg-white border-b border-slate-100">
+        <section className="py-12 bg-white">
           <div className="max-w-7xl mx-auto px-4">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-              
-              {/* Left Column: Contact Cards */}
-              <div className="col-span-1 lg:col-span-7">
-                <div className="mb-10 text-center lg:text-left">
-                  <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3">
-                    Masz pytania?
-                  </h2>
-                  <p className="text-slate-500 text-sm md:text-base">
-                    Skontaktuj się z nami – jesteśmy do Twojej dyspozycji.
-                  </p>
-                </div>
+            <div className="flex flex-col lg:flex-row items-center justify-between w-full bg-[#F4F8F7] border border-[#E3ECEB]/60 rounded-3xl overflow-hidden shadow-sm">
 
-                <div className="space-y-4">
-                  {/* Phone card */}
-                  <a
-                    href="tel:+48000000000"
-                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl border border-slate-100 hover:border-[#DAE9E6] hover:shadow-md transition-all duration-300 group min-h-[44px]"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-[#F5FAF9] text-[#064743] flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
-                        <Phone className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <span className="text-slate-500 text-[10px] font-bold uppercase tracking-wider block">Zadzwoń do nas</span>
-                        <span className="font-extrabold text-slate-800 text-base">+48 000 000 000</span>
-                      </div>
-                    </div>
-                    <span className="text-slate-400 text-xs font-semibold sm:text-right">
-                      Pn-Pt 8:00-20:00, Sb-Nd 9:00-18:00
-                    </span>
-                  </a>
+              {/* Left text column */}
+              <div className="px-6 py-8 lg:py-6 lg:pl-10 lg:pr-4 shrink-0 text-center lg:text-left max-w-md">
+                <h3 className="text-2xl xl:text-3xl font-extrabold text-[#064743] tracking-tight mb-2">
+                  Masz pytania?
+                </h3>
+                <p className="text-[#5A7A75] text-xs xl:text-sm font-medium leading-relaxed">
+                  Skontaktuj się z nami – jesteśmy do Twojej dyspozycji
+                </p>
+              </div>
 
-                  {/* E-mail card */}
-                  <a
-                    href="mailto:kontakt@platforma.pl"
-                    className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl border border-slate-100 hover:border-[#DAE9E6] hover:shadow-md transition-all duration-300 group min-h-[44px]"
-                  >
-                    <div className="flex items-center gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-[#F5FAF9] text-[#064743] flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
-                        <Mail className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <span className="text-slate-500 text-[10px] font-bold uppercase tracking-wider block">Napisz e-mail</span>
-                        <span className="font-extrabold text-[#064743] text-base">kontakt@platforma.pl</span>
-                      </div>
+              {/* Middle cards column */}
+              <div className="flex flex-col sm:flex-row gap-3 xl:gap-4 px-6 lg:px-4 py-4 lg:py-6 grow justify-center w-full lg:w-auto">
+                {/* Card 1: Telefon */}
+                <a
+                  href="tel:+48000000000"
+                  className="bg-white border border-[#E3ECEB]/60 p-4 rounded-2xl shadow-sm hover:shadow-md hover:border-[#0E6C5F]/30 transition-all duration-300 flex flex-col justify-between grow lg:grow-0 w-full sm:w-1/3 lg:w-[190px] xl:w-[220px] min-h-[110px] group"
+                >
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Phone className="w-4 h-4 text-[#0E6C5F] group-hover:scale-110 transition-transform shrink-0" />
+                      <span className="font-extrabold text-xs text-slate-800">Telefon</span>
                     </div>
-                    <span className="text-slate-400 text-xs font-semibold sm:text-right">
-                      Odpowiadamy w ciągu 15 minut
-                    </span>
-                  </a>
+                    <div className="font-extrabold text-xs xl:text-sm text-[#064743] group-hover:text-[#0E6C5F] transition-colors mb-1">
+                      +48 000 000 000
+                    </div>
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-semibold leading-tight mt-1">
+                    Pn-Pt 8:00-20:00, Sb-Nd 9:00-18:00
+                  </div>
+                </a>
 
-                  {/* Live Chat card */}
-                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 p-5 rounded-2xl border border-slate-100 hover:border-[#DAE9E6] hover:shadow-md transition-all duration-300 group">
-                    <div className="flex items-center gap-4">
-                      <div className="w-11 h-11 rounded-xl bg-[#F5FAF9] text-[#064743] flex items-center justify-center shrink-0 shadow-sm group-hover:scale-105 transition-transform">
-                        <MessageCircle className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <span className="text-slate-500 text-[10px] font-bold uppercase tracking-wider block">Czat na żywo</span>
-                        <span className="font-extrabold text-slate-800 text-base">Dostępny na stronie 24/7</span>
-                      </div>
+                {/* Card 2: E-mail */}
+                <a
+                  href="mailto:kontakt@platforma.pl"
+                  className="bg-white border border-[#E3ECEB]/60 p-4 rounded-2xl shadow-sm hover:shadow-md hover:border-[#0E6C5F]/30 transition-all duration-300 flex flex-col justify-between grow lg:grow-0 w-full sm:w-1/3 lg:w-[190px] xl:w-[220px] min-h-[110px] group"
+                >
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <Mail className="w-4 h-4 text-[#0E6C5F] group-hover:scale-110 transition-transform shrink-0" />
+                      <span className="font-extrabold text-xs text-slate-800">E-mail</span>
                     </div>
-                    <span className="text-[#1A5D54] text-xs font-extrabold tracking-tight sm:text-right">
-                      Błyskawiczna pomoc
-                    </span>
+                    <div className="font-extrabold text-xs xl:text-sm text-[#0E6C5F] group-hover:underline mb-1 break-all">
+                      kontakt@platforma.pl
+                    </div>
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-semibold leading-tight mt-1">
+                    Odpowiadamy w ciągu 15 minut
+                  </div>
+                </a>
+
+                {/* Card 3: Czat na żywo */}
+                <div
+                  className="bg-white border border-[#E3ECEB]/60 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between grow lg:grow-0 w-full sm:w-1/3 lg:w-[190px] xl:w-[220px] min-h-[110px] group"
+                >
+                  <div>
+                    <div className="flex items-center gap-2 mb-2">
+                      <MessageCircle className="w-4 h-4 text-[#0E6C5F] group-hover:scale-110 transition-transform shrink-0" />
+                      <span className="font-extrabold text-xs text-slate-800">Czat na żywo</span>
+                    </div>
+                    <div className="text-xs xl:text-[13px] font-extrabold text-slate-700 leading-snug mb-1">
+                      Dostępny na stronie 24/7
+                    </div>
+                  </div>
+                  <div className="text-[10px] text-slate-400 font-semibold leading-tight mt-1">
+                    Błyskawiczna pomoc
                   </div>
                 </div>
               </div>
 
-              {/* Right Column: Support Agent Image */}
-              <div className="col-span-1 lg:col-span-5 flex justify-center select-none">
-                <div className="relative group">
-                  <div className="absolute inset-0 bg-[#064743]/5 rounded-3xl blur-2xl group-hover:bg-[#064743]/10 transition-all duration-500" />
-                  <img
-                    src="/how_it_works_support.png"
-                    alt="Konsultant wsparcia pacjenta"
-                    className="w-full max-w-[340px] h-auto object-contain rounded-3xl relative shadow-md group-hover:scale-102 transition-all duration-500"
-                  />
-                </div>
+              {/* Right support agent photo */}
+              <div className="relative self-stretch w-[240px] xl:w-[280px] hidden lg:block overflow-hidden shrink-0 select-none">
+                <img
+                  src="/support_agent_new.png"
+                  alt="Masz pytania? Skontaktuj się z nami"
+                  className="absolute inset-0 w-full h-full object-cover object-center"
+                />
+                {/* Smooth transition overlay from solid background to transparent */}
+                <div className="absolute inset-y-0 left-0 w-32 bg-gradient-to-r from-[#F4F8F7] to-transparent pointer-events-none" />
               </div>
 
             </div>
@@ -356,7 +359,7 @@ export default function JakToDzialaPage() {
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4">
             <div className="bg-[#064743] rounded-[2.5rem] text-white p-8 md:p-12 lg:p-16 relative overflow-hidden shadow-xl">
-              
+
               {/* Graphic background bubbles */}
               <div className="absolute -top-24 -left-24 w-96 h-96 bg-white/5 rounded-full blur-2xl pointer-events-none" />
               <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-white/5 rounded-full blur-2xl pointer-events-none" />

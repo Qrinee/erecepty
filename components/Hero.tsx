@@ -115,7 +115,7 @@ export default function Hero() {
   const visibleSlots = showAllSlots ? displayedSlots : displayedSlots.slice(0, 4);
 
   return (
-    <section className="relative bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4] h-auto min-h-screen lg:min-h-[calc(100vh-6rem)] [@media(max-height:800px)]:lg:min-h-[calc(100vh-5rem)] pb-12 [@media(max-height:800px)]:pb-6">
+    <section className="relative bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4]  h-auto min-h-screen lg:min-h-[calc(100vh-6rem)] [@media(max-height:800px)]:lg:min-h-[calc(100vh-5rem)]  pb-12 [@media(max-height:800px)]:pb-6">
 
       {/* Background Ornaments */}
       <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#DAE9E6]/30 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/4 pointer-events-none z-0" />
@@ -140,7 +140,7 @@ export default function Hero() {
         />
 
         {/* Floating Trust Badge */}
-        <div className="absolute bottom-[28%] right-[25%] bg-white/95 border border-slate-100/80 rounded-xl p-2.5 shadow-lg z-20 flex flex-col items-center gap-1 backdrop-blur-sm select-none pointer-events-none">
+        <div className=" absolute bottom-[28%] right-[25%] bg-white/95 border border-slate-100/80 rounded-xl p-2.5 shadow-lg z-20 flex flex-col items-center gap-1 backdrop-blur-sm select-none pointer-events-none">
           <div className="flex items-center -space-x-1.5">
             <img className="w-5 h-5 rounded-full border border-white object-cover" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=60&h=60&q=80" alt="Avatar" />
             <img className="w-5 h-5 rounded-full border border-white object-cover" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=60&h=60&q=80" alt="Avatar" />
@@ -151,8 +151,8 @@ export default function Hero() {
               <Star key={i} className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />
             ))}
           </div>
-          <span className="text-[10px] text-slate-800 font-extrabold leading-none mt-0.5">4.9/5</span>
-          <span className="text-[7px] text-slate-400 font-bold whitespace-nowrap">ponad 20 000 zadowolonych pacjentów</span>
+          <span className="text-[20px] text-slate-800 font-extrabold leading-none mt-0.5">4.9/5</span>
+          <span className="text-slate-400 whitespace-nowrap">ponad 20 000 zadowolonych pacjentów</span>
         </div>
       </div>
 
@@ -177,7 +177,7 @@ export default function Hero() {
             {/* Main Heading */}
             <h1 className="text-3xl mt-0 sm:text-4xl lg:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.75rem] [@media(max-height:800px)]:lg:text-[2.2rem] [@media(max-height:800px)]:xl:text-[2.5rem] [@media(max-height:800px)]:2xl:text-[3rem] lg:leading-[1.1] font-extrabold text-slate-900 mb-2 lg:mb-3 [@media(max-height:800px)]:mb-1.5 tracking-tight">
               Porozmawiaj z lekarzem <br />
-              <span className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2.5rem] 2xl:text-[3.25rem] [@media(max-height:800px)]:lg:text-[1.8rem] [@media(max-height:800px)]:xl:text-[2.1rem] [@media(max-height:800px)]:2xl:text-[2.5rem] font-bold"><span className="text-[#10B981]">online</span> bez wychodzenia z domu</span>
+              <span className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2rem] 2xl:text-[3.25rem] [@media(max-height:800px)]:lg:text-[1.8rem] [@media(max-height:800px)]:xl:text-[2.1rem] [@media(max-height:800px)]:2xl:text-[2.5rem] font-bold"><span className="text-[#10B981]">online</span> bez wychodzenia z domu</span>
             </h1>
 
             {/* Subtext */}

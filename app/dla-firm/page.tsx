@@ -163,30 +163,30 @@ export default function DlaFirmPage() {
   return (
     <>
       <Header transparent={false} />
-      <main id="main-content" className="bg-[#FAFBFB] min-h-screen pt-24 pb-20" tabIndex={-1}>
-        
+      <main id="main-content" className="bg-[#FAFBFB] min-h-screen pb-20" tabIndex={-1}>
+
         {/* Hero Section */}
         <section className="relative overflow-hidden py-16 md:py-24 bg-white border-b border-slate-100">
           <div className="absolute top-12 left-10 w-64 h-64 bg-[#E8F3F1]/50 rounded-full blur-3xl -z-10" />
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
-              
+
               {/* Hero text */}
               <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
                 <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#147A60] text-xs font-black px-4 py-2 rounded-full uppercase tracking-wider">
                   Dla Firm
                 </span>
-                
+
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 leading-tight tracking-tight">
                   Telemedycyna <br />
                   dla <span className="text-[#147A60]">firm i pracowników</span>
                 </h1>
-                
+
                 <p className="text-base md:text-lg text-slate-500 max-w-xl mx-auto lg:mx-0 leading-relaxed font-semibold">
                   Nowoczesna opieka medyczna online dla Twojego zespołu – konsultacje 24/7, e-recepty, szybka pomoc specjalistów i mniej absencji w pracy.
                 </p>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
                   <Link
                     href="/wypelnij-formularz?service=konsultacja"
@@ -214,8 +214,8 @@ export default function DlaFirmPage() {
                         <bullet.icon size={16} />
                       </div>
                       <div>
-                        <div className="text-[11px] font-black text-slate-800 leading-tight">{bullet.title}</div>
-                        <div className="text-[10px] text-slate-400 font-semibold mt-0.5">{bullet.desc}</div>
+                        <div className=" font-black text-slate-800 leading-tight">{bullet.title}</div>
+                        <div className=" text-slate-400 font-semibold mt-0.5">{bullet.desc}</div>
                       </div>
                     </div>
                   ))}
@@ -278,7 +278,7 @@ export default function DlaFirmPage() {
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
-              
+
               {/* Left Column: Benefits for Company */}
               <div className="lg:col-span-6 bg-white rounded-[32px] p-8 border border-slate-100/80 shadow-sm flex flex-col justify-between">
                 <div>
@@ -317,7 +317,7 @@ export default function DlaFirmPage() {
                   <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-8">
                     Jak to działa?
                   </h2>
-                  
+
                   <div className="relative pl-8 space-y-8 before:absolute before:left-[15px] before:top-2 before:bottom-2 before:w-0.5 before:bg-slate-100">
                     {steps.map((step, idx) => {
                       const StepIcon = step.icon;
@@ -327,7 +327,7 @@ export default function DlaFirmPage() {
                           <div className="absolute left-[-29px] top-0 w-8 h-8 rounded-full bg-[#147A60] text-white flex items-center justify-center text-xs font-black border-4 border-white shadow-sm">
                             {idx + 1}
                           </div>
-                          
+
                           <div className="w-10 h-10 rounded-xl bg-[#E8F3F1] text-[#147A60] flex items-center justify-center flex-shrink-0 mt-0.5">
                             <StepIcon size={20} />
                           </div>
@@ -352,7 +352,7 @@ export default function DlaFirmPage() {
         <section id="pakiety" className="py-20 bg-white border-y border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
-              
+
               {/* Left column: Packages */}
               <div className="lg:col-span-6 space-y-6">
                 <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-8">
@@ -363,17 +363,15 @@ export default function DlaFirmPage() {
                   {packages.map((pkg, idx) => (
                     <div
                       key={idx}
-                      className={`rounded-[24px] p-6 border transition-all duration-300 ${
-                        pkg.featured
-                          ? "bg-[#147A60] text-white border-transparent shadow-lg shadow-emerald-950/10"
-                          : "bg-white text-slate-800 border-slate-150 shadow-sm"
-                      }`}
+                      className={`rounded-[24px] p-6 border transition-all duration-300 ${pkg.featured
+                        ? "bg-[#147A60] text-white border-transparent shadow-lg shadow-emerald-950/10"
+                        : "bg-white text-slate-800 border-slate-150 shadow-sm"
+                        }`}
                     >
                       <div className="flex items-center justify-between gap-4 mb-3">
                         <div>
-                          <span className={`text-[10px] font-black uppercase px-2.5 py-1 rounded-full ${
-                            pkg.featured ? "bg-white/20 text-white" : "bg-[#E8F3F1] text-[#147A60]"
-                          }`}>
+                          <span className={`text-[10px] font-black uppercase px-2.5 py-1 rounded-full ${pkg.featured ? "bg-white/20 text-white" : "bg-[#E8F3F1] text-[#147A60]"
+                            }`}>
                             {pkg.badge}
                           </span>
                           <h3 className="text-xl font-black mt-2 leading-none">{pkg.name}</h3>
@@ -383,22 +381,21 @@ export default function DlaFirmPage() {
                           <div className="text-lg font-black leading-none mt-1">{pkg.price}</div>
                         </div>
                       </div>
-                      
+
                       <div className={`text-xs uppercase font-extrabold tracking-wide mb-2 ${pkg.featured ? "text-emerald-100" : "text-slate-400"}`}>
                         {pkg.subtitle}
                       </div>
-                      
+
                       <p className={`text-sm font-semibold leading-relaxed mb-4 ${pkg.featured ? "text-emerald-50/80" : "text-slate-400"}`}>
                         {pkg.description}
                       </p>
-                      
+
                       <Link
                         href="/wypelnij-formularz?service=konsultacja"
-                        className={`inline-flex items-center justify-center w-full py-3 rounded-xl font-bold text-xs tracking-wider uppercase transition-colors ${
-                          pkg.featured
-                            ? "bg-white hover:bg-slate-50 text-[#147A60]"
-                            : "bg-[#FAFBFB] border border-slate-200 hover:bg-slate-50 text-slate-700"
-                        }`}
+                        className={`inline-flex items-center justify-center w-full py-3 rounded-xl font-bold text-xs tracking-wider uppercase transition-colors ${pkg.featured
+                          ? "bg-white hover:bg-slate-50 text-[#147A60]"
+                          : "bg-[#FAFBFB] border border-slate-200 hover:bg-slate-50 text-slate-700"
+                          }`}
                       >
                         Zobacz szczegóły
                       </Link>
@@ -413,7 +410,7 @@ export default function DlaFirmPage() {
                   <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-8">
                     Najczęściej zadawane pytania
                   </h2>
-                  
+
                   <div className="space-y-3">
                     {faqs.map((faq, idx) => {
                       const isOpen = activeFaq === idx;
@@ -443,7 +440,7 @@ export default function DlaFirmPage() {
                 {/* Dark Green CTA Card */}
                 <div className="bg-[#064743] rounded-[32px] p-8 text-white relative overflow-hidden shadow-lg shadow-emerald-950/20">
                   <div className="absolute bottom-[-20px] right-[-20px] w-48 h-48 bg-white/5 rounded-full select-none pointer-events-none" />
-                  
+
                   <div className="relative z-10 space-y-4">
                     <h3 className="text-2xl font-black leading-tight">
                       Zadbaj o zdrowie <br />

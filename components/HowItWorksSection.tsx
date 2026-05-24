@@ -108,39 +108,39 @@ export default function HowItWorksSection() {
               {/* Card Body */}
               <div className="mt-5 bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-8 text-left flex-grow flex flex-col">
                 {/* Step Illustration */}
-              <div className="h-[120px] flex items-center justify-center mb-6">
-                <img
-                  src="/hiw_step1.png"
-                  alt="Krok 1: Wybierz usługę"
-                  className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+                <div className="h-[180px] flex items-center justify-center mb-6">
+                  <img
+                    src="/hiw_step1.png"
+                    alt="Krok 1: Wybierz usługę"
+                    className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
 
-              <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Wybierz usługę</h3>
-              <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
-                Określ, czego potrzebujesz — e-recepty, L4 lub konsultacji ze specjalistą.
-              </p>
+                <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Wybierz usługę</h3>
+                <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
+                  Określ, czego potrzebujesz — e-recepty, L4 lub konsultacji ze specjalistą.
+                </p>
 
-              {/* Pills row (Service selector mockup) */}
-              <div className="mt-auto pt-4 flex flex-col gap-2">
-                <span className="text-[11px] font-semibold text-slate-400">Przykłady usług:</span>
-                <div className="bg-[#F8FDFB] rounded-xl p-2.5 flex flex-wrap gap-1.5 items-center justify-start border border-[#EAF5F1]">
-                  <span className="text-[10px] font-bold text-slate-600 bg-white px-2.5 py-1 rounded-md shadow-sm border border-slate-100">
-                    e-Recepta
-                  </span>
-                  <span className="text-[10px] font-bold text-slate-600 bg-white px-2.5 py-1 rounded-md shadow-sm border border-slate-100">
-                    L4 Online
-                  </span>
-                  <span className="text-[10px] font-bold text-slate-600 bg-white px-2.5 py-1 rounded-md shadow-sm border border-slate-100">
-                    Konsultacja
-                  </span>
-                  <span className="text-[11px] font-extrabold text-slate-400 px-1">
-                    +
-                  </span>
+                {/* Pills row (Service selector mockup) */}
+                <div className="mt-auto pt-4 flex flex-col gap-2">
+                  <span className="text-[11px] font-semibold text-slate-400">Przykłady usług:</span>
+                  <div className="bg-[#F8FDFB] rounded-xl p-2.5 flex flex-wrap gap-1.5 items-center justify-start border border-[#EAF5F1]">
+                    <span className="text-[10px] font-bold text-slate-600 bg-white px-2.5 py-1 rounded-md shadow-sm border border-slate-100">
+                      e-Recepta
+                    </span>
+                    <span className="text-[10px] font-bold text-slate-600 bg-white px-2.5 py-1 rounded-md shadow-sm border border-slate-100">
+                      L4 Online
+                    </span>
+                    <span className="text-[10px] font-bold text-slate-600 bg-white px-2.5 py-1 rounded-md shadow-sm border border-slate-100">
+                      Konsultacja
+                    </span>
+                    <span className="text-[11px] font-extrabold text-slate-400 px-1">
+                      +
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
             {/* Step 2 */}
             <div className="relative pt-10 flex flex-col group h-full">
@@ -151,31 +151,31 @@ export default function HowItWorksSection() {
               {/* Card Body */}
               <div className="mt-5 bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-8 text-left flex-grow flex flex-col">
                 {/* Step Illustration */}
-              <div className="h-[120px] flex items-center justify-center mb-6">
-                <img
-                  src="/hiw_step2.png"
-                  alt="Krok 2: Wybierz specjalistę"
-                  className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+                <div className="h-[180px] flex items-center justify-center mb-6">
+                  <img
+                    src="/hiw_step2.png"
+                    alt="Krok 2: Wybierz specjalistę"
+                    className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
 
-              <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Wybierz specjalistę</h3>
-              <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
-                Znajdź lekarza dopasowanego do swoich potrzeb i sprawdź jego dostępne terminy.
-              </p>
+                <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Wybierz specjalistę</h3>
+                <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
+                  Znajdź lekarza dopasowanego do swoich potrzeb i sprawdź jego dostępne terminy.
+                </p>
 
-              {/* Trust Badge / Info Box */}
-              <div className="mt-auto pt-4">
-                <div className="flex items-center gap-3 bg-[#F4F9F7] px-4 py-3 rounded-xl w-full">
-                  <Users className="w-5 h-5 text-[#0CA953] shrink-0" strokeWidth={2.5} />
-                  <span className="text-[11px] font-bold text-[#052840] leading-[1.3]">
-                    Ponad 50 specjalistów<br />
-                    <span className="font-medium text-slate-600">do Twojej dyspozycji</span>
-                  </span>
+                {/* Trust Badge / Info Box */}
+                <div className="mt-auto pt-4">
+                  <div className="flex items-center gap-3 bg-[#F4F9F7] px-4 py-3 rounded-xl w-full">
+                    <Users className="w-5 h-5 text-[#0CA953] shrink-0" strokeWidth={2.5} />
+                    <span className="text-[11px] font-bold text-[#052840] leading-[1.3]">
+                      Ponad 50 specjalistów<br />
+                      <span className="font-medium text-slate-600">do Twojej dyspozycji</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
             {/* Step 3 */}
             <div className="relative pt-10 flex flex-col group h-full">
@@ -186,31 +186,31 @@ export default function HowItWorksSection() {
               {/* Card Body */}
               <div className="mt-5 bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-8 text-left flex-grow flex flex-col">
                 {/* Step Illustration */}
-              <div className="h-[120px] flex items-center justify-center mb-6">
-                <img
-                  src="/hiw_step3.png"
-                  alt="Krok 3: Umów termin online"
-                  className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+                <div className="h-[180px] flex items-center justify-center mb-6">
+                  <img
+                    src="/hiw_step3.png"
+                    alt="Krok 3: Umów termin online"
+                    className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
 
-              <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Umów termin online</h3>
-              <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
-                Wybierz dogodną datę i godzinę konsultacji telefonicznej lub wideo.
-              </p>
+                <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Umów termin online</h3>
+                <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
+                  Wybierz dogodną datę i godzinę konsultacji telefonicznej lub wideo.
+                </p>
 
-              {/* Trust Badge / Info Box */}
-              <div className="mt-auto pt-4">
-                <div className="flex items-center gap-3 bg-[#F4F9F7] px-4 py-3 rounded-xl w-full">
-                  <Calendar className="w-5 h-5 text-[#0CA953] shrink-0" strokeWidth={2.5} />
-                  <span className="text-[11px] font-bold text-[#052840] leading-[1.3]">
-                    Konsultacje nawet<br />
-                    <span className="font-medium text-slate-600">tego samego dnia</span>
-                  </span>
+                {/* Trust Badge / Info Box */}
+                <div className="mt-auto pt-4">
+                  <div className="flex items-center gap-3 bg-[#F4F9F7] px-4 py-3 rounded-xl w-full">
+                    <Calendar className="w-5 h-5 text-[#0CA953] shrink-0" strokeWidth={2.5} />
+                    <span className="text-[11px] font-bold text-[#052840] leading-[1.3]">
+                      Konsultacje nawet<br />
+                      <span className="font-medium text-slate-600">tego samego dnia</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
             {/* Step 4 */}
             <div className="relative pt-10 flex flex-col group h-full">
@@ -221,31 +221,31 @@ export default function HowItWorksSection() {
               {/* Card Body */}
               <div className="mt-5 bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:shadow-[0_8px_30px_rgb(0,0,0,0.08)] hover:border-slate-200 transition-all duration-300 p-8 pt-8 text-left flex-grow flex flex-col">
                 {/* Step Illustration */}
-              <div className="h-[120px] flex items-center justify-center mb-6">
-                <img
-                  src="/hiw_step4.png"
-                  alt="Krok 4: Rozmawiaj z lekarzem"
-                  className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
-                />
-              </div>
+                <div className="h-[180px] flex items-center justify-center mb-6">
+                  <img
+                    src="/hiw_step4.png"
+                    alt="Krok 4: Rozmawiaj z lekarzem"
+                    className="h-full object-contain transform group-hover:scale-105 transition-transform duration-500"
+                  />
+                </div>
 
-              <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Rozmawiaj z lekarzem</h3>
-              <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
-                Skonsultuj się z lekarzem online i otrzymaj e-receptę lub dokumenty bez wychodzenia z domu.
-              </p>
+                <h3 className="font-extrabold text-[17px] text-[#052840] mb-3">Rozmawiaj z lekarzem</h3>
+                <p className="text-slate-500 text-[13px] font-medium leading-relaxed mb-6">
+                  Skonsultuj się z lekarzem online i otrzymaj e-receptę lub dokumenty bez wychodzenia z domu.
+                </p>
 
-              {/* Trust Badge / Info Box */}
-              <div className="mt-auto pt-4">
-                <div className="flex items-center gap-3 bg-[#F4F9F7] px-4 py-3 rounded-xl w-full">
-                  <Send className="w-5 h-5 text-[#0CA953] shrink-0" strokeWidth={2.5} />
-                  <span className="text-[11px] font-bold text-[#052840] leading-[1.3]">
-                    e-Recepty i zwolnienia<br />
-                    <span className="font-medium text-slate-600">wysyłane online</span>
-                  </span>
+                {/* Trust Badge / Info Box */}
+                <div className="mt-auto pt-4">
+                  <div className="flex items-center gap-3 bg-[#F4F9F7] px-4 py-3 rounded-xl w-full">
+                    <Send className="w-5 h-5 text-[#0CA953] shrink-0" strokeWidth={2.5} />
+                    <span className="text-[11px] font-bold text-[#052840] leading-[1.3]">
+                      e-Recepty i zwolnienia<br />
+                      <span className="font-medium text-slate-600">wysyłane online</span>
+                    </span>
+                  </div>
                 </div>
               </div>
             </div>
-          </div>
 
           </div>
         </div>

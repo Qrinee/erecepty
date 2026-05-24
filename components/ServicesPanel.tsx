@@ -40,7 +40,7 @@ export default function ServicesPanel() {
       title: "Kontynuacja",
       description: "Przedłuż leczenie bez pośredniej wizyty",
       price: 59,
-      image: "/kontynuacja leczenia.jpeg",
+      image: "/continuation_3d.png",
       href: "/wypelnij-formularz?service=Kontynuacja+leczenia",
       color: "bg-[#F5F2FC] border-[#EAE3F5]",
       buttonColor: "bg-[#4834D4] hover:bg-[#341F97]",
