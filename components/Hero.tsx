@@ -132,7 +132,7 @@ export default function Hero() {
       </div>
 
       {/* Doctor Image (Desktop Center) */}
-      <div className="absolute  top-auto left-[61%] -translate-x-[47%] h-[82%] [@media(max-height:800px)]:h-[75%] [@media(max-height:700px)]:h-[70%] xl:max-h-[720px] 2xl:max-h-[820px] w-auto z-10 hidden xl:block pointer-events-none select-none">
+      <div className="absolute  top-auto left-[57%] -translate-x-[50%] h-[82%] [@media(max-height:800px)]:h-[75%] [@media(max-height:700px)]:h-[70%] xl:max-h-[720px] 2xl:max-h-[820px] w-auto z-10 hidden xl:block pointer-events-none select-none">
         <img
           src="/gpt.png"
           alt="Lekarz"
