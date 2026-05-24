@@ -187,19 +187,19 @@ export default function DlaKobietIMezczyznPage() {
                       <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
                         <MessageSquarePlus size={18} />
                       </div>
-                      <span className="text-[10px] font-bold text-slate-600 leading-tight">Konsultacja online</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">Konsultacja online</span>
                     </div>
                     <div className="flex flex-col items-center text-center">
                       <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
                         <FileText size={18} />
                       </div>
-                      <span className="text-[10px] font-bold text-slate-600 leading-tight">E-recepta od ręki</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">E-recepta od ręki</span>
                     </div>
                     <div className="flex flex-col items-center text-center">
                       <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
                         <ShieldCheck size={18} />
                       </div>
-                      <span className="text-[10px] font-bold text-slate-600 leading-tight">Bezpiecznie i dyskretnie</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">Bezpiecznie i dyskretnie</span>
                     </div>
                   </div>
                 </div>
@@ -287,25 +287,25 @@ export default function DlaKobietIMezczyznPage() {
                       <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
                         <MessageSquarePlus size={16} />
                       </div>
-                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Konsultacja 24/7</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">Konsultacja 24/7</span>
                     </div>
                     <div className="flex flex-col items-center text-center">
                       <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
                         <FileText size={16} />
                       </div>
-                      <span className="text-[9px] font-bold text-slate-600 leading-tight">E-recepta w minuty</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">E-recepta w minuty</span>
                     </div>
                     <div className="flex flex-col items-center text-center">
                       <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
                         <UserCheck size={16} />
                       </div>
-                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Regularna opieka</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">Regularna opieka</span>
                     </div>
                     <div className="flex flex-col items-center text-center">
                       <div className="w-9 h-9 rounded-full bg-rose-50/50 text-rose-500 flex items-center justify-center mb-2">
                         <ShieldCheck size={16} />
                       </div>
-                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Bezpiecznie i dyskretnie</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">Bezpiecznie i dyskretnie</span>
                     </div>
                   </div>
                 </div>
@@ -393,25 +393,25 @@ export default function DlaKobietIMezczyznPage() {
                       <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
                         <Clock size={16} />
                       </div>
-                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Konsultacja 24/7</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">Konsultacja 24/7</span>
                     </div>
                     <div className="flex flex-col items-center text-center">
                       <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
                         <FlaskConical size={16} />
                       </div>
-                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Diagnostyka online</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">Diagnostyka online</span>
                     </div>
                     <div className="flex flex-col items-center text-center">
                       <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
                         <TrendingUp size={16} />
                       </div>
-                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Terapia dopasowana</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">Terapia dopasowana</span>
                     </div>
                     <div className="flex flex-col items-center text-center">
                       <div className="w-9 h-9 rounded-full bg-blue-50/50 text-blue-500 flex items-center justify-center mb-2">
                         <ShieldCheck size={16} />
                       </div>
-                      <span className="text-[9px] font-bold text-slate-600 leading-tight">Dyskrecja i bezp.</span>
+                      <span className="text-[14px] font-bold text-slate-600 leading-tight">Dyskrecja i bezp.</span>
                     </div>
                   </div>
                 </div>
