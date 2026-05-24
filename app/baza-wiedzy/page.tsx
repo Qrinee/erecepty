@@ -24,25 +24,25 @@ export default function BazaWiedzyPage() {
       <Header />
       <main id="main-content" tabIndex={-1}>
         {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-[#DAE9E6] via-white to-purple-50 pt-40 pb-16 overflow-hidden">
+        <section className="relative bg-gradient-to-br from-[#DAE9E6] via-white to-purple-50 pt-10 pb-16 overflow-hidden">
           {/* Decorative elements */}
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#DAE9E6] rounded-full opacity-30 blur-2xl" />
           <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-200 rounded-full opacity-30 blur-3xl" />
-          
+
           <div className="max-w-7xl mx-auto px-6 relative">
             <div className="text-center max-w-3xl mx-auto">
               <span className="inline-flex items-center gap-2 bg-[#DAE9E6] text-[#064743] text-sm font-semibold px-4 py-1.5 rounded-full mb-6">
                 <BookOpen size={16} />
                 BAZA WIEDZY
               </span>
-              
+
               <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">
                 Wiedza o{" "}
                 <span className="text-[#064743]">zdrowiu i konsultacjach</span>
               </h1>
-              
+
               <p className="text-lg text-slate-600 mb-8">
-                Poznaj porady ekspertów, najnowsze informacje i odpowiedzi na najczęściej zadawane pytania dotyczące 
+                Poznaj porady ekspertów, najnowsze informacje i odpowiedzi na najczęściej zadawane pytania dotyczące
                 konsultacji zdrowotnych, telekonsultacji i zdrowia.
               </p>
 
@@ -66,7 +66,7 @@ export default function BazaWiedzyPage() {
         {/* Articles Grid */}
         <section className="py-16 bg-gradient-to-br from-white to-[#DAE9E6]">
           <div className="max-w-7xl mx-auto px-6">
-      
+
             <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
               {allArticles.map((card, index) => (
                 <KnowledgeCard key={index} {...card} />

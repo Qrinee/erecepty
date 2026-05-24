@@ -75,9 +75,9 @@ interface ArticlePageClientProps {
 // -------------------------------------------------------------
 function TeleconsultationPrepPage() {
   return (
-    <div className="bg-slate-50/50 min-h-screen pt-[90px] sm:pt-[110px] pb-16">
-      <div className="w-full max-w-none px-4 sm:px-8 md:px-12 lg:px-16 mx-auto">
-        
+    <div className="bg-slate-50/50 min-h-screen pt-[30px] sm:pt-[30px] pb-16">
+      <div className="w-full max-w-7xl px-4 sm:px-8 md:px-12 lg:px-16 mx-auto">
+
         {/* Breadcrumbs */}
         <nav className="mb-6" aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-xs text-slate-500 font-medium">
@@ -92,7 +92,7 @@ function TeleconsultationPrepPage() {
         {/* Hero Area */}
         <section className="bg-white rounded-3xl border border-slate-100 p-8 md:p-12 shadow-sm mb-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
+
             {/* Left text */}
             <div className="col-span-1 lg:col-span-7">
               <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] mb-4">
@@ -152,7 +152,7 @@ function TeleconsultationPrepPage() {
 
         {/* 5 Core Steps Grid */}
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-12">
-          
+
           {/* Card 1 */}
           <div className="bg-white border border-[#DAE9E6] p-5 rounded-2xl shadow-sm text-center flex flex-col items-center hover:shadow-md transition-shadow">
             <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] flex items-center justify-center mb-4 shadow-sm">
@@ -203,7 +203,7 @@ function TeleconsultationPrepPage() {
 
         {/* Detailed Guide and Co Możesz Otrzymać */}
         <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
-          
+
           {/* Left: Detailed Steps */}
           <div className="col-span-1 lg:col-span-8 bg-white border border-slate-100 p-6 md:p-8 rounded-3xl shadow-sm">
             <h2 className="text-2xl font-extrabold text-slate-900 mb-8 border-b border-slate-100 pb-4">
@@ -398,8 +398,8 @@ function OnlineConsultationsOverviewPage() {
 
   return (
     <div className="bg-slate-50/50 min-h-screen pt-[90px] sm:pt-[110px] pb-16">
-      <div className="w-full max-w-none px-4 sm:px-8 md:px-12 lg:px-16 mx-auto">
-        
+      <div className="w-full max-w-7xl px-4 sm:px-8 md:px-12 lg:px-16 mx-auto">
+
         {/* Breadcrumbs */}
         <nav className="mb-6" aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-xs text-slate-500 font-medium">
@@ -414,7 +414,7 @@ function OnlineConsultationsOverviewPage() {
         {/* Hero Area */}
         <section className="bg-white rounded-3xl border border-slate-100 p-8 md:p-12 shadow-sm mb-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
+
             {/* Left text */}
             <div className="col-span-1 lg:col-span-7">
               <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] mb-4">
@@ -557,14 +557,14 @@ function OnlineConsultationsOverviewPage() {
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
-            
+
             {/* Laptop Mockup with checkmark */}
             <div className="col-span-1 md:col-span-5 flex justify-center md:justify-end relative">
               <div className="relative pt-4">
                 {/* Cup and plant decoration */}
                 <div className="absolute -left-8 bottom-0 w-6 h-8 bg-amber-100 rounded-t-md border-t-2 border-amber-600 hidden sm:block shadow-sm" title="kubek" />
                 <div className="absolute -right-8 bottom-0 w-6 h-10 bg-[#064743]/80 rounded-t-full hidden sm:block shadow-sm" title="roślina" />
-                
+
                 <div className="relative w-44 h-28 bg-slate-900 border-4 border-slate-800 rounded-t-lg flex items-center justify-center shadow-lg">
                   <div className="w-full h-full bg-white rounded-t-sm flex items-center justify-center p-3">
                     <div className="w-10 h-10 rounded-full bg-emerald-100 border border-emerald-300 flex items-center justify-center text-emerald-600 shadow-sm">
@@ -662,8 +662,8 @@ function OnlineConsultationsOverviewPage() {
 function TherapyContinuationPage() {
   return (
     <div className="bg-slate-50/50 min-h-screen pt-[90px] sm:pt-[110px] pb-16">
-      <div className="w-full max-w-none px-4 sm:px-8 md:px-12 lg:px-16 mx-auto">
-        
+      <div className="w-full max-w-7xl px-4 sm:px-8 md:px-12 lg:px-16 mx-auto">
+
         {/* Breadcrumbs */}
         <nav className="mb-6" aria-label="Breadcrumb">
           <ol className="flex items-center gap-2 text-xs text-slate-500 font-medium">
@@ -678,7 +678,7 @@ function TherapyContinuationPage() {
         {/* Hero Area */}
         <section className="bg-white rounded-3xl border border-slate-100 p-8 md:p-12 shadow-sm mb-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-            
+
             {/* Left text */}
             <div className="col-span-1 lg:col-span-7">
               <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold bg-[#E8F3F1] text-[#064743] border border-[#DAE9E6] mb-4">
@@ -738,7 +738,7 @@ function TherapyContinuationPage() {
           <div className="col-span-1 lg:col-span-6 bg-white border border-slate-100 p-6 md:p-8 rounded-3xl shadow-sm">
             <h3 className="font-extrabold text-slate-900 text-lg mb-4">Kiedy warto skorzystać?</h3>
             <p className="text-slate-600 text-xs mb-6">Jeśli stale przyjmujesz leki i potrzebujesz szybkiego, bezpiecznego przedłużenia leczenia:</p>
-            
+
             <ul className="space-y-4">
               <li className="flex items-center gap-3 text-slate-700 text-xs">
                 <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center shrink-0">
@@ -767,7 +767,7 @@ function TherapyContinuationPage() {
               <div className="flex-1 w-full">
                 <h3 className="font-extrabold text-slate-900 text-lg mb-4">Dla kogo?</h3>
                 <p className="text-slate-600 text-xs mb-6">Usługa skierowana do pacjentów z chorobami przewlekłymi, takimi jak:</p>
-                
+
                 <div className="grid grid-cols-2 gap-3.5 text-slate-700 text-xs">
                   <div className="flex items-center gap-2">
                     <Activity className="w-4.5 h-4.5 text-[#064743]" />
@@ -804,7 +804,7 @@ function TherapyContinuationPage() {
         {/* Jak wyglada proces */}
         <section className="bg-white border border-slate-100 p-6 md:p-8 rounded-3xl shadow-sm mb-12">
           <h3 className="font-extrabold text-slate-900 text-xl text-center mb-8">Jak wygląda proces?</h3>
-          
+
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative mb-8">
             {/* Step 1 */}
             <div className="text-center flex flex-col items-center relative">
@@ -880,7 +880,7 @@ function TherapyContinuationPage() {
                 <ArrowRight className="w-4 h-4" />
               </a>
             </div>
-            
+
             {/* Medicine 3D illustration on the right */}
             <div className="col-span-1 md:col-span-5 flex justify-center md:justify-end">
               <div className="relative w-44 h-32 transform hover:scale-105 transition-all duration-300">
@@ -1182,7 +1182,7 @@ export default function ArticlePageClient({
   article,
   relatedArticles,
 }: ArticlePageClientProps) {
-  
+
   // Choose page render based on article slug
   const renderContent = () => {
     switch (article.slug) {

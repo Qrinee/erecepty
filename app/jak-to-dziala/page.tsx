@@ -61,7 +61,7 @@ export default function JakToDzialaPage() {
           <div className="absolute top-20 left-10 w-64 h-64 bg-[#DAE9E6]/30 rounded-full blur-3xl -z-10" />
           <div className="absolute bottom-10 right-10 w-96 h-96 bg-[#DAE9E6]/25 rounded-full blur-3xl -z-10" />
 
-          <div className="max-w-7xl mx-auto px-4">
+          <div className="max-w-7xl mx-auto px-4 relative">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               
               {/* Left Column: Heading and info */}
@@ -125,7 +125,7 @@ export default function JakToDzialaPage() {
                 </div>
 
                 {/* Desktop version: absolute overlay aligned with left-to-right fade */}
-                <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[50%] z-0 pointer-events-none">
+                <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[42%] z-0 pointer-events-none">
                   <div className="relative w-full h-full">
                     <Image
                       src="/image.png"

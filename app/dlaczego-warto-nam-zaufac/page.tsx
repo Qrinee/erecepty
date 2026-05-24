@@ -60,8 +60,8 @@ export default function DlaczegoWartoNamZaufacPage() {
   return (
     <>
       <Header transparent={false} />
-      <main id="main-content" className="bg-white min-h-screen pt-24" tabIndex={-1}>
-        
+      <main id="main-content" className="bg-white min-h-screen" tabIndex={-1}>
+
         {/* Breadcrumbs */}
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-slate-500 flex items-center gap-2">
           <Link href="/" className="hover:text-slate-800 flex items-center gap-1 transition-colors">
@@ -77,7 +77,7 @@ export default function DlaczegoWartoNamZaufacPage() {
           {/* Background decorative circles */}
           <div className="absolute top-10 left-10 w-48 h-48 bg-[#DAE9E6]/40 rounded-full blur-3xl -z-10" />
           <div className="absolute bottom-10 right-10 w-72 h-72 bg-emerald-50 rounded-full blur-3xl -z-10" />
-          
+
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
               {/* Hero text (left side) */}
@@ -156,14 +156,14 @@ export default function DlaczegoWartoNamZaufacPage() {
         <section className="py-20 bg-[#F8FAF9] overflow-hidden">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-12 gap-16 items-center">
-              
+
               {/* Graphic element (left side) */}
               <div className="lg:col-span-5 flex justify-center">
                 <div className="relative w-full max-w-[380px] h-[380px] flex items-center justify-center">
                   {/* Decorative orbital rings */}
                   <div className="absolute w-[300px] h-[300px] border border-dashed border-slate-200 rounded-full animate-[spin_40s_linear_infinite]" />
                   <div className="absolute w-[220px] h-[220px] border border-dashed border-emerald-100 rounded-full" />
-                  
+
                   {/* Center Shield node */}
                   <div className="relative z-10 w-24 h-24 rounded-full bg-gradient-to-tr from-[#138A56] to-[#2ECC71] text-white flex items-center justify-center shadow-xl shadow-emerald-500/20">
                     <ShieldCheck size={48} className="drop-shadow-md" />
@@ -261,7 +261,7 @@ export default function DlaczegoWartoNamZaufacPage() {
         <section className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-gradient-to-br from-[#EAF3EF] to-[#D5E6E0] rounded-[40px] overflow-hidden p-8 md:p-12 lg:p-16 relative">
-              
+
               {/* Graphic details */}
               <div className="absolute top-0 right-0 w-[45%] h-full hidden lg:block select-none pointer-events-none">
                 <img
@@ -269,7 +269,7 @@ export default function DlaczegoWartoNamZaufacPage() {
                   alt="Lekarze"
                   className="w-full h-full object-cover object-center "
                 />
-                
+
                 {/* Floating trust badge inside image container */}
                 <div className="absolute bottom-12 right-12 bg-white rounded-2xl p-4 shadow-lg border border-slate-100/50 flex flex-col items-center gap-1.5 w-52">
                   <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Zaufanie</span>
@@ -307,7 +307,7 @@ export default function DlaczegoWartoNamZaufacPage() {
                     <ArrowRight size={16} className="text-[#138A56] group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
-                
+
                 {/* Mobile version badge */}
                 <div className="lg:hidden mt-8 inline-flex bg-white rounded-2xl p-4 shadow-sm border border-slate-100 flex-col items-start gap-1 w-full max-w-[240px]">
                   <span className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Zaufanie</span>

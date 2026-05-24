@@ -196,7 +196,7 @@ export default function DlaLekarzyPage() {
   return (
     <>
       <Header transparent={false} />
-      <main id="main-content" className="bg-[#FAFBFB] min-h-screen pt-28 pb-20 relative overflow-hidden" tabIndex={-1}>
+      <main id="main-content" className="bg-[#FAFBFB] min-h-screen pt-10 pb-20 relative overflow-hidden" tabIndex={-1}>
 
         {/* Background decorative elements (Plus signs) */}
         <div className="absolute top-36 left-10 text-emerald-500/10 pointer-events-none select-none hidden lg:block">
@@ -209,7 +209,7 @@ export default function DlaLekarzyPage() {
           <span className="text-5xl font-light">+</span>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="mt-15 mx-auto px-4 sm:px-6 lg:px-8">
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
@@ -234,7 +234,7 @@ export default function DlaLekarzyPage() {
                 </div>
 
                 {/* Doctor Portrait Image positioned absolutely to the right bottom */}
-                <div className="hidden md:block absolute bottom-[0px] right-[-10px] lg:right-[-20px] w-[45%] lg:w-[50%] h-[380px] lg:h-[450px] xl:h-[480px] z-0">
+                <div className="hidden md:block absolute bottom-[0px] right-[-10px] lg:right-[-20px] w-[45%] lg:w-[38%] h-[380px] lg:h-[450px] xl:h-[480px] z-0">
                   <div className="relative w-full h-full">
                     <Image
                       src="/image-removebg-preview.png"

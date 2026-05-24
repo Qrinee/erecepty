@@ -74,7 +74,7 @@ export default function DlaKobietIMezczyznPage() {
     <>
       <Header transparent={false} />
       <main id="main-content" className="bg-[#FAFBFB] min-h-screen pt-24 pb-20" tabIndex={-1}>
-        
+
         {/* Breadcrumbs */}
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-slate-500 flex items-center gap-2">
           <Link href="/" className="hover:text-slate-800 flex items-center gap-1 transition-colors">
@@ -120,10 +120,10 @@ export default function DlaKobietIMezczyznPage() {
         {/* Three Columns Grid of Services */}
         <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <div className="grid gap-8 lg:grid-cols-3">
-            
+
             {/* Card 1: Tabletka "dzień po" */}
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-rose-100 transition-all duration-300">
-              
+
               {/* Header with integrated image overlay */}
               <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center">
                 {/* Badge & Title */}
@@ -132,15 +132,15 @@ export default function DlaKobietIMezczyznPage() {
                     Dla kobiet
                   </span>
                 </div>
-                
+
                 <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
                   Tabletka „dzień po”
                 </h2>
-                
+
                 <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
                   Dyskretna pomoc, kiedy liczy się czas.
                 </p>
-                
+
                 <p className="text-sm text-slate-500 leading-relaxed">
                   Konsultacja online z e-receptą na tabletkę „dzień po”.
                 </p>
@@ -223,7 +223,7 @@ export default function DlaKobietIMezczyznPage() {
 
             {/* Card 2: Antykoncepcja */}
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-rose-100 transition-all duration-300">
-              
+
               {/* Header with integrated image overlay */}
               <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center">
                 {/* Badge & Title */}
@@ -232,15 +232,15 @@ export default function DlaKobietIMezczyznPage() {
                     Dla kobiet
                   </span>
                 </div>
-                
+
                 <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
                   Antykoncepcja
                 </h2>
-                
+
                 <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
                   Dobierz antykoncepcję dopasowaną do Ciebie.
                 </p>
-                
+
                 <p className="text-sm text-slate-500 leading-relaxed">
                   Konsultacja online z lekarzem i e-recepta na antykoncepcję.
                 </p>
@@ -329,7 +329,7 @@ export default function DlaKobietIMezczyznPage() {
 
             {/* Card 3: Testosteron */}
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-blue-100 transition-all duration-300">
-              
+
               {/* Header with integrated image overlay */}
               <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center">
                 {/* Badge & Title */}
@@ -338,15 +338,15 @@ export default function DlaKobietIMezczyznPage() {
                     Dla mężczyzn
                   </span>
                 </div>
-                
+
                 <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
                   Testosteron
                 </h2>
-                
+
                 <p className="text-sm font-extrabold text-blue-500 leading-snug mb-3">
                   Zadbaj o energię, siłę i dobre samopoczucie.
                 </p>
-                
+
                 <p className="text-sm text-slate-500 leading-relaxed">
                   Diagnoza, plan leczenia i e-recepta na terapię testosteronem online.
                 </p>
@@ -452,7 +452,7 @@ export default function DlaKobietIMezczyznPage() {
                 </p>
               </div>
             </div>
-            
+
             <Link
               href="/#kontakt"
               className="inline-flex items-center gap-2 bg-[#FAFBFB] hover:bg-slate-100 text-slate-700 border border-slate-200 px-6 py-3.5 rounded-xl font-bold transition-all shadow-sm flex-shrink-0 group/contactBtn"

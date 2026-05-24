@@ -67,8 +67,9 @@ a:hover {
   animation: fadeIn 0.2s ease-out;
 }
 
-body{
-    color: rgb(27, 27, 27);
+body {
+  color: rgb(27, 27, 27);
+  overflow-x: hidden;
 }
 
 /* Ensure minimum touch target size (44x44px WCAG 2.5.5) */

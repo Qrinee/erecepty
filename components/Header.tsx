@@ -94,11 +94,10 @@ export default function Header({ transparent = false }: HeaderProps) {
 
   return (
     <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-100 ${
-        transparent
+      className={`top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-100 ${transparent
           ? "bg-transparent text-white"
           : "bg-white/90 backdrop-blur-md text-slate-900"
-      }`}
+        }`}
       role="banner"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 ">
@@ -108,7 +107,7 @@ export default function Header({ transparent = false }: HeaderProps) {
 
         <button
           onClick={() => setShowMobileMenu(!showMobileMenu)}
-          className="md:hidden p-2 text-slate-700 hover:text-slate-900 focus:outline-none"
+          className="xl:hidden p-2 text-slate-700 hover:text-slate-900 focus:outline-none"
           aria-label="Menu"
         >
           <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -116,7 +115,7 @@ export default function Header({ transparent = false }: HeaderProps) {
           </svg>
         </button>
 
-        <nav aria-label="Główna nawigacja" className="hidden md:flex items-center justify-center gap-6 text-sm font-medium h-16">
+        <nav aria-label="Główna nawigacja" className="hidden xl:flex items-center justify-center gap-6 text-sm font-medium h-16">
           <Link href="/#uslugi" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Usługi</Link>
           <Link href="/#specjalizacje" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Specjalizacje</Link>
           <Link href="/jak-to-dziala" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Jak to działa?</Link>
@@ -127,7 +126,7 @@ export default function Header({ transparent = false }: HeaderProps) {
         </nav>
 
         {showMobileMenu && (
-          <div className="md:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-40">
+          <div className="xl:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-40">
             <nav className="flex flex-col p-4 space-y-4" onClick={() => setShowMobileMenu(false)}>
               <Link href="/#uslugi" className="text-slate-700 hover:text-[#064743] py-2">Usługi</Link>
               <Link href="/#specjalizacje" className="text-slate-700 hover:text-[#064743] py-2">Specjalizacje</Link>
@@ -149,7 +148,7 @@ export default function Header({ transparent = false }: HeaderProps) {
 
         {isAuthenticated ? (
           <div className="flex items-center gap-6">
-            <Link href="/profile" className="text-sm font-semibold text-slate-700 hover:text-[#064743] transition px-1 py-2 flex justify-center items-center h-full animate-fadeIn" aria-label="Panel pacjenta">
+            <Link href="/profile" className="hidden xl:flex text-sm font-semibold text-slate-700 hover:text-[#064743] transition px-1 py-2 justify-center items-center h-full animate-fadeIn" aria-label="Panel pacjenta">
               Panel pacjenta
             </Link>
             <div className="relative" ref={dropdownRef}>
@@ -165,7 +164,7 @@ export default function Header({ transparent = false }: HeaderProps) {
                     {user?.firstName?.[0]}{user?.lastName?.[0]}
                   </span>
                 </div>
-                <span className="hidden md:inline">{user?.firstName} {user?.lastName}</span>
+                <span className="hidden xl:inline">{user?.firstName} {user?.lastName}</span>
                 <svg className="w-4 h-4 text-slate-500" aria-hidden="true" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
                 </svg>
@@ -217,7 +216,7 @@ export default function Header({ transparent = false }: HeaderProps) {
             </div>
           </div>
         ) : (
-          <div className="flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-3">
             <Link
               href="/login"
               className="flex items-center justify-center cursor-pointer px-5 py-2 border border-slate-200 rounded-lg text-sm font-semibold text-slate-700 bg-white hover:bg-slate-50 transition focus:outline-none focus:ring-2 focus:ring-[#DAE9E6]/50 focus:ring-offset-2"

@@ -27,7 +27,7 @@ function WypelnijFormularzInner() {
   return (
     <div className="min-h-screen bg-[#F8FAFB] flex flex-col">
       <Header />
-      <main className="flex-grow pt-32 pb-16 px-4 sm:px-8 xl:px-16 w-full max-w-7xl mx-auto">
+      <main className="flex-grow pt-5 pb-16 px-4 sm:px-8 xl:px-16 w-full max-w-7xl mx-auto">
         <div className="bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_40px_rgba(0,0,0,0.04)] overflow-hidden">
           {/* Form header */}
           <div className={`${svc.headerBg} px-6 py-5 border-b border-slate-100 flex items-center gap-4`}>
