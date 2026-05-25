@@ -21,6 +21,7 @@ import PricingSection from "@/components/PricingSection";
 import AboutUsSection from "@/components/AboutUsSection";
 import ServiceFormsSection from "@/components/ServiceFormsSection";
 import { useEffect, useState } from 'react';
+import ForWomanAndMen from "@/components/ForWomanAndMen";
 
 export default function Home() {
 
@@ -31,6 +32,7 @@ export default function Home() {
       <Header transparent={false} />
       <main id="main-content" tabIndex={-1}>
         <Hero />
+        <ForWomanAndMen />
         <ServicesPanel />
         <ServicesSection />
         <SpecializationsSection />

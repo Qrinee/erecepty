@@ -118,14 +118,14 @@ export default function DlaKobietIMezczyznPage() {
         </section>
 
         {/* Three Columns Grid of Services */}
-        <section className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
-          <div className="grid gap-8 lg:grid-cols-3">
+        <section className="max-w-[100vw] mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+          <div className="grid gap-3 lg:grid-cols-3">
 
             {/* Card 1: Tabletka "dzień po" */}
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-rose-100 transition-all duration-300">
 
               {/* Header with integrated image overlay */}
-              <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center">
+              <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center bg-[#fef5f8]" >
                 {/* Badge & Title */}
                 <div className="flex justify-start mb-4">
                   <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
@@ -146,23 +146,23 @@ export default function DlaKobietIMezczyznPage() {
                 </p>
 
                 {/* Absolute Image Overlay on the right */}
-                <div className="absolute top-0 right-0 bottom-0 w-[45%] overflow-hidden pointer-events-none select-none">
+                <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none">
                   <div className="relative w-full h-full">
                     <Image
                       src="/tabletkadzienpo.jpeg"
                       alt="Tabletka dzień po"
                       fill
                       priority
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover object-center scale-105 transition-transform duration-500"
                     />
                     {/* Left-to-right fade overlay using gradient */}
-                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#fef5f8]  to-transparent z-10" />
                   </div>
                 </div>
               </div>
 
               {/* Body content with remaining details */}
-              <div className="px-8 pb-8 flex-grow flex flex-col justify-between">
+              <div className="px-8 pt-10 pb-8 flex-grow flex flex-col justify-between">
                 <div>
                   {/* Checklist */}
                   <ul className="space-y-3 mb-8">
@@ -225,7 +225,7 @@ export default function DlaKobietIMezczyznPage() {
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-rose-100 transition-all duration-300">
 
               {/* Header with integrated image overlay */}
-              <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center">
+              <div className="relative bg-[#feeff2] pt-8 pl-8 pb-4 pr-[42%] min-h-[250px] flex flex-col justify-center">
                 {/* Badge & Title */}
                 <div className="flex justify-start mb-4">
                   <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
@@ -246,23 +246,23 @@ export default function DlaKobietIMezczyznPage() {
                 </p>
 
                 {/* Absolute Image Overlay on the right */}
-                <div className="absolute top-0 right-0 bottom-0 w-[45%] overflow-hidden pointer-events-none select-none">
+                <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none">
                   <div className="relative w-full h-full">
                     <Image
                       src="/antykoncepcja.jpeg"
                       alt="Antykoncepcja"
                       fill
                       priority
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover object-center scale-105 transition-transform duration-500"
                     />
                     {/* Left-to-right fade overlay using gradient */}
-                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#feeff2] to-transparent z-10" />
                   </div>
                 </div>
               </div>
 
               {/* Body content with remaining details */}
-              <div className="px-8 pb-8 flex-grow flex flex-col justify-between">
+              <div className="px-8 pt-10 pb-8 flex-grow flex flex-col justify-between">
                 <div>
                   {/* Checklist */}
                   <ul className="space-y-3 mb-8">
@@ -331,7 +331,7 @@ export default function DlaKobietIMezczyznPage() {
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-blue-100 transition-all duration-300">
 
               {/* Header with integrated image overlay */}
-              <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center">
+              <div className="relative bg-[#f1f4fd] pt-8 pl-8 pb-4 pr-[42%] min-h-[250px] flex flex-col justify-center">
                 {/* Badge & Title */}
                 <div className="flex justify-start mb-4">
                   <span className="bg-blue-50 border border-blue-100 text-blue-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
@@ -352,23 +352,23 @@ export default function DlaKobietIMezczyznPage() {
                 </p>
 
                 {/* Absolute Image Overlay on the right */}
-                <div className="absolute top-0 right-0 bottom-0 w-[45%] overflow-hidden pointer-events-none select-none">
+                <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none">
                   <div className="relative w-full h-full">
                     <Image
                       src="/testosteron.jpeg"
                       alt="Testosteron"
                       fill
                       priority
-                      className="object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                      className="object-cover object-center scale-105 transition-transform duration-500"
                     />
                     {/* Left-to-right fade overlay using gradient */}
-                    <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-white via-white/80 to-transparent z-10" />
+                    <div className="absolute inset-y-0 opacity-80 left-0 w-full bg-gradient-to-r from-[#f1f4fd] to-transparent z-10" />
                   </div>
                 </div>
               </div>
 
               {/* Body content with remaining details */}
-              <div className="px-8 pb-8 flex-grow flex flex-col justify-between">
+              <div className="px-8 pt-10 pb-8 flex-grow flex flex-col justify-between">
                 <div>
                   {/* Checklist */}
                   <ul className="space-y-3 mb-8">
