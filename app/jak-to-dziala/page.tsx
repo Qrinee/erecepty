@@ -135,14 +135,14 @@ export default function JakToDzialaPage() {
           <div className="hidden lg:block absolute top-0 right-0 bottom-0 w-[60%] xl:w-[55%] z-0 pointer-events-none">
             <div className="relative w-full h-full overflow-hidden">
               <Image
-                src="/how_it_works_hero_new.png"
+                src="/howitworkshero.png"
                 alt="Konsultacja lekarska online"
                 fill
                 priority
                 className="object-cover object-right-bottom"
               />
               {/* Left-to-right fade overlay to blend the image's left edge into the section background */}
-              <div className="absolute inset-y-0 left-0 w-[35%] bg-gradient-to-r from-[#F5FAF9] via-[#F8FBFB]/80 to-transparent z-10" />
+              <div className="absolute inset-y-0 left-0 w-[25%] bg-gradient-to-r from-[#F5FAF9] via-[#F8FBFB]/80 to-transparent z-10" />
             </div>
           </div>
         </section>

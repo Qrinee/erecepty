@@ -1,8 +1,8 @@
 "use client";
 
-import { 
-  Star, MapPin, Clock, UserCheck, Users, FileText, 
-  ShieldCheck, Lock, CheckCircle, Quote 
+import {
+  Star, MapPin, Clock, UserCheck, Users, FileText,
+  ShieldCheck, Lock, CheckCircle, Quote
 } from "lucide-react";
 import DesktopCarousel from "@/components/ui/DesktopCarousel";
 
@@ -32,13 +32,13 @@ export default function ReviewsSection() {
   ];
 
   return (
-    <section className="py-20 md:py-24 bg-white relative overflow-hidden" aria-labelledby="reviews-section-title">
-      
+    <section className="py-10 md:py-12 bg-white relative overflow-hidden" aria-labelledby="reviews-section-title">
+
       {/* Decorative Potted Plant (Left - Desktop Only) */}
       <div className="absolute left-4 top-[35%] -translate-y-1/2 hidden xl:block w-36 h-48 select-none pointer-events-none z-0">
         <div className="absolute top-2 left-6 bg-[#064743] text-white p-2.5 rounded-2xl shadow-md rounded-bl-none animate-bounce flex items-center justify-center">
           <svg className="w-4 h-4 fill-white text-white" viewBox="0 0 24 24">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
           </svg>
         </div>
         <svg className="w-full h-full pt-12" viewBox="0 0 120 120" fill="none">
@@ -70,13 +70,13 @@ export default function ReviewsSection() {
         </div>
         <div className="absolute top-10 right-2 bg-[#064743] text-white p-2.5 rounded-2xl shadow-md rounded-br-none animate-bounce flex items-center justify-center z-10">
           <svg className="w-4 h-4 fill-white text-white" viewBox="0 0 24 24">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
           </svg>
         </div>
         <div className="absolute left-0 top-16 bg-white border border-slate-100 p-1.5 rounded-xl shadow-lg flex gap-0.5 z-10 scale-90">
           {[...Array(5)].map((_, i) => (
             <svg key={i} className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400" viewBox="0 0 24 24">
-              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/>
+              <path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z" />
             </svg>
           ))}
         </div>
@@ -88,19 +88,19 @@ export default function ReviewsSection() {
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Headings */}
-        <div className="text-center mb-10">
-          <h2 id="reviews-section-title" className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
+        <div className="text-center mb-8">
+          <h2 id="reviews-section-title" className="text-xl md:text-4xl font-extrabold text-slate-900 mb-2 tracking-tight">
             Pacjenci polecają nasze konsultacje online
           </h2>
-          <p className="text-slate-500 text-base sm:text-lg">
+          <p className="text-slate-500 text-sm sm:text-base">
             Sprawdź opinie osób, które skorzystały z naszych usług
           </p>
         </div>
 
         {/* Top Stats Badge Card */}
-        <div className="max-w-6xl mx-auto bg-white border border-slate-100 rounded-[32px] p-6 sm:p-8 shadow-[0_15px_40px_rgba(0,0,0,0.02)] mb-12 relative z-10">
+        <div className="max-w-6xl mx-auto bg-white border border-slate-100 rounded-[24px] p-5 sm:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.02)] mb-8 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 md:divide-x">
             {/* Col 1: Star Rating */}
             <div className="flex flex-col items-center text-center px-4 pb-6 sm:pb-0">
@@ -112,7 +112,7 @@ export default function ReviewsSection() {
                 Na podstawie <span className="text-[#147A60] font-bold">ponad 2000</span> zweryfikowanych opinii pacjentów
               </p>
             </div>
-            
+
             {/* Col 2: Consultation time */}
             <div className="flex flex-col items-center text-center px-4 pt-6 sm:pt-0">
               <div className="w-10 h-10 rounded-full border border-[#D5EAE6] bg-[#E8F3F1] flex items-center justify-center text-[#064743] mb-3">
@@ -143,56 +143,56 @@ export default function ReviewsSection() {
         </div>
 
         {/* 3 Review Cards Desktop Carousel */}
-        <div className="mb-12 max-w-6xl mx-auto">
+        <div className="mb-8 max-w-6xl mx-auto">
           <DesktopCarousel>
-          {reviews.map((review, idx) => (
-            <div
-              key={idx}
-              className="min-w-[85vw] sm:min-w-[calc(33.333%-16px)] snap-center shrink-0 bg-white rounded-[28px] p-7 border border-slate-100 shadow-[0_15px_40px_rgba(0,0,0,0.015)] relative flex flex-col justify-between hover:shadow-md transition-shadow group overflow-hidden"
-            >
-              {/* Giant background quotation mark */}
-              <Quote className="absolute top-6 right-6 w-12 h-12 text-[#064743]/5 rotate-180 pointer-events-none" />
+            {reviews.map((review, idx) => (
+              <div
+                key={idx}
+                className="min-w-[85vw] sm:min-w-[calc(33.333%-16px)] snap-center shrink-0 bg-white rounded-[24px] p-5 border border-slate-100 shadow-[0_15px_40px_rgba(0,0,0,0.015)] relative flex flex-col justify-between hover:shadow-md transition-shadow group overflow-hidden"
+              >
+                {/* Giant background quotation mark */}
+                <Quote className="absolute top-4 right-4 w-8 h-8 text-[#064743]/5 rotate-180 pointer-events-none" />
 
-              <div>
-                {/* Header: Avatar, Name, Location, Rating, Verification Badge */}
-                <div className="flex items-start gap-4 mb-5">
-                  <div className="w-14 h-14 rounded-full bg-[#E8F3F1] flex items-center justify-center text-[#064743] font-bold text-lg flex-shrink-0 shadow-sm">
-                    {review.initials}
-                  </div>
-                  <div className="flex flex-col">
-                    <h3 className="font-extrabold text-slate-800 text-base leading-none mb-1">{review.name}</h3>
-                    <div className="flex items-center gap-1 text-[11px] text-slate-500 font-bold mb-1">
-                      <MapPin className="w-3 h-3 text-[#147A60] strokeWidth={3.5}" />
-                      <span>{review.location}</span>
+                <div>
+                  {/* Header: Avatar, Name, Location, Rating, Verification Badge */}
+                  <div className="flex items-start gap-4 mb-4">
+                    <div className="w-12 h-12 rounded-full bg-[#E8F3F1] flex items-center justify-center text-[#064743] font-bold text-base flex-shrink-0 shadow-sm">
+                      {review.initials}
                     </div>
-                    <div className="flex gap-0.5">
-                      {[...Array(review.rating)].map((_, i) => (
-                        <Star
-                          key={i}
-                          className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400"
-                        />
-                      ))}
+                    <div className="flex flex-col">
+                      <h3 className="font-extrabold text-slate-800 text-base leading-none mb-1">{review.name}</h3>
+                      <div className="flex items-center gap-1 text-[11px] text-slate-500 font-bold mb-1">
+                        <MapPin className="w-3 h-3 text-[#147A60] strokeWidth={3.5}" />
+                        <span>{review.location}</span>
+                      </div>
+                      <div className="flex gap-0.5">
+                        {[...Array(review.rating)].map((_, i) => (
+                          <Star
+                            key={i}
+                            className="w-3.5 h-3.5 fill-yellow-400 text-yellow-400"
+                          />
+                        ))}
+                      </div>
+                      {/* Verification badge */}
+                      <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#EAF5F2] text-[10px] font-bold text-[#147A60] mt-2.5 self-start">
+                        <CheckCircle className="w-3 h-3 fill-[#147A60] text-white" />
+                        Zweryfikowana opinia
+                      </span>
                     </div>
-                    {/* Verification badge */}
-                    <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#EAF5F2] text-[10px] font-bold text-[#147A60] mt-2.5 self-start">
-                      <CheckCircle className="w-3 h-3 fill-[#147A60] text-white" />
-                      Zweryfikowana opinia
-                    </span>
                   </div>
+
+                  {/* Review Text */}
+                  <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
+                    {review.text}
+                  </p>
                 </div>
-
-                {/* Review Text */}
-                <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
-                  {review.text}
-                </p>
               </div>
-            </div>
-          ))}
+            ))}
           </DesktopCarousel>
         </div>
 
         {/* Bottom Trust Banner inside Section */}
-        <div className="max-w-6xl mx-auto bg-[#EAF3F0] rounded-[28px] p-6 md:p-8">
+        <div className="max-w-6xl mx-auto bg-[#EAF3F0] rounded-[24px] p-5 md:p-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
             {/* Left Column (Stats/Title) */}
             <div className="lg:col-span-5 flex items-center gap-4">

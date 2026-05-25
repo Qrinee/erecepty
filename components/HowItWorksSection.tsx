@@ -5,8 +5,8 @@ import Image from "next/image";
 
 export default function HowItWorksSection() {
   return (
-    <section id="jak-to-dziala" className="max-w-6xl py-20 bg-white relative overflow-hidden">
-      <div className="mx-auto px-4">
+    <section id="jak-to-dziala" className="bg-gradient-to-b from-white to-[#EBF5F2]  mx-auto py-20 bg-white relative overflow-hidden">
+      <div className="mx-auto px-4 max-w-[80vw]">
         {/* Header grid containing Clock (left), Center content (title + horizontal trust badges), Phone mockup (right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">
 
@@ -16,8 +16,8 @@ export default function HowItWorksSection() {
               <Image
                 src="/hiw_left_decor.png"
                 alt="Zegar i roślina ozdobna"
-                width={200}
-                height={200}
+                width={500}
+                height={500}
                 className="object-contain relative transform hover:-rotate-3 hover:scale-105 transition-all duration-500 ease-out"
               />
             </div>
@@ -25,6 +25,11 @@ export default function HowItWorksSection() {
 
           {/* Column 2: Main title & horizontal trust badges */}
           <div className="col-span-1 lg:col-span-6 text-center flex flex-col items-center">
+            <span className="inline-flex items-center gap-2 bg-white border border-[#0CA953]/20 text-[#0CA953] text-sm font-bold px-4 py-1.5 rounded-full mb-6 shadow-sm">
+              <Users size={16} />
+              Jak przebiega proces
+            </span>
+
             <h2 className="text-3xl md:text-[38px] font-extrabold text-[#052840] tracking-tight leading-[1.15] mb-4">
               Zamów konsultację online w kilka minut
             </h2>
@@ -33,43 +38,43 @@ export default function HowItWorksSection() {
             </p>
 
             {/* 4 horizontal trust badges */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 w-full">
-              <div className="flex flex-col items-start text-left gap-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-[#0CA953] text-white flex items-center justify-center shrink-0">
+            <div className="grid grid-cols-2  md:grid-cols-4 gap-4 ">
+              <div className="flex flex-col items-center text-center gap-2">
+                <div className="flex flex-col items-center  gap-2">
+                  <div className="w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center shrink-0">
                     <Shield className="w-3 h-3" strokeWidth={3} />
                   </div>
-                  <p className="text-[13px] font-extrabold text-[#052840]">Bezpiecznie</p>
+                  <p className="font-extrabold text-[#052840]">Bezpiecznie</p>
                 </div>
                 <p className="text-[11px] font-medium text-slate-500 leading-snug">Twoje dane są u nas<br />bezpieczne</p>
               </div>
 
-              <div className="flex flex-col items-start text-left gap-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-[#0CA953] text-white flex items-center justify-center shrink-0">
+              <div className="flex flex-col items-center text-center gap-2">
+                <div className="flex flex-col  items-center gap-2">
+                  <div className="w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center shrink-0">
                     <Clock className="w-3 h-3" strokeWidth={3} />
                   </div>
-                  <p className="text-[13px] font-extrabold text-[#052840]">Szybko</p>
+                  <p className=" font-extrabold text-[#052840]">Szybko</p>
                 </div>
                 <p className="text-[11px] font-medium text-slate-500 leading-snug">Konsultacja nawet<br />w 15 minut</p>
               </div>
 
-              <div className="flex flex-col items-start text-left gap-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-[#0CA953] text-white flex items-center justify-center shrink-0">
+              <div className="flex flex-col items-center text-center gap-2">
+                <div className="flex flex-col items-center  gap-2">
+                  <div className="w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center shrink-0">
                     <span className="text-[11px] font-bold">%</span>
                   </div>
-                  <p className="text-[13px] font-extrabold text-[#052840]">Przystępnie</p>
+                  <p className=" font-extrabold text-[#052840]">Przystępnie</p>
                 </div>
                 <p className="text-[11px] font-medium text-slate-500 leading-snug">Atrakcyjne ceny<br />bez ukrytych opłat</p>
               </div>
 
-              <div className="flex flex-col items-start text-left gap-2">
-                <div className="flex items-center gap-2">
-                  <div className="w-6 h-6 rounded-full bg-[#0CA953] text-white flex items-center justify-center shrink-0">
+              <div className="flex flex-col items-center  text-center gap-2">
+                <div className="flex flex-col items-center  gap-2">
+                  <div className="w-10 h-10 rounded-full bg-[#0CA953] text-white flex items-center justify-center shrink-0">
                     <Home className="w-3 h-3" strokeWidth={3} />
                   </div>
-                  <p className="text-[13px] font-extrabold text-[#052840] leading-tight">Bez wychodzenia<br />z domu</p>
+                  <p className="font-extrabold text-[#052840] leading-tight">Bez wychodzenia<br />z domu</p>
                 </div>
                 <p className="text-[11px] font-medium text-slate-500 leading-snug">Załatw wszystko online,<br />bez kolejek</p>
               </div>
@@ -82,8 +87,8 @@ export default function HowItWorksSection() {
               <Image
                 src="/hiw_right_decor.png"
                 alt="Telefon z aplikacją medyczną"
-                width={200}
-                height={200}
+                width={500}
+                height={500}
                 className="object-contain relative transform hover:rotate-3 hover:scale-105 transition-all duration-500 ease-out"
               />
             </div>

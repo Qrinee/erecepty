@@ -119,7 +119,7 @@ export default function Header({ transparent = false }: HeaderProps) {
           <Link href="/#uslugi" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Usługi</Link>
           <Link href="/jak-to-dziala" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Jak to działa?</Link>
           <Link href="/dla-kobiet-i-mezczyzn" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Dla kobiet i mężczyzn</Link>
-          <Link href="#cennik" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Cennik</Link>
+          <Link href="/#cennik" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Cennik</Link>
           <Link href="/dla-lekarzy" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Dla lekarzy</Link>
           <Link href="/baza-wiedzy" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Baza wiedzy</Link>
           <Link href="/#kontakt" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Kontakt</Link>

@@ -279,35 +279,48 @@ export default function Hero() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
 
             {/* Card 1 */}
-            <div className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] transition-all items-center md:items-start text-center md:text-left">
+            <div
+              onClick={() => { setSelectedService("Wizyta lekarska ogólna"); document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#10B981]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] hover:border-[#10B981]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
+            >
               <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0">
                   <UserCheck className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Konsultacja<br className="hidden md:block" />lekarska 24/7</h3>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Konsultacja<br className="hidden md:block" />lekarska</h3>
               </div>
               <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Porozmawiaj z lekarzem kiedy tylko potrzebujesz.</p>
-              <div className="text-[#10B981] text-[11px] md:text-xs font-bold flex items-center gap-1.5 mt-auto">
-                Sprawdź <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+              <div className="w-full mt-auto">
+                <div className="bg-emerald-50 group-hover:bg-[#10B981] text-[#10B981] group-hover:text-white transition-colors text-[11px] md:text-xs font-bold flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl w-full">
+                  Umów wizytę <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                </div>
               </div>
             </div>
 
             {/* Card 2 */}
-            <div className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] transition-all items-center md:items-start text-center md:text-left">
+            <div
+              onClick={() => { setSelectedService("Wizyta lekarska ogólna"); document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#0D9488]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(13,148,136,0.15)] hover:border-[#0D9488]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
+            >
               <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0D9488] flex items-center justify-center text-white shrink-0">
                   <FileSearch className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Skierowania<br className="hidden md:block" />online 24h</h3>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Skierowania<br className="hidden md:block" />online</h3>
               </div>
               <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Skierowania na badania, do specjalisty.</p>
-              <div className="text-[#0D9488] text-[11px] md:text-xs font-bold flex items-center gap-1.5 mt-auto">
-                Sprawdź <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+              <div className="w-full mt-auto">
+                <div className="bg-teal-50 group-hover:bg-[#0D9488] text-[#0D9488] group-hover:text-white transition-colors text-[11px] md:text-xs font-bold flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl w-full">
+                  Umów wizytę <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                </div>
               </div>
             </div>
 
             {/* Card 3 */}
-            <div className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] transition-all items-center md:items-start text-center md:text-left">
+            <div
+              onClick={() => { setSelectedService("e-Recepta online"); document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#E11D48]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(225,29,72,0.15)] hover:border-[#E11D48]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
+            >
               <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#E11D48] flex items-center justify-center text-white shrink-0">
                   <Pill className="w-5 h-5 md:w-6 md:h-6" />
@@ -315,36 +328,48 @@ export default function Hero() {
                 <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Recepta<br className="hidden md:block" />online 24h</h3>
               </div>
               <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">E-recepta na leki stałe, doraźne, refundowane i nierefundowane.</p>
-              <div className="text-[#E11D48] text-[11px] md:text-xs font-bold flex items-center gap-1.5 mt-auto">
-                Sprawdź <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+              <div className="w-full mt-auto">
+                <div className="bg-rose-50 group-hover:bg-[#E11D48] text-[#E11D48] group-hover:text-white transition-colors text-[11px] md:text-xs font-bold flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl w-full">
+                  Umów wizytę <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                </div>
               </div>
             </div>
 
             {/* Card 4 */}
-            <div className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] transition-all items-center md:items-start text-center md:text-left">
+            <div
+              onClick={() => { setSelectedService("Kontynuacja leczenia"); document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#2563EB]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(37,99,235,0.15)] hover:border-[#2563EB]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
+            >
               <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#2563EB] flex items-center justify-center text-white shrink-0">
                   <Activity className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Konsultacja<br className="hidden md:block" />wyników 24h</h3>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Konsultacja<br className="hidden md:block" />wyników</h3>
               </div>
               <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Omów wyniki badań z lekarzem i zaplanuj leczenie.</p>
-              <div className="text-[#2563EB] text-[11px] md:text-xs font-bold flex items-center gap-1.5 mt-auto">
-                Sprawdź <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+              <div className="w-full mt-auto">
+                <div className="bg-blue-50 group-hover:bg-[#2563EB] text-[#2563EB] group-hover:text-white transition-colors text-[11px] md:text-xs font-bold flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl w-full">
+                  Umów wizytę <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                </div>
               </div>
             </div>
 
             {/* Card 5 */}
-            <div className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] transition-all items-center md:items-start text-center md:text-left">
+            <div
+              onClick={() => { setSelectedService("L4 online"); document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' }); }}
+              className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#8B5CF6]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(139,92,246,0.15)] hover:border-[#8B5CF6]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
+            >
               <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#8B5CF6] flex items-center justify-center text-white shrink-0">
                   <Calendar className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">L4 online 24h<br className="hidden md:block" />zwolnienie</h3>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">L4 online<br className="hidden md:block" />zwolnienie</h3>
               </div>
               <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Zwolnienie lekarskie bez wychodzenia z domu.</p>
-              <div className="text-[#8B5CF6] text-[11px] md:text-xs font-bold flex items-center gap-1.5 mt-auto">
-                Sprawdź <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+              <div className="w-full mt-auto">
+                <div className="bg-violet-50 group-hover:bg-[#8B5CF6] text-[#8B5CF6] group-hover:text-white transition-colors text-[11px] md:text-xs font-bold flex items-center justify-center gap-1.5 py-2.5 px-3 rounded-xl w-full">
+                  Umów wizytę <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+                </div>
               </div>
             </div>
 

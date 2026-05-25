@@ -118,7 +118,7 @@ export default function ServicesSection() {
         </div>
 
         {/* Outer relative container to hold the left-aligned green badge & grid */}
-        <div className="w-full relative mt-8">
+        <div className="max-w-6xl m-auto relative mt-8">
 
           {/* Green pill badge aligned to the left (desktop only, block on mobile) */}
           <div className="mb-6 lg:mb-8 text-left">
@@ -127,13 +127,13 @@ export default function ServicesSection() {
             </span>
           </div>
 
-          {/* 12-Card Desktop Carousel */}
-          <DesktopCarousel>
+          {/* Services Grid */}
+          <div className="max-w-7xl m-auto grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {services.map((service, idx) => (
               <Link
                 key={idx}
                 href={service.href}
-                className="w-[85vw] sm:w-[calc(50%-12px)] lg:w-[calc(25%-18px)] min-w-[85vw] sm:min-w-[calc(50%-12px)] lg:min-w-[calc(25%-18px)] max-w-[85vw] sm:max-w-[calc(50%-12px)] lg:max-w-[calc(25%-18px)] snap-center shrink-0 bg-white rounded-[24px] p-6 flex flex-col justify-between border border-slate-100 hover:shadow-lg transition-all duration-300 group"
+                className="bg-white rounded-[24px] p-6 flex flex-col justify-between border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group h-full"
               >
                 <div>
                   {/* Illustration Container */}
@@ -158,7 +158,7 @@ export default function ServicesSection() {
                 </div>
               </Link>
             ))}
-          </DesktopCarousel>
+          </div>
 
         </div>
 

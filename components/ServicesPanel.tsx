@@ -3,7 +3,8 @@
 import { useRouter } from "next/navigation";
 import {
   Phone, Video, Pill, ClipboardList, RefreshCw,
-  Stethoscope, Clock, ShieldCheck, Percent, Lock
+  Stethoscope, Clock, ShieldCheck, Percent, Lock,
+  Activity, FileSearch
 } from "lucide-react";
 
 export default function ServicesPanel() {
@@ -57,6 +58,30 @@ export default function ServicesPanel() {
       color: "bg-[#F2F8FB] border-[#E1EEF3]",
       buttonColor: "bg-[#138A56] hover:bg-[#0F7548]",
       buttonText: "Zamów →"
+    },
+    {
+      id: 5,
+      icon: Activity,
+      title: "Wyniki Badań",
+      description: "Szczegółowa analiza wyników badań z lekarzem",
+      price: 79,
+      image: "/kontynuacjaleczenia.jpeg",
+      href: "/wypelnij-formularz?service=Om%C3%B3wienie+wynik%C3%B3w+bada%C5%84",
+      color: "bg-[#FDF8F6] border-[#F6E9E1]",
+      buttonColor: "bg-[#D97706] hover:bg-[#B45309]",
+      buttonText: "Zamów →"
+    },
+    {
+      id: 6,
+      icon: FileSearch,
+      title: "Skierowanie",
+      description: "Skierowanie na badania, zabiegi lub do specjalisty",
+      price: 79,
+      image: "/skierowanie.png",
+      href: "/wypelnij-formularz?service=Skierowanie",
+      color: "bg-[#F4F6FB] border-[#E5EAFC]",
+      buttonColor: "bg-[#2563EB] hover:bg-[#1D4ED8]",
+      buttonText: "Zamów →"
     }
   ];
 
@@ -81,7 +106,7 @@ export default function ServicesPanel() {
         <path d="M40 40 C 35 35 45 25 50 30 C 55 35 45 43 40 40 Z" />
       </svg>
 
-      <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
         {/* Header */}
         <div className="text-center mb-12">
@@ -94,7 +119,7 @@ export default function ServicesPanel() {
         </div>
 
         {/* Service Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
           {services.map((service) => {
             const Icon = service.icon;
             return (
@@ -124,8 +149,8 @@ export default function ServicesPanel() {
                   <p className="text-[15px] text-slate-600 mb-6 leading-snug min-h-[44px]">{service.description}</p>
 
                   {/* Consultation types (Telefon / Video) */}
-                  <div className="flex gap-3 mb-8">
-                    <div className="flex items-center justify-center gap-2 py-2 px-3.5 bg-white border border-slate-200 rounded-[10px] text-sm font-bold text-slate-600 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+                  <div className="flex flex-wrap gap-3 mb-8">
+                    <div className="flex  items-center justify-center gap-2 py-2 px-3.5 bg-white border border-slate-200 rounded-[10px] text-sm font-bold text-slate-600 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
                       <Phone className="w-4 h-4 text-slate-400" />
                       Telefon
                     </div>
