@@ -119,7 +119,7 @@ export default function ServicesPanel() {
         </div>
 
         {/* Service Cards Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
           {services.map((service) => {
             const Icon = service.icon;
             return (
@@ -134,11 +134,11 @@ export default function ServicesPanel() {
                   </div>
 
                   {/* Image Container - Beautifully rounded and masked photo */}
-                  <div className="relative w-full aspect-[16/10] mb-6 mt-2 rounded-2xl overflow-hidden bg-slate-50 border border-slate-100 flex items-center justify-center group">
+                  <div className="relative w-full aspect-[16/10] mb-6 mt-2 rounded-2xl overflow-hidden border border-slate-100 flex items-center justify-center group h-[250px]">
                     <img
                       src={service.image}
                       alt={service.title}
-                      className="w-full h-full object-cover transform group-hover:scale-102 transition-transform duration-500"
+                      className="w-full h-full object-contain transform group-hover:scale-102 transition-transform duration-500"
                     />
                   </div>
 

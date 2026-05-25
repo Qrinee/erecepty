@@ -108,46 +108,46 @@ export default function ForWhoSection() {
         {/* Cards Grid */}
         <div className="mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          {cards.map((card) => {
-            const Icon = card.badge.icon;
-            return (
-              <div 
-                key={card.id} 
-                className="bg-white rounded-3xl border border-slate-100 p-5 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-slate-200 hover:-translate-y-1 transition-all duration-300 group relative"
-              >
-                <div>
-                  {/* Badge */}
-                  <div className="flex justify-start mb-6">
-                    <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[13px] font-bold ${card.badge.className}`}>
-                      <Icon size={14} className="fill-current opacity-90" />
-                      {card.badge.text}
-                    </span>
+            {cards.map((card) => {
+              const Icon = card.badge.icon;
+              return (
+                <div
+                  key={card.id}
+                  className="bg-white rounded-3xl border border-slate-100 p-5 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-slate-200 hover:-translate-y-1 transition-all duration-300 group relative"
+                >
+                  <div>
+                    {/* Badge */}
+                    <div className="flex justify-start mb-6">
+                      <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[13px] font-bold ${card.badge.className}`}>
+                        <Icon size={14} className="fill-current opacity-90" />
+                        {card.badge.text}
+                      </span>
+                    </div>
+
+                    {/* 3D Illustration Container */}
+                    <div className="h-44 flex items-center justify-center mb-6 relative">
+                      <img src={card.image} width={600} alt={card.title} className="object-contain max-h-full group-hover:scale-105 transition-transform duration-500 ease-out" />
+
+                    </div>
+
+                    {/* Title & Description */}
+                    <h3 className="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-[#0CA953] transition-colors duration-300">
+                      {card.title}
+                    </h3>
+                    <p className="text-sm text-slate-500 font-medium leading-relaxed mb-6">
+                      {card.description}
+                    </p>
                   </div>
 
-                  {/* 3D Illustration Container */}
-                  <div className="h-44 flex items-center justify-center mb-6 relative">
-                    <img src={card.image} width={600} alt={card.title} className="object-contain max-h-full group-hover:scale-105 transition-transform duration-500 ease-out"  />
-
+                  {/* Bottom Round Arrow Button */}
+                  <div className="mt-auto pt-2 flex justify-start">
+                    <div className="w-10 h-10 rounded-full flex items-center justify-center border border-[#0CA953]/30 text-[#0CA953] group-hover:bg-[#0CA953] group-hover:text-white transition-all duration-300">
+                      <ArrowRight size={18} strokeWidth={2.5} />
+                    </div>
                   </div>
-
-                  {/* Title & Description */}
-                  <h3 className="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-[#0CA953] transition-colors duration-300">
-                    {card.title}
-                  </h3>
-                  <p className="text-sm text-slate-500 font-medium leading-relaxed mb-6">
-                    {card.description}
-                  </p>
                 </div>
-
-                {/* Bottom Round Arrow Button */}
-                <div className="mt-auto pt-2 flex justify-start">
-                  <div className="w-10 h-10 rounded-full flex items-center justify-center border border-[#0CA953]/30 text-[#0CA953] group-hover:bg-[#0CA953] group-hover:text-white transition-all duration-300">
-                    <ArrowRight size={18} strokeWidth={2.5} />
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+              );
+            })}
           </div>
         </div>
 

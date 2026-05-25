@@ -29,6 +29,41 @@ export default function ReviewsSection() {
       text: "Korzystałam z konsultacji online pierwszy raz i jestem bardzo pozytywnie zaskoczona. Szybko, wygodnie i bez stresu.",
       rating: 5,
     },
+    {
+      name: "Tomasz W.",
+      initials: "TW",
+      location: "Poznań",
+      text: "Znakomity portal. Pomoc uzyskałem w środku nocy, a lekarz wykazał się ogromną empatią i zrozumieniem. Polecam każdemu.",
+      rating: 5,
+    },
+    {
+      name: "Katarzyna M.",
+      initials: "KM",
+      location: "Gdańsk",
+      text: "Wygodne przedłużenie recepty na leki stałe. Zamiast czekać w kolejce w przychodni, załatwiłam wszystko w 10 minut podczas przerwy w pracy.",
+      rating: 5,
+    },
+    {
+      name: "Michał S.",
+      initials: "MS",
+      location: "Łódź",
+      text: "Pełen profesjonalizm. Interfejs jest bardzo intuicyjny, formularz medyczny prosty, a e-recepta przyszła SMS-em niemal natychmiast.",
+      rating: 5,
+    },
+    {
+      name: "Ewa J.",
+      initials: "EJ",
+      location: "Szczecin",
+      text: "Dzięki teleporadzie szybko dobrałam odpowiednią antykoncepcję. Konsultacja przebiegła w bardzo komfortowej i dyskretnej atmosferze.",
+      rating: 5,
+    },
+    {
+      name: "Kamil P.",
+      initials: "KP",
+      location: "Lublin",
+      text: "Miałem obawy przed wizytą online, ale teraz korzystam głównie z tej formy. Szybka diagnoza i jasne zalecenia lekarza.",
+      rating: 5,
+    },
   ];
 
   return (
@@ -148,7 +183,7 @@ export default function ReviewsSection() {
             {reviews.map((review, idx) => (
               <div
                 key={idx}
-                className="min-w-[85vw] sm:min-w-[calc(33.333%-16px)] snap-center shrink-0 bg-white rounded-[24px] p-5 border border-slate-100 shadow-[0_15px_40px_rgba(0,0,0,0.015)] relative flex flex-col justify-between hover:shadow-md transition-shadow group overflow-hidden"
+                className="w-[85vw] min-w-[85vw] sm:w-[320px] sm:min-w-[320px] lg:w-[280px] lg:min-w-[280px] snap-center shrink-0 bg-white rounded-[24px] p-5 border border-slate-100 shadow-[0_15px_40px_rgba(0,0,0,0.015)] relative flex flex-col justify-between hover:shadow-md transition-shadow group overflow-hidden"
               >
                 {/* Giant background quotation mark */}
                 <Quote className="absolute top-4 right-4 w-8 h-8 text-[#064743]/5 rotate-180 pointer-events-none" />
