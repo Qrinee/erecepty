@@ -1,9 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { 
-  Mail, Phone, Clock, ShieldCheck, CheckCircle2, AlertCircle, 
-  ArrowRight, Lock, ChevronRight, User, MessageSquare, MessageCircle 
+import {
+  Mail, Phone, Clock, ShieldCheck, CheckCircle2, AlertCircle,
+  ArrowRight, Lock, ChevronRight, User, MessageSquare, MessageCircle
 } from "lucide-react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
@@ -47,7 +47,7 @@ export default function ContactSection() {
 
   return (
     <section id="kontakt" className=" py-20 bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4] scroll-mt-20 relative overflow-hidden">
-      
+
       {/* Decorative Background Plus Icons */}
       <div className="absolute top-12 left-10 text-emerald-100 text-3xl font-extrabold select-none pointer-events-none hidden lg:block">+</div>
       <div className="absolute bottom-20 left-6 text-emerald-100 text-3xl font-extrabold select-none pointer-events-none hidden lg:block">+</div>
@@ -55,10 +55,10 @@ export default function ContactSection() {
       <div className="absolute bottom-1/3 right-12 text-emerald-100 text-2xl font-extrabold select-none pointer-events-none hidden lg:block">+</div>
 
       <div className="max-w-[80vw] m-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Main Columns Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-8">
-          
+
           {/* Left Column: Contact Cards */}
           <div>
             <h2 className="text-6xl font-extrabold text-slate-900 mb-2 tracking-tight">Kontakt</h2>
@@ -68,10 +68,10 @@ export default function ContactSection() {
             </p>
 
             <div className="space-y-4">
-              
+
               {/* Card 1: E-mail */}
-              <a 
-                href="mailto:kontakt@e-receptaonline.com" 
+              <a
+                href="mailto:kontakt@e-receptaonline.com"
                 className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group"
               >
                 <div className="flex items-center gap-4">
@@ -87,8 +87,8 @@ export default function ContactSection() {
               </a>
 
               {/* Card 2: Telefon */}
-              <a 
-                href="tel:+48123456789" 
+              <a
+                href="tel:+48123456789"
                 className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group"
               >
                 <div className="flex items-center gap-4">
@@ -104,7 +104,7 @@ export default function ContactSection() {
               </a>
 
               {/* Card 3: Live Chat / WhatsApp */}
-              <div 
+              <div
                 className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group cursor-pointer"
               >
                 <div className="flex items-center gap-4">
@@ -120,7 +120,7 @@ export default function ContactSection() {
               </div>
 
               {/* Card 4: Czas odpowiedzi */}
-              <div 
+              <div
                 className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group"
               >
                 <div className="flex items-center gap-4">
@@ -136,7 +136,7 @@ export default function ContactSection() {
               </div>
 
               {/* Card 5: Wsparcie online 24/7 (mint green background) */}
-              <div 
+              <div
                 className="flex items-center justify-between bg-[#EAF3F0] rounded-2xl p-4 border border-[#D5EAE6]/50 shadow-[0_10px_30px_rgba(0,0,0,0.01)]"
               >
                 <div className="flex items-center gap-4">
@@ -158,23 +158,23 @@ export default function ContactSection() {
 
           {/* Right Column: Contact Form and 3D Assistant */}
           <div className="relative pt-24 lg:pt-28">
-            
+
             {/* 3D Medical Support Doctor avatar overlapping form container */}
             <div className="absolute -top-16 right-4 w-[180px] sm:w-[210px] h-auto pointer-events-none select-none hidden sm:block z-20">
-              <img 
-                src="/contact_3d.png" 
-                alt="Pomoc medyczna" 
-                className="w-full h-auto drop-shadow-lg"
+              <img
+                src="/contact_3d.jpeg"
+                alt="Pomoc medyczna"
+                className="w-full h-auto drop-shadow-lg rounded-md"
               />
-              
+
               {/* Floating badges surrounding doctor */}
               <div className="absolute -top-6 -left-12 bg-[#EAF3F0] rounded-full p-2.5 shadow-sm text-[#064743] animate-bounce w-9 h-9 flex items-center justify-center border border-[#D5EAE6]/70">
                 <span className="text-xs font-extrabold">...</span>
               </div>
-              
+
               <div className="absolute top-8 -left-20 bg-white rounded-full p-2 border border-slate-100 shadow-md text-emerald-500 w-8 h-8 flex items-center justify-center">
                 <svg className="w-4 h-4 fill-emerald-500 text-emerald-500" viewBox="0 0 24 24">
-                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+                  <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                 </svg>
               </div>
 
@@ -183,7 +183,7 @@ export default function ContactSection() {
 
             {/* Form Card */}
             <div className="bg-white rounded-[32px] border border-slate-100 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.02)] relative z-10">
-              
+
               {/* Green Dot Response Badge */}
               <div className="mb-5 text-left">
                 <span className="inline-flex items-center px-3.5 py-1.5 bg-[#EAF3F0] text-[#147A60] font-extrabold rounded-full text-[10px] sm:text-xs tracking-wider uppercase shadow-sm gap-1.5">
@@ -193,9 +193,9 @@ export default function ContactSection() {
               </div>
 
               <h3 className="text-xl font-extrabold text-slate-800 mb-6">Napisz do nas</h3>
-              
+
               <form onSubmit={handleSubmit} className="space-y-4">
-                
+
                 {/* Name field */}
                 <div className="relative">
                   <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">

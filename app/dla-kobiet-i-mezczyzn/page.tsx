@@ -125,28 +125,30 @@ export default function DlaKobietIMezczyznPage() {
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-rose-100 transition-all duration-300">
 
               {/* Header with integrated image overlay */}
-              <div className="relative pt-8 pl-8 pb-4 pr-[42%] min-h-[220px] flex flex-col justify-center bg-[#fef5f8]" >
-                {/* Badge & Title */}
-                <div className="flex justify-start mb-4">
-                  <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
-                    Dla kobiet
-                  </span>
+              <div className="relative pt-8 pl-8 pb-4 pr-[25%] lg:pr-[30%] min-h-[220px] flex flex-col justify-center bg-[#fef5f8]" >
+                <div className="relative z-20">
+                  {/* Badge & Title */}
+                  <div className="flex justify-start mb-4">
+                    <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
+                      Dla kobiet
+                    </span>
+                  </div>
+
+                  <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
+                    Tabletka <br /> „dzień po”
+                  </h2>
+
+                  <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
+                    Dyskretna pomoc, kiedy liczy się czas.
+                  </p>
+
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    Konsultacja online z e-receptą na tabletkę „dzień po”.
+                  </p>
                 </div>
 
-                <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                  Tabletka <br /> „dzień po”
-                </h2>
-
-                <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
-                  Dyskretna pomoc, kiedy liczy się czas.
-                </p>
-
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  Konsultacja online z e-receptą na tabletkę „dzień po”.
-                </p>
-
                 {/* Absolute Image Overlay on the right */}
-                <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none">
+                <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none z-10">
                   <div className="relative w-full h-full">
                     <Image
                       src="/tabletkadzienpo.jpeg"
@@ -225,28 +227,30 @@ export default function DlaKobietIMezczyznPage() {
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-rose-100 transition-all duration-300">
 
               {/* Header with integrated image overlay */}
-              <div className="relative bg-[#feeff2] pt-8 pl-8 pb-4 pr-[42%] min-h-[250px] flex flex-col justify-center">
-                {/* Badge & Title */}
-                <div className="flex justify-start mb-4">
-                  <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
-                    Dla kobiet
-                  </span>
+              <div className="relative bg-[#feeff2] pt-8 pl-8 pb-4 pr-[25%] lg:pr-[30%] min-h-[250px] flex flex-col justify-center">
+                <div className="relative z-20">
+                  {/* Badge & Title */}
+                  <div className="flex justify-start mb-4">
+                    <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
+                      Dla kobiet
+                    </span>
+                  </div>
+
+                  <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
+                    Antykoncepcja
+                  </h2>
+
+                  <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
+                    Dobierz antykoncepcję dopasowaną do Ciebie.
+                  </p>
+
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    Konsultacja online z lekarzem i e-recepta na antykoncepcję.
+                  </p>
                 </div>
 
-                <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                  Antykoncepcja
-                </h2>
-
-                <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
-                  Dobierz antykoncepcję dopasowaną do Ciebie.
-                </p>
-
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  Konsultacja online z lekarzem i e-recepta na antykoncepcję.
-                </p>
-
                 {/* Absolute Image Overlay on the right */}
-                <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none">
+                <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none z-10">
                   <div className="relative w-full h-full">
                     <Image
                       src="/antykoncepcja.jpeg"
@@ -331,28 +335,30 @@ export default function DlaKobietIMezczyznPage() {
             <div className="bg-white rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-blue-100 transition-all duration-300">
 
               {/* Header with integrated image overlay */}
-              <div className="relative bg-[#f1f4fd] pt-8 pl-8 pb-4 pr-[42%] min-h-[250px] flex flex-col justify-center">
-                {/* Badge & Title */}
-                <div className="flex justify-start mb-4">
-                  <span className="bg-blue-50 border border-blue-100 text-blue-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
-                    Dla mężczyzn
-                  </span>
+              <div className="relative bg-[#f1f4fd] pt-8 pl-8 pb-4 pr-[25%] lg:pr-[30%] min-h-[250px] flex flex-col justify-center">
+                <div className="relative z-20">
+                  {/* Badge & Title */}
+                  <div className="flex justify-start mb-4">
+                    <span className="bg-blue-50 border border-blue-100 text-blue-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
+                      Dla mężczyzn
+                    </span>
+                  </div>
+
+                  <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
+                    Testosteron
+                  </h2>
+
+                  <p className="text-sm font-extrabold text-blue-500 leading-snug mb-3">
+                    Zadbaj o energię, siłę i dobre samopoczucie.
+                  </p>
+
+                  <p className="text-sm text-slate-500 leading-relaxed">
+                    Diagnoza, plan leczenia i e-recepta na terapię testosteronem online.
+                  </p>
                 </div>
 
-                <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                  Testosteron
-                </h2>
-
-                <p className="text-sm font-extrabold text-blue-500 leading-snug mb-3">
-                  Zadbaj o energię, siłę i dobre samopoczucie.
-                </p>
-
-                <p className="text-sm text-slate-500 leading-relaxed">
-                  Diagnoza, plan leczenia i e-recepta na terapię testosteronem online.
-                </p>
-
                 {/* Absolute Image Overlay on the right */}
-                <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none">
+                <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none z-10">
                   <div className="relative w-full h-full">
                     <Image
                       src="/testosteron.jpeg"
