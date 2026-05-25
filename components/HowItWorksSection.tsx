@@ -5,7 +5,7 @@ import Image from "next/image";
 
 export default function HowItWorksSection() {
   return (
-    <section id="jak-to-dziala" className="py-20 bg-white relative overflow-hidden">
+    <section id="jak-to-dziala" className="max-w-6xl py-20 bg-white relative overflow-hidden">
       <div className="mx-auto px-4">
         {/* Header grid containing Clock (left), Center content (title + horizontal trust badges), Phone mockup (right) */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center mb-16">

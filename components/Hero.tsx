@@ -2,11 +2,8 @@
 
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useRouter } from "next/navigation";
-import Link from "next/link";
 import {
-  Clock, Lock, FileText, CheckCircle,
-  Calendar, Pill, ClipboardList, Loader2, UserCheck,
-  ChevronDown, Users, Star, ArrowRight, ShieldCheck, Headphones, Activity, FileSearch, Shield, Zap, Home, Globe
+  Calendar, Clock, FileText, ShieldCheck, Lock, ChevronDown, ArrowRight, UserCheck, Pill, ClipboardList, FileSearch, Activity, Headphones
 } from "lucide-react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
@@ -115,180 +112,93 @@ export default function Hero() {
   const visibleSlots = showAllSlots ? displayedSlots : displayedSlots.slice(0, 4);
 
   return (
-    <section className="relative bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4]  h-auto min-h-screen lg:min-h-[calc(100vh-6rem)] [@media(max-height:800px)]:lg:min-h-[calc(100vh-5rem)]  pb-12 [@media(max-height:800px)]:pb-6">
+    <section className="relative bg-[#FAFAFA] pt-6 pb-6 lg:pt-8 lg:pb-6 overflow-hidden flex flex-col">
 
-      {/* Background Ornaments */}
-      <div className="absolute top-0 left-0 w-[400px] h-[400px] bg-[#DAE9E6]/30 rounded-full blur-3xl -translate-y-1/2 -translate-x-1/4 pointer-events-none z-0" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[500px] bg-[#DAE9E6]/20 rounded-full blur-3xl translate-y-1/4 translate-x-1/4 pointer-events-none z-0" />
+      {/* Subtle green circle background */}
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[700px] h-[700px] xl:w-[70vw] xl:h-[900px] bg-[#E8F3F1] rounded-full z-0 hidden lg:block" />
 
-      {/* Background Shapes behind the doctor */}
-      <div className="absolute top-[10%] bottom-[10%] left-[45%] -translate-x-1/2 aspect-square rounded-full bg-[#EBF5F2] z-0 pointer-events-none hidden xl:block" />
-      <div className="absolute top-[35%] left-[30%] w-64 h-64 bg-[#10B981] rounded-[40px] rotate-12 opacity-10 z-0 pointer-events-none hidden xl:block blur-sm" />
-      <div className="absolute top-[38%] left-[27%] z-0 hidden xl:flex pointer-events-none w-[110px] h-[110px] bg-[#10B981] rounded-[24px] items-center justify-center rotate-[-8deg] shadow-2xl shadow-emerald-500/30 overflow-hidden">
-        <svg className="w-14 h-14 text-white z-10" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="4">
-          <polyline points="20 6 9 17 4 12" />
-        </svg>
-        <div className="absolute -top-4 -right-4 w-12 h-12 bg-white rounded-full opacity-20 blur-md"></div>
-      </div>
+      <div className="w-full max-w-[90vw] mx-auto relative z-10 flex-grow flex flex-col justify-center">
 
-      {/* Doctor Image (Desktop Center) */}
-      <div className="absolute  top-auto left-[57%] -translate-x-[50%] h-[82%] [@media(max-height:800px)]:h-[75%] [@media(max-height:700px)]:h-[70%] xl:max-h-[720px] 2xl:max-h-[820px] w-auto z-10 hidden xl:block pointer-events-none select-none">
-        <img
-          src="/gpt.png"
-          alt="Lekarz"
-          className="h-full w-auto object-contain object-bottom filter drop-shadow-[0_10px_20px_rgba(0,0,0,0.025)]"
-        />
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full mb-12">
 
-        {/* Floating Trust Badge */}
-        <div className=" absolute bottom-[28%] right-[25%] bg-white/95 border border-slate-100/80 rounded-xl p-2.5 shadow-lg z-20 flex flex-col items-center gap-1 backdrop-blur-sm select-none pointer-events-none">
-          <div className="flex items-center -space-x-1.5">
-            <img className="w-5 h-5 rounded-full border border-white object-cover" src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=60&h=60&q=80" alt="Avatar" />
-            <img className="w-5 h-5 rounded-full border border-white object-cover" src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&w=60&h=60&q=80" alt="Avatar" />
-            <img className="w-5 h-5 rounded-full border border-white object-cover" src="https://images.unsplash.com/photo-1594824813573-246434de83fb?auto=format&fit=crop&w=60&h=60&q=80" alt="Avatar" />
-          </div>
-          <div className="flex gap-0.5 mt-0.5">
-            {[...Array(5)].map((_, i) => (
-              <Star key={i} className="w-2.5 h-2.5 fill-yellow-400 text-yellow-400" />
-            ))}
-          </div>
-          <span className="text-[20px] text-slate-800 font-extrabold leading-none mt-0.5">4.9/5</span>
-          <span className="text-slate-400 whitespace-nowrap">ponad 20 000 zadowolonych pacjentów</span>
-        </div>
-      </div>
+          {/* Left Content */}
+          <div className="hidden lg:col-span-7 lg:flex flex-col items-start text-left relative z-20 pt-4">
 
-      {/* Main Container */}
-      <div className="relative z-20 w-full max-w-full mx-auto px-4 sm:px-8 lg:px-10 h-full flex">
-        <div className="w-full flex flex-col lg:grid lg:grid-cols-12 gap-6 lg:gap-3 items-start pt-4 lg:pt-0">
-
-          {/* Top Left Block */}
-          <div className="lg:col-span-7 flex flex-col text-left pt-2 order-1 lg:order-1">
-
-            {/* Online Badge */}
-            <div className="mb-2 lg:mb-2 xl:mb-2 flex">
-              <span className="inline-flex items-center gap-1.5 px-3 py-1.5 lg:px-3 lg:py-1.5 rounded-full bg-[#EBF5F2] border border-[#D5EAE6]/50 text-xs lg:text-xs xl:text-sm font-extrabold text-[#147A60] tracking-wider uppercase">
-                <span className="relative flex h-2 w-2 lg:h-1.5 lg:w-1.5">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#10B981] opacity-75" />
-                  <span className="relative inline-flex rounded-full h-full w-full bg-[#10B981]" />
-                </span>
-                KONSULTACJE ONLINE 24H
-              </span>
+            {/* Badge */}
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-[11px] sm:text-xs font-bold mb-6 uppercase tracking-wider">
+              <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
+              KONSULTACJE ONLINE 24/7
             </div>
 
-            {/* Main Heading */}
-            <h1 className="text-3xl mt-0 sm:text-4xl lg:text-[2.5rem] xl:text-[3rem] 2xl:text-[3.75rem] [@media(max-height:800px)]:lg:text-[2.2rem] [@media(max-height:800px)]:xl:text-[2.5rem] [@media(max-height:800px)]:2xl:text-[3rem] lg:leading-[1.1] font-extrabold text-slate-900 mb-2 lg:mb-3 [@media(max-height:800px)]:mb-1.5 tracking-tight">
-              Porozmawiaj z lekarzem <br />
-              <span className="text-2xl sm:text-3xl lg:text-[2rem] xl:text-[2rem] 2xl:text-[3.25rem] [@media(max-height:800px)]:lg:text-[1.8rem] [@media(max-height:800px)]:xl:text-[2.1rem] [@media(max-height:800px)]:2xl:text-[2.5rem] font-bold"><span className="text-[#10B981]">online</span> bez wychodzenia z domu</span>
+            <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold text-slate-900 leading-[1.1] mb-2 tracking-tight">
+              Konsultacja lekarska <br className="hidden sm:block" />
+              <span className="text-emerald-600">online</span> bez wychodzenia z domu
             </h1>
 
-            {/* Subtext */}
-            <p className="text-slate-500 font-semibold text-sm sm:text-base lg:text-lg xl:text-xl [@media(max-height:800px)]:text-sm [@media(max-height:800px)]:lg:text-base mb-4 lg:mb-5 [@media(max-height:800px)]:mb-3 max-w-xl xl:max-w-2xl leading-relaxed">
-              Szybka, bezpieczna i wygodna konsultacja z lekarzem <br className="hidden sm:inline" /> kiedy tylko jej potrzebujesz.
+
+            <p className="text-sm sm:text-lg text-slate-600 mb-8 max-w-lg font-medium leading-relaxed">
+              Szybka, bezpieczna i wygodna pomoc medyczna online.<br className="hidden sm:block" />
+              Otrzymaj e-receptę, skierowanie, L4 lub konsultację wyników.
             </p>
 
-            {/* 3 Horizontal Tags */}
-            <div className="flex flex-wrap gap-2 lg:gap-2.5 mb-5 lg:mb-6 [@media(max-height:800px)]:mb-3 [@media(max-height:800px)]:gap-1.5">
-              <div className="flex items-center gap-2 text-xs lg:text-sm xl:text-base text-slate-800 font-extrabold bg-white border border-[#E1EFEB] rounded-full px-4 py-2 lg:px-3 lg:py-1.5 [@media(max-height:800px)]:py-1 [@media(max-height:800px)]:text-xs shadow-sm">
-                <div className="w-5 h-5 lg:w-6 lg:h-6 [@media(max-height:800px)]:w-5 [@media(max-height:800px)]:h-5 flex items-center justify-center rounded-full bg-yellow-100">
-                  <Zap className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-[#064743]" />
-                </div> Szybko <span className="text-slate-400 font-semibold hidden sm:inline">nawet w 15 min</span>
+            {/* 4 Items row */}
+            <div className="flex flex-row flex-wrap xl:flex-nowrap gap-x-6 gap-y-4 w-full max-w-full mb-8">
+              <div className="flex items-start gap-3">
+                <Clock className="w-6 h-6 text-emerald-600 shrink-0" strokeWidth={1.5} />
+                <div className="text-sm font-semibold text-slate-800 leading-tight mt-0.5">Lekarz online<br /><span className="text-slate-500 font-normal">24/7</span></div>
               </div>
-              <div className="flex items-center gap-2 text-xs lg:text-sm xl:text-base text-slate-800 font-extrabold bg-white border border-[#E1EFEB] rounded-full px-4 py-2 lg:px-3 lg:py-1.5 [@media(max-height:800px)]:py-1 [@media(max-height:800px)]:text-xs shadow-sm">
-                <div className="w-5 h-5 lg:w-6 lg:h-6 [@media(max-height:800px)]:w-5 [@media(max-height:800px)]:h-5 flex items-center justify-center rounded-full bg-amber-100">
-                  <Home className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-[#064743]" />
-                </div> Wygodnie <span className="text-slate-400 font-semibold hidden sm:inline">bez wychodzenia z domu</span>
+              <div className="flex items-start gap-3">
+                <FileText className="w-6 h-6 text-emerald-600 shrink-0" strokeWidth={1.5} />
+                <div className="text-sm font-semibold text-slate-800 leading-tight mt-0.5">E-recepta<br /><span className="text-slate-500 font-normal">w kilka minut</span></div>
               </div>
-              <div className="flex items-center gap-2 text-xs lg:text-sm xl:text-base text-slate-800 font-extrabold bg-white border border-[#E1EFEB] rounded-full px-4 py-2 lg:px-3 lg:py-1.5 [@media(max-height:800px)]:py-1 [@media(max-height:800px)]:text-xs shadow-sm">
-                <div className="w-5 h-5 lg:w-6 lg:h-6 [@media(max-height:800px)]:w-5 [@media(max-height:800px)]:h-5 flex items-center justify-center rounded-full bg-emerald-100">
-                  <ShieldCheck className="w-3.5 h-3.5 lg:w-4 lg:h-4 text-[#064743]" />
-                </div> Bezpiecznie <span className="text-slate-400 font-semibold hidden sm:inline">szyfrowane dane</span>
+              <div className="flex items-start gap-3">
+                <ShieldCheck className="w-6 h-6 text-emerald-600 shrink-0" strokeWidth={1.5} />
+                <div className="text-sm font-semibold text-slate-800 leading-tight mt-0.5">Bezpiecznie<br /><span className="text-slate-500 font-normal">i dyskretnie</span></div>
+              </div>
+              <div className="flex items-start gap-3">
+                <Lock className="w-6 h-6 text-emerald-600 shrink-0" strokeWidth={1.5} />
+                <div className="text-sm font-semibold text-slate-800 leading-tight mt-0.5">100% online<br /><span className="text-xs text-slate-500 font-normal">bez wychodzenia z domu</span></div>
               </div>
             </div>
-
           </div>
 
-          {/* Bottom Left Block */}
-          <div className="lg:col-span-7 flex flex-col text-left order-3 lg:order-3">
-            {/* 3x2 Grid of Cards */}
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-3.5 lg:gap-3 xl:gap-4 mb-5 lg:mb-5 w-full lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl [@media(max-height:800px)]:mb-3 [@media(max-height:800px)]:gap-2 [@media(max-height:800px)]:lg:gap-2.5">
-              {[
-                { icon: UserCheck, title: "Konsultacja 24h", desc: "Porozmawaj z lekarzem kiedy tylko potrzebujesz." },
-                { icon: Pill, title: "Recepta online 24h", desc: "Otrzymaj e-receptę SMS-em lub e-mailem." },
-                { icon: ClipboardList, title: "L4 online 24h", desc: "Zwolnienie lekarskie bez wychodzenia z domu." },
-                { icon: FileSearch, title: "Skierowanie 24h", desc: "Skierowanie na badania lub do specjalisty." },
-                { icon: Activity, title: "Konsultacja wyników 24h", desc: "Omów swoje wyniki z lekarzem online." },
-                { icon: Headphones, title: "Wsparcie pacjenta 24h", desc: "Jesteśmy dostępni 7 dni w tygodniu." }
-              ].map((card, i) => {
-                const Icon = card.icon;
-                return (
-                  <div key={i} className="bg-white rounded-2xl lg:rounded-2xl p-4 lg:p-2.5 xl:p-4 [@media(max-height:800px)]:p-2.5 [@media(max-height:800px)]:lg:p-2 [@media(max-height:800px)]:xl:p-3 border border-slate-100 shadow-[0_4px_20px_rgba(0,0,0,0.015)] relative overflow-hidden flex flex-col justify-between group hover:shadow-md transition duration-300">
-                    <span className="absolute top-2.5 right-2.5 lg:top-2 lg:right-2 bg-[#E8F3EE] text-[#138A56] text-[10px] lg:text-[9px] xl:text-[10px] 2xl:text-xs font-extrabold px-2 py-0.5 rounded-full border border-green-50/50">
-                      24H
-                    </span>
-                    <div>
-                      <div className="w-8 h-8 lg:w-7.5 lg:h-7.5 xl:w-9 xl:h-9 [@media(max-height:800px)]:w-6 [@media(max-height:800px)]:h-6 [@media(max-height:800px)]:lg:w-6 [@media(max-height:800px)]:lg:h-6 [@media(max-height:800px)]:xl:w-7 [@media(max-height:800px)]:xl:h-7 rounded-full bg-[#E8F3EE] text-[#064743] flex items-center justify-center mb-2 lg:mb-2 xl:mb-3 [@media(max-height:800px)]:mb-1.5 flex-shrink-0 group-hover:scale-105 transition duration-300">
-                        <Icon className="w-4 h-4 lg:w-4 lg:h-4 xl:w-5 xl:h-5 [@media(max-height:800px)]:w-3.5 [@media(max-height:800px)]:h-3.5" />
-                      </div>
-                      <h4 className="font-extrabold text-slate-800 text-xs sm:text-sm lg:text-sm xl:text-base 2xl:text-lg [@media(max-height:800px)]:text-xs [@media(max-height:800px)]:xl:text-sm tracking-tight mb-1 [@media(max-height:800px)]:mb-0.5">{card.title}</h4>
-                      <p className="text-slate-500 text-[10px] sm:text-xs lg:text-xs xl:text-sm 2xl:text-[15px] [@media(max-height:800px)]:text-[10px] [@media(max-height:800px)]:xl:text-xs [@media(max-height:800px)]:leading-tight font-semibold leading-relaxed">{card.desc}</p>
-                    </div>
-                  </div>
-                );
-              })}
+          {/* Right Content (Widget & Doctor) */}
+          <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end mt-12 lg:mt-0 z-10">
+
+            {/* Doctor Image - Positioned behind and to the left of the widget */}
+            <div className="absolute  right-[60%] w-[350px] xl:w-[400px] pointer-events-none hidden lg:block" style={{ zIndex: '-2' }}>
+              <img src="/gpt.png" alt="Lekarz online" className="w-full h-auto drop-shadow-xl object-bottom" />
             </div>
 
-            {/* Bottom Security Banner */}
-            <div className="bg-[#064743] rounded-2xl lg:rounded-2xl p-3 px-5 lg:p-2.5 lg:px-4 xl:p-3 xl:px-5 [@media(max-height:800px)]:p-1.5 [@media(max-height:800px)]:px-3 [@media(max-height:800px)]:lg:p-1.5 [@media(max-height:800px)]:lg:px-3 [@media(max-height:800px)]:xl:p-2 [@media(max-height:800px)]:xl:px-4 flex items-center justify-between gap-4 lg:gap-3 w-full lg:max-w-2xl xl:max-w-3xl 2xl:max-w-4xl border border-[#125D58] shadow-sm">
-              <div className="flex items-center gap-3 lg:gap-3">
-                <div className="w-9 h-9 lg:w-7.5 lg:h-7.5 xl:w-9 xl:h-9 [@media(max-height:800px)]:w-6 [@media(max-height:800px)]:h-6 [@media(max-height:800px)]:lg:w-6 [@media(max-height:800px)]:lg:h-6 [@media(max-height:800px)]:xl:w-7 [@media(max-height:800px)]:xl:h-7 rounded-lg lg:rounded-md bg-[#0E5B55] border border-[#126B63] text-emerald-400 flex items-center justify-center flex-shrink-0">
-                  <ShieldCheck className="w-5 h-5 lg:w-4.5 lg:h-4.5 xl:w-5 xl:h-5 [@media(max-height:800px)]:w-3.5 [@media(max-height:800px)]:h-3.5" />
+            {/* Booking Widget */}
+            <div id="booking-widget" className="bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 p-6 sm:p-8 w-full max-w-[400px] relative z-20">
+              <h2 className="text-xl font-bold text-slate-900 mb-6">Umów konsultację</h2>
+
+              <div className="space-y-4">
+                {/* Step 1 */}
+                <div>
+                  <label className="block text-[11px] font-medium text-slate-500 mb-1.5">
+                    Wybierz usługę
+                  </label>
+                  <div className="relative">
+                    <select
+                      value={selectedService}
+                      onChange={(e) => setSelectedService(e.target.value)}
+                      className="w-full pl-3 pr-10 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 appearance-none cursor-pointer transition-all"
+                    >
+                      {servicesList.map((s) => (
+                        <option key={s.value} value={s.value}>{s.label}</option>
+                      ))}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                  </div>
                 </div>
-                <p className="text-slate-200 font-semibold text-[10px] sm:text-xs lg:text-xs xl:text-sm 2xl:text-base [@media(max-height:800px)]:text-[9px] [@media(max-height:800px)]:xl:text-xs leading-relaxed w-full">
-                  Twoje dane są w pełni bezpieczne. Stosujemy szyfrowanie SSL i najwyższe standardy ochrony danych zgodnie z RODO.
-                </p>
-              </div>
-              <div className="bg-[#0E5B55] text-yellow-400 border border-yellow-400/50 px-3 py-1.5 lg:px-2.5 lg:py-1 xl:px-3 xl:py-1.5 [@media(max-height:800px)]:px-2 [@media(max-height:800px)]:py-0.5 [@media(max-height:800px)]:text-[8px] [@media(max-height:800px)]:xl:text-[9px] rounded-md text-[10px] lg:text-[10px] xl:text-xs 2xl:text-sm font-extrabold flex items-center gap-1.5 lg:gap-1 flex-shrink-0 uppercase tracking-wide shadow-sm">
-                <Lock className="w-3 h-3 lg:w-2.5 lg:h-2.5 [@media(max-height:800px)]:w-2 [@media(max-height:800px)]:h-2 text-yellow-400" />
-                <span>RODO Zgodne</span>
-              </div>
-            </div>
 
-          </div>
-
-          <div className="lg:col-span-5 lg:row-span-2 mt-2 lg:mt-6 [@media(max-height:800px)]:lg:mt-3 flex justify-center lg:justify-end items-start relative z-20 order-2 lg:order-2 w-full">
-            <div className="bg-white rounded-[28px] lg:rounded-[24px] shadow-[0_0_50px_rgba(16,185,129,0.3)] border-2 lg:border-[3px] border-[#10B981] w-full max-w-[380px] lg:max-w-[340px] xl:max-w-[380px] 2xl:max-w-[420px] relative flex flex-col h-auto">
-
-
-              <div className="p-4 sm:p-5 lg:p-4 xl:p-4 2xl:p-5 [@media(max-height:800px)]:p-3 [@media(max-height:800px)]:lg:p-3 [@media(max-height:800px)]:xl:p-3.5">
-                <div className="space-y-3 lg:space-y-3 xl:space-y-3 [@media(max-height:800px)]:space-y-2">
-
-                  {/* Step 1: Wybierz usługę */}
-                  <div>
-                    <label className="block text-[11px] lg:text-[10px] xl:text-[11px] 2xl:text-xs font-extrabold text-slate-400 uppercase tracking-wider mb-1 [@media(max-height:800px)]:text-[9px] [@media(max-height:800px)]:mb-0.5">
-                      1. WYBIERZ USŁUGĘ
-                    </label>
-                    <div className="relative">
-                      <select
-                        value={selectedService}
-                        onChange={(e) => setSelectedService(e.target.value)}
-                        className="w-full pl-8 pr-8 py-2.5 lg:py-2 xl:py-2 2xl:py-2.5 border border-slate-200 rounded-lg bg-white text-slate-800 text-xs sm:text-sm lg:text-xs xl:text-sm 2xl:text-base font-semibold focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] appearance-none cursor-pointer shadow-sm hover:border-slate-300 transition-colors [@media(max-height:800px)]:py-1.5 [@media(max-height:800px)]:lg:py-1.5 [@media(max-height:800px)]:xl:py-1.5 [@media(max-height:800px)]:text-xs [@media(max-height:800px)]:xl:text-xs"
-                      >
-                        {servicesList.map((s) => (
-                          <option key={s.value} value={s.value}>{s.label}</option>
-                        ))}
-                      </select>
-                      <div className="absolute left-2.5 top-1/2 -translate-y-1/2 text-[#10B981] pointer-events-none">
-                        <UserCheck className="w-4 h-4 lg:w-4 lg:h-4 xl:w-4.5 xl:h-4.5 2xl:w-5 2xl:h-5 text-[#10B981]" />
-                      </div>
-                      <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                        <ChevronDown className="w-4 h-4 lg:w-4 lg:h-4 xl:w-4.5 xl:h-4.5 2xl:w-5 2xl:h-5 text-slate-400" />
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Step 2: Wybierz termin */}
-                  <div>
-                    <label className="block text-[11px] lg:text-[10px] xl:text-[11px] 2xl:text-xs font-extrabold text-slate-400 uppercase tracking-wider mb-1 [@media(max-height:800px)]:text-[9px] [@media(max-height:800px)]:mb-0.5">
-                      2. WYBIERZ TERMIN
+                {/* Step 2 */}
+                <div className="grid grid-cols-2 gap-3">
+                  <div className={`col-span-2 ${isNoScheduling ? '' : 'sm:col-span-1'}`}>
+                    <label className="block text-[11px] font-medium text-slate-500 mb-1.5">
+                      Wybierz termin
                     </label>
                     <div className="relative">
                       <input
@@ -296,113 +206,151 @@ export default function Hero() {
                         value={selectedDate}
                         onChange={(e) => setSelectedDate(e.target.value)}
                         min={todayStr}
-                        className="w-full pl-3 pr-8 py-2.5 lg:py-2 xl:py-2 2xl:py-2.5 border border-slate-200 rounded-lg bg-white text-slate-800 text-xs sm:text-sm lg:text-xs xl:text-sm 2xl:text-base font-semibold focus:outline-none focus:border-[#10B981] focus:ring-1 focus:ring-[#10B981] cursor-pointer shadow-sm hover:border-slate-300 transition-colors [@media(max-height:800px)]:py-1.5 [@media(max-height:800px)]:lg:py-1.5 [@media(max-height:800px)]:xl:py-1.5 [@media(max-height:800px)]:text-xs [@media(max-height:800px)]:xl:text-xs"
+                        className="w-full pl-3 pr-9 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 cursor-pointer transition-all"
                       />
-                      <div className="absolute right-2.5 top-1/2 -translate-y-1/2 pointer-events-none text-slate-400">
-                        <Calendar className="w-4 h-4 lg:w-4 lg:h-4 xl:w-4.5 xl:h-4.5 2xl:w-5 2xl:h-5" />
-                      </div>
+                      <Calendar className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                     </div>
                   </div>
 
-                  {/* Step 3: Wybierz lekarza */}
-                  <div>
-                    <label className="block text-[11px] lg:text-[10px] xl:text-[11px] 2xl:text-xs font-extrabold text-slate-400 uppercase tracking-wider mb-1 [@media(max-height:800px)]:text-[9px] [@media(max-height:800px)]:mb-0.5">
-                      3. WYBIERZ LEKARZA
-                    </label>
-                    <div className="w-full flex items-center justify-between p-2 lg:p-1.5 xl:p-1.5 bg-slate-50 border border-slate-100 rounded-lg relative [@media(max-height:800px)]:p-1 lg:[@media(max-height:800px)]:p-1 xl:[@media(max-height:800px)]:p-1">
-                      <div className="flex items-center gap-2">
-                        <div className="w-8 h-8 lg:w-7.5 lg:h-7.5 xl:w-8.5 xl:h-8.5 2xl:w-9.5 2xl:h-9.5 rounded-full overflow-hidden bg-slate-200 border border-slate-100 flex-shrink-0 [@media(max-height:800px)]:w-6.5 [@media(max-height:800px)]:h-6.5 lg:[@media(max-height:800px)]:w-6.5 lg:[@media(max-height:800px)]:h-6.5 xl:[@media(max-height:800px)]:w-7 xl:[@media(max-height:800px)]:h-7">
-                          {selectedDoctor?.avatar ? (
-                            <img src={selectedDoctor.avatar} alt="Lekarz avatar" className="w-full h-full object-cover" />
-                          ) : (
-                            <img src="https://images.unsplash.com/photo-1559839734-2b71ea197ec2?auto=format&fit=crop&w=150&h=150&q=80" alt="Default avatar" className="w-full h-full object-cover" />
-                          )}
-                        </div>
-                        <div className="text-left leading-tight">
-                          <div className="font-extrabold text-[11px] lg:text-xs xl:text-sm 2xl:text-base text-slate-800 [@media(max-height:800px)]:text-[10px] xl:[@media(max-height:800px)]:text-xs">
-                            {selectedDoctor ? `dr ${selectedDoctor.firstName} ${selectedDoctor.lastName}` : "dr Anna Nowak"}
-                          </div>
-                          <div className="text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-xs text-slate-400 font-semibold mt-0.5 [@media(max-height:800px)]:text-[8px] [@media(max-height:800px)]:mt-0">
-                            {selectedDoctor?.specialization || "Lekarz rodzinny"}
-                          </div>
-                        </div>
-                      </div>
-                      <div className="w-4 h-4 lg:w-4.5 lg:h-4.5 xl:w-5 xl:h-5 2xl:w-5.5 2xl:h-5.5 rounded-full bg-[#10B981] flex items-center justify-center flex-shrink-0 mr-1 shadow-sm [@media(max-height:800px)]:w-3.5 [@media(max-height:800px)]:h-3.5">
-                        <svg className="w-2.5 h-2.5 lg:w-2.5 lg:h-2.5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth="3">
-                          <polyline points="20 6 9 17 4 12" />
-                        </svg>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Step 4: Wybierz godzinę */}
                   {!isNoScheduling && (
-                    <div>
-                      <label className="block text-[11px] lg:text-[10px] xl:text-[11px] 2xl:text-xs font-extrabold text-slate-400 uppercase tracking-wider mb-1 [@media(max-height:800px)]:text-[9px] [@media(max-height:800px)]:mb-0.5">
-                        4. WYBIERZ GODZINĘ
+                    <div className="col-span-2 sm:col-span-1">
+                      <label className="block text-[11px] font-medium text-slate-500 mb-1.5">
+                        Godzina
                       </label>
-                      {loadingSlots ? (
-                        <div className="flex items-center gap-1.5 text-xs lg:text-[10px] text-gray-400 py-1">
-                          <Loader2 className="w-3.5 h-3.5 lg:w-3.5 lg:h-3.5 animate-spin text-[#10B981]" />
-                          <span>Terminy...</span>
-                        </div>
-                      ) : (
-                        <div className="flex flex-wrap items-center gap-1.5 lg:gap-1.5 xl:gap-2">
-                          {visibleSlots.map((t: string) => (
-                            <button
-                              key={t}
-                              type="button"
-                              onClick={() => setSelectedTime(t)}
-                              className={`px-3 py-1.5 lg:px-2.5 lg:py-1 xl:px-3 xl:py-1 rounded-md font-bold border text-[11px] lg:text-[10px] xl:text-xs 2xl:text-sm transition-all cursor-pointer [@media(max-height:800px)]:px-2 [@media(max-height:800px)]:py-0.5 [@media(max-height:800px)]:text-[10px] [@media(max-height:800px)]:xl:text-xs ${t === selectedTime
-                                ? "bg-[#064743] text-white border-[#064743] shadow-sm"
-                                : "border-slate-200 text-slate-700 bg-white hover:border-[#10B981] shadow-sm"
-                                }`}
-                            >
-                              {t}
-                            </button>
-                          ))}
-                          {displayedSlots.length > 4 && (
-                            <button
-                              type="button"
-                              onClick={() => setShowAllSlots(!showAllSlots)}
-                              className="flex items-center text-[#10B981] hover:text-[#064743] font-bold text-[10px] lg:text-[10px] xl:text-xs 2xl:text-sm transition-all cursor-pointer px-1 py-1 [@media(max-height:800px)]:text-[9px]"
-                            >
-                              <span>+ więcej terminów</span>
-                            </button>
+                      <div className="relative">
+                        <select
+                          value={selectedTime}
+                          onChange={(e) => setSelectedTime(e.target.value)}
+                          className="w-full pl-3 pr-9 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 appearance-none cursor-pointer transition-all"
+                        >
+                          {loadingSlots ? (
+                            <option>Szukam...</option>
+                          ) : (
+                            visibleSlots.map((t: string) => (
+                              <option key={t} value={t}>{t}</option>
+                            ))
                           )}
-                        </div>
-                      )}
+                        </select>
+                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                      </div>
                     </div>
                   )}
                 </div>
 
-                <div className="pt-4 lg:pt-3 xl:pt-3 [@media(max-height:800px)]:pt-2">
-                  {/* Large yellow CTA action button */}
+                {/* Step 3 */}
+                <div>
+                  <label className="block text-[11px] font-medium text-slate-500 mb-1.5">
+                    Wybierz lekarza (opcjonalnie)
+                  </label>
+                  <div className="relative">
+                    <select className="w-full pl-3 pr-10 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 appearance-none cursor-pointer transition-all">
+                      <option>Dowolny lekarz</option>
+                      {selectedDoctor && (
+                        <option value="assigned">dr {selectedDoctor.firstName} {selectedDoctor.lastName}</option>
+                      )}
+                    </select>
+                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                  </div>
+                </div>
+
+                {/* Submit */}
+                <div className="pt-3">
                   <button
                     onClick={handleBooking}
-                    className="w-full bg-[#FFD400] hover:bg-[#F0C700] text-slate-900 font-extrabold py-3 lg:py-2.5 xl:py-3 2xl:py-3.5 rounded-lg shadow-md hover:shadow-lg active:scale-[0.99] transition-all flex items-center justify-center gap-2 mt-2 lg:mt-2 cursor-pointer text-sm lg:text-xs xl:text-sm 2xl:text-base uppercase tracking-wide [@media(max-height:800px)]:py-2 [@media(max-height:800px)]:mt-1 [@media(max-height:800px)]:text-xs [@media(max-height:800px)]:xl:text-xs"
+                    className="w-full bg-[#0d824b] hover:bg-[#0a663b] text-white font-bold py-3.5 rounded-xl transition-all flex items-center justify-center gap-2 text-sm"
                   >
-                    <span className="font-extrabold text-slate-900">Umów wizytę teraz</span>
-                    <ArrowRight className="w-4 h-4 lg:w-3.5 lg:h-3.5 text-slate-900" />
+                    Umów wizytę teraz
+                    <ArrowRight className="w-4 h-4" />
                   </button>
-
-                  {/* Sub-CTA text */}
-                  <div className="text-center text-[10px] lg:text-[10px] xl:text-xs 2xl:text-sm text-slate-400 font-bold mt-1 [@media(max-height:800px)]:mt-0.5 [@media(max-height:800px)]:text-[9px]">
-                    Zarezerwuj wizytę w 2 minuty
-                  </div>
-
-                  {/* Bottom Badges */}
-                  <div className="flex items-center justify-between border-t border-slate-100 pt-2 lg:pt-2 xl:pt-2 mt-2 lg:mt-2 xl:mt-2 text-[9px] lg:text-[10px] xl:text-[11px] 2xl:text-xs text-slate-400 font-bold px-1 select-none [@media(max-height:800px)]:pt-1.5 [@media(max-height:800px)]:mt-1.5 [@media(max-height:800px)]:text-[8px] [@media(max-height:800px)]:xl:text-[9px]">
-                    <span className="flex items-center gap-1"><ShieldCheck className="w-3 h-3 lg:w-2.5 lg:h-2.5 text-slate-300" /> Bez rejestracji</span>
-                    <span className="flex items-center gap-1"><Zap className="w-3 h-3 lg:w-2.5 lg:h-2.5 text-slate-300" /> Szybka realizacja</span>
-                    <span className="flex items-center gap-1"><Globe className="w-3 h-3 lg:w-2.5 lg:h-2.5 text-slate-300" /> 100% online</span>
+                  <div className="text-center text-[11px] text-slate-500 mt-3 flex items-center justify-center gap-1.5">
+                    <Clock className="w-3.5 h-3.5 text-emerald-600" />
+                    Zajmie to tylko 2 minuty
                   </div>
                 </div>
 
               </div>
             </div>
           </div>
+
         </div>
+
+        {/* Horizontal Cards Row */}
+        <div className="w-full pb-4 relative z-20">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
+
+            {/* Card 1 */}
+            <div className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] transition-all items-center md:items-start text-center md:text-left">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0">
+                  <UserCheck className="w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Konsultacja<br className="hidden md:block" />lekarska 24/7</h3>
+              </div>
+              <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Porozmawiaj z lekarzem kiedy tylko potrzebujesz.</p>
+              <div className="text-[#10B981] text-[11px] md:text-xs font-bold flex items-center gap-1.5 mt-auto">
+                Sprawdź <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+              </div>
+            </div>
+
+            {/* Card 2 */}
+            <div className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] transition-all items-center md:items-start text-center md:text-left">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#0D9488] flex items-center justify-center text-white shrink-0">
+                  <FileSearch className="w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Skierowania<br className="hidden md:block" />online 24h</h3>
+              </div>
+              <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Skierowania na badania, do specjalisty.</p>
+              <div className="text-[#0D9488] text-[11px] md:text-xs font-bold flex items-center gap-1.5 mt-auto">
+                Sprawdź <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+              </div>
+            </div>
+
+            {/* Card 3 */}
+            <div className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] transition-all items-center md:items-start text-center md:text-left">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#E11D48] flex items-center justify-center text-white shrink-0">
+                  <Pill className="w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Recepta<br className="hidden md:block" />online 24h</h3>
+              </div>
+              <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">E-recepta na leki stałe, doraźne, refundowane i nierefundowane.</p>
+              <div className="text-[#E11D48] text-[11px] md:text-xs font-bold flex items-center gap-1.5 mt-auto">
+                Sprawdź <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+              </div>
+            </div>
+
+            {/* Card 4 */}
+            <div className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] transition-all items-center md:items-start text-center md:text-left">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#2563EB] flex items-center justify-center text-white shrink-0">
+                  <Activity className="w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Konsultacja<br className="hidden md:block" />wyników 24h</h3>
+              </div>
+              <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Omów wyniki badań z lekarzem i zaplanuj leczenie.</p>
+              <div className="text-[#2563EB] text-[11px] md:text-xs font-bold flex items-center gap-1.5 mt-auto">
+                Sprawdź <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+              </div>
+            </div>
+
+            {/* Card 5 */}
+            <div className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border border-slate-100 flex flex-col h-full group hover:shadow-[0_4px_20px_rgb(0,0,0,0.08)] transition-all items-center md:items-start text-center md:text-left">
+              <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
+                <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#8B5CF6] flex items-center justify-center text-white shrink-0">
+                  <Calendar className="w-5 h-5 md:w-6 md:h-6" />
+                </div>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">L4 online 24h<br className="hidden md:block" />zwolnienie</h3>
+              </div>
+              <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Zwolnienie lekarskie bez wychodzenia z domu.</p>
+              <div className="text-[#8B5CF6] text-[11px] md:text-xs font-bold flex items-center gap-1.5 mt-auto">
+                Sprawdź <ArrowRight className="w-3 h-3 md:w-3.5 md:h-3.5" />
+              </div>
+            </div>
+
+          </div>
+        </div>
+
       </div>
     </section>
   );
