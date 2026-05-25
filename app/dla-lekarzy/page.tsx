@@ -234,7 +234,7 @@ export default function DlaLekarzyPage() {
                 </div>
 
                 {/* Doctor Portrait Image positioned absolutely to the right bottom */}
-                <div className="hidden md:block absolute bottom-[0px] right-[-10px] lg:right-[-20px] w-[45%] lg:w-[38%] h-[380px] lg:h-[450px] xl:h-[480px] z-0">
+                <div className="hidden md:block absolute bottom-[-10vh] right-[-10px] lg:right-[-20px] w-[45%] lg:w-[38%] h-[380px] lg:h-[450px] xl:h-[480px]">
                   <div className="relative w-full h-full">
                     <Image
                       src="/image-removebg-preview.png"
@@ -248,13 +248,13 @@ export default function DlaLekarzyPage() {
               </div>
 
               {/* Benefits Grid (3 columns on desktop, 1 on mobile) */}
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 z-10">
                 {benefits.map((benefit, idx) => {
                   const Icon = benefit.icon;
                   return (
                     <div
                       key={idx}
-                      className="bg-white border border-slate-100 rounded-3xl p-6 shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-all duration-300 flex flex-col items-center text-center group"
+                      className="bg-white border border-slate-100 rounded-3xl p-6 shadow-[0_15px_40px_rgba(0,0,0,0.01)] hover:shadow-md transition-all duration-300 flex flex-col items-center text-center group z-10"
                     >
                       <div className="w-12 h-12 rounded-2xl text-[#147A60] flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-105">
                         <Icon className="w-8 h-8" strokeWidth={1.5} />
