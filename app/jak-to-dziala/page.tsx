@@ -284,7 +284,7 @@ export default function JakToDzialaPage() {
               <div className="flex flex-col sm:flex-row gap-3 xl:gap-4 px-6 lg:px-4 py-4 lg:py-6 grow justify-center w-full lg:w-auto">
                 {/* Card 1: Telefon */}
                 <a
-                  href="tel:+48000000000"
+                  href="tel:+48881238227"
                   className="bg-white border border-[#E3ECEB]/60 p-4 rounded-2xl shadow-sm hover:shadow-md hover:border-[#0E6C5F]/30 transition-all duration-300 flex flex-col justify-between grow lg:grow-0 w-full sm:w-1/3 lg:w-[190px] xl:w-[220px] min-h-[110px] group"
                 >
                   <div>
@@ -293,7 +293,7 @@ export default function JakToDzialaPage() {
                       <span className="font-extrabold text-xs text-slate-800">Telefon</span>
                     </div>
                     <div className="font-extrabold text-xs xl:text-sm text-[#064743] group-hover:text-[#0E6C5F] transition-colors mb-1">
-                      +48 000 000 000
+                      +48 881 238 227
                     </div>
                   </div>
                   <div className="text-[10px] text-slate-400 font-semibold leading-tight mt-1">
@@ -303,7 +303,7 @@ export default function JakToDzialaPage() {
 
                 {/* Card 2: E-mail */}
                 <a
-                  href="mailto:kontakt@platforma.pl"
+                  href="mailto:kontakt@lekarzeiterapeuci.pl"
                   className="bg-white border border-[#E3ECEB]/60 p-4 rounded-2xl shadow-sm hover:shadow-md hover:border-[#0E6C5F]/30 transition-all duration-300 flex flex-col justify-between grow lg:grow-0 w-full sm:w-1/3 lg:w-[190px] xl:w-[220px] min-h-[110px] group"
                 >
                   <div>
@@ -312,7 +312,7 @@ export default function JakToDzialaPage() {
                       <span className="font-extrabold text-xs text-slate-800">E-mail</span>
                     </div>
                     <div className="font-extrabold text-xs xl:text-sm text-[#0E6C5F] group-hover:underline mb-1 break-all">
-                      kontakt@platforma.pl
+                      kontakt@lekarzeiterapeuci.pl
                     </div>
                   </div>
                   <div className="text-[10px] text-slate-400 font-semibold leading-tight mt-1">

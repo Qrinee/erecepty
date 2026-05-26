@@ -1,7 +1,8 @@
 "use client"
 
-import { ArrowRight, Check, Clock, FileText, FlaskConical, Link, MessageSquarePlus, ShieldCheck, TrendingUp, UserCheck } from "lucide-react"
+import { ArrowRight, Check, Clock, FileText, FlaskConical, MessageSquarePlus, ShieldCheck, TrendingUp, UserCheck } from "lucide-react"
 import Image from "next/image"
+import Link from "next/link"
 
 export default function ForWomanAndMen() {
     return (
@@ -49,9 +50,9 @@ export default function ForWomanAndMen() {
                         </div>
 
                         <div className="mt-2 relative z-20">
-                            <button className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
+                            <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
                                 Umów konsultację <ArrowRight className="w-4 h-4" />
-                            </button>
+                            </Link>
                         </div>
                         </div>
 
@@ -118,9 +119,9 @@ export default function ForWomanAndMen() {
                         </div>
 
                         <div className="mt-2 relative z-20">
-                            <button className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
+                            <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
                                 Umów konsultację <ArrowRight className="w-4 h-4" />
-                            </button>
+                            </Link>
                         </div>
                         </div>
 
@@ -185,9 +186,9 @@ export default function ForWomanAndMen() {
                         </div>
 
                         <div className="mt-2 relative z-20">
-                            <button className="bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
+                            <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
                                 Umów konsultację <ArrowRight className="w-4 h-4" />
-                            </button>
+                            </Link>
                         </div>
                         </div>
 

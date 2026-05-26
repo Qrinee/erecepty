@@ -35,7 +35,7 @@ export default function Home() {
         <ForWomanAndMen />
         <ServicesPanel />
         <ServicesSection />
-        <SpecializationsSection />
+        {/* <SpecializationsSection /> */}
         <HowItWorksSection />
         <ForWhoSection />
         <KnowledgeCenter />

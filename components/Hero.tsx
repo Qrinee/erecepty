@@ -279,7 +279,7 @@ export default function Hero() {
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
 
             <div
-              onClick={() => { setSelectedService("e-Recepta online"); document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' }); }}
+              onClick={() => router.push('/wypelnij-formularz?service=e-Recepta+online')}
               className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#E11D48]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(225,29,72,0.15)] hover:border-[#E11D48]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
             >
               <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
@@ -297,7 +297,7 @@ export default function Hero() {
             </div>
 
             <div
-              onClick={() => { setSelectedService("L4 online"); document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' }); }}
+              onClick={() => router.push('/wypelnij-formularz?service=L4+online')}
               className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#8B5CF6]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(139,92,246,0.15)] hover:border-[#8B5CF6]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
             >
               <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
@@ -316,7 +316,7 @@ export default function Hero() {
 
             {/* Card 1 */}
             <div
-              onClick={() => { setSelectedService("Wizyta lekarska ogólna"); document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' }); }}
+              onClick={() => router.push('/wypelnij-formularz?service=Wizyta+lekarska+ogólna')}
               className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#10B981]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] hover:border-[#10B981]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
             >
               <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
@@ -334,7 +334,7 @@ export default function Hero() {
             </div>
 
             <div
-              onClick={() => { setSelectedService("Kontynuacja leczenia"); document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' }); }}
+              onClick={() => router.push('/wypelnij-formularz?service=Kontynuacja+leczenia')}
               className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#2563EB]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(37,99,235,0.15)] hover:border-[#2563EB]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
             >
               <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">
@@ -353,7 +353,7 @@ export default function Hero() {
 
             {/* Card 2 */}
             <div
-              onClick={() => { setSelectedService("Wizyta lekarska ogólna"); document.getElementById('booking-widget')?.scrollIntoView({ behavior: 'smooth' }); }}
+              onClick={() => router.push('/wypelnij-formularz?service=Skierowanie')}
               className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#0D9488]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(13,148,136,0.15)] hover:border-[#0D9488]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
             >
               <div className="flex flex-col md:flex-row items-center md:items-start gap-2 md:gap-4 mb-2 md:mb-4">

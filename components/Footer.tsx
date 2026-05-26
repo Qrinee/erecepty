@@ -1,49 +1,48 @@
 import Link from "next/link";
-import { 
-  Shield, Users, Zap, Clock, Heart, Lock, ShieldCheck, 
-  Phone, Mail, MessageSquare, Facebook, Instagram, Youtube, ChevronRight 
+import {
+  Shield, Users, Zap, Clock, Heart, Lock, ShieldCheck,
+  Phone, Mail, MessageSquare, Facebook, Instagram, Youtube, ChevronRight
 } from "lucide-react";
 
 export default function Footer() {
   const benefits = [
-    { 
-      icon: Shield, 
-      title: "Bezpieczeństwo", 
-      desc: "RODO, szyfrowanie i pełna ochrona danych" 
+    {
+      icon: Shield,
+      title: "Bezpieczeństwo",
+      desc: "RODO, szyfrowanie i pełna ochrona danych"
     },
-    { 
-      icon: Users, 
-      title: "Lekarze z PWZ", 
-      desc: "Zawsze licencjonowani specjaliści z doświadczeniem" 
+    {
+      icon: Users,
+      title: "Lekarze z PWZ",
+      desc: "Zawsze licencjonowani specjaliści z doświadczeniem"
     },
-    { 
-      icon: Zap, 
-      title: "Szybka realizacja", 
-      desc: "Nawet w 15 minut od złożenia formularza" 
+    {
+      icon: Zap,
+      title: "Szybka realizacja",
+      desc: "Nawet w 15 minut od złożenia formularza"
     },
-    { 
-      icon: Clock, 
-      title: "Dostęp 24/7", 
-      desc: "Jesteśmy zawsze dostępni dla Ciebie" 
+    {
+      icon: Clock,
+      title: "Dostęp 24/7",
+      desc: "Jesteśmy zawsze dostępni dla Ciebie"
     },
-    { 
-      icon: Heart, 
-      title: "Wynik gwarancja", 
-      desc: "Zadowolenie naszych pacjentów" 
+    {
+      icon: Heart,
+      title: "Wynik gwarancja",
+      desc: "Zadowolenie naszych pacjentów"
     },
   ];
 
   return (
     <footer className="bg-[#030d1a] text-slate-300 py-16 relative overflow-hidden" role="contentinfo">
       <div className="w-full px-4 sm:px-8 xl:px-16 relative z-10">
-        
-        {/* Benefits Row */}
+
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-16">
           {benefits.map((benefit, idx) => {
             const Icon = benefit.icon;
             return (
-              <div 
-                key={idx} 
+              <div
+                key={idx}
                 className="bg-[#08182d]/40 border border-slate-800/40 hover:border-[#147A60]/30 rounded-2xl p-6 text-center flex flex-col items-center justify-center transition-all duration-300 group"
               >
                 <div className="w-12 h-12 rounded-full bg-[#147A60]/10 text-[#00E19D] flex items-center justify-center mb-4 filter drop-shadow-[0_0_8px_rgba(0,225,157,0.25)] transition-transform duration-300 group-hover:scale-110">
@@ -56,13 +55,10 @@ export default function Footer() {
           })}
         </div>
 
-        {/* Separator */}
         <div className="w-full h-px bg-slate-800/50 mb-16"></div>
 
-        {/* Main Columns Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
-          
-          {/* Column 1: Brand Info */}
+
           <div className="lg:col-span-1">
             <div className="mb-6 flex items-center gap-2">
               <img src="/logo.png" alt="Lekarze i Terapeuci" className="h-30 w-auto object-contain brightness-110" />
@@ -70,8 +66,7 @@ export default function Footer() {
             <p className="text-[13px] text-slate-400 font-semibold leading-relaxed mb-6 max-w-sm">
               Nowoczesna platforma telemedyczna z dostępem do konsultacji zdrowotnych bez wychodzenia z domu.
             </p>
-            
-            {/* Trust Checklist */}
+
             <div className="space-y-3">
               <div className="flex items-center gap-2 text-xs font-bold text-slate-300">
                 <Lock className="w-4 h-4 text-[#00E19D]" />
@@ -88,7 +83,6 @@ export default function Footer() {
             </div>
           </div>
 
-          {/* Column 2: Usługi */}
           <nav aria-label="Usługi" className="flex flex-col">
             <h4 className="text-white font-extrabold text-sm mb-6 uppercase tracking-wider">Usługi</h4>
             <ul className="space-y-3.5 text-xs sm:text-[13px] font-bold text-slate-400">
@@ -119,21 +113,17 @@ export default function Footer() {
             </ul>
           </nav>
 
-          {/* Column 3: Firma */}
           <nav aria-label="Firma" className="flex flex-col">
             <h4 className="text-white font-extrabold text-sm mb-6 uppercase tracking-wider">Firma</h4>
             <ul className="space-y-3.5 text-xs sm:text-[13px] font-bold text-slate-400">
               <li><Link href="/jak-to-dziala" className="hover:text-white transition block py-0.5">Jak to działa</Link></li>
               <li><Link href="/baza-wiedzy" className="hover:text-white transition block py-0.5">Baza wiedzy</Link></li>
-              <li><Link href="#o-nas" className="hover:text-white transition block py-0.5">O nas</Link></li>
-              <li><Link href="#kariera" className="hover:text-white transition block py-0.5">Praca</Link></li>
               <li><Link href="/dla-lekarzy" className="hover:text-white transition block py-0.5">Dla lekarzy</Link></li>
               <li><Link href="/dla-firm" className="hover:text-white transition block py-0.5">Dla firm</Link></li>
               <li><Link href="/dla-kobiet-i-mezczyzn" className="hover:text-white transition block py-0.5">Dla kobiet i mężczyzn</Link></li>
             </ul>
           </nav>
 
-          {/* Column 4: Prawne */}
           <nav aria-label="Prawne" className="flex flex-col">
             <h4 className="text-white font-extrabold text-sm mb-6 uppercase tracking-wider">Prawne</h4>
             <ul className="space-y-3.5 text-xs sm:text-[13px] font-bold text-slate-400">
@@ -144,35 +134,31 @@ export default function Footer() {
             </ul>
           </nav>
 
-          {/* Column 5: Kontakt */}
           <div className="flex flex-col">
             <h4 className="text-white font-extrabold text-sm mb-6 uppercase tracking-wider">Kontakt</h4>
             <div className="space-y-5">
-              
-              {/* Phone item */}
+
               <div className="flex gap-3 items-start">
                 <div className="w-8 h-8 rounded-full bg-[#147A60]/10 text-[#00E19D] flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Phone className="w-4 h-4" />
                 </div>
                 <div className="text-left leading-tight">
-                  <a href="tel:+48000000000" className="text-[13px] font-extrabold text-white hover:text-[#00E19D] transition">+48 000 000 000</a>
+                  <a href="tel:+48881238227" className="text-[13px] font-extrabold text-white hover:text-[#00E19D] transition">+48 881 238 227</a>
                   <div className="text-[10px] text-slate-400 font-bold mt-1">Pon-Pt 8:00–20:00</div>
                   <div className="text-[10px] text-slate-400 font-bold">Sb-Nd 9:00–18:00</div>
                 </div>
               </div>
 
-              {/* Email item */}
               <div className="flex gap-3 items-start">
                 <div className="w-8 h-8 rounded-full bg-[#147A60]/10 text-[#00E19D] flex items-center justify-center flex-shrink-0 mt-0.5">
                   <Mail className="w-4 h-4" />
                 </div>
                 <div className="text-left leading-tight">
-                  <a href="mailto:kontakt@platforma.pl" className="text-[13px] font-extrabold text-white hover:text-[#00E19D] transition">kontakt@platforma.pl</a>
-                  <div className="text-[10px] text-slate-400 font-bold mt-1">Odpowiadamy w 15 minut</div>
+                  <a href="mailto:kontakt@lekarzeiterapeuci.pl" className="text-[13px] font-extrabold text-white hover:text-[#00E19D] transition">kontakt@lekarzeiterapeuci.pl</a>
+                  <div className="text-[10px] text-slate-400 font-bold mt-1">Odpowiadamy w ciągu godziny</div>
                 </div>
               </div>
 
-              {/* Live Chat item */}
               <div className="flex gap-3 items-start">
                 <div className="w-8 h-8 rounded-full bg-[#147A60]/10 text-[#00E19D] flex items-center justify-center flex-shrink-0 mt-0.5">
                   <MessageSquare className="w-4 h-4" />
@@ -187,19 +173,14 @@ export default function Footer() {
           </div>
 
         </div>
-
-        {/* Separator */}
         <div className="w-full h-px bg-slate-800/50 mb-8"></div>
 
-        {/* Bottom Bar: Copyright, Newsletter & Socials */}
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pt-2">
-          
-          {/* Left Copyright */}
+
           <p className="text-xs text-slate-400 font-bold order-3 lg:order-1 text-center lg:text-left">
             © {new Date().getFullYear()} Lekarze i Terapeuci. Wszelkie prawa zastrzeżone.
           </p>
 
-          {/* Middle Newsletter */}
           <div className="w-full max-w-[420px] flex items-center gap-2 order-1 lg:order-2">
             <div className="relative flex-grow">
               <input
@@ -214,24 +195,23 @@ export default function Footer() {
             </button>
           </div>
 
-          {/* Right Socials */}
           <div className="flex items-center gap-3 order-2 lg:order-3">
-            <a 
-              href="#" 
+            <a
+              href="#"
               aria-label="Facebook"
               className="w-10 h-10 rounded-full bg-[#0B1E36]/50 border border-slate-800 text-slate-400 hover:text-white hover:border-[#147A60]/30 hover:bg-[#147A60]/10 transition flex items-center justify-center cursor-pointer"
             >
               <Facebook className="w-4 h-4" />
             </a>
-            <a 
-              href="#" 
+            <a
+              href="#"
               aria-label="Instagram"
               className="w-10 h-10 rounded-full bg-[#0B1E36]/50 border border-slate-800 text-slate-400 hover:text-white hover:border-[#147A60]/30 hover:bg-[#147A60]/10 transition flex items-center justify-center cursor-pointer"
             >
               <Instagram className="w-4 h-4" />
             </a>
-            <a 
-              href="#" 
+            <a
+              href="#"
               aria-label="YouTube"
               className="w-10 h-10 rounded-full bg-[#0B1E36]/50 border border-slate-800 text-slate-400 hover:text-white hover:border-[#147A60]/30 hover:bg-[#147A60]/10 transition flex items-center justify-center cursor-pointer"
             >

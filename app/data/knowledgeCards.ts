@@ -162,4 +162,94 @@ export const knowledgeCards: KnowledgeCardData[] = [
       },
     ],
   },
+  {
+    tag: "E-RECEPTY",
+    tagColor: "bg-[#147A60]",
+    title: "Czy lekarz online może wystawić receptę?",
+    subtitle: "Pytania i odpowiedzi",
+    description:
+      "Tak. Jeśli stan zdrowia pacjenta na to pozwala, lekarz może wystawić e-receptę podczas konsultacji online.",
+    image: "/recepta.png",
+    slug: "czy-lekarz-online-moze-wystawic-recepte",
+    author: "Zespół Medyczny",
+    publishedDate: "22 maja 2024",
+    readTime: "4 min czytania",
+    relatedArticles: ["wszystko-o-konsultacjach-online"],
+    sections: []
+  },
+  {
+    tag: "ANTYKONCEPCJA ONLINE",
+    tagColor: "bg-[#147A60]",
+    title: "Jak uzyskać antykoncepcję online?",
+    subtitle: "Krok po kroku",
+    description:
+      "Konsultacja z lekarzem ginekologiem online to wygodny i bezpieczny sposób na uzyskanie e-recepty na antykoncepcję dopasowaną do Twoich potrzeb.",
+    image: "/bazawiedzy/1.png",
+    slug: "jak-uzyskac-antykoncepcje-online",
+    author: "Zespół Medyczny",
+    publishedDate: "22 maja 2024",
+    readTime: "4 min czytania",
+    relatedArticles: ["czy-lekarz-online-moze-wystawic-recepte"],
+    sections: []
+  },
+  {
+    tag: "BEZPIECZEŃSTWO",
+    tagColor: "bg-[#147A60]",
+    title: "Czy konsultacje online są legalne i bezpieczne?",
+    subtitle: "Dowiedz się więcej",
+    description:
+      "Tak. Konsultacje online w naszej platformie są w pełni legalne i realizowane zgodnie z obowiązującymi przepisami prawa oraz najwyższymi standardami bezpieczeństwa.",
+    image: "/bazawiedzy/6.png",
+    slug: "czy-konsultacje-online-sa-legalne-i-bezpieczne",
+    author: "Zespół Medyczny",
+    publishedDate: "22 maja 2024",
+    readTime: "5 min czytania",
+    relatedArticles: ["jak-uzyskac-antykoncepcje-online", "czy-lekarz-online-moze-wystawic-recepte"],
+    sections: []
+  },
+  {
+    tag: "PŁATNOŚCI",
+    tagColor: "bg-[#147A60]",
+    title: "Jak wygląda płatność za konsultację?",
+    subtitle: "Dostępne metody płatności",
+    description:
+      "Płatność za konsultację online jest szybka, wygodna i w pełni bezpieczna. Zawsze dokonujesz jej przed konsultacją - bez ukrytych opłat.",
+    image: "/bazawiedzy/2.png",
+    slug: "jak-wyglada-platnosc-za-konsultacje",
+    author: "Zespół Medyczny",
+    publishedDate: "22 maja 2024",
+    readTime: "3 min czytania",
+    relatedArticles: ["czy-konsultacje-online-sa-legalne-i-bezpieczne", "czy-lekarz-online-moze-wystawic-recepte"],
+    sections: []
+  },
+  {
+    tag: "WYNIKI BADAŃ",
+    tagColor: "bg-[#147A60]",
+    title: "Jak skonsultować wynik badań?",
+    subtitle: "Konsultacja wyników",
+    description:
+      "Konsultacja wyniku badań online to szybki i wygodny sposób na uzyskanie profesjonalnej interpretacji bez wychodzenia z domu.",
+    image: "/bazawiedzy/7.jpeg",
+    slug: "jak-skonsultowac-wynik-badan",
+    author: "Zespół Medyczny",
+    publishedDate: "22 maja 2024",
+    readTime: "4 min czytania",
+    relatedArticles: ["czy-lekarz-online-moze-wystawic-recepte", "jak-wyglada-platnosc-za-konsultacje"],
+    sections: []
+  },
+  {
+    tag: "RECEPTY I LEKI",
+    tagColor: "bg-[#147A60]",
+    title: "Czy mogę przedłużyć stałe leki bez wizyty stacjonarnej?",
+    subtitle: "E-recepta na stałe leki",
+    description:
+      "Tak. W wielu przypadkach lekarz online może wystawić e-receptę na Twoje stałe leki podczas konsultacji online – bez konieczności wizyty stacjonarnej.",
+    image: "/bazawiedzy/5.png",
+    slug: "czy-moge-przedluzyc-stale-leki",
+    author: "Zespół Medyczny",
+    publishedDate: "22 maja 2024",
+    readTime: "4 min czytania",
+    relatedArticles: ["czy-lekarz-online-moze-wystawic-recepte", "jak-uzyskac-antykoncepcje-online"],
+    sections: []
+  }
 ];

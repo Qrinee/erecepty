@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import './globals.css';
 import SkipLink from '@/components/SkipLink';
 import PWARegistration from "@/components/PWARegistration";
+import ScrollToTop from "@/components/ScrollToTop";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -24,6 +25,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="pl">
       <body className={inter.className}>
+        <ScrollToTop />
         <PWARegistration />
         <SkipLink />
         {children}

@@ -74,7 +74,7 @@ export default function DlaKobietIMezczyznPage() {
   return (
     <>
       <Header transparent={false} />
-      <main id="main-content" className="bg-[#FAFBFB] min-h-screen pt-24 pb-20" tabIndex={-1}>
+      <main id="main-content" className="bg-[#FAFBFB] min-h-screen pt-5 pb-20" tabIndex={-1}>
 
         {/* Breadcrumbs */}
         <nav className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-slate-500 flex items-center gap-2">

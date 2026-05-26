@@ -71,7 +71,7 @@ export default function ContactSection() {
 
               {/* Card 1: E-mail */}
               <a
-                href="mailto:kontakt@e-receptaonline.com"
+                href="mailto:kontakt@lekarzeiterapeuci.pl"
                 className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group"
               >
                 <div className="flex items-center gap-4">
@@ -80,7 +80,7 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="text-sm font-extrabold text-slate-800">E-mail</div>
-                    <div className="text-sm text-slate-500 font-semibold mt-0.5">kontakt@e-receptaonline.com</div>
+                    <div className="text-sm text-slate-500 font-semibold mt-0.5">kontakt@lekarzeiterapeuci.pl</div>
                   </div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
@@ -88,7 +88,7 @@ export default function ContactSection() {
 
               {/* Card 2: Telefon */}
               <a
-                href="tel:+48123456789"
+                href="tel:+48881238227"
                 className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group"
               >
                 <div className="flex items-center gap-4">
@@ -97,14 +97,14 @@ export default function ContactSection() {
                   </div>
                   <div>
                     <div className="text-sm font-extrabold text-slate-800">Telefon</div>
-                    <div className="text-sm text-slate-500 font-semibold mt-0.5">+48 123 456 789</div>
+                    <div className="text-sm text-slate-500 font-semibold mt-0.5">+48 881 238 227</div>
                   </div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
               </a>
 
               {/* Card 3: Live Chat / WhatsApp */}
-              <div
+              {/* <div
                 className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group cursor-pointer"
               >
                 <div className="flex items-center gap-4">
@@ -117,7 +117,7 @@ export default function ContactSection() {
                   </div>
                 </div>
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
-              </div>
+              </div> */}
 
               {/* Card 4: Czas odpowiedzi */}
               <div

@@ -196,7 +196,7 @@ export default function DlaLekarzyPage() {
   return (
     <>
       <Header transparent={false} />
-      <main id="main-content" className="bg-[#FAFBFB] min-h-screen pt-10 pb-20 relative overflow-hidden" tabIndex={-1}>
+      <main id="main-content" className="bg-[#FAFBFB] min-h-screen pb-20 relative overflow-hidden" tabIndex={-1}>
 
         {/* Background decorative elements (Plus signs) */}
         <div className="absolute top-36 left-10 text-emerald-500/10 pointer-events-none select-none hidden lg:block">

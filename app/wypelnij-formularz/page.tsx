@@ -4,13 +4,11 @@ import { Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import {
-  KonsultacjaForm,
-  EReceptaForm,
-  L4Form,
-  KontynuacjaForm,
-  servicesData
-} from "@/components/ServiceFormsSection";
+import { servicesData } from "@/components/ServiceFormsSection";
+import { KonsultacjaForm } from "@/components/forms/KonsultacjaForm";
+import { EReceptaForm } from "@/components/forms/EReceptaForm";
+import { L4Form } from "@/components/forms/L4Form";
+import { KontynuacjaForm } from "@/components/forms/KontynuacjaForm";
 
 function WypelnijFormularzInner() {
   const searchParams = useSearchParams();
@@ -29,7 +27,6 @@ function WypelnijFormularzInner() {
       <Header />
       <main className="flex-grow pt-5 pb-16 px-4 sm:px-8 xl:px-16 w-full max-w-7xl mx-auto">
         <div className="bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_40px_rgba(0,0,0,0.04)] overflow-hidden">
-          {/* Form header */}
           <div className={`${svc.headerBg} px-6 py-5 border-b border-slate-100 flex items-center gap-4`}>
             <div className={`w-10 h-10 rounded-full ${svc.iconBg} flex items-center justify-center flex-shrink-0 shadow-sm`}>
               <Icon className="w-5 h-5 text-white" />
@@ -42,7 +39,6 @@ function WypelnijFormularzInner() {
             </div>
           </div>
 
-          {/* Form body */}
           <div className="p-6">
             {activeIndex === 0 && <KonsultacjaForm />}
             {activeIndex === 1 && <EReceptaForm />}
