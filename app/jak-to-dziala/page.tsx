@@ -285,7 +285,7 @@ export default function JakToDzialaPage() {
                 {/* Card 1: Telefon */}
                 <a
                   href="tel:+48881238227"
-                  className="bg-white border border-[#E3ECEB]/60 p-4 rounded-2xl shadow-sm hover:shadow-md hover:border-[#0E6C5F]/30 transition-all duration-300 flex flex-col justify-between grow lg:grow-0 w-full sm:w-1/3 lg:w-[190px] xl:w-[220px] min-h-[110px] group"
+                  className="bg-white border border-[#E3ECEB]/60 p-4 rounded-2xl shadow-sm hover:shadow-md hover:border-[#0E6C5F]/30 transition-all duration-300 flex flex-col justify-between grow lg:grow-0 w-full sm:w-1/3 lg:w-[250px] xl:w-[300px] min-h-[110px] group"
                 >
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -304,7 +304,7 @@ export default function JakToDzialaPage() {
                 {/* Card 2: E-mail */}
                 <a
                   href="mailto:kontakt@lekarzeiterapeuci.pl"
-                  className="bg-white border border-[#E3ECEB]/60 p-4 rounded-2xl shadow-sm hover:shadow-md hover:border-[#0E6C5F]/30 transition-all duration-300 flex flex-col justify-between grow lg:grow-0 w-full sm:w-1/3 lg:w-[190px] xl:w-[220px] min-h-[110px] group"
+                  className="bg-white border border-[#E3ECEB]/60 p-4 rounded-2xl shadow-sm hover:shadow-md hover:border-[#0E6C5F]/30 transition-all duration-300 flex flex-col justify-between grow lg:grow-0 w-full sm:w-1/3 lg:w-[250px] xl:w-[300px] min-h-[110px] group"
                 >
                   <div>
                     <div className="flex items-center gap-2 mb-2">
@@ -320,23 +320,6 @@ export default function JakToDzialaPage() {
                   </div>
                 </a>
 
-                {/* Card 3: Czat na żywo */}
-                <div
-                  className="bg-white border border-[#E3ECEB]/60 p-4 rounded-2xl shadow-sm hover:shadow-md transition-all duration-300 flex flex-col justify-between grow lg:grow-0 w-full sm:w-1/3 lg:w-[190px] xl:w-[220px] min-h-[110px] group"
-                >
-                  <div>
-                    <div className="flex items-center gap-2 mb-2">
-                      <MessageCircle className="w-4 h-4 text-[#0E6C5F] group-hover:scale-110 transition-transform shrink-0" />
-                      <span className="font-extrabold text-xs text-slate-800">Czat na żywo</span>
-                    </div>
-                    <div className="text-xs xl:text-[13px] font-extrabold text-slate-700 leading-snug mb-1">
-                      Dostępny na stronie 24/7
-                    </div>
-                  </div>
-                  <div className="text-[10px] text-slate-400 font-semibold leading-tight mt-1">
-                    Błyskawiczna pomoc
-                  </div>
-                </div>
               </div>
 
               {/* Right support agent photo */}

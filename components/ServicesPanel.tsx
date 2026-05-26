@@ -38,7 +38,7 @@ export default function ServicesPanel() {
     {
       id: 3,
       icon: RefreshCw,
-      title: "Kontynuacja",
+      title: "Kontynuacja leczenia",
       description: "Przedłuż leczenie bez pośredniej wizyty",
       price: 59,
       image: "/continuation_3d.png",
@@ -111,10 +111,10 @@ export default function ServicesPanel() {
         {/* Header */}
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-3 tracking-tight uppercase">
-            PANEL UMAWIANIA WIZYTY – DOSTĘPNY DLA KAŻDEJ USŁUGI
+            Umów wizytę online w kilka minut
           </h2>
           <p className="text-slate-600 text-base md:text-lg">
-            Wybierz usługę i umów wizytę w ciągu kilku minut
+            Wybierz usługę i skonsultuj się z lekarzem bez wychodzenia z domu
           </p>
         </div>
 
