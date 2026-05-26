@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { useEffect, useState, useRef } from "react";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
@@ -25,6 +25,7 @@ export default function Header({ transparent = false }: HeaderProps) {
   const [showMobileMenu, setShowMobileMenu] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const router = useRouter();
+  const pathname = usePathname();
 
   useEffect(() => {
     checkAuth();
@@ -92,6 +93,13 @@ export default function Header({ transparent = false }: HeaderProps) {
     }
   };
 
+  const handleLogoClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
   return (
     <header
       className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-100 ${transparent
@@ -101,7 +109,12 @@ export default function Header({ transparent = false }: HeaderProps) {
       role="banner"
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-4 sm:px-6 lg:px-8 ">
-        <Link href="/" className="flex items-center gap-2 font-semibold text-lg" aria-label="Konsultacje online - Strona główna">
+        <Link 
+          href="/" 
+          onClick={handleLogoClick}
+          className="flex items-center gap-2 font-semibold text-lg" 
+          aria-label="Konsultacje online - Strona główna"
+        >
           <img src="/logo.png" alt="Lekarze i Terapeuci" className="h-25 w-auto object-contain" />
         </Link>
 
