@@ -51,11 +51,11 @@ export default function ArticlePage() {
 
         {/* Breadcrumbs */}
         <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-8 flex-wrap">
-          <Link href="/" className="hover:text-slate-800 transition-colors">Strona główna</Link>
+          <Link href="/" className="hover:text-slate-800 transition-colors  flex items-center">Strona główna</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-          <Link href="/baza-wiedzy" className="hover:text-slate-800 transition-colors">Baza wiedzy</Link>
+          <Link href="/baza-wiedzy" className="hover:text-slate-800 transition-colors  flex items-center">Baza wiedzy</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-          <Link href="/baza-wiedzy?kategoria=platnosci" className="hover:text-slate-800 transition-colors">Płatności</Link>
+          <Link href="/baza-wiedzy?kategoria=platnosci" className="hover:text-slate-800 transition-colors  flex items-center">Płatności</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
           <span className="text-slate-800">Jak wygląda płatność za konsultację?</span>
         </div>

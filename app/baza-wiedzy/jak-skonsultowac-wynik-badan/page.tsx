@@ -53,15 +53,15 @@ export default function ArticlePage() {
     <div className="min-h-screen bg-white flex flex-col">
       <Header />
 
-      <main className="flex-grow pt-8 pb-16 px-4 sm:px-8 xl:px-16 max-w-[90vw] mx-auto w-full">
+      <main className="flex-grow pt-8  pb-16 px-4 sm:px-8 xl:px-16 max-w-[90vw] mx-auto w-full">
 
         {/* Breadcrumbs */}
         <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-8 flex-wrap">
-          <Link href="/" className="hover:text-slate-800 transition-colors">Strona główna</Link>
+          <Link href="/" className="hover:text-slate-800 transition-colors  flex items-center">Strona główna</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-          <Link href="/baza-wiedzy" className="hover:text-slate-800 transition-colors">Baza wiedzy</Link>
+          <Link href="/baza-wiedzy" className="hover:text-slate-800 transition-colors  flex items-center">Baza wiedzy</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-          <Link href="/baza-wiedzy?kategoria=wyniki-badan" className="hover:text-slate-800 transition-colors">Wyniki badań</Link>
+          <Link href="/baza-wiedzy?kategoria=wyniki-badan" className="hover:text-slate-800 transition-colors  flex items-center">Wyniki badań</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
           <span className="text-slate-800">Jak skonsultować wynik badań?</span>
         </div>

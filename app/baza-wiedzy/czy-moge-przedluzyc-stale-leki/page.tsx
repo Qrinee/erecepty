@@ -54,11 +54,11 @@ export default function ArticlePage() {
 
         {/* Breadcrumbs */}
         <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-8 flex-wrap">
-          <Link href="/" className="hover:text-slate-800 transition-colors">Strona główna</Link>
+          <Link href="/" className="hover:text-slate-800 transition-colors flex items-center">Strona główna</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-          <Link href="/baza-wiedzy" className="hover:text-slate-800 transition-colors">Baza wiedzy</Link>
+          <Link href="/baza-wiedzy" className="hover:text-slate-800 transition-colors flex items-center">Baza wiedzy</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-          <Link href="/baza-wiedzy?kategoria=recepty-i-leki" className="hover:text-slate-800 transition-colors">Recepty i leki</Link>
+          <Link href="/baza-wiedzy?kategoria=recepty-i-leki" className="hover:text-slate-800 transition-colors flex items-center">Recepty i leki</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
           <span className="text-slate-800">Czy mogę przedłużyć stałe leki bez wizyty stacjonarnej?</span>
         </div>

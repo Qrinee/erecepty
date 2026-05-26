@@ -57,11 +57,11 @@ export default function ArticlePage() {
 
         {/* Breadcrumbs */}
         <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-8 flex-wrap">
-          <Link href="/" className="hover:text-slate-800 transition-colors">Strona główna</Link>
+          <Link href="/" className="hover:text-slate-800 transition-colors  flex items-center">Strona główna</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-          <Link href="/baza-wiedzy" className="hover:text-slate-800 transition-colors">Baza wiedzy</Link>
+          <Link href="/baza-wiedzy" className="hover:text-slate-800 transition-colors  flex items-center">Baza wiedzy</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
-          <Link href="/baza-wiedzy?kategoria=bezpieczenstwo" className="hover:text-slate-800 transition-colors">Bezpieczeństwo</Link>
+          <Link href="/baza-wiedzy?kategoria=bezpieczenstwo" className="hover:text-slate-800 transition-colors  flex items-center">Bezpieczeństwo</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
           <span className="text-slate-800">Czy konsultacje online są legalne i bezpieczne?</span>
         </div>

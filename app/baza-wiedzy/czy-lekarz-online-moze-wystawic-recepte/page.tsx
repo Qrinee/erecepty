@@ -49,12 +49,12 @@ export default function ArticlePage() {
       <main className="flex-grow pt-8 pb-16 px-4 sm:px-8 xl:px-16 max-w-[90vw] mx-auto w-full">
 
         {/* Breadcrumbs */}
-        <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500 mb-8 flex-wrap">
-          <Link href="/" className="hover:text-slate-800 transition-colors">Strona główna</Link>
+        <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500 mb-8 flex-wrap ">
+          <Link href="/" className="hover:text-slate-800 transition-colors  flex items-center">Strona główna</Link>
           <ChevronRight className="w-4 h-4 text-slate-300" />
-          <Link href="/baza-wiedzy" className="hover:text-slate-800 transition-colors">Baza wiedzy</Link>
+          <Link href="/baza-wiedzy" className="hover:text-slate-800 transition-colors flex items-center">Baza wiedzy</Link>
           <ChevronRight className="w-4 h-4 text-slate-300" />
-          <Link href="/baza-wiedzy?kategoria=e-recepty" className="hover:text-slate-800 transition-colors">E-recepty</Link>
+          <Link href="/baza-wiedzy?kategoria=e-recepty" className="hover:text-slate-800 transition-colors flex items-center">E-recepty</Link>
           <ChevronRight className="w-4 h-4 text-slate-300" />
           <span className="text-slate-800">Czy lekarz online może wystawić receptę?</span>
         </div>
