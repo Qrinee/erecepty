@@ -158,7 +158,7 @@ export default function ForWomanAndMen() {
                             </div>
 
                             <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                                Testosteron
+                                TRT Terapia zastępcza Testosteronem
                             </h2>
 
                             <p className="text-sm font-extrabold text-blue-500 leading-snug mb-3">
