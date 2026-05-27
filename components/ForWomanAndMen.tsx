@@ -15,45 +15,45 @@ export default function ForWomanAndMen() {
                     {/* Header with integrated image overlay */}
                     <div className="relative pt-8 pl-8 pb-8 pr-[25%] lg:pr-[35%] min-h-[220px] flex flex-col justify-center flex-grow z-20" >
                         <div className="relative z-20">
-                        {/* Badge & Title */}
-                        <div className="flex justify-start mb-4">
-                            <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
-                                Dla kobiet
-                            </span>
-                        </div>
+                            {/* Badge & Title */}
+                            <div className="flex justify-start mb-4">
+                                <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
+                                    Dla kobiet
+                                </span>
+                            </div>
 
-                        <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                            Tabletka <br /> „dzień po”
-                        </h2>
+                            <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
+                                Tabletka <br /> „dzień po”
+                            </h2>
 
-                        <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
-                            Dyskretna pomoc, kiedy liczy się czas.
-                        </p>
-                        <div>
-                            {/* Checklist */}
-                            <ul className="space-y-3 mb-8">
-                                {[
-                                    "Konsultacja online 24/7",
-                                    "E-recepta w kilka minut",
-                                    "Dyskrecja i pełne bezpieczeństwo",
-                                    "Bez konieczności wizyty stacjonarnej"
-                                ].map((text, idx) => (
-                                    <li key={idx} className="flex items-center gap-3">
-                                        <div className="w-5 h-5 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center flex-shrink-0">
-                                            <Check size={12} strokeWidth={3} />
-                                        </div>
-                                        <span className="text-sm font-semibold text-slate-700">{text}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                            <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
+                                Dyskretna pomoc, kiedy liczy się czas.
+                            </p>
+                            <div>
+                                {/* Checklist */}
+                                <ul className="space-y-3 mb-8">
+                                    {[
+                                        "Konsultacja online 24/7",
+                                        "E-recepta w kilka minut",
+                                        "Dyskrecja i pełne bezpieczeństwo",
+                                        "Bez konieczności wizyty stacjonarnej"
+                                    ].map((text, idx) => (
+                                        <li key={idx} className="flex items-center gap-3">
+                                            <div className="w-5 h-5 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center flex-shrink-0">
+                                                <Check size={12} strokeWidth={3} />
+                                            </div>
+                                            <span className="text-sm font-semibold text-slate-700">{text}</span>
+                                        </li>
+                                    ))}
+                                </ul>
 
-                        </div>
+                            </div>
 
-                        <div className="mt-2 relative z-20">
-                            <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
-                                Umów konsultację <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </div>
+                            <div className="mt-2 relative z-20">
+                                <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
+                                    Umów konsultację od 79zł<ArrowRight className="w-4 h-4" />
+                                </Link>
+                            </div>
                         </div>
 
                         {/* Absolute Image Overlay on the right */}
@@ -82,47 +82,47 @@ export default function ForWomanAndMen() {
                     {/* Header with integrated image overlay */}
                     <div className="relative pt-8 pl-8 pb-8 pr-[25%] lg:pr-[35%] min-h-[250px] flex flex-col justify-center flex-grow z-20">
                         <div className="relative z-20">
-                        {/* Badge & Title */}
-                        <div className="flex justify-start mb-4">
-                            <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
-                                Dla kobiet
-                            </span>
-                        </div>
+                            {/* Badge & Title */}
+                            <div className="flex justify-start mb-4">
+                                <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
+                                    Dla kobiet
+                                </span>
+                            </div>
 
-                        <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                            Antykoncepcja
-                        </h2>
+                            <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
+                                Antykoncepcja
+                            </h2>
 
-                        <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
-                            Dobierz antykoncepcję dopasowaną do Ciebie.
-                        </p>
+                            <p className="text-sm font-extrabold text-rose-500 leading-snug mb-3">
+                                Dobierz antykoncepcję dopasowaną do Ciebie.
+                            </p>
 
-                        <div>
-                            {/* Checklist */}
-                            <ul className="space-y-3 mb-8">
-                                {[
-                                    "Dobór metod antykoncepcji",
-                                    "E-recepta na tabletki antykoncepcyjne",
-                                    "Regularne kontrole i wsparcie lekarza",
-                                    "Dyskrecja i wygoda konsultacji online"
-                                ].map((text, idx) => (
-                                    <li key={idx} className="flex items-center gap-3">
-                                        <div className="w-5 h-5 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center flex-shrink-0">
-                                            <Check size={12} strokeWidth={3} />
-                                        </div>
-                                        <span className="text-sm font-semibold text-slate-700">{text}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                            <div>
+                                {/* Checklist */}
+                                <ul className="space-y-3 mb-8">
+                                    {[
+                                        "Dobór metod antykoncepcji",
+                                        "E-recepta na tabletki antykoncepcyjne",
+                                        "Regularne kontrole i wsparcie lekarza",
+                                        "Dyskrecja i wygoda konsultacji online"
+                                    ].map((text, idx) => (
+                                        <li key={idx} className="flex items-center gap-3">
+                                            <div className="w-5 h-5 rounded-full bg-rose-50 text-rose-500 flex items-center justify-center flex-shrink-0">
+                                                <Check size={12} strokeWidth={3} />
+                                            </div>
+                                            <span className="text-sm font-semibold text-slate-700">{text}</span>
+                                        </li>
+                                    ))}
+                                </ul>
 
 
-                        </div>
+                            </div>
 
-                        <div className="mt-2 relative z-20">
-                            <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
-                                Umów konsultację <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </div>
+                            <div className="mt-2 relative z-20">
+                                <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
+                                    Umów konsultację od 79zł <ArrowRight className="w-4 h-4" />
+                                </Link>
+                            </div>
                         </div>
 
                         {/* Absolute Image Overlay on the right */}
@@ -150,46 +150,46 @@ export default function ForWomanAndMen() {
                     {/* Header with integrated image overlay */}
                     <div className="relative pt-8 pl-8 pb-8 pr-[25%] lg:pr-[35%] min-h-[250px] flex flex-col justify-center flex-grow z-20">
                         <div className="relative z-20">
-                        {/* Badge & Title */}
-                        <div className="flex justify-start mb-4">
-                            <span className="bg-blue-50 border border-blue-100 text-blue-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
-                                Dla mężczyzn
-                            </span>
-                        </div>
+                            {/* Badge & Title */}
+                            <div className="flex justify-start mb-4">
+                                <span className="bg-blue-50 border border-blue-100 text-blue-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
+                                    Dla mężczyzn
+                                </span>
+                            </div>
 
-                        <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                            Testosteron
-                        </h2>
+                            <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
+                                Testosteron
+                            </h2>
 
-                        <p className="text-sm font-extrabold text-blue-500 leading-snug mb-3">
-                            Zadbaj o energię, siłę i dobre samopoczucie.
-                        </p>
-                        <div>
-                            {/* Checklist */}
-                            <ul className="space-y-3 mb-8">
-                                {[
-                                    "Badanie i konsultacja online",
-                                    "Terapia testosteronem dopasowana do Ciebie",
-                                    "Poprawa energii, libido i koncentracji",
-                                    "Dyskretna i bezpieczna opieka medyczna"
-                                ].map((text, idx) => (
-                                    <li key={idx} className="flex items-center gap-3">
-                                        <div className="w-5 h-5 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center flex-shrink-0">
-                                            <Check size={12} strokeWidth={3} />
-                                        </div>
-                                        <span className="text-sm font-semibold text-slate-700">{text}</span>
-                                    </li>
-                                ))}
-                            </ul>
+                            <p className="text-sm font-extrabold text-blue-500 leading-snug mb-3">
+                                Zadbaj o energię, siłę i dobre samopoczucie.
+                            </p>
+                            <div>
+                                {/* Checklist */}
+                                <ul className="space-y-3 mb-8">
+                                    {[
+                                        "Badanie i konsultacja online",
+                                        "Terapia testosteronem dopasowana do Ciebie",
+                                        "Poprawa energii, libido i koncentracji",
+                                        "Dyskretna i bezpieczna opieka medyczna"
+                                    ].map((text, idx) => (
+                                        <li key={idx} className="flex items-center gap-3">
+                                            <div className="w-5 h-5 rounded-full bg-blue-50 text-blue-500 flex items-center justify-center flex-shrink-0">
+                                                <Check size={12} strokeWidth={3} />
+                                            </div>
+                                            <span className="text-sm font-semibold text-slate-700">{text}</span>
+                                        </li>
+                                    ))}
+                                </ul>
 
 
-                        </div>
+                            </div>
 
-                        <div className="mt-2 relative z-20">
-                            <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
-                                Umów konsultację <ArrowRight className="w-4 h-4" />
-                            </Link>
-                        </div>
+                            <div className="mt-2 relative z-20">
+                                <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
+                                    Umów konsultację od 79zł <ArrowRight className="w-4 h-4" />
+                                </Link>
+                            </div>
                         </div>
 
                         {/* Absolute Image Overlay on the right */}
