@@ -10,6 +10,8 @@ import {
   getServicePriceAndType,
   inputCls,
   inputErrorCls,
+  textareaCls,
+  textareaErrorCls,
   labelCls,
   FormErrorAlert,
   SectionHeader,
@@ -34,6 +36,8 @@ export function EReceptaForm() {
   const [accountPassword, setAccountPassword] = useState("");
   const [specialization, setSpecialization] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [doctorChoosesMeds, setDoctorChoosesMeds] = useState(false);
+  const [symptomsDescription, setSymptomsDescription] = useState("");
 
   const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone, setPesel });
   const searchParams = useSearchParams();
@@ -117,8 +121,13 @@ export function EReceptaForm() {
     }
     
     // Validate selectedMeds
-    if (selectedMeds.length === 0) {
+    if (!doctorChoosesMeds && selectedMeds.length === 0) {
       newErrors.selectedMeds = "Musisz wyszukać i wybrać co najmniej jeden lek.";
+    }
+    
+    // Validate symptomsDescription if doctorChoosesMeds is true
+    if (doctorChoosesMeds && !symptomsDescription.trim()) {
+      newErrors.symptomsDescription = "Opisz swoje objawy lub dolegliwości, aby lekarz mógł dobrać odpowiednie leki.";
     }
     
     // Validate consents
@@ -166,6 +175,8 @@ export function EReceptaForm() {
           medicalInfo: {
             medicinesExtra: [],
             usedBefore: usedBefore === "Tak",
+            doctorChoosesMeds,
+            doctorChoosesMedsDescription: doctorChoosesMeds ? symptomsDescription : "",
           },
           specialization: specialization || null,
           accountPassword: createAccount ? accountPassword : null,
@@ -274,37 +285,67 @@ export function EReceptaForm() {
         <div className="md:col-span-2">
           <SectionHeader icon={Pill} title="Informacje do recepty" color="bg-[#E11D48]" />
           
-          <div className={`${errors.selectedMeds ? "bg-red-50/30 border border-red-200" : "bg-[#FFF1F2]/50 border border-[#E11D48]/20"} rounded-xl p-4 relative mb-4`}>
-            <label className={labelCls}>Wyszukaj lek po nazwie <span className="text-red-500">*</span></label>
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input type="text" className={`${inputCls} pl-10 bg-white`} placeholder="Wpisz nazwę leku, np. Ibuprom..." value={medQ} onChange={e => setMedQ(e.target.value)} autoComplete="off" />
-              {medSearching && <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 animate-spin text-slate-400" />}
-              {medResults.length > 0 && (
-                <div className="absolute z-50 left-0 right-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-xl max-h-60 overflow-y-auto">
-                  {medResults.map((p: any) => (
-                    <button key={p.id || p._id} type="button" onClick={() => addMed(p)} className="w-full text-left px-4 py-3 text-sm hover:bg-[#FFF1F2] border-b border-slate-50 transition-colors">
-                      <div className="font-bold text-slate-800">{p.suggestion || p.nazwa || p.nazwaProduktuLeczniczego || 'Lek'}</div>
-                      <div className="text-[11px] text-slate-500 mt-1">{p.substancjaCzynna || ''}{p.moc ? ` | ${p.moc}` : ''}</div>
-                    </button>
+          <div className="bg-white border border-slate-200 rounded-xl p-4 mb-4">
+            <ConsentCheckbox id="doctor_chooses_meds" checked={doctorChoosesMeds} onChange={(v) => {
+              setDoctorChoosesMeds(v);
+              if (v) {
+                setSelectedMeds([]);
+              }
+              if (errors.selectedMeds) setErrors(prev => { const n = {...prev}; delete n.selectedMeds; return n; });
+              if (errors.symptomsDescription) setErrors(prev => { const n = {...prev}; delete n.symptomsDescription; return n; });
+            }}>
+              <span className="font-bold text-slate-700">Chcę, aby to lekarz dobrał odpowiednie leki na podstawie moich objawów</span>
+            </ConsentCheckbox>
+          </div>
+
+          {!doctorChoosesMeds ? (
+            <div className={`${errors.selectedMeds ? "bg-red-50/30 border border-red-200" : "bg-[#FFF1F2]/50 border border-[#E11D48]/20"} rounded-xl p-4 relative mb-4`}>
+              <label className={labelCls}>Wyszukaj lek po nazwie <span className="text-red-500">*</span></label>
+              <div className="relative">
+                <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                <input type="text" className={`${inputCls} pl-10 bg-white`} placeholder="Wpisz nazwę leku, np. Ibuprom..." value={medQ} onChange={e => setMedQ(e.target.value)} autoComplete="off" />
+                {medSearching && <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 animate-spin text-slate-400" />}
+                {medResults.length > 0 && (
+                  <div className="absolute z-50 left-0 right-0 mt-1 bg-white border border-slate-200 rounded-lg shadow-xl max-h-60 overflow-y-auto">
+                    {medResults.map((p: any) => (
+                      <button key={p.id || p._id} type="button" onClick={() => addMed(p)} className="w-full text-left px-4 py-3 text-sm hover:bg-[#FFF1F2] border-b border-slate-50 transition-colors">
+                        <div className="font-bold text-slate-800">{p.suggestion || p.nazwa || p.nazwaProduktuLeczniczego || 'Lek'}</div>
+                        <div className="text-[11px] text-slate-500 mt-1">{p.substancjaCzynna || ''}{p.moc ? ` | ${p.moc}` : ''}</div>
+                      </button>
+                    ))}
+                  </div>
+                )}
+              </div>
+              
+              {errors.selectedMeds && <p className="text-xs text-red-500 font-medium mt-2">{errors.selectedMeds}</p>}
+              
+              {selectedMeds.length > 0 && (
+                <div className="mt-4 space-y-3">
+                  {selectedMeds.map(m => (
+                    <div key={m.medicineId} className="bg-white border border-slate-200 rounded-xl p-4 relative">
+                      <button type="button" onClick={() => removeMed(m.medicineId)} className="absolute top-3 right-3 text-red-400 hover:text-red-600 p-1"><Trash2 className="w-4 h-4" /></button>
+                      <div className="font-bold text-slate-900">{m.name}</div>
+                    </div>
                   ))}
                 </div>
               )}
             </div>
-            
-            {errors.selectedMeds && <p className="text-xs text-red-500 font-medium mt-2">{errors.selectedMeds}</p>}
-            
-            {selectedMeds.length > 0 && (
-              <div className="mt-4 space-y-3">
-                {selectedMeds.map(m => (
-                  <div key={m.medicineId} className="bg-white border border-slate-200 rounded-xl p-4 relative">
-                    <button type="button" onClick={() => removeMed(m.medicineId)} className="absolute top-3 right-3 text-red-400 hover:text-red-600 p-1"><Trash2 className="w-4 h-4" /></button>
-                    <div className="font-bold text-slate-900">{m.name}</div>
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
+          ) : (
+            <div className={`${errors.symptomsDescription ? "bg-red-50/30 border border-red-200" : "bg-[#FFF1F2]/50 border border-[#E11D48]/20"} rounded-xl p-4 relative mb-4`}>
+              <label className={labelCls}>Opis objawów / dolegliwości <span className="text-red-500">*</span></label>
+              <textarea 
+                className={errors.symptomsDescription ? textareaErrorCls : textareaCls} 
+                rows={4}
+                placeholder="Opisz krótko swoje dolegliwości, objawy lub jakie leki są Ci potrzebne, aby lekarz mógł dokonać odpowiedniego wyboru..." 
+                value={symptomsDescription} 
+                onChange={e => {
+                  setSymptomsDescription(e.target.value);
+                  if (errors.symptomsDescription) setErrors(prev => { const n = {...prev}; delete n.symptomsDescription; return n; });
+                }} 
+              />
+              {errors.symptomsDescription && <p className="text-xs text-red-500 font-medium mt-2">{errors.symptomsDescription}</p>}
+            </div>
+          )}
 
           <div className="space-y-3">
             <div>

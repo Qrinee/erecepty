@@ -126,8 +126,11 @@ export default function Hero() {
 
             {/* Badge */}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-[11px] sm:text-xs font-bold mb-6 uppercase tracking-wider">
-              <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-              KONSULTACJE ONLINE 24/7
+              <span className="relative flex h-2.5 w-2.5">
+                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-emerald-500"></span>
+              </span>
+              DOSTĘPNI LEKARZE ONLINE
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-[3.25rem] font-bold text-slate-900 leading-[1.1] mb-2 tracking-tight">

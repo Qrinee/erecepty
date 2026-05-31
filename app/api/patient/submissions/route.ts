@@ -138,9 +138,17 @@ export async function POST(request: NextRequest) {
     }
     
     // Validate medicines array
-    if (!medicines || !Array.isArray(medicines) || medicines.length === 0) {
+    const doctorChoosesMeds = medicalInfo?.doctorChoosesMeds === true;
+    if (!doctorChoosesMeds && (!medicines || !Array.isArray(medicines) || medicines.length === 0)) {
       return NextResponse.json(
         { success: false, message: ERROR_MESSAGES.MEDICINES_REQUIRED, errorCode: 'MEDICINES_REQUIRED' },
+        { status: 400 }
+      );
+    }
+
+    if (doctorChoosesMeds && !medicalInfo?.doctorChoosesMedsDescription?.trim()) {
+      return NextResponse.json(
+        { success: false, message: 'Opisz swoje objawy lub dolegliwości, aby lekarz mógł dobrać odpowiednie leki', errorCode: 'SYMPTOMS_DESCRIPTION_REQUIRED' },
         { status: 400 }
       );
     }

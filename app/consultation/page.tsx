@@ -51,7 +51,19 @@ function ConsultationPageInner() {
     try {
       const payload = {
         patient: { email: contactData.email, firstName: contactData.firstName, lastName: contactData.lastName, pesel: contactData.pesel, phone: contactData.phone, street: contactData.street || "", houseNumber: contactData.houseNumber || "", apartmentNumber: contactData.apartmentNumber || "", postalCode: contactData.postalCode || "", city: contactData.city || "" },
-        medicalInfo: { mainComplaint: medicalData.mainComplaint, hasChronicDiseases: medicalData.hasChronicDiseases || "no", chronicDiseases: medicalData.chronicDiseases || "", takesMedications: medicalData.takesMedications || "no", medications: medicalData.medications || "", hasAllergies: medicalData.hasAllergies || "no", allergies: medicalData.allergies || "", otherMedicalInfo: medicalData.otherMedicalInfo || "", pregnancyStatus: medicalData.pregnancyStatus || "na" },
+        medicalInfo: { 
+          mainComplaint: medicalData.mainComplaint, 
+          hasChronicDiseases: medicalData.hasChronicDiseases || "no", 
+          chronicDiseases: medicalData.chronicDiseases || "", 
+          takesMedications: medicalData.takesMedications || "no", 
+          medications: medicalData.medications || "", 
+          hasAllergies: medicalData.hasAllergies || "no", 
+          allergies: medicalData.allergies || "", 
+          otherMedicalInfo: medicalData.otherMedicalInfo || "", 
+          pregnancyStatus: medicalData.pregnancyStatus || "na",
+          doctorChoosesMeds: medicalData.doctorChoosesMeds || false,
+          doctorChoosesMedsDescription: medicalData.doctorChoosesMedsDescription || ""
+        },
         medicines: selectedMedicines.map(m => ({ medicineId: m.medicineId, quantity: m.quantity, dosage: m.dosage })),
         amount: 8900,
         appointmentDate: medicalData.appointmentDate || null,
@@ -119,9 +131,11 @@ function ConsultationPageInner() {
               <div className="flex items-center justify-between mb-6"><h2 className="text-2xl font-bold text-slate-900">Krok 3: Podsumowanie</h2><button onClick={() => setStep("contact")} className="flex items-center gap-1 text-sm text-[#064743] hover:underline"><ArrowLeft className="w-4 h-4" />Edytuj dane</button></div>
               <div className="bg-gray-50 rounded-xl p-5 mb-4"><h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2"><User className="w-4 h-4 text-[#064743]" />Dane pacjenta</h3><div className="grid sm:grid-cols-2 gap-2 text-sm"><p><span className="text-gray-500">Imię i nazwisko:</span> <span className="font-medium">{contactData.firstName} {contactData.lastName}</span></p><p><span className="text-gray-500">PESEL:</span> <span className="font-medium">{contactData.pesel}</span></p><p className="flex items-center gap-1"><Mail className="w-3 h-3 text-gray-400" /> <span className="font-medium">{contactData.email}</span></p><p className="flex items-center gap-1"><Phone className="w-3 h-3 text-gray-400" /> <span className="font-medium">{contactData.phone}</span></p></div></div>
               <div className="bg-gray-50 rounded-xl p-5 mb-4"><h3 className="font-semibold text-slate-900 mb-3 flex items-center gap-2"><FileText className="w-4 h-4 text-[#064743]" />Wywiad medyczny</h3><p className="text-sm text-slate-700 mb-2"><span className="text-gray-500">Główna dolegliwość:</span> <span className="font-medium">{medicalData.mainComplaint}</span></p>{medicalData.specialization && <p className="text-sm text-slate-700 mb-2"><span className="text-gray-500">Specjalizacja lekarza:</span> <span className="font-medium">{medicalData.specialization}</span></p>}<p className="text-sm text-slate-700"><span className="text-gray-500">Status ciąży:</span> <span className="font-medium">{medicalData.pregnancyStatus === "pregnant" ? "W ciąży" : medicalData.pregnancyStatus === "breastfeeding" ? "Karmi piersią" : "Nie dotyczy"}</span></p></div>
-              {selectedMedicines.length > 0 && (
+              {selectedMedicines.length > 0 ? (
                 <div className="bg-blue-50 rounded-xl p-5 mb-4 border border-blue-200"><h3 className="font-semibold text-blue-900 mb-2">Zamówione leki</h3><div className="space-y-1 text-sm">{selectedMedicines.map((m,i)=><div key={i} className="flex justify-between"><span className="font-medium">{m.name}</span><span className="text-gray-500">x{m.quantity} {m.dosage}</span></div>)}</div></div>
-              )}
+              ) : medicalData.doctorChoosesMeds ? (
+                <div className="bg-emerald-50 rounded-xl p-5 mb-4 border border-emerald-200"><h3 className="font-semibold text-emerald-950 mb-2">Wybrana opcja</h3><p className="text-sm text-emerald-800 font-medium">Leki zostaną dobrane przez lekarza na podstawie opisu Twoich objawów.</p></div>
+              ) : null}
               {(medicalData.appointmentDate || medicalData.appointmentTime || medicalData.consultationMethod) && (
                 <div className="bg-[#DAE9E6] rounded-xl p-5 mb-4"><h3 className="font-semibold text-[#064743] mb-3 flex items-center gap-2"><Calendar className="w-4 h-4" />Termin konsultacji</h3><div className="flex flex-wrap gap-3 text-sm">{medicalData.appointmentDate && <span className="bg-white rounded-lg px-3 py-1.5 shadow-sm font-medium text-[#064743]">📅 {medicalData.appointmentDate}</span>}{medicalData.appointmentTime && <span className="bg-white rounded-lg px-3 py-1.5 shadow-sm font-medium text-[#064743]">🕐 {medicalData.appointmentTime}</span>}{medicalData.consultationMethod && <span className="bg-white rounded-lg px-3 py-1.5 shadow-sm font-medium text-[#064743]">{medicalData.consultationMethod === "video" ? "📹 Wideo" : "📞 Audio"}</span>}</div></div>
               )}

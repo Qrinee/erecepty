@@ -60,6 +60,9 @@ export interface MedicalConsultationData {
   // Assigned doctor info (filled by form after slot selection)
   assignedDoctorName?: string;
   assignedDoctorId?: string;
+  // Doctor chooses medicines option
+  doctorChoosesMeds?: boolean;
+  doctorChoosesMedsDescription?: string;
 }
 
 export interface MedicalLeaveData {
