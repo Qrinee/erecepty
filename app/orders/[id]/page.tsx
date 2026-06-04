@@ -273,20 +273,27 @@ export default function OrderDetailPage() {
             )}
 
             {/* Medicines Section */}
-            {data.medicines && data.medicines.length > 0 && (
+            {data.medicines && data.medicines.length > 0 ? (
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">Leki ({data.medicines.length})</h2>
                 <div className="space-y-2">
                   {data.medicines.map((med: any, idx: number) => (
                     <div key={idx} className="p-3 bg-gray-50 rounded-lg">
-                      <p className="font-medium text-gray-900">{idx + 1}. {med.medicineId || 'Lek'}</p>
+                      <p className="font-medium text-gray-900">{idx + 1}. {med.medicineName || med.medicineId || 'Lek'}</p>
                       <p className="text-sm text-gray-600">Ilość: {med.quantity}</p>
                       {med.dosage && <p className="text-sm text-gray-600">Dawka: {med.dosage}</p>}
                     </div>
                   ))}
                 </div>
               </div>
-            )}
+            ) : data.medicalInfo?.doctorChoosesMeds ? (
+              <div className="bg-white rounded-2xl p-6 border border-gray-200">
+                <h2 className="text-lg font-semibold text-gray-900 mb-4">Leki</h2>
+                <div className="p-4 bg-emerald-50 border border-emerald-100 rounded-lg text-emerald-800 text-sm">
+                  Wybrano opcję: <strong>Leki dobierze lekarz</strong> na podstawie opisu Twoich objawów.
+                </div>
+              </div>
+            ) : null}
           </div>
 
           {/* Right Column - Summary */}

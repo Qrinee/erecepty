@@ -29,6 +29,8 @@ export default function MedicalConsultationForm(p: MedicalConsultationFormProps)
     otherMedicalInfo: '', pregnancyStatus: null,
     appointmentDate: initialData?.appointmentDate || '', appointmentTime: initialData?.appointmentTime || '',
     consultationMethod: initialData?.consultationMethod || null, specialization: initialData?.specialization || '',
+    doctorChoosesMeds: initialData?.doctorChoosesMeds || false,
+    doctorChoosesMedsDescription: initialData?.doctorChoosesMedsDescription || '',
   });
 
   const [specializations, setSpecializations] = useState<string[]>([]);
@@ -120,6 +122,7 @@ export default function MedicalConsultationForm(p: MedicalConsultationFormProps)
       if(!formData.appointmentTime?.trim()) errs.appointmentTime='Godzina wymagana';
       if(!formData.consultationMethod) errs.consultationMethod='Wybierz metodę';
     }
+    if(formData.doctorChoosesMeds && !formData.doctorChoosesMedsDescription?.trim()) errs.doctorChoosesMedsDescription='Wymagane';
     if(Object.keys(errs).length>0) return;
     onSubmit(formData);
   };
@@ -133,31 +136,66 @@ export default function MedicalConsultationForm(p: MedicalConsultationFormProps)
 
         {showMedicineSearch && (
           <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 relative z-10">
-            <h3 className="font-semibold text-blue-900 mb-2">Wyszukaj leki, których potrzebujesz</h3>
-            <div className="relative mb-3">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
-              <input type="text" value={medQ} onChange={e=>setMedQ(e.target.value)} placeholder="Wpisz nazwę leku..." className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 bg-white" autoComplete="off" />
-              {medSearching && <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 animate-spin text-gray-400" />}
-              {medResults.length > 0 && (
-                <div className="absolute z-50 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-2xl max-h-56 overflow-y-auto">
-                  {medResults.map((p:any) => (
-                    <button key={p.id||p._id} type="button" onClick={()=>addMed(p)} className="w-full text-left px-4 py-3 text-sm hover:bg-blue-50 border-b border-gray-100 last:border-0 transition-colors">
-                      <div className="font-semibold text-gray-900">{p.suggestion||p.nazwa||p.nazwaProduktuLeczniczego||'Lek'}</div>
-                      <div className="text-xs text-gray-500 mt-0.5">{p.substancjaCzynna||''}{p.moc?` | ${p.moc}`:''}{p.postacFarmaceutyczna?` | ${p.postacFarmaceutyczna}`:''}</div>
-                    </button>
-                  ))}
-                </div>
-              )}
+            <div className="flex items-center gap-2 mb-3">
+              <input 
+                id="doctorChoosesMeds" 
+                type="checkbox" 
+                checked={formData.doctorChoosesMeds || false} 
+                onChange={e => {
+                  const val = e.target.checked;
+                  handleChange('doctorChoosesMeds', val);
+                  if (val) {
+                    setSelectedMeds([]);
+                    onMedicinesChange?.([]);
+                  }
+                }}
+                className="w-4 h-4 accent-[#064743] cursor-pointer"
+              />
+              <label htmlFor="doctorChoosesMeds" className="text-sm font-semibold text-slate-700 cursor-pointer">
+                Chcę, aby to lekarz dobrał odpowiednie leki na podstawie moich objawów (nie muszę wpisywać nazw leków)
+              </label>
             </div>
-            {selectedMeds.length > 0 && (
-              <div className="space-y-2 bg-white rounded-lg p-3">
-                <p className="text-xs font-semibold text-gray-500 mb-2">Wybrane leki:</p>
-                {selectedMeds.map(m=>(
-                  <div key={m.medicineId} className="flex items-center gap-2 bg-gray-50 p-2 rounded-lg text-sm">
-                    <span className="flex-1 font-medium text-gray-900 truncate">{m.name}</span>
-                    <button type="button" onClick={()=>removeMed(m.medicineId)} className="text-red-500 hover:text-red-700 p-1"><Trash2 className="w-4 h-4" /></button>
+
+            {!formData.doctorChoosesMeds ? (
+              <>
+                <h3 className="font-semibold text-blue-900 mb-2">Wyszukaj leki, których potrzebujesz</h3>
+                <div className="relative mb-3">
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-gray-400" />
+                  <input type="text" value={medQ} onChange={e=>setMedQ(e.target.value)} placeholder="Wpisz nazwę leku..." className="w-full pl-10 pr-4 py-2.5 border border-gray-200 rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 bg-white" autoComplete="off" />
+                  {medSearching && <Loader2 className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 animate-spin text-gray-400" />}
+                  {medResults.length > 0 && (
+                    <div className="absolute z-50 left-0 right-0 mt-1 bg-white border border-gray-200 rounded-lg shadow-2xl max-h-56 overflow-y-auto">
+                      {medResults.map((p:any) => (
+                        <button key={p.id||p._id} type="button" onClick={()=>addMed(p)} className="w-full text-left px-4 py-3 text-sm hover:bg-blue-50 border-b border-gray-100 last:border-0 transition-colors">
+                          <div className="font-semibold text-gray-900">{p.suggestion||p.nazwa||p.nazwaProduktuLeczniczego||'Lek'}</div>
+                          <div className="text-xs text-gray-500 mt-0.5">{p.substancjaCzynna||''}{p.moc?` | ${p.moc}`:''}{p.postacFarmaceutyczna?` | ${p.postacFarmaceutyczna}`:''}</div>
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+                {selectedMeds.length > 0 && (
+                  <div className="space-y-2 bg-white rounded-lg p-3">
+                    <p className="text-xs font-semibold text-gray-500 mb-2">Wybrane leki:</p>
+                    {selectedMeds.map(m=>(
+                      <div key={m.medicineId} className="flex items-center gap-2 bg-gray-50 p-2 rounded-lg text-sm">
+                        <span className="flex-1 font-medium text-gray-900 truncate">{m.name}</span>
+                        <button type="button" onClick={()=>removeMed(m.medicineId)} className="text-red-500 hover:text-red-700 p-1"><Trash2 className="w-4 h-4" /></button>
+                      </div>
+                    ))}
                   </div>
-                ))}
+                )}
+              </>
+            ) : (
+              <div className="bg-white rounded-lg p-3 border border-gray-100">
+                <label className="block text-xs font-semibold text-gray-500 mb-2">Jakich leków lub pomocy potrzebujesz? Opisz swoje objawy/dolegliwości <span className="text-red-500">*</span></label>
+                <textarea 
+                  value={formData.doctorChoosesMedsDescription || ''} 
+                  onChange={e=>handleChange('doctorChoosesMedsDescription', e.target.value)} 
+                  placeholder="Opisz krótko objawy lub leki, które są potrzebne, aby lekarz mógł dobrać właściwe preparaty..." 
+                  className="w-full px-4 py-2.5 rounded-lg border border-gray-200 text-sm focus:outline-none focus:ring-2 focus:ring-blue-300 min-h-[80px] resize-y bg-white"
+                  required={formData.doctorChoosesMeds}
+                />
               </div>
             )}
           </div>

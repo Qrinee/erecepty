@@ -305,6 +305,8 @@ export default function SubmissionDetailPage() {
                   else if (key === 'usedBefore') label = 'Lek stosowany wcześniej';
                   else if (key === 'mainComplaint') label = 'Główna dolegliwość';
                   else if (key === 'pregnancyStatus') label = 'Ciąża/Karmienie';
+                  else if (key === 'doctorChoosesMeds') label = 'Lekarz wybierze leki';
+                  else if (key === 'doctorChoosesMedsDescription') label = 'Opis dolegliwości / wnioskowanych leków';
                   
                   let displayValue = String(value);
                   if (typeof value === 'boolean') displayValue = value ? "Tak" : "Nie";
