@@ -60,27 +60,55 @@ export default function AdminDiscountCodes() {
     setSubmitLoading(true);
 
     try {
-      const res = await fetch(`${API_URL}/api/discounts`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          code: newCode,
-          type: newType,
-          value: Number(newValue),
-          maxUses: newMaxUses === "" ? null : Number(newMaxUses),
-          isActive: true
-        })
-      });
-      const data = await res.json();
-      if (data.success) {
-        setCodes([data.data, ...codes]);
-        setShowAddForm(false);
-        setNewCode("");
-        setNewValue("");
-        setNewMaxUses("");
+      if (bulkCount > 1) {
+        const res = await fetch(`${API_URL}/api/discounts/bulk`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            prefix: newCode,
+            count: bulkCount,
+            type: newType,
+            value: Number(newValue),
+            maxUses: newMaxUses === "" ? null : Number(newMaxUses),
+            isActive: true
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          setCodes([...data.data, ...codes]);
+          setShowAddForm(false);
+          setNewCode("");
+          setNewValue("");
+          setNewMaxUses("");
+          setBulkCount(1);
+        } else {
+          alert(data.message || "Błąd podczas dodawania kodów");
+        }
       } else {
-        alert(data.message || "Błąd podczas dodawania kodu");
+        const res = await fetch(`${API_URL}/api/discounts`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify({
+            code: newCode,
+            type: newType,
+            value: Number(newValue),
+            maxUses: newMaxUses === "" ? null : Number(newMaxUses),
+            isActive: true
+          })
+        });
+        const data = await res.json();
+        if (data.success) {
+          setCodes([data.data, ...codes]);
+          setShowAddForm(false);
+          setNewCode("");
+          setNewValue("");
+          setNewMaxUses("");
+          setBulkCount(1);
+        } else {
+          alert(data.message || "Błąd podczas dodawania kodu");
+        }
       }
     } catch (err) {
       alert("Błąd połączenia z serwerem");
@@ -147,15 +175,27 @@ export default function AdminDiscountCodes() {
       {showAddForm && (
         <div className="bg-white p-6 rounded-xl shadow-sm border border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900 mb-4">Dodaj nowy kod rabatowy</h3>
-          <form onSubmit={handleAddSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 items-end">
+          <form onSubmit={handleAddSubmit} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-6 gap-4 items-end">
             <div>
-              <label className="block text-xs font-semibold text-gray-600 mb-1">Kod <span className="text-red-500">*</span></label>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">{bulkCount > 1 ? "Prefiks kodu" : "Kod"} <span className="text-red-500">*</span></label>
               <input
                 type="text"
                 required
                 value={newCode}
                 onChange={e => setNewCode(e.target.value.toUpperCase())}
-                placeholder="np. ZIMA2025"
+                placeholder={bulkCount > 1 ? "np. ZIMA" : "np. ZIMA2025"}
+                className="w-full border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-[#064743] focus:ring-[#064743]"
+              />
+            </div>
+            <div>
+              <label className="block text-xs font-semibold text-gray-600 mb-1">Ilość kodów</label>
+              <input
+                type="number"
+                required
+                min="1"
+                max="500"
+                value={bulkCount}
+                onChange={e => setBulkCount(Number(e.target.value))}
                 className="w-full border-gray-200 rounded-lg px-3 py-2 text-sm focus:border-[#064743] focus:ring-[#064743]"
               />
             </div>
