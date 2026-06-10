@@ -15,7 +15,7 @@ export const metadata = {
   description: 'Nowoczesna platforma telemedyczna umożliwiająca szybki i bezpieczny dostęp do profesjonalnych konsultacji zdrowotnych bez wychodzenia z domu.',
   manifest: '/manifest.json',
   icons: {
-    icon: '/logo.png',
+    icon: '/favicon.png',
   },
 };
 

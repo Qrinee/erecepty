@@ -77,7 +77,7 @@ export default function ServicesPanel() {
       title: "Skierowanie",
       description: "Skierowanie na badania, zabiegi lub do specjalisty",
       price: 79,
-      image: "/skierowanie2.png",
+      image: "/skierowanie.png",
       href: "/wypelnij-formularz?service=Skierowanie",
       color: "bg-[#F4F6FB] border-[#E5EAFC]",
       buttonColor: "bg-[#2563EB] hover:bg-[#1D4ED8]",
