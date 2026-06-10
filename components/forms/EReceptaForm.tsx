@@ -48,7 +48,7 @@ export function EReceptaForm() {
   const [medQ, setMedQ] = useState("");
   const [medResults, setMedResults] = useState<any[]>([]);
   const [medSearching, setMedSearching] = useState(false);
-  const [selectedMeds, setSelectedMeds] = useState<{ medicineId: string; name: string }[]>([]);
+  const [selectedMeds, setSelectedMeds] = useState<{ medicineId: string; name: string; dosage: string; quantity: string; usedBefore: string; purpose: string }[]>([]);
   const medTimer = React.useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const searchMeds = React.useCallback(async (q: string) => {
@@ -72,7 +72,7 @@ export function EReceptaForm() {
     const id = String(prod.id || prod._id);
     if (selectedMeds.some(m => m.medicineId === id)) return;
     const name = prod.suggestion || prod.nazwa || prod.nazwaProduktuLeczniczego || 'Lek';
-    setSelectedMeds(prev => [...prev, { medicineId: id, name }]);
+    setSelectedMeds(prev => [...prev, { medicineId: id, name, dosage: "", quantity: "1", usedBefore: "Tak", purpose: "" }]);
     setMedQ(""); setMedResults([]);
     if (errors.selectedMeds) setErrors(prev => { const n = {...prev}; delete n.selectedMeds; return n; });
   };
@@ -121,8 +121,15 @@ export function EReceptaForm() {
     }
     
     // Validate selectedMeds
-    if (!doctorChoosesMeds && selectedMeds.length === 0) {
-      newErrors.selectedMeds = "Musisz wyszukać i wybrać co najmniej jeden lek.";
+    if (!doctorChoosesMeds) {
+      if (selectedMeds.length === 0) {
+        newErrors.selectedMeds = "Musisz wyszukać i wybrać co najmniej jeden lek.";
+      } else {
+        const medsValid = selectedMeds.every(m => m.dosage.trim() && m.purpose.trim());
+        if (!medsValid) {
+          newErrors.selectedMeds = "Uzupełnij dawkę i cel stosowania dla wszystkich wybranych leków.";
+        }
+      }
     }
     
     // Validate symptomsDescription if doctorChoosesMeds is true
@@ -169,11 +176,15 @@ export function EReceptaForm() {
           medicines: selectedMeds.map(m => ({
             medicineId: m.medicineId,
             medicineName: m.name,
-            quantity: 1,
-            dosage: ""
+            quantity: parseInt(m.quantity) || 1,
+            dosage: m.dosage
           })),
           medicalInfo: {
-            medicinesExtra: [],
+            medicinesExtra: selectedMeds.map(m => ({
+              medicineId: m.medicineId,
+              usedBefore: m.usedBefore === "Tak",
+              purpose: m.purpose
+            })),
             usedBefore: usedBefore === "Tak",
             doctorChoosesMeds,
             doctorChoosesMedsDescription: doctorChoosesMeds ? symptomsDescription : "",
@@ -320,11 +331,93 @@ export function EReceptaForm() {
               {errors.selectedMeds && <p className="text-xs text-red-500 font-medium mt-2">{errors.selectedMeds}</p>}
               
               {selectedMeds.length > 0 && (
-                <div className="mt-4 space-y-3">
-                  {selectedMeds.map(m => (
-                    <div key={m.medicineId} className="bg-white border border-slate-200 rounded-xl p-4 relative">
+                <div className="mt-4 space-y-4">
+                  {selectedMeds.map((m, index) => (
+                    <div key={m.medicineId} className="bg-white border border-slate-200 rounded-xl p-4 relative space-y-3">
                       <button type="button" onClick={() => removeMed(m.medicineId)} className="absolute top-3 right-3 text-red-400 hover:text-red-600 p-1"><Trash2 className="w-4 h-4" /></button>
-                      <div className="font-bold text-slate-900">{m.name}</div>
+                      <div className="font-bold text-slate-900 pb-2 border-b border-slate-100">{m.name}</div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div>
+                          <label className="block text-xs font-semibold text-slate-700 mb-1">Dawka leku <span className="text-red-500">*</span></label>
+                          <input 
+                            className={`${inputCls} py-1.5 text-sm bg-white`} 
+                            placeholder="np. 200mg" 
+                            value={m.dosage} 
+                            onChange={e => {
+                              const newMeds = [...selectedMeds];
+                              newMeds[index].dosage = e.target.value;
+                              setSelectedMeds(newMeds);
+                            }} 
+                          />
+                        </div>
+                        <div>
+                          <label className="block text-xs font-semibold text-slate-700 mb-1">Ilość opakowań <span className="text-red-500">*</span></label>
+                          <select 
+                            className={`${inputCls} py-1.5 text-sm bg-white`} 
+                            value={m.quantity} 
+                            onChange={e => {
+                              const newMeds = [...selectedMeds];
+                              newMeds[index].quantity = e.target.value;
+                              setSelectedMeds(newMeds);
+                            }}
+                          >
+                            {[1, 2, 3, 4, 5, 6].map(num => (
+                              <option key={num} value={num}>{num} {num === 1 ? 'opakowanie' : (num < 5 ? 'opakowania' : 'opakowań')}</option>
+                            ))}
+                          </select>
+                        </div>
+                      </div>
+
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div>
+                          <label className="block text-xs font-semibold text-slate-700 mb-1">Czy lek był wcześniej stosowany? <span className="text-red-500">*</span></label>
+                          <div className="flex gap-4 mt-2">
+                            <label className="flex items-center gap-2 text-sm cursor-pointer">
+                              <input 
+                                type="radio" 
+                                name={`usedBefore-${m.medicineId}`} 
+                                checked={m.usedBefore === "Tak"} 
+                                onChange={() => {
+                                  const newMeds = [...selectedMeds];
+                                  newMeds[index].usedBefore = "Tak";
+                                  setSelectedMeds(newMeds);
+                                }}
+                                className="w-4 h-4 text-[#E11D48] border-slate-300 focus:ring-[#E11D48]"
+                              />
+                              Tak
+                            </label>
+                            <label className="flex items-center gap-2 text-sm cursor-pointer">
+                              <input 
+                                type="radio" 
+                                name={`usedBefore-${m.medicineId}`} 
+                                checked={m.usedBefore === "Nie"} 
+                                onChange={() => {
+                                  const newMeds = [...selectedMeds];
+                                  newMeds[index].usedBefore = "Nie";
+                                  setSelectedMeds(newMeds);
+                                }}
+                                className="w-4 h-4 text-[#E11D48] border-slate-300 focus:ring-[#E11D48]"
+                              />
+                              Nie
+                            </label>
+                          </div>
+                        </div>
+
+                        <div>
+                          <label className="block text-xs font-semibold text-slate-700 mb-1">W jakim celu stosujesz lek? <span className="text-red-500">*</span></label>
+                          <input 
+                            className={`${inputCls} py-1.5 text-sm bg-white`} 
+                            placeholder="Opisz krótko cel stosowania" 
+                            value={m.purpose} 
+                            onChange={e => {
+                              const newMeds = [...selectedMeds];
+                              newMeds[index].purpose = e.target.value;
+                              setSelectedMeds(newMeds);
+                            }} 
+                          />
+                        </div>
+                      </div>
                     </div>
                   ))}
                 </div>

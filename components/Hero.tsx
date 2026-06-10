@@ -289,7 +289,7 @@ export default function Hero() {
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#E11D48] flex items-center justify-center text-white shrink-0">
                   <Pill className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Recepta<br className="hidden md:block" />online 24h</h3>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Recepta<br className="hidden md:block" /> online 24h</h3>
               </div>
               <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">E-recepta na leki stałe, doraźne, refundowane i nierefundowane.</p>
               <div className="w-full mt-auto">
@@ -307,7 +307,7 @@ export default function Hero() {
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#8B5CF6] flex items-center justify-center text-white shrink-0">
                   <Calendar className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">L4 online<br className="hidden md:block" />zwolnienie</h3>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">L4 online<br className="hidden md:block" /> zwolnienie</h3>
               </div>
               <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Zwolnienie lekarskie bez wychodzenia z domu.</p>
               <div className="w-full mt-auto">
@@ -326,7 +326,7 @@ export default function Hero() {
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#10B981] flex items-center justify-center text-white shrink-0">
                   <UserCheck className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Konsultacja<br className="hidden md:block" />lekarska</h3>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Konsultacja<br className="hidden md:block" /> lekarska</h3>
               </div>
               <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Porozmawiaj z lekarzem kiedy tylko potrzebujesz.</p>
               <div className="w-full mt-auto">
@@ -344,7 +344,7 @@ export default function Hero() {
                 <div className="w-10 h-10 md:w-12 md:h-12 rounded-full bg-[#2563EB] flex items-center justify-center text-white shrink-0">
                   <Activity className="w-5 h-5 md:w-6 md:h-6" />
                 </div>
-                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Konsultacja<br className="hidden md:block" />wyników</h3>
+                <h3 className="font-bold text-slate-900 text-[13px] md:text-[18px] leading-tight mt-0 md:mt-1">Konsultacja<br className="hidden md:block" /> wyników</h3>
               </div>
               <p className="text-[11px] md:text-xs text-slate-500 mb-4 md:mb-5 flex-grow leading-relaxed">Omów wyniki badań z lekarzem i zaplanuj leczenie.</p>
               <div className="w-full mt-auto">

@@ -6,7 +6,7 @@ import Link from "next/link"
 
 export default function ForWomanAndMen() {
     return (
-        <section className="max-w-[100vw] pt-5 mx-auto px-4 sm:px-6 lg:px-8 pb-16">
+        <section className="max-w-[100vw] pt-5 mx-auto px-4 sm:px-6 lg:px-8 ">
             <div className="grid gap-3 lg:grid-cols-3">
 
                 {/* Card 1: Tabletka "dzień po" */}
@@ -51,7 +51,7 @@ export default function ForWomanAndMen() {
 
                             <div className="mt-2 relative z-20">
                                 <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
-                                    Umów konsultację <ArrowRight className="w-4 h-4" />
+                                    Umów konsultację od 45zł<ArrowRight className="w-4 h-4" />
                                 </Link>
                             </div>
                         </div>
@@ -120,7 +120,7 @@ export default function ForWomanAndMen() {
 
                             <div className="mt-2 relative z-20">
                                 <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
-                                    Umów konsultację <ArrowRight className="w-4 h-4" />
+                                    Umów konsultację od 59zł <ArrowRight className="w-4 h-4" />
                                 </Link>
                             </div>
                         </div>
@@ -158,7 +158,7 @@ export default function ForWomanAndMen() {
                             </div>
 
                             <h2 className="text-2xl font-black text-slate-900 tracking-tight mb-2">
-                                Testosteron
+                                TRT Terapia zastępcza Testosteronem
                             </h2>
 
                             <p className="text-sm font-extrabold text-blue-500 leading-snug mb-3">
@@ -187,7 +187,7 @@ export default function ForWomanAndMen() {
 
                             <div className="mt-2 relative z-20">
                                 <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
-                                    Umów konsultację <ArrowRight className="w-4 h-4" />
+                                    Umów konsultację od 199zł <ArrowRight className="w-4 h-4" />
                                 </Link>
                             </div>
                         </div>
