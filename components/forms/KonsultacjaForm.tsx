@@ -339,8 +339,8 @@ export function KonsultacjaForm() {
                   <div className="p-3 bg-[#EAF3F0] border border-[#D5EAE6] rounded-lg">
                     {slotsData.doctorName ? (
                       <div className="mb-2">
-                        <div className="flex items-center gap-2 text-sm font-bold text-slate-900"><UserCheck className="w-4 h-4 text-[#147A60]" /> {slotsData.doctorName}</div>
-                        <div className="text-[10px] text-[#147A60] mt-0.5">{slotsData.doctorSpecializations?.join(", ")}</div>
+                        <div className="flex items-center gap-2 text-sm font-bold text-slate-900"><UserCheck className="w-4 h-4 text-[#147A60]" /> Dostępny specjalista</div>
+                        {slotsData.doctorSpecializations && slotsData.doctorSpecializations.length > 0 && <div className="text-[10px] text-[#147A60] mt-0.5">{slotsData.doctorSpecializations.join(", ")}</div>}
                       </div>
                     ) : <div className="text-[11px] text-orange-700 mb-2">{slotsData.message || 'Brak lekarzy w tym dniu.'}</div>}
                     

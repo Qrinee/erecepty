@@ -24,6 +24,7 @@ export default function AdminDiscountCodes() {
   // Form states
   const [showAddForm, setShowAddForm] = useState(false);
   const [newCode, setNewCode] = useState("");
+  const [bulkCount, setBulkCount] = useState<number>(1);
   const [newType, setNewType] = useState<"percentage" | "amount">("percentage");
   const [newValue, setNewValue] = useState<number | "">("");
   const [newMaxUses, setNewMaxUses] = useState<number | "">("");
