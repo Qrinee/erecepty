@@ -18,7 +18,8 @@ import {
   ConsentCheckbox,
   SubmitBtn,
   FormNote,
-  useAuthPrefill
+  useAuthPrefill,
+  DiscountSection
 } from "./shared";
 
 export function KontynuacjaForm() {
@@ -39,11 +40,17 @@ export function KontynuacjaForm() {
   const [accountPassword, setAccountPassword] = useState("");
   const [specialization, setSpecialization] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [discountCode, setDiscountCode] = useState("");
+  const [finalAmount, setFinalAmount] = useState(0);
 
   const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone, setPesel });
   const searchParams = useSearchParams();
   const serviceParam = searchParams?.get("service");
   const { amount, type } = getServicePriceAndType(serviceParam, "Kontynuacja leczenia");
+
+  React.useEffect(() => {
+    setFinalAmount(amount);
+  }, [amount]);
 
   // Medicine Search
   const [medQ, setMedQ] = useState("");
@@ -177,7 +184,8 @@ export function KontynuacjaForm() {
           specialization: specialization || null,
           accountPassword: createAccount ? accountPassword : null,
           consent: { rodoConsent: consentTruth, medicalConsent: consentTerms, doctorDecisionConsent: consentDoctor, createAccount },
-          amount: amount,
+          amount: finalAmount,
+          discountCode: discountCode || undefined,
         }),
       });
       const data = await res.json();
@@ -376,6 +384,14 @@ export function KontynuacjaForm() {
           )}
         </div>
       )}
+
+      <DiscountSection 
+        baseAmount={amount} 
+        onDiscountApplied={(code, newAmount) => {
+          setDiscountCode(code);
+          setFinalAmount(newAmount);
+        }} 
+      />
 
       <SubmitBtn label="PRZEJDŹ DO PŁATNOŚCI" color="bg-orange-500 hover:bg-orange-600" loading={loading} />
       <FormNote />

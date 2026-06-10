@@ -19,7 +19,8 @@ import {
   ConsentCheckbox,
   SubmitBtn,
   FormNote,
-  useAuthPrefill
+  useAuthPrefill,
+  DiscountSection
 } from "./shared";
 
 export function EReceptaForm() {
@@ -38,11 +39,17 @@ export function EReceptaForm() {
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [doctorChoosesMeds, setDoctorChoosesMeds] = useState(false);
   const [symptomsDescription, setSymptomsDescription] = useState("");
+  const [discountCode, setDiscountCode] = useState("");
+  const [finalAmount, setFinalAmount] = useState(0);
 
   const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone, setPesel });
   const searchParams = useSearchParams();
   const serviceParam = searchParams?.get("service");
   const { amount, type } = getServicePriceAndType(serviceParam, "e-Recepta online");
+
+  React.useEffect(() => {
+    setFinalAmount(amount);
+  }, [amount]);
 
   // Medicine Search
   const [medQ, setMedQ] = useState("");
@@ -192,7 +199,8 @@ export function EReceptaForm() {
           specialization: specialization || null,
           accountPassword: createAccount ? accountPassword : null,
           consent: { rodoConsent: consentTruth, medicalConsent: consentTerms, doctorDecisionConsent: consentDoctor, createAccount },
-          amount: amount,
+          amount: finalAmount,
+          discountCode: discountCode || undefined,
         }),
       });
       const data = await res.json();
@@ -496,6 +504,14 @@ export function EReceptaForm() {
           )}
         </div>
       )}
+
+      <DiscountSection 
+        baseAmount={amount} 
+        onDiscountApplied={(code, newAmount) => {
+          setDiscountCode(code);
+          setFinalAmount(newAmount);
+        }} 
+      />
 
       <SubmitBtn label="PRZEJDŹ DO PŁATNOŚCI" color="bg-[#E11D48] hover:bg-[#BE123C]" loading={loading} />
       <FormNote />

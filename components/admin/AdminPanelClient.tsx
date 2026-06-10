@@ -6,6 +6,7 @@ import { useRouter } from "next/navigation";
 import { io, Socket } from "socket.io-client";
 import AdminDoctorsManager from "./AdminDoctorsManager";
 import AdminAllSubmissions from "./AdminAllSubmissions";
+import AdminDiscountCodes from "./AdminDiscountCodes";
 
 const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 const SOCKET_URL = process.env.NEXT_PUBLIC_SOCKET_URL || "http://localhost:4000";
@@ -110,7 +111,7 @@ export default function AdminPanelClient({ currentUser, stats }: AdminPanelClien
   const router = useRouter();
   const isAdmin = currentUser.role === "administrator";
 
-  const [activeTab, setActiveTab] = useState<"all" | "mine" | "pool" | "doctors">(isAdmin ? "all" : "mine");
+  const [activeTab, setActiveTab] = useState<"all" | "mine" | "pool" | "doctors" | "discounts">(isAdmin ? "all" : "mine");
 
   const [mySubmissions, setMySubmissions] = useState<SubmissionItem[]>([]);
   const [myLoading, setMyLoading] = useState(false);
@@ -243,7 +244,10 @@ export default function AdminPanelClient({ currentUser, stats }: AdminPanelClien
           <button onClick={() => setActiveTab("mine")} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors relative ${activeTab === "mine" ? "bg-[#064743] text-white" : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"}`}>Moje zgłoszenia{myStats.unread > 0 && <span className="absolute -top-2 -right-2 inline-flex items-center justify-center w-5 h-5 bg-red-500 text-white text-[10px] font-bold rounded-full">{myStats.unread}</span>}</button>
           <button onClick={() => setActiveTab("pool")} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors relative ${activeTab === "pool" ? "bg-[#064743] text-white" : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"}`}>Koszyk ogólny{poolSubmissions.length > 0 && <span className="absolute -top-2 -right-2 inline-flex items-center justify-center w-5 h-5 bg-orange-500 text-white text-[10px] font-bold rounded-full">{poolSubmissions.length}</span>}</button>
           {isAdmin && <button onClick={() => setActiveTab("doctors")} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors relative ${activeTab === "doctors" ? "bg-[#064743] text-white" : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"}`}>Zarządzanie lekarzami</button>}
+          {isAdmin && <button onClick={() => setActiveTab("discounts")} className={`px-4 py-2 rounded-lg text-sm font-medium transition-colors relative ${activeTab === "discounts" ? "bg-[#064743] text-white" : "bg-white text-gray-600 border border-gray-200 hover:bg-gray-50"}`}>Kody rabatowe</button>}
         </div>
+
+        {activeTab === "discounts" && isAdmin && <AdminDiscountCodes />}
 
         {activeTab === "doctors" && isAdmin && <AdminDoctorsManager />}
 

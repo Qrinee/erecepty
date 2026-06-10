@@ -9,7 +9,7 @@ export const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000
 export const getServicePriceAndType = (serviceParam: string | null, fallbackType: string) => {
   if (!serviceParam) return { amount: 7900, type: fallbackType };
   const lower = serviceParam.toLowerCase();
-  
+
   if (lower.includes("e-recepta")) return { amount: 5900, type: serviceParam };
   if (lower.includes("l4") || lower.includes("zwolnienie")) return { amount: 7900, type: serviceParam };
   if (lower.includes("kontynuacja")) return { amount: 5900, type: serviceParam };
@@ -17,8 +17,8 @@ export const getServicePriceAndType = (serviceParam: string | null, fallbackType
   if (lower.includes("otyłoś")) return { amount: 9900, type: serviceParam };
   if (lower.includes("dzień po") || lower.includes("antykoncepcja")) return { amount: 4500, type: serviceParam };
   if (lower.includes("konsultacja")) return { amount: 7900, type: serviceParam };
-  
-  return { amount: 7900, type: serviceParam }; 
+
+  return { amount: 7900, type: serviceParam };
 };
 
 /* ─── Shared helpers ──────────────────────────────────────────── */
@@ -35,9 +35,9 @@ export const labelCls = "block text-[11px] font-bold text-slate-500 mb-1";
 export function FormErrorAlert({ errors }: { errors: Record<string, string> }) {
   const errorList = Object.entries(errors).filter(([key]) => key !== "submit");
   const submitError = errors.submit;
-  
+
   if (errorList.length === 0 && !submitError) return null;
-  
+
   return (
     <div className="mb-6 p-4 bg-red-50 border border-red-200 rounded-xl flex gap-3 text-red-800">
       <Info className="w-5.5 h-5.5 text-red-500 flex-shrink-0 mt-0.5" />
@@ -145,8 +145,125 @@ export function useAuthPrefill(setters: {
           if (u.pesel && setters.setPesel) setters.setPesel(u.pesel);
         }
       })
-      .catch(() => {});
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+      .catch(() => { });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
   return isLoggedIn;
+}
+
+export function DiscountSection({
+  baseAmount,
+  onDiscountApplied
+}: {
+  baseAmount: number,
+  onDiscountApplied: (code: string, newAmount: number) => void
+}) {
+  const [code, setCode] = useState("");
+  const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [message, setMessage] = useState("");
+  const [appliedDiscount, setAppliedDiscount] = useState<{ type: "percentage" | "amount", value: number } | null>(null);
+
+  const handleApply = async () => {
+    if (!code.trim()) return;
+    setStatus("loading");
+    setMessage("");
+    try {
+      const res = await fetch(`${API_URL}/api/discounts/validate/${code.trim()}`);
+      const data = await res.json();
+      if (data.success) {
+        setStatus("success");
+        setMessage("Kod rabatowy został zastosowany!");
+        setAppliedDiscount({ type: data.data.type, value: data.data.value });
+
+        let newAmount = baseAmount;
+        if (data.data.type === "percentage") {
+          const discountAmt = Math.round(baseAmount * (data.data.value / 100));
+          newAmount = Math.max(0, baseAmount - discountAmt);
+        } else if (data.data.type === "amount") {
+          newAmount = Math.max(0, baseAmount - (data.data.value * 100));
+        }
+        onDiscountApplied(code.trim(), newAmount);
+      } else {
+        setStatus("error");
+        setMessage(data.message || "Nieprawidłowy kod");
+        setAppliedDiscount(null);
+        onDiscountApplied("", baseAmount);
+      }
+    } catch (err) {
+      setStatus("error");
+      setMessage("Błąd podczas sprawdzania kodu");
+      setAppliedDiscount(null);
+      onDiscountApplied("", baseAmount);
+    }
+  };
+
+  const handleClear = () => {
+    setCode("");
+    setStatus("idle");
+    setMessage("");
+    setAppliedDiscount(null);
+    onDiscountApplied("", baseAmount);
+  };
+
+  let displayAmount = baseAmount;
+  if (appliedDiscount) {
+    if (appliedDiscount.type === "percentage") {
+      const discountAmt = Math.round(baseAmount * (appliedDiscount.value / 100));
+      displayAmount = Math.max(0, baseAmount - discountAmt);
+    } else if (appliedDiscount.type === "amount") {
+      displayAmount = Math.max(0, baseAmount - (appliedDiscount.value * 100));
+    }
+  }
+
+  return (
+    <div className="mt-5 pt-4 border-t border-slate-100">
+      <div className="flex flex-col sm:flex-row gap-4 justify-between items-start sm:items-center mb-4">
+        <div className="w-full sm:w-1/2">
+          <label className={labelCls}>Masz kod rabatowy?</label>
+          <div className="flex gap-2">
+            <input
+              type="text"
+              placeholder="Wpisz kod"
+              className={inputCls}
+              value={code}
+              onChange={e => {
+                setCode(e.target.value.toUpperCase());
+                if (status !== "idle") {
+                  setStatus("idle");
+                  setMessage("");
+                  setAppliedDiscount(null);
+                  onDiscountApplied("", baseAmount);
+                }
+              }}
+              disabled={status === "success"}
+            />
+            {status === "success" ? (
+              <button type="button" onClick={handleClear} className="text-center bg-gray-200 hover:bg-gray-300 text-gray-700 rounded-lg text-sm font-bold transition-colors">
+                Usuń
+              </button>
+            ) : (
+              <button type="button" onClick={handleApply} disabled={!code.trim() || status === "loading"} className="px-6 w-50 text-center bg-[#147A60] hover:bg-[#064743] text-white rounded-lg text-sm font-bold transition-colors disabled:opacity-50">
+                {status === "loading" ? "..." : "Zastosuj"}
+              </button>
+            )}
+          </div>
+          {message && (
+            <p className={`text-xs font-bold mt-1.5 ${status === "success" ? "text-green-600" : "text-red-500"}`}>
+              {message}
+            </p>
+          )}
+        </div>
+
+        <div className="text-right">
+          <p className="text-xs text-slate-500 font-bold uppercase tracking-wider">Do zapłaty</p>
+          <div className="flex items-baseline gap-2 justify-end">
+            {appliedDiscount && (
+              <span className="text-sm text-slate-400 line-through">{(baseAmount / 100).toFixed(2)} zł</span>
+            )}
+            <span className="text-2xl font-black text-[#064743]">{(displayAmount / 100).toFixed(2)} zł</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
 }

@@ -19,7 +19,8 @@ import {
   ConsentCheckbox,
   SubmitBtn,
   FormNote,
-  useAuthPrefill
+  useAuthPrefill,
+  DiscountSection
 } from "./shared";
 
 export function L4Form() {
@@ -44,11 +45,17 @@ export function L4Form() {
   const [createAccount, setCreateAccount] = useState(false);
   const [accountPassword, setAccountPassword] = useState("");
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [discountCode, setDiscountCode] = useState("");
+  const [finalAmount, setFinalAmount] = useState(0);
 
   const isLoggedIn = useAuthPrefill({ setFullName, setEmail, setPhone, setPesel });
   const searchParams = useSearchParams();
   const serviceParam = searchParams?.get("service");
   const { amount, type } = getServicePriceAndType(serviceParam, "L4 online");
+
+  React.useEffect(() => {
+    setFinalAmount(amount);
+  }, [amount]);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -158,7 +165,8 @@ export function L4Form() {
           symptoms, symptomsFrom, ableToWork: ableToWork === "Tak", daysNeeded: parseInt(daysNeeded),
           accountPassword: createAccount ? accountPassword : null,
           consent: { rodoConsent: consentTruth, medicalConsent: consentTerms, doctorDecisionConsent: consentDoctor, createAccount },
-          amount: amount,
+          amount: finalAmount,
+          discountCode: discountCode || undefined,
         }),
       });
       const data = await res.json();
@@ -404,6 +412,14 @@ export function L4Form() {
           )}
         </div>
       )}
+
+      <DiscountSection 
+        baseAmount={amount} 
+        onDiscountApplied={(code, newAmount) => {
+          setDiscountCode(code);
+          setFinalAmount(newAmount);
+        }} 
+      />
 
       <SubmitBtn label="PRZEJDŹ DO PŁATNOŚCI" color="bg-purple-700 hover:bg-purple-800" loading={loading} />
       <FormNote />
