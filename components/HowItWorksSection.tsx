@@ -14,7 +14,7 @@ export default function HowItWorksSection() {
           <div className="hidden lg:flex lg:col-span-3 justify-center select-none animate-fadeIn">
             <div className="relative group">
               <Image
-                src="/hiw_left_decor.png"
+                src="/hiw_left_decor.webp"
                 alt="Zegar i roślina ozdobna"
                 width={500}
                 height={500}
