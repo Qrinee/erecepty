@@ -218,15 +218,15 @@ export default function ArticlePage() {
               <h3 className="font-extrabold text-slate-900 mb-6 text-lg sm:text-xl">W tej kategorii</h3>
               <div className="space-y-1">
                 {[
-                  { icon: FileText, label: "E-recepty", active: true },
-                  { icon: FileText, label: "L4 online", active: false },
-                  { icon: FileText, label: "Skierowania", active: false },
-                  { icon: ShieldCheck, label: "Antykoncepcja online", active: false },
-                  { icon: Phone, label: "Telekonsultacje", active: false },
-                  { icon: Wallet, label: "Płatności", active: false },
-                  { icon: MessageSquare, label: "Poradniki pacjenta", active: false },
+                  { icon: FileText, label: "E-recepty", href: "/baza-wiedzy?kategoria=e-recepty", active: true },
+                  { icon: FileText, label: "L4 online", href: "/baza-wiedzy?kategoria=l4-online", active: false },
+                  { icon: FileText, label: "Skierowania", href: "/baza-wiedzy?kategoria=skierowania", active: false },
+                  { icon: ShieldCheck, label: "Antykoncepcja online", href: "/baza-wiedzy?kategoria=antykoncepcja-online", active: false },
+                  { icon: Phone, label: "Telekonsultacje", href: "/baza-wiedzy?kategoria=telekonsultacje", active: false },
+                  { icon: Wallet, label: "Płatności", href: "/baza-wiedzy?kategoria=platnosci", active: false },
+                  { icon: MessageSquare, label: "Poradniki pacjenta", href: "/baza-wiedzy?kategoria=poradniki-pacjenta", active: false },
                 ].map((cat, i) => (
-                  <Link key={i} href="#" className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm sm:text-base transition-colors ${cat.active ? "bg-white text-[#147A60] font-bold border border-[#EAF3F0] shadow-sm" : "text-slate-600 font-semibold hover:bg-white hover:text-slate-900 border border-transparent"}`}>
+                  <Link key={i} href={cat.href || "#"} className={`flex items-center gap-3 px-3 py-2.5 rounded-lg text-sm sm:text-base transition-colors ${cat.active ? "bg-white text-[#147A60] font-bold border border-[#EAF3F0] shadow-sm" : "text-slate-600 font-semibold hover:bg-white hover:text-slate-900 border border-transparent"}`}>
                     <cat.icon className={`w-4 h-4 ${cat.active ? "text-[#147A60]" : "text-slate-400"}`} /> {cat.label}
                   </Link>
                 ))}
@@ -242,11 +242,11 @@ export default function ArticlePage() {
               <div className="space-y-5">
                 {[
                   { icon: Monitor, title: "Jak skonsultować wynik badań?" },
-                  { icon: ShieldCheck, title: "Czy mogę przedłużyć stałe leki bez wizyty stacjonarnej?" },
-                  { icon: Wallet, title: "Jak wygląda płatność za konsultację?" },
-                  { icon: CreditCard, title: "Jak uzyskać antykoncepcję online?" }
+                  { icon: ShieldCheck, title: "Czy mogę przedłużyć stałe leki bez wizyty stacjonarnej?", href: "/baza-wiedzy/czy-moge-przedluzyc-stale-leki" },
+                  { icon: Wallet, title: "Jak wygląda płatność za konsultację?", href: "/baza-wiedzy/jak-wyglada-platnosc-za-konsultacje" },
+                  { icon: CreditCard, title: "Jak uzyskać antykoncepcję online?", href: "/baza-wiedzy/jak-uzyskac-antykoncepcje-online" }
                 ].map((art, i) => (
-                  <Link key={i} href="#" className="flex gap-4 items-center group">
+                  <Link key={i} href={art.href || "#"} className="flex gap-4 items-center group">
                     <div className="w-14 h-14 bg-slate-50 border border-slate-100 rounded-lg flex-shrink-0 flex items-center justify-center">
                       <art.icon className="w-6 h-6 text-[#147A60] stroke-[1.5]" />
                     </div>
@@ -271,7 +271,7 @@ export default function ArticlePage() {
                 <li className="flex items-center gap-2 text-sm sm:text-base font-bold text-slate-700"><CheckCircle2 className="w-4 h-4 text-[#147A60]" /> Pomoc w doborze usługi</li>
                 <li className="flex items-center gap-2 text-sm sm:text-base font-bold text-slate-700"><CheckCircle2 className="w-4 h-4 text-[#147A60]" /> Bezpieczny kontakt</li>
               </ul>
-              <Link href="/kontakt" className="w-full py-3 bg-[#064743] hover:bg-slate-900 text-white rounded-lg text-sm sm:text-base font-bold flex items-center justify-center gap-2 transition-colors">
+              <Link href="/#kontakt" className="w-full py-3 bg-[#064743] hover:bg-slate-900 text-white rounded-lg text-sm sm:text-base font-bold flex items-center justify-center gap-2 transition-colors">
                 Skontaktuj się z nami <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

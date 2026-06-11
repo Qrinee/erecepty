@@ -184,13 +184,6 @@ export default function ContactSection() {
             {/* Form Card */}
             <div className="bg-white rounded-[32px] border border-slate-100 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.02)] relative z-10">
 
-              {/* Green Dot Response Badge */}
-              <div className="mb-5 text-left">
-                <span className="inline-flex items-center px-3.5 py-1.5 bg-[#EAF3F0] text-[#147A60] font-extrabold rounded-full text-[10px] sm:text-xs tracking-wider uppercase shadow-sm gap-1.5">
-                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-ping"></span>
-                  • Odpowiadamy nawet w kilka minut
-                </span>
-              </div>
 
               <h3 className="text-xl font-extrabold text-slate-800 mb-6">Napisz do nas</h3>
 

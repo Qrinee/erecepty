@@ -50,7 +50,7 @@ export default function ForWomanAndMen() {
                             </div>
 
                             <div className="mt-2 relative z-20">
-                                <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
+                                <Link href="/wypelnij-formularz?service=e-Recepta+online" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
                                     Umów konsultację od 45zł<ArrowRight className="w-4 h-4" />
                                 </Link>
                             </div>

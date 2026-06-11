@@ -450,7 +450,7 @@ export default function DlaFirmPage() {
                       Nowoczesna telemedycyna dla firm – szybko, wygodnie i bez kolejek.
                     </p>
                     <Link
-                      href="/wypelnij-formularz?service=konsultacja"
+                      href="/#kontakt"
                       className="inline-flex items-center gap-2 bg-white hover:bg-slate-50 text-[#064743] px-6 py-3 rounded-xl font-extrabold text-xs tracking-wider uppercase transition-colors shadow-sm active:scale-95"
                     >
                       Umów prezentację
