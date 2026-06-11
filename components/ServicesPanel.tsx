@@ -36,15 +36,15 @@ export default function ServicesPanel() {
       buttonText: "Zamów →"
     },
     {
-      id: 3,
-      icon: RefreshCw,
-      title: "Kontynuacja leczenia",
-      description: "Przedłuż leczenie bez pośredniej wizyty",
-      price: 59,
-      image: "/continuation_3d.png",
-      href: "/wypelnij-formularz?service=Kontynuacja+leczenia",
-      color: "bg-[#F5F2FC] border-[#EAE3F5]",
-      buttonColor: "bg-[#4834D4] hover:bg-[#341F97]",
+      id: 5,
+      icon: Activity,
+      title: "Wyniki Badań",
+      description: "Szczegółowa analiza wyników badań z lekarzem",
+      price: 79,
+      image: "/wynikow.png",
+      href: "/wypelnij-formularz?service=Om%C3%B3wienie+wynik%C3%B3w+bada%C5%84",
+      color: "bg-[#FDF8F6] border-[#F6E9E1]",
+      buttonColor: "bg-[#D97706] hover:bg-[#B45309]",
       buttonText: "Zamów →"
     },
     {
@@ -60,15 +60,15 @@ export default function ServicesPanel() {
       buttonText: "Zamów →"
     },
     {
-      id: 5,
-      icon: Activity,
-      title: "Wyniki Badań",
-      description: "Szczegółowa analiza wyników badań z lekarzem",
-      price: 79,
-      image: "/wynikow.png",
-      href: "/wypelnij-formularz?service=Om%C3%B3wienie+wynik%C3%B3w+bada%C5%84",
-      color: "bg-[#FDF8F6] border-[#F6E9E1]",
-      buttonColor: "bg-[#D97706] hover:bg-[#B45309]",
+      id: 3,
+      icon: RefreshCw,
+      title: "Kontynuacja leczenia",
+      description: "Przedłuż leczenie bez pośredniej wizyty",
+      price: 59,
+      image: "/continuation_3d.png",
+      href: "/wypelnij-formularz?service=Kontynuacja+leczenia",
+      color: "bg-[#F5F2FC] border-[#EAE3F5]",
+      buttonColor: "bg-[#4834D4] hover:bg-[#341F97]",
       buttonText: "Zamów →"
     },
     {
