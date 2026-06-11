@@ -94,9 +94,6 @@ export default function ArticlePage() {
               </div>
             </div>
 
-            <div className="text-xs sm:text-sm text-slate-400 font-medium pt-6 flex items-center gap-2">
-              <CalendarDays className="w-4 h-4" /> Ostatnia aktualizacja: 22.05.2024
-            </div>
           </div>
 
           <div className="flex-1 w-full flex justify-center lg:justify-end">

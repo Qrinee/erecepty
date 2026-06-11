@@ -100,6 +100,25 @@ export default function Header({ transparent = false }: HeaderProps) {
     }
   };
 
+  const handleScrollToSection = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    if (pathname === "/") {
+      e.preventDefault();
+      const element = document.getElementById(id);
+      if (element) {
+        // Obliczamy offset dla paska nawigacji
+        const headerOffset = 80; // wysokość headera
+        const elementPosition = element.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.scrollY - headerOffset;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: "smooth"
+        });
+      }
+      setShowMobileMenu(false);
+    }
+  };
+
   return (
     <header
       className={`sticky top-0 left-0 right-0 z-50 transition-all duration-300 border-b border-slate-100 ${transparent
@@ -129,30 +148,30 @@ export default function Header({ transparent = false }: HeaderProps) {
         </button>
 
         <nav aria-label="Główna nawigacja" className="hidden xl:flex items-center justify-center gap-6 text-sm font-medium h-16">
-          <Link href="/#uslugi" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Usługi</Link>
-          <Link href="/jak-to-dziala" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Jak to działa?</Link>
-          <Link href="/dla-kobiet-i-mezczyzn" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Dla kobiet i mężczyzn</Link>
-          <Link href="/#cennik" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Cennik</Link>
-          <Link href="/dla-lekarzy" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Dla lekarzy</Link>
-          <Link href="/baza-wiedzy" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Baza wiedzy</Link>
-          <Link href="/#kontakt" className="hover:text-[#064743] transition rounded text-slate-600 hover:text-[#064743] px-1 py-2">Kontakt</Link>
+          <Link href="/#uslugi" onClick={(e) => handleScrollToSection(e, "uslugi")} className="hover:text-[#064743] transition rounded text-slate-600 px-1 py-2">Usługi</Link>
+          <Link href="/jak-to-dziala" className="hover:text-[#064743] transition rounded text-slate-600 px-1 py-2">Jak to działa?</Link>
+          <Link href="/dla-kobiet-i-mezczyzn" className="hover:text-[#064743] transition rounded text-slate-600 px-1 py-2">Dla kobiet i mężczyzn</Link>
+          <Link href="/#cennik" onClick={(e) => handleScrollToSection(e, "cennik")} className="hover:text-[#064743] transition rounded text-slate-600 px-1 py-2">Cennik</Link>
+          <Link href="/dla-lekarzy" className="hover:text-[#064743] transition rounded text-slate-600 px-1 py-2">Dla lekarzy</Link>
+          <Link href="/baza-wiedzy" className="hover:text-[#064743] transition rounded text-slate-600 px-1 py-2">Baza wiedzy</Link>
+          <Link href="/#kontakt" onClick={(e) => handleScrollToSection(e, "kontakt")} className="hover:text-[#064743] transition rounded text-slate-600 px-1 py-2">Kontakt</Link>
         </nav>
 
         {showMobileMenu && (
           <div className="xl:hidden absolute top-full left-0 right-0 bg-white border-b border-gray-200 shadow-lg z-40">
-            <nav className="flex flex-col p-4 space-y-4" onClick={() => setShowMobileMenu(false)}>
-              <Link href="/#uslugi" className="text-slate-700 hover:text-[#064743] py-2">Usługi</Link>
-              <Link href="/#specjalizacje" className="text-slate-700 hover:text-[#064743] py-2">Specjalizacje</Link>
-              <Link href="/jak-to-dziala" className="text-slate-700 hover:text-[#064743] py-2">Jak to działa?</Link>
-              <Link href="/dla-kobiet-i-mezczyzn" className="text-slate-700 hover:text-[#064743] py-2">Dla kobiet i mężczyzn</Link>
-              <Link href="/dla-lekarzy" className="text-slate-700 hover:text-[#064743] py-2">Dla lekarzy</Link>
-              <Link href="/baza-wiedzy" className="text-slate-700 hover:text-[#064743] py-2">Baza wiedzy</Link>
-              <Link href="/#kontakt" className="text-slate-700 hover:text-[#064743] py-2">Kontakt</Link>
+            <nav className="flex flex-col p-4 space-y-4">
+              <Link href="/#uslugi" onClick={(e) => handleScrollToSection(e, "uslugi")} className="text-slate-700 hover:text-[#064743] py-2">Usługi</Link>
+              <Link href="/#specjalizacje" onClick={(e) => handleScrollToSection(e, "specjalizacje")} className="text-slate-700 hover:text-[#064743] py-2">Specjalizacje</Link>
+              <Link href="/jak-to-dziala" onClick={() => setShowMobileMenu(false)} className="text-slate-700 hover:text-[#064743] py-2">Jak to działa?</Link>
+              <Link href="/dla-kobiet-i-mezczyzn" onClick={() => setShowMobileMenu(false)} className="text-slate-700 hover:text-[#064743] py-2">Dla kobiet i mężczyzn</Link>
+              <Link href="/dla-lekarzy" onClick={() => setShowMobileMenu(false)} className="text-slate-700 hover:text-[#064743] py-2">Dla lekarzy</Link>
+              <Link href="/baza-wiedzy" onClick={() => setShowMobileMenu(false)} className="text-slate-700 hover:text-[#064743] py-2">Baza wiedzy</Link>
+              <Link href="/#kontakt" onClick={(e) => handleScrollToSection(e, "kontakt")} className="text-slate-700 hover:text-[#064743] py-2">Kontakt</Link>
               {!isAuthenticated && (
                 <>
                   <hr className="my-2" />
-                  <Link href="/login" className="text-[#064743] hover:text-[#1A5D54] py-2 font-medium">Zaloguj się</Link>
-                  <Link href="/wypelnij-formularz" className="text-slate-700 hover:text-[#064743] py-2">Umów wizytę</Link>
+                  <Link href="/login" onClick={() => setShowMobileMenu(false)} className="text-[#064743] hover:text-[#1A5D54] py-2 font-medium">Zaloguj się</Link>
+                  <Link href="/wypelnij-formularz" onClick={() => setShowMobileMenu(false)} className="text-slate-700 hover:text-[#064743] py-2">Umów wizytę</Link>
                 </>
               )}
             </nav>

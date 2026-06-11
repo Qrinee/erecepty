@@ -9,7 +9,7 @@ export default function SpecializationsCards() {
         {
             id: 1,
             badge: "Dla pacjentów",
-            price: "249",
+            price: "259",
             title: "Psychiatra\nOnline",
             description: "Szybka i dyskretna pomoc psychiatryczna bez wychodzenia z domu.",
             image: "/ph/1.jpeg",
@@ -29,7 +29,7 @@ export default function SpecializationsCards() {
         },
         {
             id: 2,
-            price: "99",
+            price: "129",
             badge: "Dla pacjentów",
             title: "Leczenie\notyłości",
             description: "Kompleksowe wsparcie w redukcji masy ciała i poprawie zdrowia.",
@@ -52,7 +52,7 @@ export default function SpecializationsCards() {
             id: 3,
             badge: "Dla pacjentów",
             title: "Psycholog /\nTerapeuta",
-            price: "249",
+            price: "169",
             description: "Profesjonalne wsparcie emocjonalne i terapia online dla lepszego samopoczucia.",
             image: "/ph/3.jpeg",
             bgColor: "#f0fdf4",

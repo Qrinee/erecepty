@@ -189,7 +189,7 @@ export default function DlaFirmPage() {
 
                 <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-2">
                   <Link
-                    href="/wypelnij-formularz?service=konsultacja"
+                    href="/#kontakt"
                     className="inline-flex items-center justify-center gap-2 bg-[#147A60] hover:bg-[#0E5B47] text-white px-8 py-4 rounded-xl font-bold transition-all shadow-md active:scale-95"
                   >
                     Umów prezentację

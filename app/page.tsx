@@ -25,9 +25,29 @@ import { useEffect, useState } from 'react';
 import ForWomanAndMen from "@/components/ForWomanAndMen";
 
 export default function Home() {
+  useEffect(() => {
+    const handleHash = () => {
+      const hash = window.location.hash;
+      if (hash) {
+        setTimeout(() => {
+          const id = hash.replace('#', '');
+          const element = document.getElementById(id);
+          if (element) {
+            const headerOffset = 80;
+            const elementPosition = element.getBoundingClientRect().top;
+            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+            window.scrollTo({
+              top: offsetPosition,
+              behavior: "smooth"
+            });
+          }
+        }, 100);
+      }
+    };
 
-
-
+    // Run on initial mount
+    handleHash();
+  }, []);
   return (
     <>
       <Header transparent={false} />

@@ -127,10 +127,10 @@ export default function Footer() {
           <nav aria-label="Prawne" className="flex flex-col">
             <h4 className="text-white font-extrabold text-sm mb-6 uppercase tracking-wider">Prawne</h4>
             <ul className="space-y-3.5 text-xs sm:text-[13px] font-bold text-slate-400">
-              <li><Link href="/polityka-prywatnosci" className="hover:text-white transition block py-0.5">Polityka prywatności</Link></li>
+              <li><Link href="/polityka-prywatnosci" className="hover:text-white transition block py-0.5">Regulamin Organizacyjny</Link></li>
               <li><Link href="/regulamin" className="hover:text-white transition block py-0.5">Regulamin</Link></li>
-              <li><Link href="/polityka-cookies" className="hover:text-white transition block py-0.5">Polityka cookies</Link></li>
-              <li><Link href="/warunki-umowy" className="hover:text-white transition block py-0.5">Warunki umowy</Link></li>
+              <li><Link href="/polityka-cookies" className="hover:text-white transition block py-0.5">Polityka Prywatności</Link></li>
+              <li><Link href="/warunki-umowy" className="hover:text-white transition block py-0.5">Pliki Cookies</Link></li>
             </ul>
           </nav>
 
@@ -155,7 +155,6 @@ export default function Footer() {
                 </div>
                 <div className="text-left leading-tight">
                   <a href="mailto:kontakt@lekarzeiterapeuci.pl" className="text-[13px] font-extrabold text-white hover:text-[#00E19D] transition">kontakt@lekarzeiterapeuci.pl</a>
-                  <div className="text-[10px] text-slate-400 font-bold mt-1">Odpowiadamy w ciągu godziny</div>
                 </div>
               </div>
 
@@ -178,7 +177,7 @@ export default function Footer() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 pt-2">
 
           <p className="text-xs text-slate-400 font-bold order-3 lg:order-1 text-center lg:text-left">
-            © {new Date().getFullYear()} Lekarze i Terapeuci. Wszelkie prawa zastrzeżone.
+            © Lekarze i Terapeuci. Wszelkie prawa zastrzeżone.
           </p>
 
           <div className="w-full max-w-[420px] flex items-center gap-2 order-1 lg:order-2">
@@ -204,19 +203,13 @@ export default function Footer() {
               <Facebook className="w-4 h-4" />
             </a>
             <a
-              href="#"
+              href="https://www.instagram.com/lekarzeiterapeuci.pl?igsh=MWx0ZW16YmR4NWkxYw=="
               aria-label="Instagram"
               className="w-10 h-10 rounded-full bg-[#0B1E36]/50 border border-slate-800 text-slate-400 hover:text-white hover:border-[#147A60]/30 hover:bg-[#147A60]/10 transition flex items-center justify-center cursor-pointer"
             >
               <Instagram className="w-4 h-4" />
             </a>
-            <a
-              href="#"
-              aria-label="YouTube"
-              className="w-10 h-10 rounded-full bg-[#0B1E36]/50 border border-slate-800 text-slate-400 hover:text-white hover:border-[#147A60]/30 hover:bg-[#147A60]/10 transition flex items-center justify-center cursor-pointer"
-            >
-              <Youtube className="w-4 h-4" />
-            </a>
+
           </div>
 
         </div>
