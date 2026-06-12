@@ -14,7 +14,8 @@ export const getServicePriceAndType = (serviceParam: string | null, fallbackType
   if (lower.includes("l4") || lower.includes("zwolnienie")) return { amount: 7900, type: serviceParam };
   if (lower.includes("kontynuacja")) return { amount: 5900, type: serviceParam };
   if (lower.includes("psychiatr")) return { amount: 24900, type: serviceParam };
-  if (lower.includes("otyłoś")) return { amount: 9900, type: serviceParam };
+  if (lower.includes("otyłoś")) return { amount: 12900, type: serviceParam };
+  if (lower.includes("dermatologi")) return { amount: 19900, type: serviceParam };
   if (lower.includes("dzień po") || lower.includes("antykoncepcja")) return { amount: 4500, type: serviceParam };
   if (lower.includes("konsultacja")) return { amount: 7900, type: serviceParam };
 
