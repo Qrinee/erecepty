@@ -7,33 +7,52 @@ const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:4000";
 
 export default function AdminPage() {
   const [user, setUser] = useState<any>(null);
+  const [stats, setStats] = useState<any>({ byStatus: { pending: 0, reviewed: 0, completed: 0, cancelled: 0 }, submittedToday: 0, total: 0 });
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetch(`${API_URL}/api/auth/me`, {
-      credentials: "include",
-    })
-      .then((res) => {
+    const initData = async () => {
+      try {
+        const res = await fetch(`${API_URL}/api/auth/me`, {
+          credentials: "include",
+        });
         if (!res.ok) throw new Error("Unauthorized");
-        return res.json();
-      })
-      .then((data) => {
+        const data = await res.json();
+        
         if (data.success && data.data?.user) {
           const u = data.data.user;
           if (u.role === "administrator" || u.role === "doctor") {
             setUser(u);
+            if (u.role === "administrator") {
+              try {
+                const statsRes = await fetch(`${API_URL}/api/patient/submissions/stats`, {
+                  credentials: "include",
+                });
+                if (statsRes.ok) {
+                  const statsData = await statsRes.json();
+                  if (statsData.success) {
+                    setStats(statsData.data);
+                  }
+                }
+              } catch (err) {
+                console.error("Failed to fetch admin stats", err);
+              }
+            }
           } else {
             setError("Brak dostępu do panelu lekarza.");
           }
         } else {
           setError("Brak dostępu do panelu lekarza.");
         }
-      })
-      .catch(() => {
+      } catch (err) {
         setError("Brak dostępu do panelu lekarza.");
-      })
-      .finally(() => setLoading(false));
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    initData();
   }, []);
 
   if (loading) {
@@ -55,7 +74,7 @@ export default function AdminPage() {
   return (
     <AdminPanelClient
       currentUser={user}
-      stats={{ byStatus: { pending: 0, reviewed: 0, completed: 0, cancelled: 0 }, submittedToday: 0, total: 0 }}
+      stats={stats}
     />
   );
 }
