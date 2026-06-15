@@ -177,6 +177,20 @@ export default function SubmissionDetailPage() {
     createAccount: false,
   };
 
+  let leaveDateRangeStr = null;
+  if (submission.submissionType === "medical_leave") {
+    const startStr = submission.leaveDetails?.symptomsFrom || medical.symptomsFrom || submission.submittedAt;
+    const days = parseInt(submission.leaveDetails?.daysNeeded || medical.daysNeeded);
+    if (startStr && !isNaN(days) && days > 0) {
+      const startDate = new Date(startStr);
+      if (!isNaN(startDate.getTime())) {
+        const endDate = new Date(startDate);
+        endDate.setDate(endDate.getDate() + days - 1);
+        leaveDateRangeStr = `${startDate.toLocaleDateString("pl-PL")} - ${endDate.toLocaleDateString("pl-PL")}`;
+      }
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-50 mt-25">
       <div className="max-w-4xl mx-auto px-4 py-8">
@@ -212,6 +226,12 @@ export default function SubmissionDetailPage() {
               Data zgłoszenia:{" "}
               {new Date(submission.submittedAt).toLocaleString("pl-PL")}
             </p>
+            {leaveDateRangeStr && (
+              <div className="mt-3 inline-flex items-center gap-2 px-3 py-1.5 bg-indigo-50 text-indigo-800 rounded-lg text-sm font-medium border border-indigo-100">
+                <span>🗓 Okres zwolnienia:</span>
+                <span className="font-bold">{leaveDateRangeStr}</span>
+              </div>
+            )}
             {submission.referralToPool && (
               <div className="mt-2 p-2 bg-orange-50 text-orange-700 rounded text-xs">
                 To zgłoszenie znajduje się w koszyku ogólnym (zwolnione lub bez reakcji 1h).
@@ -355,7 +375,7 @@ export default function SubmissionDetailPage() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.entries(submission.leaveDetails).map(([key, value]) => {
                   // Skip these as they are duplicated or handled elsewhere
-                  if (key === 'normalizedMedical' || key === 'isHospitalizedFlag' || key === 'accountPassword') return null;
+                  if (key === 'normalizedMedical' || key === 'isHospitalizedFlag' || key === 'accountPassword' || key === 'leaveStartDate' || key === 'leaveEndDate') return null;
 
                   let label = key;
                   if (key === 'diagnosis') label = 'Rozpoznanie (diagnoza)';
