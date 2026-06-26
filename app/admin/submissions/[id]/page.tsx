@@ -179,8 +179,8 @@ export default function SubmissionDetailPage() {
 
   let leaveDateRangeStr = null;
   if (submission.submissionType === "medical_leave") {
-    const startStr = submission.leaveDetails?.symptomsFrom || medical.symptomsFrom || submission.submittedAt;
-    const days = parseInt(submission.leaveDetails?.daysNeeded || medical.daysNeeded);
+    const startStr = (submission.leaveDetails as any)?.symptomsFrom || (medical as any).symptomsFrom || submission.submittedAt;
+    const days = parseInt((submission.leaveDetails as any)?.daysNeeded || (medical as any).daysNeeded);
     if (startStr && !isNaN(days) && days > 0) {
       const startDate = new Date(startStr);
       if (!isNaN(startDate.getTime())) {
