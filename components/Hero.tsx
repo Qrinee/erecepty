@@ -241,20 +241,7 @@ export default function Hero() {
                 </div>
 
                 {/* Step 3 */}
-                <div>
-                  <label className="block text-[11px] font-medium text-slate-500 mb-1.5">
-                    Wybierz lekarza (opcjonalnie)
-                  </label>
-                  <div className="relative">
-                    <select className="w-full pl-3 pr-10 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 appearance-none cursor-pointer transition-all">
-                      <option>Dowolny lekarz</option>
-                      {selectedDoctor && (
-                        <option value="assigned">dr {selectedDoctor.firstName} {selectedDoctor.lastName}</option>
-                      )}
-                    </select>
-                    <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
-                  </div>
-                </div>
+
 
                 {/* Submit */}
                 <div className="pt-3">

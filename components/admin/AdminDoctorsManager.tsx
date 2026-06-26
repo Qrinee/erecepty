@@ -52,18 +52,8 @@ export default function AdminDoctorsManager() {
   });
   const [saving, setSaving] = useState(false);
 
-  // Create modal state
-  const [creating, setCreating] = useState(false);
-  const [createForm, setCreateForm] = useState({
-    firstName: "",
-    lastName: "",
-    email: "",
-    password: "",
-    phone: "",
-    specializations: "",
-    availabilityType: "24/7",
-    maxActivePatients: 5,
-  });
+  // Sync state
+  const [syncing, setSyncing] = useState(false);
 
   // Doctor submissions view
   const [viewingDoctorId, setViewingDoctorId] = useState<string | null>(null);
@@ -146,61 +136,23 @@ export default function AdminDoctorsManager() {
     } catch { alert("Błąd sieci"); }
   };
 
-  // Create doctor
-  const handleCreate = async () => {
-    if (!createForm.email || !createForm.password || !createForm.firstName || !createForm.lastName) {
-      alert("Imię, nazwisko, email i hasło są wymagane");
-      return;
-    }
-    setSaving(true);
+  // Sync doctors from Proassist
+  const handleSync = async () => {
+    setSyncing(true);
     try {
-      // Register user
-      const regRes = await fetch(`${API_URL}/api/auth/register`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          firstName: createForm.firstName,
-          lastName: createForm.lastName,
-          email: createForm.email,
-          password: createForm.password,
-          phone: createForm.phone,
-        }),
-      });
-      const regData = await regRes.json();
-      if (!regData.success) { alert(regData.message || "Błąd rejestracji"); setSaving(false); return; }
-      const userId = regData.data.user.id;
-
-      // Set role to doctor
-      // We need admin cookie for this. The current page already has admin auth via credentials:include
-      const roleRes = await fetch(`${API_URL}/api/auth/users/${userId}/role`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({ role: "doctor" }),
-      });
-      if (!roleRes.ok) { alert("Nie udało się ustawić roli lekarza"); setSaving(false); return; }
-
-      // Create doctor profile
-      const upsertRes = await fetch(`${API_URL}/api/doctor/upsert`, {
-        method: "PUT",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify({
-          userId,
-          specializations: createForm.specializations.split(",").map(s => s.trim()).filter(Boolean) || ["Ogólna"],
-          availabilityType: createForm.availabilityType,
-          maxActivePatients: createForm.maxActivePatients,
-          isActive: true,
-        }),
-      });
-      const upsertData = await upsertRes.json();
-      if (upsertData.success) {
-        setCreating(false);
-        setCreateForm({ firstName: "", lastName: "", email: "", password: "", phone: "", specializations: "", availabilityType: "24/7", maxActivePatients: 5 });
+      const res = await fetch(`${API_URL}/api/doctor/sync`, { method: "POST", credentials: "include" });
+      const data = await res.json();
+      if (data.success) {
+        alert(data.message || "Zsynchronizowano pomyślnie");
         fetchDoctors();
-      } else alert(upsertData.message || "Błąd tworzenia profilu lekarza");
-    } catch { alert("Błąd sieci"); }
-    finally { setSaving(false); }
+      } else {
+        alert(data.message || "Błąd synchronizacji");
+      }
+    } catch {
+      alert("Błąd sieci");
+    } finally {
+      setSyncing(false);
+    }
   };
 
   // View doctor's submissions
@@ -239,26 +191,7 @@ export default function AdminDoctorsManager() {
     finally { setReassignLoading(null); setReassignTargetId(null); }
   };
 
-  // Add/remove schedule slot in edit form
-  const addScheduleSlot = () => {
-    setEditForm(prev => ({
-      ...prev,
-      schedule: [...prev.schedule, { dayOfWeek: 1, startTime: "08:00", endTime: "16:00" }],
-    }));
-  };
-  const removeScheduleSlot = (index: number) => {
-    setEditForm(prev => ({
-      ...prev,
-      schedule: prev.schedule.filter((_, i) => i !== index),
-    }));
-  };
-  const updateScheduleSlot = (index: number, field: string, value: any) => {
-    setEditForm(prev => {
-      const updated = [...prev.schedule];
-      updated[index] = { ...updated[index], [field]: field === "dayOfWeek" ? parseInt(value) : value };
-      return { ...prev, schedule: updated };
-    });
-  };
+
 
   if (loading) return (
     <div className="flex items-center justify-center py-16">
@@ -274,10 +207,11 @@ export default function AdminDoctorsManager() {
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold text-gray-900">Lekarze ({doctors.length})</h2>
         <button
-          onClick={() => setCreating(true)}
-          className="px-4 py-2 bg-[#064743] text-white rounded-lg hover:bg-[#1A5D54] text-sm font-medium"
+          onClick={handleSync}
+          disabled={syncing}
+          className="px-4 py-2 bg-[#064743] text-white rounded-lg hover:bg-[#1A5D54] text-sm font-medium disabled:opacity-50"
         >
-          + Dodaj lekarza
+          {syncing ? "Synchronizacja..." : "🔄 Synchronizuj z Proassist"}
         </button>
       </div>
 
@@ -418,27 +352,26 @@ export default function AdminDoctorsManager() {
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-1">Typ dostępności</label>
-                <select value={editForm.availabilityType} onChange={e => setEditForm(p => ({ ...p, availabilityType: e.target.value }))} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm">
-                  <option value="24/7">Całodobowy (24/7)</option>
-                  <option value="scheduled">Grafik</option>
-                </select>
+                <div className="w-full px-3 py-2 border border-gray-100 bg-gray-50 rounded-lg text-sm text-gray-500 cursor-not-allowed">
+                  {editingDoctor.availabilityType === "scheduled" ? "Grafik" : "Całodobowy (24/7)"}
+                  <span className="ml-2 text-xs text-gray-400">(Tylko do odczytu - Proassist)</span>
+                </div>
               </div>
 
-              {editForm.availabilityType === "scheduled" && (
+              {editingDoctor.availabilityType === "scheduled" && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">Grafik dyżurów</label>
-                  {editForm.schedule.map((slot, i) => (
-                    <div key={i} className="flex items-center gap-2 mb-2">
-                      <select value={slot.dayOfWeek} onChange={e => updateScheduleSlot(i, "dayOfWeek", e.target.value)} className="px-2 py-1 border rounded text-xs">
-                        {DAY_NAMES_FULL.map((d, idx) => <option key={idx} value={idx}>{d}</option>)}
-                      </select>
-                      <input type="time" value={slot.startTime} onChange={e => updateScheduleSlot(i, "startTime", e.target.value)} className="px-2 py-1 border rounded text-xs w-24" />
-                      <span className="text-xs">-</span>
-                      <input type="time" value={slot.endTime} onChange={e => updateScheduleSlot(i, "endTime", e.target.value)} className="px-2 py-1 border rounded text-xs w-24" />
-                      <button onClick={() => removeScheduleSlot(i)} className="text-red-500 text-xs">✕</button>
-                    </div>
-                  ))}
-                  <button onClick={addScheduleSlot} className="text-xs text-blue-600 hover:underline">+ Dodaj przedział</button>
+                  <div className="p-3 border border-gray-100 bg-gray-50 rounded-lg max-h-32 overflow-y-auto cursor-not-allowed">
+                    {editingDoctor.schedule.length > 0 ? (
+                      editingDoctor.schedule.map((slot, i) => (
+                        <div key={i} className="text-xs text-gray-500 mb-1">
+                          {DAY_NAMES_FULL[slot.dayOfWeek]}: {slot.startTime} - {slot.endTime}
+                        </div>
+                      ))
+                    ) : (
+                      <div className="text-xs text-gray-400">Brak określonych godzin</div>
+                    )}
+                  </div>
                 </div>
               )}
 
@@ -467,61 +400,7 @@ export default function AdminDoctorsManager() {
         </div>
       )}
 
-      {/* Create Modal */}
-      {creating && (
-        <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setCreating(false)}>
-          <div className="bg-white rounded-xl shadow-2xl max-w-md w-full max-h-[85vh] overflow-y-auto p-6" onClick={e => e.stopPropagation()}>
-            <div className="flex items-center justify-between mb-4">
-              <h3 className="text-lg font-semibold">Dodaj lekarza</h3>
-              <button onClick={() => setCreating(false)} className="text-gray-500 hover:text-gray-700 text-xl">&times;</button>
-            </div>
 
-            <div className="space-y-3">
-              <div className="grid grid-cols-2 gap-3">
-                <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">Imię *</label>
-                  <input type="text" value={createForm.firstName} onChange={e => setCreateForm(p => ({ ...p, firstName: e.target.value }))} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm" />
-                </div>
-                <div>
-                  <label className="block text-xs font-medium text-gray-700 mb-1">Nazwisko *</label>
-                  <input type="text" value={createForm.lastName} onChange={e => setCreateForm(p => ({ ...p, lastName: e.target.value }))} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm" />
-                </div>
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Email *</label>
-                <input type="email" value={createForm.email} onChange={e => setCreateForm(p => ({ ...p, email: e.target.value }))} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm" />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Hasło *</label>
-                <input type="password" value={createForm.password} onChange={e => setCreateForm(p => ({ ...p, password: e.target.value }))} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm" />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Telefon</label>
-                <input type="text" value={createForm.phone} onChange={e => setCreateForm(p => ({ ...p, phone: e.target.value }))} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm" />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Specjalizacje (przecinki)</label>
-                <input type="text" value={createForm.specializations} onChange={e => setCreateForm(p => ({ ...p, specializations: e.target.value }))} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm" placeholder="np. Ginekolog, Internista" />
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Typ dostępności</label>
-                <select value={createForm.availabilityType} onChange={e => setCreateForm(p => ({ ...p, availabilityType: e.target.value }))} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm">
-                  <option value="24/7">Całodobowy (24/7)</option>
-                  <option value="scheduled">Grafik</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-xs font-medium text-gray-700 mb-1">Max pacjentów</label>
-                <input type="number" min={1} max={20} value={createForm.maxActivePatients} onChange={e => setCreateForm(p => ({ ...p, maxActivePatients: parseInt(e.target.value) || 1 }))} className="w-full px-3 py-2 border border-gray-200 rounded-lg text-sm" />
-              </div>
-
-              <button onClick={handleCreate} disabled={saving} className="w-full py-2 bg-[#064743] text-white rounded-lg hover:bg-[#1A5D54] text-sm font-medium disabled:opacity-50">
-                {saving ? "Tworzenie..." : "Utwórz lekarza"}
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
     </div>
   );
 }
