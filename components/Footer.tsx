@@ -63,8 +63,11 @@ export default function Footer() {
             <div className="mb-6 flex items-center gap-2">
               <img src="/logo.png" alt="Lekarze i Terapeuci" className="h-30 w-auto object-contain brightness-110" />
             </div>
-            <p className="text-[13px] text-slate-400 font-semibold leading-relaxed mb-6 max-w-sm">
+            <p className="text-[13px] text-slate-400 font-semibold leading-relaxed mb-4 max-w-sm">
               Nowoczesna platforma telemedyczna z dostępem do konsultacji zdrowotnych bez wychodzenia z domu.
+            </p>
+            <p className="text-[11px] text-slate-500 font-medium leading-relaxed mb-6 max-w-sm">
+              Podmiot leczniczy wpisany do Rejestru podmiotów wykonujących działalność leczniczą pod numerem: 000000305622
             </p>
 
             <div className="space-y-3">
