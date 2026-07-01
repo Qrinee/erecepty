@@ -56,7 +56,7 @@ export default function PolitykaCookiesPage() {
                   Administrator Platformy
                 </h3>
                 <div className="pl-6 space-y-4">
-                  <p>Administratorem Platformy oraz podmiotem decydującym o wykorzystywaniu plików cookies w ramach Platformy jest Nowa Przyszłość sp. z o.o. z siedzibą w Olsztynie, adres: ul. Michała Kajki 10-12, 10-547 Olsztyn, KRS: 0001235181, NIP: 7412175965, REGON: 544493932, dalej jako „Administrator”.</p>
+                  <p>Administratorem Platformy oraz podmiotem decydującym o wykorzystywaniu plików cookies w ramach Platformy jest Nowa Przyszłość sp. z o.o. z siedzibą w Olsztynie, adres: ul. Michała Kajki 10-12, 10-547 Olsztyn, KRS: 0001235181, NIP: 7412175965, REGON: 544493932, RPWDL: 000000305622, dalej jako „Administrator”.</p>
                   <p>Kontakt w sprawach związanych z plikami cookies, podobnymi technologiami oraz ochroną danych osobowych jest możliwy pod adresem e-mail: <a href="mailto:kontakt@lekarzeiterapeuci.pl" className="text-[#147A60] hover:underline font-bold">kontakt@lekarzeiterapeuci.pl</a>.</p>
                 </div>
               </section>

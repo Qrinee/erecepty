@@ -50,7 +50,7 @@ export default function ForWomanAndMen() {
                             </div>
 
                             <div className="mt-2 relative z-20">
-                                <Link href="/wypelnij-formularz?service=e-Recepta+online" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
+                                <Link href="/wypelnij-formularz?service=Tabletka+dzień+po" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
                                     Umów konsultację od 45zł<ArrowRight className="w-4 h-4" />
                                 </Link>
                             </div>
@@ -119,7 +119,7 @@ export default function ForWomanAndMen() {
                             </div>
 
                             <div className="mt-2 relative z-20">
-                                <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
+                                <Link href="/wypelnij-formularz?service=Antykoncepcja" className="bg-[#E11D48] hover:bg-[#BE123C] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
                                     Umów konsultację od 59zł <ArrowRight className="w-4 h-4" />
                                 </Link>
                             </div>
@@ -186,7 +186,7 @@ export default function ForWomanAndMen() {
                             </div>
 
                             <div className="mt-2 relative z-20">
-                                <Link href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna" className="bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
+                                <Link href="/wypelnij-formularz?service=TRT+Testosteron" className="bg-[#3B82F6] hover:bg-[#2563EB] text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm">
                                     Umów konsultację od 199zł <ArrowRight className="w-4 h-4" />
                                 </Link>
                             </div>

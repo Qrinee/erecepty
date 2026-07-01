@@ -32,14 +32,14 @@ export default function PolitykaPrywatnosciPage() {
                   Administrator danych i kontakt
                 </h3>
                 <div className="pl-6 space-y-4">
-                  <p>Administratorem danych osobowych użytkowników serwisu internetowego lekarzeiterapeuci.pl, pacjentów oraz osób korzystających z usług telemedycznych jest <strong>Nowa Przyszłość spółka z ograniczoną odpowiedzialnością</strong> z siedzibą w Olsztynie, adres: Michała Kajki 10-12, 10-547 Olsztyn, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego pod numerem KRS 0001235181, NIP 7412175965, REGON 544493932, zwana dalej „Administratorem” lub „Lekarze i Terapeuci”.</p>
+                  <p>Administratorem danych osobowych użytkowników serwisu internetowego lekarzeiterapeuci.pl, pacjentów oraz osób korzystających z usług telemedycznych jest <strong>Nowa Przyszłość spółka z ograniczoną odpowiedzialnością</strong> z siedzibą w Olsztynie, adres: Michała Kajki 10-12, 10-547 Olsztyn, wpisana do rejestru przedsiębiorców Krajowego Rejestru Sądowego pod numerem KRS 0001235181, NIP 7412175965, REGON 544493932, RPWDL 000000305622, zwana dalej „Administratorem” lub „Lekarze i Terapeuci”.</p>
                   <p>Kontakt z Administratorem jest możliwy:</p>
                   <ul className="list-disc pl-5 space-y-2 marker:text-[#147A60]">
                     <li><strong>e-mail:</strong> <a href="mailto:kontakt@lekarzeiterapeuci.pl" className="text-[#147A60] hover:underline font-bold">kontakt@lekarzeiterapeuci.pl</a></li>
                     <li><strong>adres korespondencyjny:</strong> Nowa Przyszłość sp. z o.o., Michała Kajki 10-12, 10-547 Olsztyn</li>
                   </ul>
                   <p>Jeżeli Administrator wyznaczy Inspektora Ochrony Danych, informacja o tym oraz adres kontaktowy IOD zostaną opublikowane w Serwisie. Do czasu potwierdzenia wyznaczenia IOD w sprawach ochrony danych należy kontaktować się z Administratorem na adres kontakt@lekarzeiterapeuci.pl.</p>
-                  <p>Numer księgi rejestrowej RPWDL: -</p>
+                  <p>Numer księgi rejestrowej RPWDL: 000000305622</p>
                   <p>Administrator jest właścicielem domeny lekarzeiterapeuci.pl i będzie świadczyć za jej pośrednictwem usługi telemedyczne, w szczególności konsultacje online, obsługę recept elektronicznych, e-skierowań, e-ZLA oraz inne usługi zdrowotne realizowane zdalnie przez lekarzy, terapeutów i inne osoby wykonujące zawody medyczne, w zakresie dopuszczalnym przez obowiązujące przepisy prawa.</p>
                 </div>
               </section>

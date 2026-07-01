@@ -113,7 +113,7 @@ export default function SpecializationsCards() {
 
                                 <div className="mt-2 relative z-20">
                                     <Link
-                                        href="/wypelnij-formularz?service=Wizyta+lekarska+ogólna"
+                                        href={`/wypelnij-formularz?service=${encodeURIComponent(card.title.replace('\n', ' '))}`}
                                         className={`${card.buttonBg} text-white text-sm font-bold py-3 px-6 rounded-xl flex items-center gap-2 transition-colors w-max shadow-sm`}
                                     >
                                         Umów konsultację {card.price}zł <ArrowRight className="w-4 h-4" />

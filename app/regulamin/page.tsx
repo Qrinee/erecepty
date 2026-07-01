@@ -34,7 +34,7 @@ export default function RegulaminPage() {
                 <div className="flex flex-col"><span className="text-slate-500 font-semibold mb-1 text-[11px] uppercase tracking-wider">REGON</span> <span className="text-slate-800 font-bold">544493932</span></div>
                 <div className="flex flex-col"><span className="text-slate-500 font-semibold mb-1 text-[11px] uppercase tracking-wider">Kontakt elektroniczny</span> <a href="mailto:kontakt@lekarzeiterapeuci.pl" className="text-[#147A60] hover:underline font-bold">kontakt@lekarzeiterapeuci.pl</a></div>
                 <div className="flex flex-col"><span className="text-slate-500 font-semibold mb-1 text-[11px] uppercase tracking-wider">Platforma</span> <a href="https://www.lekarzeiterapeuci.pl" className="text-[#147A60] hover:underline font-bold">www.lekarzeiterapeuci.pl</a></div>
-                <div className="flex flex-col"><span className="text-slate-500 font-semibold mb-1 text-[11px] uppercase tracking-wider">Numer księgi rejestrowej RPWDL</span> <span className="text-slate-800 font-bold">-</span></div>
+                <div className="flex flex-col"><span className="text-slate-500 font-semibold mb-1 text-[11px] uppercase tracking-wider">Numer księgi rejestrowej RPWDL</span> <span className="text-slate-800 font-bold">000000305622</span></div>
               </div>
               <div className="mt-6 pt-5 border-t border-[#D5EAE6] text-slate-500 text-xs font-semibold flex items-center justify-center gap-2">
                 <Shield className="w-4 h-4 text-[#147A60]" />
@@ -69,7 +69,7 @@ export default function RegulaminPage() {
                   <li>Siedziba i adres: Michała Kajki 10-12, 10-547 Olsztyn.</li>
                   <li>KRS: 0001235181. NIP: 7412175965. REGON: 544493932.</li>
                   <li>Adres e-mail: kontakt@lekarzeiterapeuci.pl. Platforma internetowa: www.lekarzeiterapeuci.pl.</li>
-                  <li>Numer księgi rejestrowej RPWDL:</li>
+                  <li>Numer księgi rejestrowej RPWDL: 000000305622.</li>
                   <li>Dane rejestrowe, nazwy jednostek i komórek organizacyjnych, adresy oraz zakres świadczeń są utrzymywane zgodnie z wpisem w Rejestrze Podmiotów Wykonujących Działalność Leczniczą.</li>
                 </ol>
               </section>
