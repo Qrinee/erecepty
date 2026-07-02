@@ -19,6 +19,8 @@ export default function Hero() {
   const [publicDoctors, setPublicDoctors] = useState<any[]>([]);
   const [selectedDoctor, setSelectedDoctor] = useState<any>(null);
   const slotsTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const timeDropdownRef = useRef<HTMLDivElement>(null);
+  const [isTimeDropdownOpen, setIsTimeDropdownOpen] = useState(false);
 
   const todayStr = new Date().toISOString().split("T")[0];
 
@@ -105,11 +107,21 @@ export default function Hero() {
     router.push(`${route}?${params.toString()}`);
   };
 
+  useEffect(() => {
+    function handleClickOutside(event: MouseEvent) {
+      if (timeDropdownRef.current && !timeDropdownRef.current.contains(event.target as Node)) {
+        setIsTimeDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
+
   const mockSlots = ["08:00", "08:30", "09:00", "09:30", "10:00", "10:30", "11:00", "11:30"];
   const displayedSlots = (availableSlotsData?.availableSlots && availableSlotsData.availableSlots.length > 0)
     ? availableSlotsData.availableSlots
     : mockSlots;
-  const visibleSlots = showAllSlots ? displayedSlots : displayedSlots.slice(0, 4);
+  const visibleSlots = displayedSlots;
 
   return (
     <section className="relative bg-[#FAFAFA] pt-6 pb-6 lg:pt-8 lg:pb-6 overflow-hidden flex flex-col">
@@ -166,7 +178,7 @@ export default function Hero() {
           </div>
 
           {/* Right Content (Widget & Doctor) */}
-          <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end mt-12 lg:mt-0 z-10">
+          <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end mt-12 lg:mt-0 z-30">
 
             {/* Doctor Image - Positioned behind and to the left of the widget */}
             <div className="absolute  right-[60%] w-[350px] xl:w-[400px] pointer-events-none hidden lg:block" style={{ zIndex: '-2' }}>
@@ -174,7 +186,7 @@ export default function Hero() {
             </div>
 
             {/* Booking Widget */}
-            <div id="booking-widget" className="bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 p-6 sm:p-8 w-full max-w-[400px] relative z-20">
+            <div id="booking-widget" className="bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 p-6 sm:p-8 w-full max-w-[400px] relative z-40">
               <h2 className="text-xl font-bold text-slate-900 mb-6">Umów konsultację</h2>
 
               <div className="space-y-4">
@@ -220,21 +232,31 @@ export default function Hero() {
                       <label className="block text-[11px] font-medium text-slate-500 mb-1.5">
                         Godzina
                       </label>
-                      <div className="relative">
-                        <select
-                          value={selectedTime}
-                          onChange={(e) => setSelectedTime(e.target.value)}
-                          className="w-full pl-3 pr-9 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 appearance-none cursor-pointer transition-all"
+                      <div className="relative z-[999]" ref={timeDropdownRef}>
+                        <div
+                          onClick={() => setIsTimeDropdownOpen(!isTimeDropdownOpen)}
+                          className="w-full pl-3 pr-9 py-3 bg-white border border-slate-200 rounded-xl text-slate-800 text-sm focus:outline-none focus:border-emerald-500 focus:ring-1 focus:ring-emerald-500 cursor-pointer transition-all flex items-center justify-between"
                         >
-                          {loadingSlots ? (
-                            <option>Szukam...</option>
-                          ) : (
-                            visibleSlots.map((t: string) => (
-                              <option key={t} value={t}>{t}</option>
-                            ))
-                          )}
-                        </select>
-                        <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                          <span>{loadingSlots ? "Szukam..." : selectedTime}</span>
+                          <ChevronDown className="absolute right-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
+                        </div>
+                        
+                        {isTimeDropdownOpen && !loadingSlots && (
+                          <div className="absolute z-[999] w-full mt-1 bg-white border border-slate-200 rounded-xl shadow-lg max-h-60 overflow-y-auto custom-scrollbar">
+                            {visibleSlots.map((t: string) => (
+                              <div
+                                key={t}
+                                onClick={() => {
+                                  setSelectedTime(t);
+                                  setIsTimeDropdownOpen(false);
+                                }}
+                                className={`px-4 py-2.5 text-sm cursor-pointer hover:bg-emerald-50 transition-colors ${selectedTime === t ? 'bg-emerald-50 text-emerald-700 font-semibold' : 'text-slate-700'}`}
+                              >
+                                {t}
+                              </div>
+                            ))}
+                          </div>
+                        )}
                       </div>
                     </div>
                   )}
