@@ -178,10 +178,10 @@ export default function Hero() {
           </div>
 
           {/* Right Content (Widget & Doctor) */}
-          <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end mt-12 lg:mt-0 z-30">
+          <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end mt-12 lg:mt-0">
 
             {/* Doctor Image - Positioned behind and to the left of the widget */}
-            <div className="absolute  right-[60%] w-[350px] xl:w-[400px] pointer-events-none hidden lg:block" style={{ zIndex: '-2' }}>
+            <div className="absolute right-[60%] w-[350px] xl:w-[400px] pointer-events-none hidden lg:block z-10">
               <img src="/gpt.png" alt="Lekarz online" className="w-full h-auto drop-shadow-xl object-bottom" />
             </div>
 
