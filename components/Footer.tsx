@@ -130,10 +130,10 @@ export default function Footer() {
           <nav aria-label="Prawne" className="flex flex-col">
             <h4 className="text-white font-extrabold text-sm mb-6 uppercase tracking-wider">Prawne</h4>
             <ul className="space-y-3.5 text-xs sm:text-[13px] font-bold text-slate-400">
-              <li><Link href="/polityka-prywatnosci" className="hover:text-white transition block py-0.5">Regulamin Organizacyjny</Link></li>
-              <li><Link href="/regulamin" className="hover:text-white transition block py-0.5">Regulamin</Link></li>
-              <li><Link href="/polityka-cookies" className="hover:text-white transition block py-0.5">Polityka Prywatności</Link></li>
-              <li><Link href="/warunki-umowy" className="hover:text-white transition block py-0.5">Pliki Cookies</Link></li>
+              <li><Link href="/regulamin" className="hover:text-white transition block py-0.5">Regulamin Organizacyjny</Link></li>
+              <li><Link href="/warunki-umowy" className="hover:text-white transition block py-0.5">Regulamin</Link></li>
+              <li><Link href="/polityka-prywatnosci" className="hover:text-white transition block py-0.5">Polityka Prywatności</Link></li>
+              <li><Link href="/polityka-cookies" className="hover:text-white transition block py-0.5">Pliki Cookies</Link></li>
             </ul>
           </nav>
 
