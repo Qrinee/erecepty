@@ -73,7 +73,7 @@ export default function OrderDetailPage() {
 
   const getSubmissionTypeLabel = (type: string) => {
     switch (type) {
-      case 'prescription': return 'Receptura';
+      case 'prescription': return 'Recepta';
       case 'medical_leave': return 'Zwolnienie lekarskie';
       default: return type;
     }
