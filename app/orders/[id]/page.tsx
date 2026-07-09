@@ -40,35 +40,34 @@ export default function OrderDetailPage() {
     }
   }, [id, router]);
 
-  const getStatusBadgeClass = (status: string) => {
-    switch (status) {
-      case 'pending': return 'bg-yellow-100 text-yellow-800';
-      case 'reviewed': return 'bg-blue-100 text-blue-800';
-      case 'completed': return 'bg-green-100 text-green-800';
-      case 'cancelled': return 'bg-red-100 text-red-800';
-      default: return 'bg-gray-100 text-gray-800';
-    }
+  const getStatusBadgeClass = (status: string, paymentStatus?: string) => {
+    if (status === 'cancelled') return 'bg-red-100 text-red-800';
+    if (status === 'completed') return 'bg-green-100 text-green-800';
+    if (status === 'reviewed') return 'bg-blue-100 text-blue-800';
+    
+    if (paymentStatus === 'unpaid') return 'bg-orange-100 text-orange-800';
+    if (paymentStatus === 'paid') return 'bg-teal-100 text-teal-800';
+    return 'bg-yellow-100 text-yellow-800';
   };
 
-  const getStatusLabel = (status: string) => {
-    switch (status) {
-      case 'pending': return 'Oczekujące na przegląd';
-      case 'reviewed': return 'Przeglądane przez lekarza';
-      case 'completed': return 'Zakończone';
-      case 'cancelled': return 'Anulowane';
-      default: return status;
-    }
+  const getStatusLabel = (status: string, paymentStatus?: string) => {
+    if (status === 'cancelled') return 'Anulowane';
+    if (status === 'completed') return 'Zakończone';
+    if (status === 'reviewed') return 'W trakcie analizy';
+    
+    if (paymentStatus === 'unpaid') return 'Nieopłacone';
+    if (paymentStatus === 'paid') return 'Opłacone (Oczekujące na lekarza)';
+    return 'Oczekujące na przegląd';
   };
 
-  const getStatusIcon = (status: string) => {
-    const { CheckCircle2, AlertCircle, Clock, XCircle } = require('lucide-react');
-    switch (status) {
-      case 'completed': return CheckCircle2 ? <CheckCircle2 className="w-6 h-6" /> : null;
-      case 'pending': return AlertCircle ? <AlertCircle className="w-6 h-6" /> : null;
-      case 'reviewed': return Clock ? <Clock className="w-6 h-6" /> : null;
-      case 'cancelled': return XCircle ? <XCircle className="w-6 h-6" /> : null;
-      default: return Clock ? <Clock className="w-6 h-6" /> : null;
-    }
+  const getStatusIcon = (status: string, paymentStatus?: string) => {
+    const { CheckCircle2, AlertCircle, Clock, XCircle, CreditCard } = require('lucide-react');
+    if (status === 'completed') return CheckCircle2 ? <CheckCircle2 className="w-6 h-6" /> : null;
+    if (status === 'reviewed') return Clock ? <Clock className="w-6 h-6" /> : null;
+    if (status === 'cancelled') return XCircle ? <XCircle className="w-6 h-6" /> : null;
+    
+    if (paymentStatus === 'unpaid') return CreditCard ? <CreditCard className="w-6 h-6" /> : null;
+    return AlertCircle ? <AlertCircle className="w-6 h-6" /> : null;
   };
 
   const getSubmissionTypeLabel = (type: string) => {
@@ -107,14 +106,14 @@ export default function OrderDetailPage() {
         </button>
 
         {/* Status Header */}
-        <div className={`${getStatusBadgeClass(data.status)} rounded-2xl p-6 mb-6 border border-current border-opacity-20`}>
+        <div className={`${getStatusBadgeClass(data.status, data.paymentStatus)} rounded-2xl p-6 mb-6 border border-current border-opacity-20`}>
           <div className="flex items-start gap-4">
             <div className="flex-shrink-0">
-              {getStatusIcon(data.status)}
+              {getStatusIcon(data.status, data.paymentStatus)}
             </div>
             <div className="flex-1">
               <h1 className="text-2xl font-bold mb-2">
-                {getStatusLabel(data.status)}
+                {getStatusLabel(data.status, data.paymentStatus)}
               </h1>
               <p className="text-sm opacity-90">
                 Zgłoszenie #{data.id?.substring(0, 12)}... • {getSubmissionTypeLabel(data.submissionType)}
@@ -310,8 +309,8 @@ export default function OrderDetailPage() {
 
                 <div className="pt-3 border-t border-gray-200">
                   <p className="text-gray-600">Status</p>
-                  <p className={`font-medium ${getStatusBadgeClass(data.status).split(' ')[0] === 'bg-green-100' ? 'text-green-700' : getStatusBadgeClass(data.status).split(' ')[1]}`}>
-                    {getStatusLabel(data.status)}
+                  <p className={`font-medium ${getStatusBadgeClass(data.status, data.paymentStatus).split(' ')[0] === 'bg-green-100' ? 'text-green-700' : getStatusBadgeClass(data.status, data.paymentStatus).split(' ')[1]}`}>
+                    {getStatusLabel(data.status, data.paymentStatus)}
                   </p>
                 </div>
 

@@ -100,14 +100,14 @@ export default function OrdersPage() {
     }
   };
 
-  const getStatusLabel = (status: string) => {
-    switch (status) {
-      case 'pending': return 'Oczekujące';
-      case 'reviewed': return 'W trakcie analizy';
-      case 'completed': return 'Zrealizowana';
-      case 'cancelled': return 'Anulowane';
-      default: return status;
-    }
+  const getStatusLabel = (status: string, paymentStatus?: string) => {
+    if (status === 'cancelled') return 'Anulowane';
+    if (status === 'completed') return 'Zrealizowana';
+    if (status === 'reviewed') return 'W trakcie analizy';
+    
+    if (paymentStatus === 'unpaid') return 'Nieopłacone';
+    if (paymentStatus === 'paid') return 'Opłacone - Oczekujące';
+    return 'Oczekujące';
   };
 
   // Filter submissions by type tab
@@ -257,6 +257,8 @@ export default function OrdersPage() {
                 if (submission.status === 'completed') badgeClass = 'bg-green-50 text-green-700 border border-green-100';
                 else if (submission.status === 'reviewed') badgeClass = 'bg-blue-50 text-blue-700 border border-blue-100';
                 else if (submission.status === 'cancelled') badgeClass = 'bg-red-50 text-red-700 border border-red-100';
+                else if (submission.paymentStatus === 'unpaid') badgeClass = 'bg-orange-50 text-orange-700 border border-orange-100';
+                else if (submission.paymentStatus === 'paid') badgeClass = 'bg-teal-50 text-teal-700 border border-teal-100';
 
                 return (
                   <div key={submission.id} className="p-5 flex flex-col hover:bg-slate-50/40 transition-colors">
@@ -275,7 +277,7 @@ export default function OrdersPage() {
                             <div className="flex items-center gap-2 flex-wrap">
                               <span className="font-semibold text-slate-900 text-sm">{typeLabel}</span>
                               <span className={`px-2 py-0.5 rounded-full text-[10px] font-bold ${badgeClass}`}>
-                                {getStatusLabel(submission.status)}
+                                {getStatusLabel(submission.status, submission.paymentStatus)}
                               </span>
                             </div>
                             <span className="block text-xs text-slate-500 mt-1.5">
