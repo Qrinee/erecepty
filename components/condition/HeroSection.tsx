@@ -10,7 +10,7 @@ export default function HeroSection({ data }: Props) {
   return (
     <section className="bg-white py-20">
       <div className="mx-auto max-w-7xl px-6 grid gap-12 lg:grid-cols-2 items-center">
-        {/* Left */}
+        {}
         <div>
           <p className="mb-4 text-sm font-semibold text-blue-600 uppercase">
             {data.category}
@@ -37,7 +37,7 @@ export default function HeroSection({ data }: Props) {
           </div>
         </div>
 
-        {/* Right */}
+        {}
         <div className="relative">
           <Image
             src={data.heroImage}

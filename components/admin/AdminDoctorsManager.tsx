@@ -40,7 +40,7 @@ export default function AdminDoctorsManager() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Edit modal state
+  
   const [editingDoctor, setEditingDoctor] = useState<DoctorData | null>(null);
   const [editForm, setEditForm] = useState({
     specializations: "",
@@ -52,15 +52,15 @@ export default function AdminDoctorsManager() {
   });
   const [saving, setSaving] = useState(false);
 
-  // Sync state
+  
   const [syncing, setSyncing] = useState(false);
 
-  // Doctor submissions view
+  
   const [viewingDoctorId, setViewingDoctorId] = useState<string | null>(null);
   const [doctorSubmissions, setDoctorSubmissions] = useState<SubmissionsForDoctor[]>([]);
   const [subsLoading, setSubsLoading] = useState(false);
 
-  // Reassign state
+  
   const [reassignTargetId, setReassignTargetId] = useState<string | null>(null);
   const [reassignLoading, setReassignLoading] = useState<string | null>(null);
 
@@ -80,7 +80,7 @@ export default function AdminDoctorsManager() {
 
   useEffect(() => { fetchDoctors(); }, [fetchDoctors]);
 
-  // Open edit modal
+  
   const openEdit = (doc: DoctorData) => {
     setEditingDoctor(doc);
     setEditForm({
@@ -93,7 +93,7 @@ export default function AdminDoctorsManager() {
     });
   };
 
-  // Save edit
+  
   const handleSaveEdit = async () => {
     if (!editingDoctor) return;
     setSaving(true);
@@ -123,7 +123,7 @@ export default function AdminDoctorsManager() {
     finally { setSaving(false); }
   };
 
-  // Delete doctor
+  
   const handleDelete = async (doc: DoctorData) => {
     const userId = typeof doc.userId === "object" ? doc.userId._id : doc.userId;
     const name = typeof doc.userId === "object" ? `${doc.userId.firstName} ${doc.userId.lastName}` : userId;
@@ -136,7 +136,7 @@ export default function AdminDoctorsManager() {
     } catch { alert("Błąd sieci"); }
   };
 
-  // Sync doctors from Proassist
+  
   const handleSync = async () => {
     setSyncing(true);
     try {
@@ -155,7 +155,7 @@ export default function AdminDoctorsManager() {
     }
   };
 
-  // View doctor's submissions
+  
   const viewDoctorSubmissions = async (doc: DoctorData) => {
     const userId = typeof doc.userId === "object" ? doc.userId._id : doc.userId;
     setViewingDoctorId(userId);
@@ -171,7 +171,7 @@ export default function AdminDoctorsManager() {
     finally { setSubsLoading(false); }
   };
 
-  // Reassign submission
+  
   const handleReassign = async (submissionId: string, newDoctorUserId: string) => {
     setReassignLoading(submissionId);
     try {
@@ -203,7 +203,7 @@ export default function AdminDoctorsManager() {
 
   return (
     <div className="space-y-6">
-      {/* Header + Create button */}
+      {}
       <div className="flex items-center justify-between">
         <h2 className="text-xl font-semibold text-gray-900">Lekarze ({doctors.length})</h2>
         <button
@@ -215,7 +215,7 @@ export default function AdminDoctorsManager() {
         </button>
       </div>
 
-      {/* Doctors cards */}
+      {}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {doctors.map(doc => {
           const user = typeof doc.userId === "object" ? doc.userId : null;
@@ -259,7 +259,7 @@ export default function AdminDoctorsManager() {
         })}
       </div>
 
-      {/* Doctor Submissions Modal */}
+      {}
       {viewingDoctorId && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setViewingDoctorId(null)}>
           <div className="bg-white rounded-xl shadow-2xl max-w-3xl w-full max-h-[80vh] overflow-y-auto p-6" onClick={e => e.stopPropagation()}>
@@ -335,7 +335,7 @@ export default function AdminDoctorsManager() {
         </div>
       )}
 
-      {/* Edit Modal */}
+      {}
       {editingDoctor && (
         <div className="fixed inset-0 bg-black/50 z-50 flex items-center justify-center p-4" onClick={() => setEditingDoctor(null)}>
           <div className="bg-white rounded-xl shadow-2xl max-w-lg w-full max-h-[85vh] overflow-y-auto p-6" onClick={e => e.stopPropagation()}>

@@ -118,7 +118,7 @@ export default function ContactForm({ onSubmit, onCancel, isSubmitting = false, 
 
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
-      {/* Contact Info */}
+      {}
       <div>
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
           Dane kontaktowe

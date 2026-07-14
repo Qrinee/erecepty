@@ -35,11 +35,11 @@ export default function TeleconsultationPrepPage() {
       <Header />
       <main className="bg-white min-h-screen relative overflow-hidden" id="main-content">
 
-        {/* Top Hero & Breadcrumbs Section */}
+        {}
         <section className="bg-white pt-6 pb-12">
           <div className="w-full px-6 sm:px-12 md:px-20 lg:px-28 xl:px-36 2xl:px-44">
 
-            {/* Breadcrumbs */}
+            {}
             <nav className="mb-4" aria-label="Breadcrumb">
               <ol className="flex items-center gap-2 text-xs text-slate-500 font-medium">
                 <li><Link href="/" className="hover:text-[#064743] transition-colors">Strona główna</Link></li>
@@ -50,10 +50,10 @@ export default function TeleconsultationPrepPage() {
               </ol>
             </nav>
 
-            {/* Hero Grid */}
+            {}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
 
-              {/* Left Column - Text content */}
+              {}
               <div className="col-span-1 lg:col-span-7 pr-0 lg:pr-6">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-extrabold text-slate-900 mb-4 leading-[1.15] tracking-tight">
                   Jak przygotować <br className="hidden sm:inline" />się do telekonsultacji?
@@ -62,7 +62,7 @@ export default function TeleconsultationPrepPage() {
                   Kilka prostych kroków, dzięki którym konsultacja online przebiegnie szybko, komfortowo i skutecznie.
                 </p>
 
-                {/* 3 badges row */}
+                {}
                 <div className="flex flex-wrap gap-3.5">
                   <span className="inline-flex items-center gap-2 bg-[#F5FAF9] text-slate-700 text-sm sm:text-base font-semibold px-5 py-2.5 rounded-full border border-[#DAE9E6]/60 shadow-sm">
                     <Clock className="w-5 h-5 text-[#064743] stroke-[2]" />
@@ -79,7 +79,7 @@ export default function TeleconsultationPrepPage() {
                 </div>
               </div>
 
-              {/* Right Column - Laptop Mockup image */}
+              {}
               <div className="col-span-1 lg:col-span-5 flex justify-center lg:justify-end select-none">
                 <div className="relative w-full xl:max-w-[850px] transform hover:scale-[1.01] transition-transform duration-300">
                   <img
@@ -95,15 +95,15 @@ export default function TeleconsultationPrepPage() {
           </div>
         </section>
 
-        {/* Content Section (Cards & Steps Grid) */}
+        {}
         <section className="pb-24 relative bg-white">
           <div className="w-full px-6 sm:px-12 md:px-20 lg:px-28 xl:px-36 2xl:px-44 -mt-10 relative z-10">
 
-            {/* 5 Core Steps Card with vertical separators */}
+            {}
             <div className="bg-white border border-slate-100 rounded-[2rem] shadow-sm p-8 sm:p-12 mb-16">
               <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-slate-100">
 
-                {/* Step Card 1 */}
+                {}
                 <div className="p-4 sm:p-6 text-center flex flex-col items-center first:pl-0 last:pr-0">
                   <div className="w-20 h-20 rounded-3xl bg-white text-[#064743] flex items-center justify-center mb-6 shadow-md border border-slate-100">
                     <ClipboardList className="w-10 h-10 stroke-[1.25]" />
@@ -114,7 +114,7 @@ export default function TeleconsultationPrepPage() {
                   </p>
                 </div>
 
-                {/* Step Card 2 */}
+                {}
                 <div className="p-4 sm:p-6 text-center flex flex-col items-center">
                   <div className="w-20 h-20 rounded-3xl bg-white text-[#064743] flex items-center justify-center mb-6 shadow-md border border-slate-100">
                     <Armchair className="w-10 h-10 stroke-[1.25]" />
@@ -125,7 +125,7 @@ export default function TeleconsultationPrepPage() {
                   </p>
                 </div>
 
-                {/* Step Card 3 */}
+                {}
                 <div className="p-4 sm:p-6 text-center flex flex-col items-center">
                   <div className="w-20 h-20 rounded-3xl bg-white text-[#064743] flex items-center justify-center mb-6 shadow-md border border-slate-100">
                     <FileText className="w-10 h-10 stroke-[1.25]" />
@@ -136,7 +136,7 @@ export default function TeleconsultationPrepPage() {
                   </p>
                 </div>
 
-                {/* Step Card 4 */}
+                {}
                 <div className="p-4 sm:p-6 text-center flex flex-col items-center">
                   <div className="w-20 h-20 rounded-3xl bg-white text-[#064743] flex items-center justify-center mb-6 shadow-md border border-slate-100">
                     <Wifi className="w-10 h-10 stroke-[1.25]" />
@@ -147,7 +147,7 @@ export default function TeleconsultationPrepPage() {
                   </p>
                 </div>
 
-                {/* Step Card 5 */}
+                {}
                 <div className="p-4 sm:p-6 text-center flex flex-col items-center">
                   <div className="w-20 h-20 rounded-3xl bg-white text-[#064743] flex items-center justify-center mb-6 shadow-md border border-slate-100">
                     <ShieldCheck className="w-10 h-10 stroke-[1.25]" />
@@ -161,10 +161,10 @@ export default function TeleconsultationPrepPage() {
               </div>
             </div>
 
-            {/* Detailed Guide and Sidebar Grid */}
+            {}
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch mb-12">
 
-              {/* Left Column: Szczegółowy Przewodnik Card */}
+              {}
               <div className="col-span-1 lg:col-span-8 bg-white border border-slate-100 rounded-[2rem] p-8 sm:p-12 shadow-sm flex flex-col justify-between">
                 <div>
                   <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-8 pb-6 border-b border-slate-100">
@@ -173,7 +173,7 @@ export default function TeleconsultationPrepPage() {
 
                   <div className="divide-y divide-slate-100">
 
-                    {/* Row 1 */}
+                    {}
                     <div className="flex items-center gap-6 py-6 first:pt-0">
                       <div className="w-9 h-9 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm sm:text-base shrink-0 shadow-sm">
                         1
@@ -189,7 +189,7 @@ export default function TeleconsultationPrepPage() {
                       </div>
                     </div>
 
-                    {/* Row 2 */}
+                    {}
                     <div className="flex items-center gap-6 py-6">
                       <div className="w-9 h-9 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm sm:text-base shrink-0 shadow-sm">
                         2
@@ -205,7 +205,7 @@ export default function TeleconsultationPrepPage() {
                       </div>
                     </div>
 
-                    {/* Row 3 */}
+                    {}
                     <div className="flex items-center gap-6 py-6">
                       <div className="w-9 h-9 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm sm:text-base shrink-0 shadow-sm">
                         3
@@ -221,7 +221,7 @@ export default function TeleconsultationPrepPage() {
                       </div>
                     </div>
 
-                    {/* Row 4 */}
+                    {}
                     <div className="flex items-center gap-6 py-6">
                       <div className="w-9 h-9 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm sm:text-base shrink-0 shadow-sm">
                         4
@@ -237,7 +237,7 @@ export default function TeleconsultationPrepPage() {
                       </div>
                     </div>
 
-                    {/* Row 5 */}
+                    {}
                     <div className="flex items-center gap-6 py-6 last:pb-0">
                       <div className="w-9 h-9 rounded-full bg-[#064743] text-white flex items-center justify-center font-bold text-sm sm:text-base shrink-0 shadow-sm">
                         5
@@ -257,7 +257,7 @@ export default function TeleconsultationPrepPage() {
                 </div>
               </div>
 
-              {/* Right Column: Co Możesz Otrzymać Card */}
+              {}
               <div className="col-span-1 lg:col-span-4">
                 <div className="bg-[#E8F3F1]/40 border border-[#DAE9E6]/40 p-8 sm:p-10 rounded-[2rem] h-full flex flex-col justify-between">
                   <div>
@@ -267,7 +267,7 @@ export default function TeleconsultationPrepPage() {
 
                     <div className="space-y-8">
 
-                      {/* Benefit Item 1 */}
+                      {}
                       <div className="flex items-start gap-5">
                         <div className="w-14 h-14 rounded-2xl bg-white border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0 shadow-md">
                           <ClipboardCheck className="w-7 h-7 stroke-[1.5]" />
@@ -278,7 +278,7 @@ export default function TeleconsultationPrepPage() {
                         </div>
                       </div>
 
-                      {/* Benefit Item 2 */}
+                      {}
                       <div className="flex items-start gap-5">
                         <div className="w-14 h-14 rounded-2xl bg-white border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0 shadow-md">
                           <FileText className="w-7 h-7 stroke-[1.5]" />
@@ -289,7 +289,7 @@ export default function TeleconsultationPrepPage() {
                         </div>
                       </div>
 
-                      {/* Benefit Item 3 */}
+                      {}
                       <div className="flex items-start gap-5">
                         <div className="w-14 h-14 rounded-2xl bg-white border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0 shadow-md">
                           <Stethoscope className="w-7 h-7 stroke-[1.5]" />
@@ -300,7 +300,7 @@ export default function TeleconsultationPrepPage() {
                         </div>
                       </div>
 
-                      {/* Benefit Item 4 */}
+                      {}
                       <div className="flex items-start gap-5">
                         <div className="w-14 h-14 rounded-2xl bg-white border border-[#DAE9E6] text-[#064743] flex items-center justify-center shrink-0 shadow-md">
                           <ShieldCheck className="w-7 h-7 stroke-[1.5]" />
@@ -318,7 +318,7 @@ export default function TeleconsultationPrepPage() {
 
             </div>
 
-            {/* Bottom Contact Banner Card */}
+            {}
             <div className="bg-[#E8F3F1]/30 border border-[#DAE9E6]/60 rounded-[2rem] p-8 sm:p-12 flex flex-col sm:flex-row items-center justify-between gap-8 shadow-sm text-slate-800">
               <div className="flex items-center gap-6 text-left">
                 <div className="w-20 h-20 rounded-full bg-white text-[#064743] flex items-center justify-center shrink-0 shadow-md border border-slate-50">
@@ -342,7 +342,7 @@ export default function TeleconsultationPrepPage() {
 
           </div>
 
-          {/* Faded Background Leaf Decor */}
+          {}
           <div className="absolute bottom-0 left-0 w-24 h-48 pointer-events-none select-none opacity-20 hidden md:block z-0">
             <img
               src="/hiw_left_decor.png"

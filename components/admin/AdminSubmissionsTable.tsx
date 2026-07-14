@@ -209,7 +209,7 @@ export default function AdminSubmissionsTable() {
 
   return (
     <div className="space-y-4">
-      {/* Search Bar */}
+      {}
       <form onSubmit={handleSearch} className="flex gap-2">
         <input
           type="text"
@@ -238,7 +238,7 @@ export default function AdminSubmissionsTable() {
         )}
       </form>
 
-      {/* Tabs */}
+      {}
       <div className="flex flex-wrap items-center justify-between gap-2">
         <div className="flex flex-wrap gap-2">
           {tabs.map((tab) => (
@@ -275,7 +275,7 @@ export default function AdminSubmissionsTable() {
         </div>
       </div>
 
-      {/* View: Calendar */}
+      {}
       {viewMode === "calendar" && (
         <div className="bg-white rounded-xl shadow-sm overflow-hidden">
           <div className="px-6 py-4 border-b border-gray-100 flex items-center justify-between">
@@ -319,7 +319,7 @@ export default function AdminSubmissionsTable() {
               {(() => {
                 const daysInMonth = getDaysInMonth(calendarYear, calendarMonth);
                 const firstDay = getFirstDayOfMonth(calendarYear, calendarMonth);
-                const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1; // Convert Sun=0 to Mon=0
+                const adjustedFirstDay = firstDay === 0 ? 6 : firstDay - 1; 
                 const cells = [];
                 
                 for (let i = 0; i < adjustedFirstDay; i++) {
@@ -382,7 +382,7 @@ export default function AdminSubmissionsTable() {
         </div>
       )}
 
-      {/* View: Table */}
+      {}
       {viewMode === "table" && (
       <div className="bg-white rounded-xl shadow-sm overflow-hidden">
         {loading ? (
@@ -524,7 +524,7 @@ export default function AdminSubmissionsTable() {
       </div>
       )}
 
-      {/* Pagination info */}
+      {}
       {!loading && submissions.length > 0 && (
         <div className="text-sm text-gray-500 text-center">
           Wyświetlono {submissions.length} z {pagination.total} zgłoszeń

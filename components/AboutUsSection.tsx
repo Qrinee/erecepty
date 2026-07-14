@@ -13,7 +13,7 @@ export default function AboutUsSection() {
     <section id="o-nas" className="py-16 md:py-24 bg-white scroll-mt-20">
       <div className="max-w-7xl mx-auto px-4">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left side - Image placeholder */}
+          {}
           <div className="bg-gradient-to-br from-[#DAE9E6] to-slate-100 rounded-2xl h-96 flex items-center justify-center border-2 border-[#DAE9E6]">
             <div className="text-center">
               <Users className="w-20 h-20 text-[#064743] mx-auto mb-4 opacity-50" />
@@ -21,7 +21,7 @@ export default function AboutUsSection() {
             </div>
           </div>
 
-          {/* Right side - Content */}
+          {}
           <div>
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
               7. O NAS
@@ -47,7 +47,7 @@ export default function AboutUsSection() {
               </div>
             </div>
 
-            {/* Stats */}
+            {}
             <div className="grid grid-cols-3 gap-4 mb-8">
               {stats.map((stat, idx) => (
                 <div key={idx} className="text-center p-4 bg-[#DAE9E6] rounded-lg">

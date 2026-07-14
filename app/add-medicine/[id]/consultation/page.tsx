@@ -21,11 +21,11 @@ export default function ConsultationPage() {
   const [medicines, setMedicines] = useState<MedicineData[]>([]);
   const [isFormValid, setIsFormValid] = useState(false);
 
-  // Sync medicines from window
+  
   useEffect(() => {
     const cartMedicines = window.__MEDICINES_CART__ || [];
     
-    // Try to load from localStorage first
+    
     const storedMedicines = localStorage.getItem('orderMedicines');
     if (storedMedicines) {
       try {
@@ -40,24 +40,24 @@ export default function ConsultationPage() {
       }
     }
     
-    // Fallback to window
+    
     if (cartMedicines.length > 0) {
       setMedicines(cartMedicines);
       setIsFormValid(true);
     }
   }, []);
 
-  // Handle form submission
+  
   const handleSubmit = (data: MedicalConsultationData) => {
     console.log('Medical consultation data:', data);
-    // Save to localStorage for next steps
+    
     localStorage.setItem('medicalConsultation', JSON.stringify(data));
     
-    // Navigate to step 3
+    
     router.push(`/add-medicine/${medicineId}/payment`);
   };
 
-  // Handle cancel - go back to step 1
+  
   const handleCancel = () => {
     router.push(`/add-medicine/${medicineId}`);
   };

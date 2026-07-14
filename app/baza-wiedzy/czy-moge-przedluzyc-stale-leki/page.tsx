@@ -52,7 +52,7 @@ export default function ArticlePage() {
 
       <main className="flex-grow pt-8 pb-16 px-4 sm:px-8 xl:px-16 max-w-[90vw] mx-auto w-full">
 
-        {/* Breadcrumbs */}
+        {}
         <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-8 flex-wrap">
           <Link href="/" className="hover:text-slate-800 transition-colors flex items-center">Strona główna</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
@@ -63,7 +63,7 @@ export default function ArticlePage() {
           <span className="text-slate-800">Czy mogę przedłużyć stałe leki bez wizyty stacjonarnej?</span>
         </div>
 
-        {/* Hero Section */}
+        {}
         <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
           <div className="flex-1 space-y-6">
             <span className="inline-block bg-[#EAF3F0] text-[#147A60] px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
@@ -103,13 +103,13 @@ export default function ArticlePage() {
           </div>
         </div>
 
-        {/* Content Layout */}
+        {}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
-          {/* Main Column */}
+          {}
           <div className="lg:col-span-8 space-y-16">
 
-            {/* Step by step */}
+            {}
             <section>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 pb-4 border-b border-slate-100">Jak przedłużyć stałe leki online?</h2>
               <p className="text-slate-600 text-base sm:text-lg mb-10 leading-relaxed max-w-3xl">To proste i szybkie – cały proces zajmuje tylko kilka kroków.</p>
@@ -143,7 +143,7 @@ export default function ArticlePage() {
               </div>
             </section>
 
-            {/* When can doctor extend? */}
+            {}
             <section>
               <h2 className="text-2xl font-black text-slate-900 mb-2">Kiedy lekarz może przedłużyć receptę online?</h2>
               <p className="text-slate-600 font-medium mb-8 text-[15px]">W większości przypadków tak, jeśli:</p>
@@ -174,7 +174,7 @@ export default function ArticlePage() {
               </div>
             </section>
 
-            {/* Which meds? */}
+            {}
             <section>
               <h2 className="text-2xl font-black text-slate-900 mb-2">Jakie leki można przedłużyć online?</h2>
               <p className="text-slate-600 font-medium mb-6 text-[15px]">Najczęściej są to leki stosowane w leczeniu chorób przewlekłych, m.in.:</p>
@@ -199,7 +199,7 @@ export default function ArticlePage() {
               </div>
             </section>
 
-            {/* FAQ */}
+            {}
             <section>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-8 pb-4 border-b border-slate-100">Najczęściej zadawane pytania</h2>
               <div className="space-y-0 border-t border-slate-100">
@@ -224,10 +224,10 @@ export default function ArticlePage() {
 
           </div>
 
-          {/* Sidebar */}
+          {}
           <div className="lg:col-span-4 space-y-8">
 
-            {/* Categories */}
+            {}
             <div className="bg-[#F8FAF9] rounded-2xl p-6">
               <h3 className="font-black text-slate-900 mb-4 text-[15px]">W tej kategorii</h3>
               <div className="space-y-1">
@@ -250,7 +250,7 @@ export default function ArticlePage() {
               </Link>
             </div>
 
-            {/* Popular Articles */}
+            {}
             <div className="p-2">
               <h3 className="font-black text-slate-900 mb-6 text-[15px]">Popularne artykuły</h3>
               <div className="space-y-5">
@@ -273,7 +273,7 @@ export default function ArticlePage() {
               </Link>
             </div>
 
-            {/* Contact Box */}
+            {}
             <div className="bg-[#EAF3F0] rounded-2xl p-6">
               <div className="w-12 h-12 bg-[#064743] text-white rounded-xl flex items-center justify-center mb-5">
                 <Headset className="w-6 h-6" />
@@ -296,7 +296,7 @@ export default function ArticlePage() {
 
       </main>
 
-      {/* Bottom Banner Full Width */}
+      {}
       <div className="w-full bg-[#E8F3F1]/40 border-t border-b border-[#DAE9E6]/60 py-16 mt-8">
         <div className="max-w-7xl mx-auto px-6 sm:px-12 md:px-20 lg:px-28 xl:px-36 flex flex-col md:flex-row items-center justify-between gap-8">
           <div className="flex items-center gap-6">
@@ -314,7 +314,7 @@ export default function ArticlePage() {
         </div>
       </div>
 
-      {/* Feature strip at the very bottom */}
+      {}
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 md:px-20 lg:px-28 xl:px-36 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div className="flex gap-5">

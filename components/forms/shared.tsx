@@ -25,7 +25,7 @@ export const getServicePriceAndType = (serviceParam: string | null, fallbackType
   return { amount: 7900, type: serviceParam };
 };
 
-/* ─── Shared helpers ──────────────────────────────────────────── */
+
 export const inputCls =
   "w-full bg-[#F5F7FA] border border-transparent hover:border-slate-200 focus:border-slate-300 focus:bg-white rounded-lg px-3 py-2.5 text-sm text-slate-800 placeholder:text-slate-400 focus:outline-none transition-all";
 export const textareaCls =
@@ -150,7 +150,7 @@ export function useAuthPrefill(setters: {
         }
       })
       .catch(() => { });
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+    
   }, []);
   return isLoggedIn;
 }

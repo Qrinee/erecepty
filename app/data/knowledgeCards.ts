@@ -10,7 +10,6 @@ export interface KnowledgeCardData {
   description: string;
   image: string;
   slug: string;
-  // Rozszerzone pola dla strony artykułu
   subtitle?: string;
   author?: string;
   publishedDate?: string;

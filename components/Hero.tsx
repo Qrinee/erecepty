@@ -126,17 +126,17 @@ export default function Hero() {
   return (
     <section className="relative bg-[#FAFAFA] pt-6 pb-6 lg:pt-8 lg:pb-6 overflow-hidden flex flex-col">
 
-      {/* Subtle green circle background */}
+      {}
       <div className="absolute top-1/2 right-0 -translate-y-1/2 translate-x-1/4 w-[700px] h-[700px] xl:w-[70vw] xl:h-[900px] bg-[#E8F3F1] rounded-full z-0 hidden lg:block" />
 
       <div className="w-full max-w-[90vw] mx-auto relative z-10 flex-grow flex flex-col justify-center">
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center h-full mb-12">
 
-          {/* Left Content */}
+          {}
           <div className="hidden lg:col-span-7 lg:flex flex-col items-start text-left relative z-20 pt-4">
 
-            {/* Badge */}
+            {}
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-100 text-slate-600 text-[11px] sm:text-xs font-bold mb-6 uppercase tracking-wider">
               <span className="relative flex h-2.5 w-2.5">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
@@ -156,7 +156,7 @@ export default function Hero() {
               Otrzymaj e-receptę, skierowanie, L4 lub konsultację wyników.
             </p>
 
-            {/* 4 Items row */}
+            {}
             <div className="flex flex-row flex-wrap xl:flex-nowrap gap-x-6 gap-y-4 w-full max-w-full mb-8">
               <div className="flex items-start gap-3">
                 <Clock className="w-6 h-6 text-emerald-600 shrink-0" strokeWidth={1.5} />
@@ -177,20 +177,20 @@ export default function Hero() {
             </div>
           </div>
 
-          {/* Right Content (Widget & Doctor) */}
+          {}
           <div className="lg:col-span-5 relative w-full flex justify-center lg:justify-end mt-12 lg:mt-0">
 
-            {/* Doctor Image - Positioned behind and to the left of the widget */}
+            {}
             <div className="absolute right-[60%] w-[350px] xl:w-[400px] pointer-events-none hidden lg:block z-10">
               <img src="/gpt.png" alt="Lekarz online" className="w-full h-auto drop-shadow-xl object-bottom" />
             </div>
 
-            {/* Booking Widget */}
+            {}
             <div id="booking-widget" className="bg-white rounded-[24px] shadow-[0_8px_30px_rgb(0,0,0,0.08)] border border-slate-100 p-6 sm:p-8 w-full max-w-[400px] relative z-40">
               <h2 className="text-xl font-bold text-slate-900 mb-6">Umów konsultację</h2>
 
               <div className="space-y-4">
-                {/* Step 1 */}
+                {}
                 <div>
                   <label className="block text-[11px] font-medium text-slate-500 mb-1.5">
                     Wybierz usługę
@@ -209,7 +209,7 @@ export default function Hero() {
                   </div>
                 </div>
 
-                {/* Step 2 */}
+                {}
                 <div className="grid grid-cols-2 gap-3">
                   <div className={`col-span-2 ${isNoScheduling ? '' : 'sm:col-span-1'}`}>
                     <label className="block text-[11px] font-medium text-slate-500 mb-1.5">
@@ -262,10 +262,10 @@ export default function Hero() {
                   )}
                 </div>
 
-                {/* Step 3 */}
+                {}
 
 
-                {/* Submit */}
+                {}
                 <div className="pt-3">
                   <button
                     onClick={handleBooking}
@@ -286,7 +286,7 @@ export default function Hero() {
 
         </div>
 
-        {/* Horizontal Cards Row */}
+        {}
         <div className="w-full pb-4 relative z-20">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 md:gap-4">
 
@@ -326,7 +326,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Card 1 */}
+            {}
             <div
               onClick={() => router.push('/wypelnij-formularz?service=Wizyta+lekarska+ogólna')}
               className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#10B981]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(16,185,129,0.15)] hover:border-[#10B981]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
@@ -363,7 +363,7 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Card 2 */}
+            {}
             <div
               onClick={() => router.push('/wypelnij-formularz?service=Skierowanie')}
               className="bg-white p-4 md:p-5 rounded-[20px] shadow-[0_4px_20px_rgb(0,0,0,0.04)] border-2 border-[#0D9488]/20 flex flex-col h-full group hover:shadow-[0_8px_30px_rgba(13,148,136,0.15)] hover:border-[#0D9488]/60 hover:-translate-y-1 transition-all items-center md:items-start text-center md:text-left cursor-pointer active:scale-[0.98]"
@@ -382,13 +382,13 @@ export default function Hero() {
               </div>
             </div>
 
-            {/* Card 3 */}
+            {}
 
 
-            {/* Card 4 */}
+            {}
 
 
-            {/* Card 5 */}
+            {}
 
 
           </div>

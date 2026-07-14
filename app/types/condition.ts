@@ -31,19 +31,19 @@ export interface ConditionPageData {
  }[];
   metaDescription: string;
   keywords: string[];
-  
-  heroDescription: string;
+
+    heroDescription: string;
   heroStats: {
     stat: string;
     label: string;
   }[];
-  
-  conditionDescription: string;
+
+    conditionDescription: string;
   symptoms: string[];
   causes: string[];
   riskFactors: string[];
-  
-  treatmentOptions: TreatmentOption[];
+
+    treatmentOptions: TreatmentOption[];
   treatmentProcess: {
     step: number;
     title: string;
@@ -51,26 +51,26 @@ export interface ConditionPageData {
     description: string;
     duration?: string;
   }[];
-  
-  costInfo: {
+
+    costInfo: {
     consultationCost: string;
     prescriptionCost?: string;
     insuranceCoverage: string;
     availability: string;
   };
-  
-  indications: string[];
+
+    indications: string[];
   contraindications: string[];
-  
-  faqs: ConditionFAQ[];
-  
-  statistics: {
+
+    faqs: ConditionFAQ[];
+
+    statistics: {
     value: string;
     description: string;
   }[];
-  
-  
-  relatedConditions: string[];
+
+
+      relatedConditions: string[];
 }
 
 

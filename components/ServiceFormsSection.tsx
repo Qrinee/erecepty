@@ -7,7 +7,7 @@ import { EReceptaForm } from "./forms/EReceptaForm";
 import { L4Form } from "./forms/L4Form";
 import { KontynuacjaForm } from "./forms/KontynuacjaForm";
 
-/* ─── Main Section Component ─────────────────────────────────── */
+
 export const servicesData = [
   {
     id: "konsultacja",
@@ -72,7 +72,7 @@ export default function ServiceFormsSection() {
     <section id="formularze" className="bg-[#F8FAFB] py-16 scroll-mt-20">
       <div className="w-full px-4 sm:px-8 xl:px-16">
 
-        {/* Section heading */}
+        {}
         <div className="text-center mb-10">
           <span className="inline-flex items-center gap-1.5 bg-[#EAF3F0] text-[#147A60] text-xs font-extrabold px-4 py-1.5 rounded-full mb-4 border border-[#D5EAE6]/50 tracking-wider">
             <Info className="w-3 h-3" />
@@ -84,7 +84,7 @@ export default function ServiceFormsSection() {
           <p className="text-slate-500 text-sm mt-2">Szybko, bezpiecznie i bez wychodzenia z domu.</p>
         </div>
 
-        {/* Tabs */}
+        {}
         <div className="flex flex-wrap gap-2 justify-center mb-8">
           {servicesData.map((s, i) => {
             const TabIcon = s.icon;
@@ -105,10 +105,10 @@ export default function ServiceFormsSection() {
           })}
         </div>
 
-        {/* Active form card */}
+        {}
         <div className="bg-white rounded-[24px] border border-slate-100 shadow-[0_8px_40px_rgba(0,0,0,0.04)] overflow-hidden">
 
-          {/* Form header */}
+          {}
           <div className={`${svc.headerBg} px-6 py-5 border-b border-slate-100 flex items-center gap-4`}>
             <div className={`w-10 h-10 rounded-full ${svc.iconBg} flex items-center justify-center flex-shrink-0 shadow-sm`}>
               <Icon className="w-5 h-5 text-white" />
@@ -121,7 +121,7 @@ export default function ServiceFormsSection() {
             </div>
           </div>
 
-          {/* Form body */}
+          {}
           <div className="p-6">
             {active === 0 && <KonsultacjaForm />}
             {active === 1 && <EReceptaForm />}

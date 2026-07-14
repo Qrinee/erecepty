@@ -16,7 +16,7 @@ export default function DesktopCarousel({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     checkOverflow();
-    // A small timeout to allow layout calculation after components render
+    
     const timer = setTimeout(checkOverflow, 100);
 
     window.addEventListener("resize", checkOverflow);
@@ -36,7 +36,7 @@ export default function DesktopCarousel({ children }: { children: ReactNode }) {
 
   return (
     <div className="relative group w-full">
-      {/* Left Navigation Arrow */}
+      {}
       {isOverflowing && (
         <button 
           onClick={() => scroll("left")}
@@ -47,7 +47,7 @@ export default function DesktopCarousel({ children }: { children: ReactNode }) {
         </button>
       )}
 
-      {/* Scrollable Container */}
+      {}
       <div 
         ref={scrollRef}
         className={`flex overflow-x-auto snap-x snap-mandatory gap-4 pb-6 px-4 -mx-4 sm:mx-0 sm:px-0 sm:gap-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none] ${
@@ -57,7 +57,7 @@ export default function DesktopCarousel({ children }: { children: ReactNode }) {
         {children}
       </div>
 
-      {/* Right Navigation Arrow */}
+      {}
       {isOverflowing && (
         <button 
           onClick={() => scroll("right")}

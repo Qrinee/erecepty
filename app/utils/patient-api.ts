@@ -1,4 +1,3 @@
-// API utilities for patient form submission
 import { PatientFormData, PatientSubmission } from '@/app/types/patient';
 import { validatePESEL } from './pesel-validator';
 
@@ -47,8 +46,8 @@ export async function submitPatientForm(
     }
 
     const data = await response.json();
-    
-    return {
+
+        return {
       success: true,
       submissionId: data.submissionId,
       message: 'Form submitted successfully',
@@ -62,7 +61,6 @@ export async function submitPatientForm(
   }
 }
 
-// Transform patient form data for backend compatibility
 export function transformPatientDataForBackend(data: PatientFormData) {
   return {
     patient: data.patient,
@@ -70,11 +68,9 @@ export function transformPatientDataForBackend(data: PatientFormData) {
   };
 }
 
-// Validation helper for patient form
 export function validatePatientForm(data: PatientFormData): { valid: boolean; errors: string[] } {
   const errors: string[] = [];
 
-  // Patient data validation
   if (!data.patient.email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.patient.email)) {
     errors.push('Invalid email address');
   }
@@ -92,7 +88,6 @@ export function validatePatientForm(data: PatientFormData): { valid: boolean; er
     errors.push('Last name is required');
   }
 
-  // Medical info validation
   if (!data.medicalInfo.mainComplaint) {
     errors.push('Main complaint is required');
   }

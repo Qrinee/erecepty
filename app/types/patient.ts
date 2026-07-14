@@ -1,4 +1,3 @@
-// Patient form types for the complete patient submission form
 
 export interface PatientData {
   firstName: string;

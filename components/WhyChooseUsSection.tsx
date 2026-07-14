@@ -8,10 +8,10 @@ export default function WhyChooseUsSection() {
     <section className="py-20 bg-[#F8FAF9] overflow-hidden scroll-mt-20">
       <div className=" mx-auto px-4 sm:px-6 lg:px-8">
 
-        {/* Main Grid: Left Laptop Image, Right Content (Title + 2x2 Cards Grid) */}
+        {}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center mb-16">
 
-          {/* Left Column: Doctor-Laptop Image */}
+          {}
           <div className="lg:col-span-5 flex justify-center">
             <div className="relative w-full rounded-[32px] overflow-hidden shadow-[0_15px_40px_rgba(0,0,0,0.025)] border border-slate-100 bg-white p-3">
               <img
@@ -22,7 +22,7 @@ export default function WhyChooseUsSection() {
             </div>
           </div>
 
-          {/* Right Column: Title and 2x2 Cards Grid */}
+          {}
           <div className="lg:col-span-7 flex flex-col justify-between py-2">
 
             <div className="mb-8">
@@ -34,10 +34,10 @@ export default function WhyChooseUsSection() {
               </p>
             </div>
 
-            {/* 2x2 Grid of Cards */}
+            {}
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
 
-              {/* Card 1: Zweryfikowani lekarze */}
+              {}
               <div className="bg-white rounded-[24px] p-6 shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-slate-100 flex flex-col justify-between group hover:shadow-md transition duration-300">
                 <div className="flex flex-col items-center gap-4 mb-4">
                   <div className="w-22 h-22 rounded-full bg-[#E8F3EE] text-[#138A56] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition duration-300">
@@ -50,7 +50,7 @@ export default function WhyChooseUsSection() {
                 </p>
               </div>
 
-              {/* Card 2: Konsultacja online 24/7 */}
+              {}
               <div className="bg-white rounded-[24px] p-6 shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-slate-100 flex flex-col justify-between group hover:shadow-md transition duration-300">
                 <div className="flex flex-col items-center gap-4 mb-4">
                   <div className="w-22 h-22 rounded-full bg-[#E8F3EE] text-[#138A56] flex items-center justify-center flex-shrink-0 relative group-hover:scale-110 transition duration-300">
@@ -66,7 +66,7 @@ export default function WhyChooseUsSection() {
                 </p>
               </div>
 
-              {/* Card 3: Bezpieczne i poufne */}
+              {}
               <div className="bg-white rounded-[24px] p-6 shadow-[0_8px_30px_rgba(0,0,0,0.015)] border border-slate-100 flex flex-col justify-between group hover:shadow-md transition duration-300">
                 <div className="flex flex-col items-center gap-4 mb-4">
                   <div className="w-22 h-22 rounded-full bg-[#E8F3EE] text-[#138A56] flex items-center justify-center flex-shrink-0 group-hover:scale-110 transition duration-300">
@@ -87,11 +87,11 @@ export default function WhyChooseUsSection() {
 
         </div>
 
-        {/* Stats Row */}
+        {}
         <div className="bg-white border border-slate-100 rounded-[32px] p-8 sm:p-10 shadow-[0_15px_40px_rgba(0,0,0,0.02)] mb-12">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-4 divide-y md:divide-y-0 md:divide-x divide-slate-100">
 
-            {/* Stat 1 */}
+            {}
             <div className="flex items-center gap-5 justify-center md:justify-start px-6 pb-6 md:pb-0">
               <div className="w-14 h-14 rounded-full bg-[#E8F3EE] text-[#138A56] flex items-center justify-center flex-shrink-0">
                 <CheckCircle className="w-6 h-6" />
@@ -103,7 +103,7 @@ export default function WhyChooseUsSection() {
               </div>
             </div>
 
-            {/* Stat 2 */}
+            {}
             <div className="flex items-center gap-5 justify-center px-6 py-6 md:py-0">
               <div className="w-14 h-14 rounded-full bg-[#E8F3EE] text-[#138A56] flex items-center justify-center flex-shrink-0">
                 <Star className="w-6 h-6 fill-[#138A56]" />
@@ -115,7 +115,7 @@ export default function WhyChooseUsSection() {
               </div>
             </div>
 
-            {/* Stat 3 */}
+            {}
             <div className="flex items-center gap-5 justify-center md:justify-end px-6 pt-6 md:pt-0">
               <div className="w-14 h-14 rounded-full bg-[#E8F3EE] text-[#138A56] flex items-center justify-center flex-shrink-0">
                 <Heart className="w-6 h-6 fill-[#138A56]" />
@@ -130,7 +130,7 @@ export default function WhyChooseUsSection() {
           </div>
         </div>
 
-        {/* Bottom Banner */}
+        {}
         <div className="bg-[#064743] rounded-[28px] p-6 sm:p-8 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 shadow-lg shadow-emerald-950/10">
           <div className="flex items-center gap-4 text-center md:text-left">
             <div className="w-12 h-12 rounded-xl bg-[#0E5B55] border border-[#126B63] text-emerald-400 flex items-center justify-center flex-shrink-0 hidden sm:flex">

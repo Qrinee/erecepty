@@ -28,7 +28,7 @@ export default function OrdersPage() {
   const [user, setUser] = useState<any>(null);
   const [payingId, setPayingId] = useState<string | null>(null);
 
-  // Filter & Pagination state
+  
   const [selectedTypeTab, setSelectedTypeTab] = useState<'all' | 'prescription' | 'medical_leave'>('all');
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
@@ -110,13 +110,13 @@ export default function OrdersPage() {
     return 'Oczekujące';
   };
 
-  // Filter submissions by type tab
+  
   const filteredSubmissions = submissions.filter((sub: any) => {
     if (selectedTypeTab === 'all') return true;
     return sub.submissionType === selectedTypeTab;
   });
 
-  // Pagination calculations
+  
   const totalItems = filteredSubmissions.length;
   const totalPages = Math.ceil(totalItems / itemsPerPage) || 1;
   const startItem = totalItems === 0 ? 0 : (currentPage - 1) * itemsPerPage + 1;
@@ -129,7 +129,7 @@ export default function OrdersPage() {
 
   const handleTabChange = (tabId: 'all' | 'prescription' | 'medical_leave') => {
     setSelectedTypeTab(tabId);
-    setCurrentPage(1); // Reset to first page when tab changes
+    setCurrentPage(1); 
   };
 
   if (loading) {
@@ -155,13 +155,13 @@ export default function OrdersPage() {
       <Header />
       
       <main className="max-w-4xl mx-auto px-4 py-8 mt-24">
-        {/* Page Header */}
+        {}
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight">Moje konsultacje</h1>
           <p className="text-sm text-slate-500 mt-1">Historia Twoich konsultacji, e-recept i zwolnień.</p>
         </div>
 
-        {/* New Order Banner */}
+        {}
         <div className="bg-white rounded-2xl border border-slate-200/80 p-6 mb-8 shadow-sm">
           <div className="flex flex-col sm:flex-row items-center justify-between gap-6">
             <div>
@@ -178,17 +178,17 @@ export default function OrdersPage() {
           </div>
         </div>
 
-        {/* Consultations Card Container */}
+        {}
         <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden mb-8">
           
-          {/* Card Header & Tabs */}
+          {}
           <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 px-6 py-4 gap-3">
             <div className="flex items-center gap-2">
               <h3 className="font-bold text-slate-900 text-base">Historia konsultacji</h3>
             </div>
             
             <div className="flex items-center justify-between sm:justify-end gap-4 flex-wrap">
-              {/* Type Tabs */}
+              {}
               <div className="flex gap-4 text-sm font-medium">
                 {tabs.map((tab) => {
                   const isActive = selectedTypeTab === tab.id;
@@ -209,7 +209,7 @@ export default function OrdersPage() {
                 })}
               </div>
               
-              {/* Filter Action Button */}
+              {}
               <button className="flex items-center gap-1.5 px-2.5 py-1.5 border border-slate-200 rounded-lg text-slate-600 hover:text-slate-800 hover:bg-slate-50 text-xs font-semibold cursor-pointer">
                 <Filter className="w-3.5 h-3.5" />
                 Filtry
@@ -217,7 +217,7 @@ export default function OrdersPage() {
             </div>
           </div>
 
-          {/* List Content */}
+          {}
           {totalItems === 0 ? (
             <div className="text-center py-16 px-4">
               <div className="w-12 h-12 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100">
@@ -264,7 +264,7 @@ export default function OrdersPage() {
                   <div key={submission.id} className="p-5 flex flex-col hover:bg-slate-50/40 transition-colors">
                     <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
                       
-                      {/* Left: Icon & Details Grid */}
+                      {}
                       <div className="flex items-center gap-4 flex-1">
                         <div className={`w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0 ${iconClass}`}>
                           <TypeIcon className="w-5 h-5" />
@@ -272,7 +272,7 @@ export default function OrdersPage() {
                         
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-1">
                           
-                          {/* Col 1: Type, Status, Date */}
+                          {}
                           <div>
                             <div className="flex items-center gap-2 flex-wrap">
                               <span className="font-semibold text-slate-900 text-sm">{typeLabel}</span>
@@ -286,7 +286,7 @@ export default function OrdersPage() {
                             <span className="block text-[10px] text-slate-400 font-mono mt-0.5">ID: #{submission.id?.substring(0, 12)}</span>
                           </div>
 
-                          {/* Col 2: Medicines / Leave details */}
+                          {}
                           <div className="flex flex-col justify-center text-sm text-slate-600 sm:pl-4">
                             {isPrescription ? (
                               <div>
@@ -301,7 +301,7 @@ export default function OrdersPage() {
                             )}
                           </div>
 
-                          {/* Col 3: Doctor Assignment or Decision status */}
+                          {}
                           <div className="flex flex-col justify-center text-sm text-slate-600 sm:pl-4">
                             {submission.status === 'completed' ? (
                               <div>
@@ -336,9 +336,9 @@ export default function OrdersPage() {
                         </div>
                       </div>
 
-                      {/* Right: Actions */}
+                      {}
                       <div className="flex items-center gap-3 justify-end sm:justify-start">
-                        {/* Unpaid payment flow button */}
+                        {}
                         {submission.paymentStatus === 'unpaid' && (
                           <button
                             onClick={() => handlePayment(submission.id)}
@@ -367,7 +367,7 @@ export default function OrdersPage() {
 
                     </div>
 
-                    {/* Bottom: Notes from doctor */}
+                    {}
                     {submission.adminNotes && (
                       <div className="mt-4 p-3 bg-emerald-50/50 border border-emerald-100 rounded-xl max-w-2xl">
                         <p className="text-[11px] font-bold text-[#064743] uppercase tracking-wider mb-0.5">Notatka od lekarza:</p>
@@ -380,16 +380,16 @@ export default function OrdersPage() {
             </div>
           )}
 
-          {/* Pagination Controls */}
+          {}
           {totalItems > 0 && (
             <div className="border-t border-slate-100 px-6 py-4 flex flex-col sm:flex-row items-center justify-between gap-4 bg-slate-50/30">
               
-              {/* Entries Info */}
+              {}
               <div className="text-xs text-slate-500 font-medium">
                 Pokaż {startItem}-{endItem} z {totalItems} pozycji
               </div>
 
-              {/* Pages Grid */}
+              {}
               <div className="flex items-center gap-1.5">
                 <button
                   onClick={() => setCurrentPage((p) => Math.max(1, p - 1))}
@@ -426,7 +426,7 @@ export default function OrdersPage() {
                 </button>
               </div>
 
-              {/* Page Limit Selector */}
+              {}
               <div className="flex items-center gap-2 text-xs text-slate-500 font-medium">
                 <span>Na stronie:</span>
                 <select

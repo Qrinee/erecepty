@@ -11,10 +11,10 @@ export default function ForCompaniesSection() {
     <section id="dla-firm" className="py-20 bg-white scroll-mt-20 max-w-[95vw] m-auto">
       <div className="w-full px-4 sm:px-8 xl:px-16">
 
-        {/* Main Grid */}
+        {}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 
-          {/* Left Column: Heading and Features list */}
+          {}
           <div>
             <div className="flex flex-col mb-6">
               <div className="flex items-center gap-3">
@@ -32,7 +32,7 @@ export default function ForCompaniesSection() {
 
             <div className="space-y-6">
 
-              {/* Feature 1 */}
+              {}
               <div className="flex gap-4 items-start">
                 <div className="w-12 h-12 rounded-xl bg-[#E8F3F1] border border-[#D5EAE6] text-[#147A60] flex items-center justify-center flex-shrink-0">
                   <BriefcaseMedical className="w-5 h-5" />
@@ -45,7 +45,7 @@ export default function ForCompaniesSection() {
                 </div>
               </div>
 
-              {/* Feature 2 */}
+              {}
               <div className="flex gap-4 items-start">
                 <div className="w-12 h-12 rounded-xl bg-[#E8F3F1] border border-[#D5EAE6] text-[#147A60] flex items-center justify-center flex-shrink-0">
                   <Users className="w-5 h-5" />
@@ -58,7 +58,7 @@ export default function ForCompaniesSection() {
                 </div>
               </div>
 
-              {/* Feature 3 */}
+              {}
               <div className="flex gap-4 items-start">
                 <div className="w-12 h-12 rounded-xl bg-[#E8F3F1] border border-[#D5EAE6] text-[#147A60] flex items-center justify-center flex-shrink-0">
                   <TrendingUp className="w-5 h-5" />
@@ -79,10 +79,10 @@ export default function ForCompaniesSection() {
             </Link>
           </div>
 
-          {/* Right Column: Office photo card and metrics */}
+          {}
           <div className="bg-[#EFF6F4]/50 border border-[#D5EAE6]/30 rounded-[32px] p-6 flex flex-col justify-between shadow-sm relative">
 
-            {/* Photo Wrapper */}
+            {}
             <div className="relative w-full h-[520px] rounded-2xl overflow-hidden shadow-sm">
               <img
                 src="/for_companies_office.png"
@@ -90,7 +90,7 @@ export default function ForCompaniesSection() {
                 className="w-full h-full object-cover"
               />
 
-              {/* Floating Badge */}
+              {}
               <div className="absolute top-4 left-4 bg-white/95 rounded-[20px] p-4 shadow-md max-w-[200px] border border-slate-100/50 backdrop-blur-sm z-10 flex gap-2.5 items-start">
                 <div className="w-8 h-8 rounded-lg bg-emerald-50 text-emerald-600 flex items-center justify-center flex-shrink-0">
                   <ShieldCheck className="w-4 h-4" />
@@ -99,10 +99,10 @@ export default function ForCompaniesSection() {
               </div>
             </div>
 
-            {/* Bottom 4-column metrics */}
+            {}
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4 pt-5 border-t border-[#D5EAE6]/50 mt-5">
 
-              {/* Col 1 */}
+              {}
               <div className="flex gap-2.5 items-center">
                 <div className="w-8 h-8 rounded-full bg-[#E8F3F1] text-[#147A60] flex items-center justify-center flex-shrink-0">
                   <Users className="w-4 h-4" />
@@ -113,7 +113,7 @@ export default function ForCompaniesSection() {
                 </div>
               </div>
 
-              {/* Col 2 */}
+              {}
               <div className="flex gap-2.5 items-center">
                 <div className="w-8 h-8 rounded-full bg-[#E8F3F1] text-[#147A60] flex items-center justify-center flex-shrink-0">
                   <Clock className="w-4 h-4" />
@@ -124,7 +124,7 @@ export default function ForCompaniesSection() {
                 </div>
               </div>
 
-              {/* Col 3 */}
+              {}
               <div className="flex gap-2.5 items-center">
                 <div className="w-8 h-8 rounded-full bg-[#E8F3F1] text-[#147A60] flex items-center justify-center flex-shrink-0">
                   <Stethoscope className="w-4 h-4" />
@@ -135,7 +135,7 @@ export default function ForCompaniesSection() {
                 </div>
               </div>
 
-              {/* Col 4 */}
+              {}
               <div className="flex gap-2.5 items-center">
                 <div className="w-8 h-8 rounded-full bg-[#E8F3F1] text-[#147A60] flex items-center justify-center flex-shrink-0">
                   <Zap className="w-4 h-4" />
@@ -151,10 +151,10 @@ export default function ForCompaniesSection() {
 
         </div>
 
-        {/* Bottom Trust/Stats panel */}
+        {}
         <div className="bg-white rounded-[28px] border border-slate-100 shadow-[0_15px_45px_rgba(0,0,0,0.015)] p-6 mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 divide-y lg:divide-y-0 lg:divide-x divide-slate-100">
 
-          {/* Metric 1 */}
+          {}
           <div className="flex items-center gap-4 px-4 pt-4 first:pt-0 sm:pt-0 lg:pt-0">
             <div className="w-11 h-11 rounded-full bg-[#E8F3F1] border border-[#D5EAE6] text-[#147A60] flex items-center justify-center flex-shrink-0 shadow-sm">
               <Users className="w-5 h-5" />
@@ -166,7 +166,7 @@ export default function ForCompaniesSection() {
             </div>
           </div>
 
-          {/* Metric 2 */}
+          {}
           <div className="flex items-center gap-4 px-4 pt-4 lg:pt-0">
             <div className="w-11 h-11 rounded-full bg-[#E8F3F1] border border-[#D5EAE6] text-[#147A60] flex items-center justify-center flex-shrink-0 shadow-sm">
               <Star className="w-5 h-5 fill-[#147A60] text-[#147A60]" />
@@ -178,7 +178,7 @@ export default function ForCompaniesSection() {
             </div>
           </div>
 
-          {/* Metric 3 */}
+          {}
           <div className="flex items-center gap-4 px-4 pt-4 lg:pt-0">
             <div className="w-11 h-11 rounded-full bg-[#E8F3F1] border border-[#D5EAE6] text-[#147A60] flex items-center justify-center flex-shrink-0 shadow-sm">
               <Heart className="w-5 h-5 fill-[#147A60] text-[#147A60]" />
@@ -190,7 +190,7 @@ export default function ForCompaniesSection() {
             </div>
           </div>
 
-          {/* Metric 4 */}
+          {}
           <div className="flex items-center gap-4 px-4 pt-4 lg:pt-0">
             <div className="w-11 h-11 rounded-full bg-[#E8F3F1] border border-[#D5EAE6] text-[#147A60] flex items-center justify-center flex-shrink-0 shadow-sm">
               <ShieldCheck className="w-5 h-5 fill-[#147A60] text-white" />

@@ -34,7 +34,7 @@ export default function TrustSection() {
                 Działamy w pełni transparentnie i zgodnie z polskim prawem.
               </p>
 
-              {/* Trust badges */}
+              {}
               <div className="flex flex-wrap gap-4 mb-8">
                 <div className="flex items-center gap-2 bg-white px-4 py-2.5 rounded-xl border border-slate-100 shadow-sm">
                   <UserCheck className="text-[#138A56]" size={18} />
@@ -60,7 +60,7 @@ export default function TrustSection() {
             </div>
 
             <div className="grid sm:grid-cols-2 gap-6 relative z-10">
-              {/* Trust Items Grid */}
+              {}
               <div className="bg-white rounded-[24px] p-6 shadow-sm border border-slate-50 flex flex-col justify-between">
                 <div className="flex items-center gap-4 mb-4">
                   <div className="w-12 h-12 rounded-full bg-[#F5F8F7] flex items-center justify-center flex-shrink-0 relative">
@@ -127,7 +127,7 @@ export default function TrustSection() {
             </div>
           </div>
 
-          {/* Bottom Banner */}
+          {}
           <div className="bg-white rounded-[24px] p-6 lg:px-10 lg:py-8 flex flex-col lg:flex-row items-center justify-between gap-8 shadow-sm border border-slate-50 relative z-10 mx-auto w-full max-w-[95%]">
             <div className="flex items-center gap-4">
               <div className="w-12 h-12 rounded-full bg-[#E8F3EE] flex items-center justify-center flex-shrink-0 text-[#138A56]">

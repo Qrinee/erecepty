@@ -52,7 +52,7 @@ export function KontynuacjaForm() {
     setFinalAmount(amount);
   }, [amount]);
 
-  // Medicine Search
+  
   const [medQ, setMedQ] = useState("");
   const [medResults, setMedResults] = useState<any[]>([]);
   const [medSearching, setMedSearching] = useState(false);
@@ -92,10 +92,10 @@ export function KontynuacjaForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Clear previous errors
+    
     const newErrors: Record<string, string> = {};
     
-    // Validate fullName (first and last name)
+    
     const nameParts = fullName.trim().split(/\s+/);
     if (!fullName.trim()) {
       newErrors.fullName = "Imię i nazwisko są wymagane.";
@@ -103,7 +103,7 @@ export function KontynuacjaForm() {
       newErrors.fullName = "Imię i nazwisko musi zawierać co najmniej dwa wyrazy.";
     }
     
-    // Validate PESEL
+    
     if (!pesel) {
       newErrors.pesel = "PESEL jest wymagany.";
     } else {
@@ -113,7 +113,7 @@ export function KontynuacjaForm() {
       }
     }
     
-    // Validate Phone (at least 9 digits)
+    
     const cleanPhone = phone.replace(/\s+/g, "");
     if (!cleanPhone) {
       newErrors.phone = "Numer telefonu jest wymagany.";
@@ -121,19 +121,19 @@ export function KontynuacjaForm() {
       newErrors.phone = "Numer telefonu musi zawierać od 9 do 15 cyfr.";
     }
     
-    // Validate Email
+    
     if (!email) {
       newErrors.email = "Adres e-mail jest wymagany.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       newErrors.email = "Adres e-mail jest nieprawidłowy.";
     }
     
-    // Validate selectedMeds
+    
     if (selectedMeds.length === 0) {
       newErrors.selectedMeds = "Musisz wyszukać i wybrać co najmniej jeden lek do kontynuacji.";
     }
     
-    // Validate consents
+    
     if (!consentTruth) {
       newErrors.consentTruth = "Musisz oświadczyć zgodność danych z prawdą.";
     }
@@ -144,14 +144,14 @@ export function KontynuacjaForm() {
       newErrors.consentDoctor = "Musisz potwierdzić zrozumienie, że kontynuacja leczenia wymaga decyzji lekarza.";
     }
     
-    // Validate password if creating account
+    
     if (createAccount && (!accountPassword || accountPassword.length < 6)) {
       newErrors.accountPassword = "Hasło musi mieć co najmniej 6 znaków.";
     }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      // Scroll to the top of the form
+      
       const formEl = e.currentTarget as HTMLFormElement;
       formEl.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
@@ -210,7 +210,7 @@ export function KontynuacjaForm() {
     <form onSubmit={handleSubmit}>
       <FormErrorAlert errors={errors} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {/* Col 1: Dane pacjenta */}
+        {}
         <div>
           <SectionHeader icon={User} title="Dane pacjenta" color="bg-orange-500" />
           <div className="space-y-3">
@@ -285,7 +285,7 @@ export function KontynuacjaForm() {
           </div>
         </div>
 
-        {/* Col 2: Informacje o leczeniu */}
+        {}
         <div className="md:col-span-2">
           <SectionHeader icon={RefreshCw} title="Informacje o leczeniu" color="bg-orange-500" />
           
@@ -336,7 +336,7 @@ export function KontynuacjaForm() {
           </div>
         </div>
 
-        {/* Col 3: Zgody */}
+        {}
         <div>
           <SectionHeader icon={ShieldCheck} title="Zgody" color="bg-orange-500" />
           <div className="space-y-3">

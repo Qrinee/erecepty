@@ -44,7 +44,7 @@ export function KonsultacjaForm() {
   const [discountCode, setDiscountCode] = useState("");
   const [finalAmount, setFinalAmount] = useState(0);
 
-  // Scheduling & Specialization
+  
   const [appointmentDate, setAppointmentDate] = useState("");
   const [appointmentTime, setAppointmentTime] = useState("");
   const [consultationMethod, setConsultationMethod] = useState("video");
@@ -84,10 +84,10 @@ export function KonsultacjaForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Clear previous errors
+    
     const newErrors: Record<string, string> = {};
     
-    // Validate fullName (first and last name)
+    
     const nameParts = fullName.trim().split(/\s+/);
     if (!fullName.trim()) {
       newErrors.fullName = "Imię i nazwisko są wymagane.";
@@ -95,7 +95,7 @@ export function KonsultacjaForm() {
       newErrors.fullName = "Imię i nazwisko musi zawierać co najmniej dwa wyrazy.";
     }
     
-    // Validate PESEL
+    
     if (!pesel) {
       newErrors.pesel = "PESEL jest wymagany.";
     } else {
@@ -105,7 +105,7 @@ export function KonsultacjaForm() {
       }
     }
     
-    // Validate Phone (at least 9 digits)
+    
     const cleanPhone = phone.replace(/\s+/g, "");
     if (!cleanPhone) {
       newErrors.phone = "Numer telefonu jest wymagany.";
@@ -113,14 +113,14 @@ export function KonsultacjaForm() {
       newErrors.phone = "Numer telefonu musi zawierać od 9 do 15 cyfr.";
     }
     
-    // Validate Email
+    
     if (!email) {
       newErrors.email = "Adres e-mail jest wymagany.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       newErrors.email = "Adres e-mail jest nieprawidłowy.";
     }
     
-    // Validate appointment date/time
+    
     if (!appointmentDate) {
       newErrors.appointmentDate = "Data wizyty jest wymagana.";
     }
@@ -128,7 +128,7 @@ export function KonsultacjaForm() {
       newErrors.appointmentTime = "Godzina wizyty jest wymagana.";
     }
     
-    // Validate consents
+    
     if (!consentTruth) {
       newErrors.consentTruth = "Musisz oświadczyć zgodność danych z prawdą.";
     }
@@ -136,14 +136,14 @@ export function KonsultacjaForm() {
       newErrors.consentTerms = "Musisz zaakceptować regulamin i politykę prywatności.";
     }
     
-    // Validate password if creating account
+    
     if (createAccount && (!accountPassword || accountPassword.length < 6)) {
       newErrors.accountPassword = "Hasło musi mieć co najmniej 6 znaków.";
     }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      // Scroll to the top of the form
+      
       const formEl = e.currentTarget as HTMLFormElement;
       formEl.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
@@ -205,7 +205,7 @@ export function KonsultacjaForm() {
     <form onSubmit={handleSubmit}>
       <FormErrorAlert errors={errors} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {/* Col 1: Dane pacjenta */}
+        {}
         <div>
           <SectionHeader icon={User} title="Dane pacjenta" color="bg-[#147A60]" />
           <div className="space-y-3">
@@ -282,7 +282,7 @@ export function KonsultacjaForm() {
           </div>
         </div>
 
-        {/* Col 2: Opis problemu */}
+        {}
         <div>
           <SectionHeader icon={ClipboardList} title="Opis problemu" color="bg-[#147A60]" />
           <div className="space-y-3">
@@ -301,7 +301,7 @@ export function KonsultacjaForm() {
           </div>
         </div>
 
-        {/* Col 3: Terminarz i Lekarz */}
+        {}
         <div>
           <SectionHeader icon={Calendar} title="Terminarz i Lekarz" color="bg-[#147A60]" />
           <div className="space-y-3">
@@ -384,7 +384,7 @@ export function KonsultacjaForm() {
           </div>
         </div>
 
-        {/* Col 4: Zgody */}
+        {}
         <div>
           <SectionHeader icon={ShieldCheck} title="Zgody" color="bg-[#147A60]" />
           <div className="space-y-3">
@@ -405,7 +405,7 @@ export function KonsultacjaForm() {
         </div>
       </div>
 
-      {/* Create account */}
+      {}
       {!isLoggedIn && (
         <div className="mt-5 pt-4 border-t border-slate-100">
           <ConsentCheckbox id="k_account" checked={createAccount} onChange={setCreateAccount}>

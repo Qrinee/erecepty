@@ -21,7 +21,7 @@ export default function AdminDiscountCodes() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
-  // Form states
+  
   const [showAddForm, setShowAddForm] = useState(false);
   const [newCode, setNewCode] = useState("");
   const [bulkCount, setBulkCount] = useState<number>(1);
@@ -30,7 +30,7 @@ export default function AdminDiscountCodes() {
   const [newMaxUses, setNewMaxUses] = useState<number | "">("");
   const [submitLoading, setSubmitLoading] = useState(false);
 
-  // Edit states
+  
   const [editingId, setEditingId] = useState<string | null>(null);
   const [editActive, setEditActive] = useState<boolean>(true);
 

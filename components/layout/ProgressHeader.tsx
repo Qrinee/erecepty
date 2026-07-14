@@ -1,4 +1,4 @@
-// components/layout/ProgressHeader.tsx
+
 interface ProgressHeaderProps {
   currentStep: 1 | 2 | 3;
 }
@@ -23,7 +23,7 @@ export default function ProgressHeader({ currentStep }: ProgressHeaderProps) {
           {currentStep === 3 && 'Podsumowanie i płatność'}
         </h1>
 
-        {/* Progress bar */}
+        {}
         <div className="mt-3 flex items-center gap-2">
           {steps.map((step) => (
             <div key={step.number} className="flex items-center gap-2">
@@ -49,7 +49,7 @@ export default function ProgressHeader({ currentStep }: ProgressHeaderProps) {
           ))}
         </div>
 
-        {/* Step labels */}
+        {}
         <div className="mt-2 flex gap-16">
           {steps.map((step) => (
             <span

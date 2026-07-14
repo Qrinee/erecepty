@@ -1,4 +1,3 @@
-// Unified medicine types for the application
 
 export interface MedicineData {
   _id: string;
@@ -51,22 +50,17 @@ export interface MedicalConsultationData {
   allergies?: string;
   otherMedicalInfo?: string;
   pregnancyStatus: 'pregnant' | 'breastfeeding' | 'na' | null;
-  // Appointment scheduling
   appointmentDate?: string;
   appointmentTime?: string;
   consultationMethod?: 'video' | 'audio' | null;
-  // Doctor specialization preference
   specialization?: string;
-  // Assigned doctor info (filled by form after slot selection)
   assignedDoctorName?: string;
   assignedDoctorId?: string;
-  // Doctor chooses medicines option
   doctorChoosesMeds?: boolean;
   doctorChoosesMedsDescription?: string;
 }
 
 export interface MedicalLeaveData {
-  // Patient information
   patientFirstName: string;
   patientLastName: string;
   patientPesel: string;
@@ -75,24 +69,20 @@ export interface MedicalLeaveData {
   patientAddress: string;
   patientPostalCode: string;
   patientCity: string;
-  
-  // Medical information
+
   diagnosis: string;
   icd10Code: string;
   diagnosisDescription: string;
-  
-  // Leave period
+
   leaveStartDate: string;
   leaveEndDate: string;
   leaveReason: 'illness' | 'accident' | 'quarantine' | 'other' | null;
   isHospitalized: 'yes' | 'no' | null;
   hospitalName?: string;
-  
-  // Additional information
+
   additionalNotes: string;
   followUpVisit: 'yes' | 'no' | null;
   followUpDate?: string;
 
-  // Doctor specialization preference
   specialization?: string;
 }

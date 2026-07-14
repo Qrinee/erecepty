@@ -29,7 +29,7 @@ import {
 } from "lucide-react";
 
 export default function DlaFirmPage() {
-  // State for FAQ accordions
+  
   const [activeFaq, setActiveFaq] = useState<number | null>(null);
 
   const toggleFaq = (idx: number) => {
@@ -165,14 +165,14 @@ export default function DlaFirmPage() {
       <Header transparent={false} />
       <main id="main-content" className="bg-[#FAFBFB] min-h-screen pb-20" tabIndex={-1}>
 
-        {/* Hero Section */}
+        {}
         <section className="relative overflow-hidden py-16 md:py-24 bg-white border-b border-slate-100">
           <div className="absolute top-12 left-10 w-64 h-64 bg-[#E8F3F1]/50 rounded-full blur-3xl -z-10" />
 
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-8 items-center">
 
-              {/* Hero text */}
+              {}
               <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
                 <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#147A60] text-xs font-black px-4 py-2 rounded-full uppercase tracking-wider">
                   Dla Firm
@@ -202,7 +202,7 @@ export default function DlaFirmPage() {
                   </a>
                 </div>
 
-                {/* Sub-hero Bullet trust indicators */}
+                {}
                 <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 pt-6 border-t border-slate-100">
                   {[
                     { icon: ShieldCheck, title: "RODO i bezpieczeństwo", desc: "Twoje dane są u nas bezpieczne" },
@@ -222,7 +222,7 @@ export default function DlaFirmPage() {
                 </div>
               </div>
 
-              {/* Hero graphic */}
+              {}
               <div className="lg:col-span-6 flex justify-center">
                 <div className="relative w-full max-w-[500px] aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white bg-slate-100">
                   <img
@@ -238,7 +238,7 @@ export default function DlaFirmPage() {
           </div>
         </section>
 
-        {/* Section: What do employees receive */}
+        {}
         <section className="py-20 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
@@ -274,12 +274,12 @@ export default function DlaFirmPage() {
           </div>
         </section>
 
-        {/* Section: Benefits & How it works */}
+        {}
         <section className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
 
-              {/* Left Column: Benefits for Company */}
+              {}
               <div className="lg:col-span-6 bg-white rounded-[32px] p-8 border border-slate-100/80 shadow-sm flex flex-col justify-between">
                 <div>
                   <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-8">
@@ -311,7 +311,7 @@ export default function DlaFirmPage() {
                 </div>
               </div>
 
-              {/* Right Column: How it works */}
+              {}
               <div className="lg:col-span-6 bg-white rounded-[32px] p-8 border border-slate-100/80 shadow-sm flex flex-col justify-between">
                 <div>
                   <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-8">
@@ -323,7 +323,7 @@ export default function DlaFirmPage() {
                       const StepIcon = step.icon;
                       return (
                         <div key={idx} className="relative flex gap-4 items-start">
-                          {/* Dot step number */}
+                          {}
                           <div className="absolute left-[-29px] top-0 w-8 h-8 rounded-full bg-[#147A60] text-white flex items-center justify-center text-xs font-black border-4 border-white shadow-sm">
                             {idx + 1}
                           </div>
@@ -348,12 +348,12 @@ export default function DlaFirmPage() {
           </div>
         </section>
 
-        {/* Section: Packages & FAQ */}
+        {}
         <section id="pakiety" className="py-20 bg-white border-y border-slate-100">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
 
-              {/* Left column: Packages */}
+              {}
               <div className="lg:col-span-6 space-y-6">
                 <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-8">
                   Pakiety dla firm
@@ -404,7 +404,7 @@ export default function DlaFirmPage() {
                 </div>
               </div>
 
-              {/* Right column: FAQ & CTA */}
+              {}
               <div className="lg:col-span-6 flex flex-col justify-between gap-8">
                 <div className="space-y-6">
                   <h2 className="text-2xl md:text-3xl font-extrabold text-slate-900 mb-8">
@@ -437,7 +437,7 @@ export default function DlaFirmPage() {
                   </div>
                 </div>
 
-                {/* Dark Green CTA Card */}
+                {}
                 <div className="bg-[#064743] rounded-[32px] p-8 text-white relative overflow-hidden shadow-lg shadow-emerald-950/20">
                   <div className="absolute bottom-[-20px] right-[-20px] w-48 h-48 bg-white/5 rounded-full select-none pointer-events-none" />
 
@@ -464,7 +464,7 @@ export default function DlaFirmPage() {
           </div>
         </section>
 
-        {/* Bottom statistics row */}
+        {}
         <section className="pt-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="bg-white rounded-[28px] border border-slate-100 shadow-[0_15px_45px_rgba(0,0,0,0.01)] p-6 grid grid-cols-2 lg:grid-cols-4 gap-8">

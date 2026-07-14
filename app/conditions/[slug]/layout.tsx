@@ -1,4 +1,4 @@
-// app/conditions/layout.tsx
+
 export default function ConditionsLayout({
   children,
 }: {
@@ -6,7 +6,7 @@ export default function ConditionsLayout({
 }) {
   return (
     <div>
-      {/* Możesz dodać wspólny nagłówek/nawigację dla wszystkich stron conditions */}
+      {}
       {children}
     </div>
   );

@@ -26,14 +26,14 @@ export default function MedicineSearchSection({
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(-1);
 
-  // Focus input when opened
+  
   useEffect(() => {
     if (isOpen && inputRef.current) {
       inputRef.current.focus();
     }
   }, [isOpen]);
 
-  // Funkcja wyszukująca z debouncingiem
+  
   const performSearch = useCallback(
     debounce(async (searchTerm: string) => {
       if (searchTerm.length < 2) {
@@ -60,7 +60,7 @@ export default function MedicineSearchSection({
     []
   );
 
-  // Obsługa zmiany inputu
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
@@ -75,7 +75,7 @@ export default function MedicineSearchSection({
     }
   };
 
-  // Obsługa klawiatury
+  
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!results.length) return;
 
@@ -106,7 +106,7 @@ export default function MedicineSearchSection({
     }
   };
 
-  // Wybór wyniku z dropdown
+  
   const handleSelectResult = (result: SearchResult) => {
     setQuery('');
     setShowSuggestions(false);
@@ -114,7 +114,7 @@ export default function MedicineSearchSection({
     onMedicineSelect(result);
   };
 
-  // Ukryj dropdown po kliknięciu na zewnątrz
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -131,18 +131,18 @@ export default function MedicineSearchSection({
 
   return (
     <div className="fixed inset-0 z-50 flex items-start justify-center pt-20 bg-black/50">
-      {/* Modal backdrop */}
+      {}
       <div 
         className="absolute inset-0" 
         onClick={onClose}
       />
       
-      {/* Modal content */}
+      {}
       <div 
         ref={dropdownRef}
         className="relative w-full max-w-xl mx-4 bg-white rounded-xl shadow-2xl animate-fadeIn"
       >
-        {/* Header */}
+        {}
         <div className="flex items-center justify-between p-4 border-b border-gray-100">
           <h3 className="text-lg font-semibold text-gray-900">
             Wyszukaj lek
@@ -155,7 +155,7 @@ export default function MedicineSearchSection({
           </button>
         </div>
 
-        {/* Search input */}
+        {}
         <div className="p-4 border-b border-gray-100">
           <div className="relative">
             <Search
@@ -184,7 +184,7 @@ export default function MedicineSearchSection({
               autoComplete="off"
             />
 
-            {/* Loading indicator */}
+            {}
             {isLoading && (
               <div className="absolute right-4 top-1/2 -translate-y-1/2">
                 <div className="w-5 h-5 border-2 border-blue-100 border-t-blue-600 rounded-full animate-spin" />
@@ -193,7 +193,7 @@ export default function MedicineSearchSection({
           </div>
         </div>
 
-        {/* Suggestions dropdown */}
+        {}
         {showSuggestions && results.length > 0 && (
           <div className="max-h-80 overflow-y-auto">
             <div className="p-3 border-b border-gray-100 bg-gray-50">
@@ -224,7 +224,7 @@ export default function MedicineSearchSection({
                     `}
                   >
                     <div className="flex items-start gap-3">
-                      {/* Icon */}
+                      {}
                       <div className="
                         flex-shrink-0 w-10 h-10
                         rounded-lg
@@ -234,7 +234,7 @@ export default function MedicineSearchSection({
                         <Pill className="w-5 h-5 text-blue-600" />
                       </div>
 
-                      {/* Content */}
+                      {}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2 mb-1">
                           <h4 className="text-sm font-semibold text-gray-900 truncate">
@@ -242,7 +242,7 @@ export default function MedicineSearchSection({
                           </h4>
                         </div>
 
-                        {/* Details */}
+                        {}
                         <div className="space-y-1">
                           {result.suggestion && (
                             <p className="text-xs text-gray-600">
@@ -271,7 +271,7 @@ export default function MedicineSearchSection({
                         </div>
                       </div>
 
-                      {/* Chevron */}
+                      {}
                       <ChevronRight className="
                         flex-shrink-0
                         w-5 h-5
@@ -286,7 +286,7 @@ export default function MedicineSearchSection({
           </div>
         )}
 
-        {/* No results message */}
+        {}
         {showSuggestions && query.length >= 2 && !isLoading && results.length === 0 && (
           <div className="p-8 text-center">
             <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gray-100 flex items-center justify-center">
@@ -301,7 +301,7 @@ export default function MedicineSearchSection({
           </div>
         )}
 
-        {/* Empty state */}
+        {}
         {showSuggestions && query.length < 2 && (
           <div className="p-8 text-center">
             <p className="text-sm text-gray-500">

@@ -18,7 +18,7 @@ export default function Tabs({ tabs, defaultTab }: TabsProps) {
 
   return (
     <div className="w-full">
-      {/* Tab Headers */}
+      {}
       <div className="border-b border-gray-200">
         <nav className="flex space-x-8" aria-label="Tabs">
           {tabs.map((tab) => (
@@ -38,7 +38,7 @@ export default function Tabs({ tabs, defaultTab }: TabsProps) {
         </nav>
       </div>
 
-      {/* Tab Content */}
+      {}
       <div className="mt-6">
         {tabs.find((tab) => tab.id === activeTab)?.content}
       </div>

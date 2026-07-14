@@ -76,7 +76,7 @@ export default function DlaKobietIMezczyznPage() {
       <Header transparent={false} />
       <main id="main-content" className="bg-[#FAFBFB] min-h-screen pt-5 pb-20" tabIndex={-1}>
 
-        {/* Breadcrumbs */}
+        {}
         <nav className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 py-4 text-sm text-slate-500 flex items-center gap-2">
           <Link href="/" className="hover:text-slate-800 flex items-center gap-1 transition-colors">
             <Home size={14} className="mt-[-2px]" />
@@ -86,7 +86,7 @@ export default function DlaKobietIMezczyznPage() {
           <span className="text-slate-700 font-medium">Dla kobiet i mężczyzn</span>
         </nav>
 
-        {/* Top Header section */}
+        {}
         <section className="max-w-[90vw] mx-auto px-4 sm:px-6 lg:px-8 pt-6 pb-12">
           <div className="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8 border-b border-slate-200/60 pb-10">
             <div className="max-w-2xl space-y-4">
@@ -98,7 +98,7 @@ export default function DlaKobietIMezczyznPage() {
               </p>
             </div>
 
-            {/* Top mini trust items bar */}
+            {}
             <div className="grid grid-cols-2 gap-4 w-full lg:w-auto lg:max-w-md">
               {topTrustItems.map((item, idx) => {
                 const Icon = item.icon;
@@ -118,10 +118,10 @@ export default function DlaKobietIMezczyznPage() {
           </div>
         </section>
 
-        {/* Three Columns Grid of Services */}
+        {}
         <ForWomanAndMen />
 
-        {/* Contact Banner Bar */}
+        {}
         <section className=" mx-auto px-4 sm:px-6 lg:px-8 pb-16">
           <div className="bg-white border border-slate-100 rounded-[32px] p-8 md:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-sm">
             <div className="flex items-start gap-4 max-w-2xl">
@@ -148,7 +148,7 @@ export default function DlaKobietIMezczyznPage() {
           </div>
         </section>
 
-        {/* Bottom Trust Items Bar */}
+        {}
         <section className="border-t border-slate-200/60 pt-16  mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {bottomTrustItems.map((item, idx) => {

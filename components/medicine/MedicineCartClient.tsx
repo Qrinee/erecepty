@@ -50,36 +50,36 @@ export default function MedicineCartClient({ initialMedicine }: MedicineCartClie
     message: string;
   } | null>(null);
 
-  // Initialize with the medicine from URL
+  
   useEffect(() => {
     if (initialMedicine) {
       setMedicines([initialMedicine]);
     }
   }, [initialMedicine]);
 
-  // Dispatch event and update window when medicines change
+  
   useEffect(() => {
     window.__MEDICINES_CART__ = medicines;
     window.dispatchEvent(new CustomEvent('medicines-updated'));
   }, [medicines]);
 
-  // Show notification with auto-dismiss
+  
   const showNotification = (type: 'success' | 'error' | 'info', message: string) => {
     setNotification({ type, message });
     setTimeout(() => setNotification(null), 4000);
   };
 
-  // Handle medicine selection from search
+  
   const handleMedicineSelect = async (result: SearchResult) => {
     setIsLoading(true);
     setIsSearchOpen(false);
     
     try {
-      // Fetch full medicine data from API
+      
       const medicineData = await fetchMedicineData(result.id);
       
       if (medicineData) {
-        // Check if medicine already exists
+        
         const exists = medicines.some(m => m._id === medicineData._id);
         
         if (!exists) {
@@ -99,14 +99,14 @@ export default function MedicineCartClient({ initialMedicine }: MedicineCartClie
     }
   };
 
-  // Handle medicine removal
+  
   const handleRemoveMedicine = (id: string) => {
     setMedicines(prev => prev.filter(m => m._id !== id));
   };
 
   return (
     <>
-      {/* Notification */}
+      {}
       {notification && (
         <div className="fixed top-4 right-4 z-50 max-w-sm">
           <AlertMessage
@@ -116,14 +116,14 @@ export default function MedicineCartClient({ initialMedicine }: MedicineCartClie
         </div>
       )}
 
-      {/* Section header */}
+      {}
       <div className="rounded-xl bg-white p-6 shadow-sm">
         <div className="flex items-center justify-between">
           <h2 className="text-lg font-semibold text-gray-900">
             Wybrane leki
           </h2>
           
-          {/* Add medicine button */}
+          {}
           <button
             onClick={() => setIsSearchOpen(true)}
             className="flex items-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
@@ -133,7 +133,7 @@ export default function MedicineCartClient({ initialMedicine }: MedicineCartClie
           </button>
         </div>
 
-        {/* Empty state */}
+        {}
         {medicines.length === 0 && (
           <div className="mt-6 text-center py-8 bg-gray-50 rounded-lg">
             <div className="w-12 h-12 mx-auto mb-3 rounded-full bg-gray-100 flex items-center justify-center">
@@ -151,20 +151,20 @@ export default function MedicineCartClient({ initialMedicine }: MedicineCartClie
           </div>
         )}
 
-        {/* Medicine list */}
+        {}
         <MedicineList 
           medicines={medicines} 
           onRemoveMedicine={handleRemoveMedicine} 
         />
 
-        {/* Medicine count */}
+        {}
         {medicines.length > 0 && (
           <p className="mt-4 text-sm text-gray-500 text-center">
             Dodano {medicines.length} {medicines.length === 1 ? 'lek' : medicines.length < 5 ? 'leki' : 'leków'}
           </p>
         )}
 
-        {/* Loading overlay */}
+        {}
         {isLoading && (
           <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
             <div className="bg-white rounded-xl p-6 shadow-xl">
@@ -177,7 +177,7 @@ export default function MedicineCartClient({ initialMedicine }: MedicineCartClie
         )}
       </div>
 
-      {/* Search modal */}
+      {}
       <MedicineSearchSection
         onMedicineSelect={handleMedicineSelect}
         isOpen={isSearchOpen}

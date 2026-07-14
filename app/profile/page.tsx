@@ -12,7 +12,7 @@ export default function ProfilePage() {
   const [submissions, setSubmissions] = useState<any[]>([]);
   const [selectedStatusTab, setSelectedStatusTab] = useState<'all' | 'pending' | 'completed' | 'cancelled'>('all');
   
-  // Edit Profile modal state
+  
   const [isEditModalOpen, setIsEditModalOpen] = useState(false);
   const [editFirstName, setEditFirstName] = useState('');
   const [editLastName, setEditLastName] = useState('');
@@ -84,7 +84,7 @@ export default function ProfilePage() {
   const handleSaveProfile = async (e: React.FormEvent) => {
     e.preventDefault();
     setSavingProfile(true);
-    // Simulating API save for premium UX since it's a frontend task
+    
     setTimeout(() => {
       setUser((prev: any) => ({
         ...prev,
@@ -110,7 +110,7 @@ export default function ProfilePage() {
     }
   };
 
-  // Filter submissions by tab status
+  
   const filteredSubmissions = submissions.filter((sub: any) => {
     if (selectedStatusTab === 'all') return true;
     if (selectedStatusTab === 'pending') return sub.status === 'pending' || sub.status === 'reviewed';
@@ -162,7 +162,7 @@ export default function ProfilePage() {
     <div className="min-h-screen bg-[#f8fafc]">
       <Header />
       
-      {/* Toast Alert */}
+      {}
       {toastMessage && (
         <div className="fixed top-20 right-5 z-50 bg-[#064743] text-white px-5 py-3 rounded-lg shadow-lg flex items-center gap-2 animate-fadeIn">
           <CheckCircle2 className="w-4 h-4" />
@@ -171,13 +171,13 @@ export default function ProfilePage() {
       )}
 
       <main className="max-w-4xl mx-auto px-4 py-8 mt-24">
-        {/* Page Header */}
+        {}
         <div className="mb-6">
           <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 leading-tight">Panel pacjenta</h1>
           <p className="text-sm text-slate-500 mt-1">Zarządzaj swoimi konsultacjami i danymi w jednym miejscu.</p>
         </div>
 
-        {/* Profile Info Card */}
+        {}
         <div className="bg-white rounded-2xl border border-slate-200/80 p-6 mb-8 shadow-sm">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
             <div className="flex items-center gap-4 sm:gap-5">
@@ -215,11 +215,11 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* Quick Actions Grid */}
+        {}
         <div className="mb-8">
           <h3 className="text-sm font-semibold text-slate-500 uppercase tracking-wider mb-3">Szybkie akcje</h3>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            {/* Action 1 */}
+            {}
             <button 
               onClick={() => router.push('/wypelnij-formularz')} 
               className="flex items-center justify-between p-4 bg-white border border-slate-200/80 rounded-2xl hover:border-[#064743]/30 hover:shadow-md transition text-left group cursor-pointer"
@@ -236,7 +236,7 @@ export default function ProfilePage() {
               <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-[#064743] transition-colors" />
             </button>
 
-            {/* Action 2 */}
+            {}
             <button 
               onClick={() => router.push('/baza-wiedzy')} 
               className="flex items-center justify-between p-4 bg-white border border-slate-200/80 rounded-2xl hover:border-[#064743]/30 hover:shadow-md transition text-left group cursor-pointer"
@@ -253,7 +253,7 @@ export default function ProfilePage() {
               <ChevronRight className="w-5 h-5 text-slate-400 group-hover:text-[#064743] transition-colors" />
             </button>
 
-            {/* Action 3 */}
+            {}
             <button 
               onClick={() => router.push('/jak-to-dziala')} 
               className="flex items-center justify-between p-4 bg-white border border-slate-200/80 rounded-2xl hover:border-[#064743]/30 hover:shadow-md transition text-left group cursor-pointer"
@@ -272,7 +272,7 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* Submissions Section */}
+        {}
         <div className="bg-white rounded-2xl border border-slate-200/80 shadow-sm overflow-hidden mb-8">
           <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-100 px-6 py-4 gap-3">
             <div className="flex items-center gap-2">
@@ -280,7 +280,7 @@ export default function ProfilePage() {
             </div>
             
             <div className="flex items-center justify-between sm:justify-end gap-4 flex-wrap">
-              {/* Tabs */}
+              {}
               <div className="flex gap-4 text-sm font-medium border-b border-transparent">
                 {tabs.map((tab) => {
                   const isActive = selectedStatusTab === tab.id;
@@ -301,7 +301,7 @@ export default function ProfilePage() {
                 })}
               </div>
               
-              {/* Filter button */}
+              {}
               <button className="flex items-center gap-1.5 px-2.5 py-1.5 border border-slate-200 rounded-lg text-slate-600 hover:text-slate-800 hover:bg-slate-50 text-xs font-semibold cursor-pointer">
                 <Filter className="w-3.5 h-3.5" />
                 Filtry
@@ -309,7 +309,7 @@ export default function ProfilePage() {
             </div>
           </div>
 
-          {/* Submissions Content */}
+          {}
           {filteredSubmissions.length === 0 ? (
             <div className="text-center py-14 px-4">
               <div className="w-12 h-12 bg-slate-50 text-slate-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-slate-100">
@@ -358,7 +358,7 @@ export default function ProfilePage() {
                       </div>
                       
                       <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 flex-1">
-                        {/* Type / Date / ID */}
+                        {}
                         <div>
                           <div className="flex items-center gap-2 flex-wrap">
                             <span className="font-semibold text-slate-900 text-sm">{typeLabel}</span>
@@ -372,7 +372,7 @@ export default function ProfilePage() {
                           <span className="block text-[10px] text-slate-400 font-mono mt-0.5">ID: #{submission.id?.substring(0, 12)}</span>
                         </div>
 
-                        {/* Middle details */}
+                        {}
                         <div className="flex flex-col justify-center text-sm text-slate-600 sm:pl-4">
                           {isPrescription ? (
                             <div>
@@ -387,7 +387,7 @@ export default function ProfilePage() {
                           )}
                         </div>
 
-                        {/* Doctor field */}
+                        {}
                         <div className="flex flex-col justify-center text-sm text-slate-600 sm:pl-4">
                           {submission.status === 'completed' && (
                             <div>
@@ -399,7 +399,7 @@ export default function ProfilePage() {
                       </div>
                     </div>
 
-                    {/* Action Button */}
+                    {}
                     <div className="flex-shrink-0">
                       <button
                         onClick={() => router.push(`/orders/${submission.id}`)}
@@ -430,7 +430,7 @@ export default function ProfilePage() {
           )}
         </div>
 
-        {/* Bottom Logout Link */}
+        {}
         <div className="text-center mt-12 mb-6">
           <button 
             onClick={handleLogout} 
@@ -441,7 +441,7 @@ export default function ProfilePage() {
         </div>
       </main>
 
-      {/* Edit Profile Modal */}
+      {}
       {isEditModalOpen && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
           <div className="bg-white rounded-2xl max-w-md w-full border border-slate-200 shadow-2xl overflow-hidden animate-fadeIn">

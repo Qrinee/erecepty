@@ -55,7 +55,7 @@ export default function ArticlePage() {
 
       <main className="flex-grow pt-8 pb-16 px-4 sm:px-8 xl:px-16 max-w-[90vw] mx-auto w-full">
 
-        {/* Breadcrumbs */}
+        {}
         <div className="flex items-center gap-2 text-xs font-semibold text-slate-500 mb-8 flex-wrap">
           <Link href="/" className="hover:text-slate-800 transition-colors  flex items-center">Strona główna</Link>
           <ChevronRight className="w-3.5 h-3.5 text-slate-300" />
@@ -66,7 +66,7 @@ export default function ArticlePage() {
           <span className="text-slate-800">Czy konsultacje online są legalne i bezpieczne?</span>
         </div>
 
-        {/* Hero Section */}
+        {}
         <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
           <div className="flex-1 space-y-6">
             <span className="inline-block bg-[#EAF3F0] text-[#147A60] px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
@@ -106,13 +106,13 @@ export default function ArticlePage() {
           </div>
         </div>
 
-        {/* Content Layout */}
+        {}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
-          {/* Main Column */}
+          {}
           <div className="lg:col-span-8 space-y-16">
 
-            {/* Section 1: Legal */}
+            {}
             <section>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 pb-4 border-b border-slate-100">Legalność teleporad</h2>
               <p className="text-slate-600 text-base sm:text-lg mb-10 leading-relaxed max-w-3xl">Świadczenie usług telemedycznych jest w pełni uregulowane prawnie.</p>
@@ -134,7 +134,7 @@ export default function ArticlePage() {
               </div>
             </section>
 
-            {/* Section 2: Security */}
+            {}
             <section>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 pb-4 border-b border-slate-100">Bezpieczeństwo danych</h2>
               <div className="grid sm:grid-cols-2 gap-6">
@@ -155,7 +155,7 @@ export default function ArticlePage() {
               </div>
             </section>
 
-            {/* Section 3: FAQ */}
+            {}
             <section>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-8 pb-4 border-b border-slate-100">Najczęściej zadawane pytania</h2>
               <div className="space-y-0 border-t border-slate-100">
@@ -180,10 +180,10 @@ export default function ArticlePage() {
 
           </div>
 
-          {/* Sidebar */}
+          {}
           <div className="lg:col-span-4 space-y-8">
 
-            {/* Categories */}
+            {}
             <div className="bg-[#F8FAF9] rounded-2xl p-6">
               <h3 className="font-extrabold text-slate-900 mb-6 text-lg sm:text-xl">W tej kategorii</h3>
               <div className="space-y-1">
@@ -206,7 +206,7 @@ export default function ArticlePage() {
               </Link>
             </div>
 
-            {/* Popular Articles */}
+            {}
             <div className="p-2">
               <h3 className="font-extrabold text-slate-900 mb-6 text-lg sm:text-xl">Popularne artykuły</h3>
               <div className="space-y-5">
@@ -229,7 +229,7 @@ export default function ArticlePage() {
               </Link>
             </div>
 
-            {/* Contact Box */}
+            {}
             <div className="bg-[#EAF3F0] rounded-2xl p-6">
               <div className="w-12 h-12 bg-[#064743] text-white rounded-xl flex items-center justify-center mb-5">
                 <Headset className="w-6 h-6" />
@@ -252,7 +252,7 @@ export default function ArticlePage() {
 
       </main>
 
-      {/* Bottom Banner Full Width */}
+      {}
       <div className="w-full bg-[#F8FAF9] border-t border-b border-[#EAF3F0] py-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 xl:px-16 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div className="flex items-center gap-5">
@@ -270,7 +270,7 @@ export default function ArticlePage() {
         </div>
       </div>
 
-      {/* Feature strip at the very bottom */}
+      {}
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 md:px-20 lg:px-28 xl:px-36 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div className="flex gap-5">

@@ -20,12 +20,12 @@ export default function MedicineList({ medicines, onRemoveMedicine }: MedicineLi
           key={`${medicine._id}-${index}`}
           className="flex items-start gap-3 p-4 bg-white rounded-lg border border-gray-200 hover:border-gray-300 transition-colors"
         >
-          {/* Icon */}
+          {}
           <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-blue-100 flex items-center justify-center">
             <Pill className="w-5 h-5 text-blue-600" />
           </div>
 
-          {/* Content */}
+          {}
           <div className="flex-1 min-w-0">
             <div className="flex items-start justify-between gap-2">
               <div>
@@ -37,7 +37,7 @@ export default function MedicineList({ medicines, onRemoveMedicine }: MedicineLi
                 </p>
               </div>
               
-              {/* Remove button */}
+              {}
               <button
                 onClick={() => onRemoveMedicine(medicine._id)}
                 className="flex-shrink-0 p-1.5 text-gray-400 hover:text-red-500 hover:bg-red-50 rounded-full transition-colors"
@@ -47,7 +47,7 @@ export default function MedicineList({ medicines, onRemoveMedicine }: MedicineLi
               </button>
             </div>
 
-            {/* Details */}
+            {}
             <div className="flex flex-wrap gap-x-3 gap-y-1 mt-2">
               {medicine.moc && (
                 <span className="text-xs text-gray-600 bg-gray-100 px-2 py-0.5 rounded">

@@ -12,7 +12,7 @@ function SuccessContent() {
   const submissionId = searchParams.get('submissionId');
 
   useEffect(() => {
-    // Clear local storage cart data since order is complete
+    
     localStorage.removeItem('orderMedicines');
     localStorage.removeItem('medicalConsultation');
     localStorage.removeItem('orderContact');

@@ -48,7 +48,7 @@ export default function ContactSection() {
   return (
     <section id="kontakt" className=" py-20 bg-gradient-to-br from-[#FCFDFD] via-white to-[#EFF6F4] scroll-mt-20 relative overflow-hidden">
 
-      {/* Decorative Background Plus Icons */}
+      {}
       <div className="absolute top-12 left-10 text-emerald-100 text-3xl font-extrabold select-none pointer-events-none hidden lg:block">+</div>
       <div className="absolute bottom-20 left-6 text-emerald-100 text-3xl font-extrabold select-none pointer-events-none hidden lg:block">+</div>
       <div className="absolute top-36 right-6 text-emerald-100 text-3xl font-extrabold select-none pointer-events-none hidden lg:block">+</div>
@@ -56,10 +56,10 @@ export default function ContactSection() {
 
       <div className="max-w-[80vw] m-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Main Columns Grid */}
+        {}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mt-8">
 
-          {/* Left Column: Contact Cards */}
+          {}
           <div>
             <h2 className="text-6xl font-extrabold text-slate-900 mb-2 tracking-tight">Kontakt</h2>
             <h3 className="text-lg font-bold text-[#147A60] mb-2">Jesteśmy do Twojej dyspozycji</h3>
@@ -69,7 +69,7 @@ export default function ContactSection() {
 
             <div className="space-y-4">
 
-              {/* Card 1: E-mail */}
+              {}
               <a
                 href="mailto:kontakt@lekarzeiterapeuci.pl"
                 className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group"
@@ -86,7 +86,7 @@ export default function ContactSection() {
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
               </a>
 
-              {/* Card 2: Telefon */}
+              {}
               <a
                 href="tel:+48881238227"
                 className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group"
@@ -103,23 +103,10 @@ export default function ContactSection() {
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
               </a>
 
-              {/* Card 3: Live Chat / WhatsApp */}
-              {/* <div
-                className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group cursor-pointer"
-              >
-                <div className="flex items-center gap-4">
-                  <div className="w-11 h-11 rounded-xl bg-[#E8F3F1] border border-[#D5EAE6] text-[#064743] flex items-center justify-center flex-shrink-0">
-                    <MessageCircle className="w-5 h-5 text-emerald-600" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-extrabold text-slate-800">Live Chat / WhatsApp</div>
-                    <div className="text-sm text-slate-500 font-semibold mt-0.5">Dostępny codziennie 8:00–22:00</div>
-                  </div>
-                </div>
-                <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
-              </div> */}
+              {}
+              {}
 
-              {/* Card 4: Czas odpowiedzi */}
+              {}
               <div
                 className="flex items-center justify-between bg-white rounded-2xl p-4 border border-slate-100 hover:border-[#147A60]/40 transition-colors shadow-[0_10px_30px_rgba(0,0,0,0.01)] group"
               >
@@ -135,7 +122,7 @@ export default function ContactSection() {
                 <ChevronRight className="w-4 h-4 text-slate-300 group-hover:text-[#147A60] transition-colors" />
               </div>
 
-              {/* Card 5: Wsparcie online 24/7 (mint green background) */}
+              {}
               <div
                 className="flex items-center justify-between bg-[#EAF3F0] rounded-2xl p-4 border border-[#D5EAE6]/50 shadow-[0_10px_30px_rgba(0,0,0,0.01)]"
               >
@@ -156,10 +143,10 @@ export default function ContactSection() {
             </div>
           </div>
 
-          {/* Right Column: Contact Form and 3D Assistant */}
+          {}
           <div className="relative pt-24 lg:pt-28">
 
-            {/* 3D Medical Support Doctor avatar overlapping form container */}
+            {}
             <div className="absolute -top-16 right-4 w-[180px] sm:w-[210px] h-auto pointer-events-none select-none hidden sm:block z-20">
               <img
                 src="/contact_3d.jpeg"
@@ -167,7 +154,7 @@ export default function ContactSection() {
                 className="w-full h-auto drop-shadow-lg rounded-md"
               />
 
-              {/* Floating badges surrounding doctor */}
+              {}
               <div className="absolute -top-6 -left-12 bg-[#EAF3F0] rounded-full p-2.5 shadow-sm text-[#064743] animate-bounce w-9 h-9 flex items-center justify-center border border-[#D5EAE6]/70">
                 <span className="text-xs font-extrabold">...</span>
               </div>
@@ -181,7 +168,7 @@ export default function ContactSection() {
               <div className="absolute top-2 right-4 text-emerald-400/80 text-xl font-bold animate-pulse">+</div>
             </div>
 
-            {/* Form Card */}
+            {}
             <div className="bg-white rounded-[32px] border border-slate-100 p-8 shadow-[0_20px_50px_rgba(0,0,0,0.02)] relative z-10">
 
 
@@ -189,7 +176,7 @@ export default function ContactSection() {
 
               <form onSubmit={handleSubmit} className="space-y-4">
 
-                {/* Name field */}
+                {}
                 <div className="relative">
                   <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
                     <User className="w-4.5 h-4.5" />
@@ -203,7 +190,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                {/* Email field */}
+                {}
                 <div className="relative">
                   <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
                     <Mail className="w-4.5 h-4.5" />
@@ -217,7 +204,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                {/* Phone field */}
+                {}
                 <div className="relative">
                   <div className="absolute inset-y-0 left-4 flex items-center pointer-events-none text-slate-400">
                     <Phone className="w-4.5 h-4.5" />
@@ -231,7 +218,7 @@ export default function ContactSection() {
                   />
                 </div>
 
-                {/* Message field */}
+                {}
                 <div className="relative">
                   <div className="absolute top-3.5 left-4 pointer-events-none text-slate-400">
                     <MessageSquare className="w-4.5 h-4.5" />
@@ -268,7 +255,7 @@ export default function ContactSection() {
                   <ArrowRight className="w-4 h-4" />
                 </button>
 
-                {/* Footer Security Text */}
+                {}
                 <div className="flex items-center justify-center gap-1.5 text-xs text-slate-400 font-bold pt-3">
                   <Lock className="w-3.5 h-3.5 text-slate-300" />
                   <span>Twoje dane są bezpieczne i szyfrowane</span>

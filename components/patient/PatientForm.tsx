@@ -23,7 +23,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
     phone: '',
   });
 
-  // Auto-fill form with logged-in user data
+  
   useEffect(() => {
     if (user) {
       setPatientData(prev => ({
@@ -102,7 +102,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
 
   const renderMedicalForm = () => (
     <form onSubmit={handleMedicalSubmit} className="space-y-6">
-      {/* Header */}
+      {}
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-gray-900">
           Wywiad medyczny
@@ -112,7 +112,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         </p>
       </div>
 
-      {/* Main complaint */}
+      {}
       <div>
         <label className="block text-sm font-medium text-gray-900 mb-2">
           Opisz problem, z jakim zgłaszasz się dziś na konsultację. <span className="text-red-500">*</span>
@@ -126,7 +126,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         />
       </div>
 
-      {/* Chronic diseases */}
+      {}
       <div className="border border-gray-200 rounded-lg overflow-hidden">
         <button
           type="button"
@@ -188,7 +188,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         )}
       </div>
 
-      {/* Medications */}
+      {}
       <div className="border border-gray-200 rounded-lg overflow-hidden">
         <button
           type="button"
@@ -250,7 +250,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         )}
       </div>
 
-      {/* Allergies */}
+      {}
       <div className="border border-gray-200 rounded-lg overflow-hidden">
         <button
           type="button"
@@ -312,7 +312,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         )}
       </div>
 
-      {/* Other medical info */}
+      {}
       <div>
         <label className="block text-sm font-medium text-gray-900 mb-2">
           Czy istnieją inne ważne informacje medyczne dotyczące Twojego stanu zdrowia (np. przebyte operacje, nowe, niepokojące objawy, korekta płci), o których nasz pracownik medyczny powinien wiedzieć?
@@ -325,7 +325,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         />
       </div>
 
-      {/* Pregnancy status */}
+      {}
       <div className="border border-gray-200 rounded-lg overflow-hidden">
         <button
           type="button"
@@ -370,7 +370,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         )}
       </div>
 
-      {/* Actions */}
+      {}
       <div className="flex gap-4 pt-4 border-t border-gray-100">
         <button
           type="button"
@@ -391,7 +391,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
 
   const renderContactForm = () => (
     <form onSubmit={handleContactSubmit} className="space-y-6">
-      {/* Header */}
+      {}
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-gray-900">
           Dane pacjenta
@@ -401,7 +401,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         </p>
       </div>
 
-      {/* Personal Info */}
+      {}
       <div>
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
           Dane osobowe
@@ -453,7 +453,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         </div>
       </div>
 
-      {/* Contact Info */}
+      {}
       <div>
         <h3 className="text-lg font-semibold text-gray-900 mb-4">
           Dane kontaktowe
@@ -490,7 +490,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         </div>
       </div>
 
-      {/* Actions */}
+      {}
       <div className="flex gap-4 pt-4 border-t border-gray-100">
         <button
           type="button"
@@ -511,7 +511,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
 
   const renderConsentForm = () => (
     <form onSubmit={handleFinalSubmit} className="space-y-6">
-      {/* Header */}
+      {}
       <div className="mb-6">
         <h2 className="text-xl font-semibold text-gray-900">
           Zgody i oświadczenia
@@ -521,7 +521,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         </p>
       </div>
 
-      {/* Consent Checkboxes */}
+      {}
       <div className="space-y-4">
         <label className="flex items-start gap-3 cursor-pointer">
           <input
@@ -562,7 +562,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         </label>
       </div>
 
-      {/* Summary */}
+      {}
       <div className="bg-gray-50 rounded-lg p-4">
         <h3 className="font-medium text-gray-900 mb-2">Podsumowanie</h3>
         <div className="text-sm text-gray-600 space-y-1">
@@ -573,7 +573,7 @@ export default function PatientForm({ onSubmit, onCancel }: PatientFormProps) {
         </div>
       </div>
 
-      {/* Actions */}
+      {}
       <div className="flex gap-4 pt-4 border-t border-gray-100">
         <button
           type="button"

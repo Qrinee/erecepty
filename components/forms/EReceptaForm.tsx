@@ -51,7 +51,7 @@ export function EReceptaForm() {
     setFinalAmount(amount);
   }, [amount]);
 
-  // Medicine Search
+  
   const [medQ, setMedQ] = useState("");
   const [medResults, setMedResults] = useState<any[]>([]);
   const [medSearching, setMedSearching] = useState(false);
@@ -91,10 +91,10 @@ export function EReceptaForm() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Clear previous errors
+    
     const newErrors: Record<string, string> = {};
     
-    // Validate fullName (first and last name)
+    
     const nameParts = fullName.trim().split(/\s+/);
     if (!fullName.trim()) {
       newErrors.fullName = "Imię i nazwisko są wymagane.";
@@ -102,7 +102,7 @@ export function EReceptaForm() {
       newErrors.fullName = "Imię i nazwisko musi zawierać co najmniej dwa wyrazy.";
     }
     
-    // Validate PESEL
+    
     if (!pesel) {
       newErrors.pesel = "PESEL jest wymagany.";
     } else {
@@ -112,7 +112,7 @@ export function EReceptaForm() {
       }
     }
     
-    // Validate Phone (at least 9 digits)
+    
     const cleanPhone = phone.replace(/\s+/g, "");
     if (!cleanPhone) {
       newErrors.phone = "Numer telefonu jest wymagany.";
@@ -120,14 +120,14 @@ export function EReceptaForm() {
       newErrors.phone = "Numer telefonu musi zawierać od 9 do 15 cyfr.";
     }
     
-    // Validate Email
+    
     if (!email) {
       newErrors.email = "Adres e-mail jest wymagany.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       newErrors.email = "Adres e-mail jest nieprawidłowy.";
     }
     
-    // Validate selectedMeds
+    
     if (!doctorChoosesMeds) {
       if (selectedMeds.length === 0) {
         newErrors.selectedMeds = "Musisz wyszukać i wybrać co najmniej jeden lek.";
@@ -139,12 +139,12 @@ export function EReceptaForm() {
       }
     }
     
-    // Validate symptomsDescription if doctorChoosesMeds is true
+    
     if (doctorChoosesMeds && !symptomsDescription.trim()) {
       newErrors.symptomsDescription = "Opisz swoje objawy lub dolegliwości, aby lekarz mógł dobrać odpowiednie leki.";
     }
     
-    // Validate consents
+    
     if (!consentTruth) {
       newErrors.consentTruth = "Musisz oświadczyć zgodność danych z prawdą.";
     }
@@ -155,14 +155,14 @@ export function EReceptaForm() {
       newErrors.consentDoctor = "Musisz potwierdzić zrozumienie, że o wystawieniu recepty decyduje lekarz.";
     }
     
-    // Validate password if creating account
+    
     if (createAccount && (!accountPassword || accountPassword.length < 6)) {
       newErrors.accountPassword = "Hasło musi mieć co najmniej 6 znaków.";
     }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      // Scroll to the top of the form
+      
       const formEl = e.currentTarget as HTMLFormElement;
       formEl.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
@@ -225,7 +225,7 @@ export function EReceptaForm() {
     <form onSubmit={handleSubmit}>
       <FormErrorAlert errors={errors} />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-        {/* Col 1: Dane pacjenta */}
+        {}
         <div>
           <SectionHeader icon={User} title="Dane pacjenta" color="bg-[#E11D48]" />
           <div className="space-y-3">
@@ -300,7 +300,7 @@ export function EReceptaForm() {
           </div>
         </div>
 
-        {/* Col 2: Informacje do recepty */}
+        {}
         <div className="md:col-span-2">
           <SectionHeader icon={Pill} title="Informacje do recepty" color="bg-[#E11D48]" />
           
@@ -456,7 +456,7 @@ export function EReceptaForm() {
           </div>
         </div>
 
-        {/* Col 3: Zgody */}
+        {}
         <div>
           <SectionHeader icon={ShieldCheck} title="Zgody" color="bg-[#E11D48]" />
           <div className="space-y-3">

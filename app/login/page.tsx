@@ -29,7 +29,7 @@ export default function LoginPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        // Handle different error cases with user-friendly messages
+        
         if (data.errorCode === 'INVALID_CREDENTIALS') {
           throw new Error("Nieprawidłowy adres e-mail lub hasło");
         }

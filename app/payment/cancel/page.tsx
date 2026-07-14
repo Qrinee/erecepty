@@ -42,7 +42,7 @@ function CancelContent() {
         </button>
         <button
           onClick={() => {
-            // Ideally this would retry payment directly, but going to orders is safest
+            
             router.push('/orders');
           }}
           className="w-full sm:w-auto px-8 py-3.5 bg-white text-gray-700 border border-gray-200 rounded-xl font-medium hover:bg-gray-50 transition flex items-center justify-center gap-2"

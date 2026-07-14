@@ -51,7 +51,7 @@ export default function PaymentPage() {
   const [userFirstName, setUserFirstName] = useState('');
   const [userLastName, setUserLastName] = useState('');
 
-  // Check authentication status and fetch user data
+  
   useEffect(() => {
     const checkAuth = async () => {
       try {
@@ -76,7 +76,7 @@ export default function PaymentPage() {
     checkAuth();
   }, []);
 
-  // Load order data from localStorage
+  
   useEffect(() => {
     const loadOrderData = () => {
       try {
@@ -86,7 +86,7 @@ export default function PaymentPage() {
         const refundedStr = localStorage.getItem('orderRefunded');
 
         if (!medicinesStr || !consultationStr) {
-          // Redirect back if no data
+          
           router.push(`/add-medicine/${medicineId}`);
           return;
         }
@@ -108,16 +108,16 @@ export default function PaymentPage() {
     loadOrderData();
   }, [medicineId, router]);
 
-  // Handle form submission
+  
   const handleSubmit = async (data: ContactFormData) => {
     setContact(data);
     setError(null);
     setIsSubmitting(true);
     
-    // Save contact data
+    
     localStorage.setItem('orderContact', JSON.stringify(data));
     
-    // Prepare patient data for submission - flat structure as expected by API
+    
     if (!orderData) {
       setError('Nie udało się odczytać danych zamówienia. Spróbuj ponownie.');
       setIsSubmitting(false);
@@ -133,7 +133,7 @@ export default function PaymentPage() {
       phone: data.phone,
     };
 
-    // Prepare medical info from consultation
+    
     const medicalInfo = orderData?.medicalConsultation ? {
       mainComplaint: orderData.medicalConsultation.mainComplaint || '',
       hasChronicDiseases: orderData.medicalConsultation.hasChronicDiseases || false,
@@ -146,7 +146,7 @@ export default function PaymentPage() {
       pregnancyStatus: orderData.medicalConsultation.pregnancyStatus || 'nie',
     } : null;
 
-    // Prepare medicines data
+    
     const medicinesData = orderData?.medicines.map((med: MedicineData) => ({
       medicineId: med._id,
       quantity: 1,
@@ -154,7 +154,7 @@ export default function PaymentPage() {
     })) || [];
 
     try {
-      // Send data to backend
+      
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL || 'http://localhost:4000'}/api/patient/submissions`, {
         method: 'POST',
         headers: {
@@ -182,19 +182,19 @@ export default function PaymentPage() {
       
       console.log('Patient submission successful:', result);
       
-      // Check if submission was successful
+      
       if (result.success && result.data?.payment?.paymentUrl) {
-        // Redirect to payment URL
+        
         window.location.href = result.data.payment.paymentUrl;
         return;
       }
       
-      // Store submission ID for payment processing
+      
       if (result.submissionId || result.data?.submissionId) {
         localStorage.setItem('submissionId', result.submissionId || result.data.submissionId);
       }
       
-      // Show success message
+      
       setSuccessMessage(`Zamówienie zostało złożone! ID: ${result.submissionId || result.data?.submissionId || 'Demo'}`);
       
     } catch (err) {
@@ -205,7 +205,7 @@ export default function PaymentPage() {
     }
   };
 
-  // Handle cancel - go back to step 2
+  
   const handleCancel = () => {
     router.back();
   };
@@ -235,14 +235,14 @@ export default function PaymentPage() {
       <ProgressHeader currentStep={3} />
 
       <main className="mx-auto max-w-4xl px-6 py-8">
-        {/* Order Summary */}
+        {}
         <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
           <h2 className="text-lg font-semibold text-gray-900 mb-4">
             Podsumowanie zamówienia
           </h2>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {/* Medicines */}
+            {}
             <div>
               <h3 className="text-sm font-medium text-gray-700 mb-2">
                 Zamówione leki ({orderData.medicines.length})
@@ -257,7 +257,7 @@ export default function PaymentPage() {
               </ul>
             </div>
 
-            {/* Price */}
+            {}
             <div>
               <div className="space-y-2 text-sm">
                 <div className="flex justify-between">
@@ -285,7 +285,7 @@ export default function PaymentPage() {
           </div>
         </div>
 
-        {/* Error Message */}
+        {}
         {error && (
           <div className="mb-6">
             <AlertMessage 
@@ -296,7 +296,7 @@ export default function PaymentPage() {
           </div>
         )}
 
-        {/* Success Message */}
+        {}
         {successMessage && (
           <div className="mb-6">
             <AlertMessage 
@@ -307,7 +307,7 @@ export default function PaymentPage() {
           </div>
         )}
 
-        {/* Contact Form */}
+        {}
         <div className="bg-white rounded-xl shadow-sm p-6">
           <ContactForm onSubmit={handleSubmit} onCancel={handleCancel} isSubmitting={isSubmitting} isAuthenticated={isAuthenticated} userEmail={userEmail} userPhone={userPhone} userFirstName={userFirstName} userLastName={userLastName} />
         </div>

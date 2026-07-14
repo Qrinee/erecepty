@@ -81,7 +81,7 @@ export default function ForWhoSection() {
 
   return (
     <section className="bg-gradient-to-b from-[#EBF5F2] to-white py-20 px-6 relative overflow-hidden" aria-labelledby="for-who-title">
-      {/* Background decorative elements */}
+      {}
       <div className="absolute top-10 left-5 2xl:left-10 pointer-events-none hidden xl:block z-0">
         <Image src="/for_who_left_phone.png" alt="" width={240} height={240} className="object-contain" />
       </div>
@@ -90,7 +90,7 @@ export default function ForWhoSection() {
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
-        {/* Header */}
+        {}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="inline-flex items-center gap-2 bg-white border border-[#0CA953]/20 text-[#0CA953] text-sm font-bold px-4 py-1.5 rounded-full mb-6 shadow-sm">
             <Users size={16} />
@@ -105,7 +105,7 @@ export default function ForWhoSection() {
           </p>
         </div>
 
-        {/* Cards Grid */}
+        {}
         <div className="mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {cards.map((card) => {
@@ -116,7 +116,7 @@ export default function ForWhoSection() {
                   className="bg-white rounded-3xl border border-slate-100 p-5 flex flex-col justify-between shadow-sm hover:shadow-xl hover:border-slate-200 hover:-translate-y-1 transition-all duration-300 group relative"
                 >
                   <div>
-                    {/* Badge */}
+                    {}
                     <div className="flex justify-start mb-6">
                       <span className={`inline-flex items-center gap-1.5 px-3 py-1 rounded-lg text-[13px] font-bold ${card.badge.className}`}>
                         <Icon size={14} className="fill-current opacity-90" />
@@ -124,13 +124,13 @@ export default function ForWhoSection() {
                       </span>
                     </div>
 
-                    {/* 3D Illustration Container */}
+                    {}
                     <div className="h-44 flex items-center justify-center mb-6 relative">
                       <img src={card.image} width={600} alt={card.title} className="object-contain max-h-full group-hover:scale-105 transition-transform duration-500 ease-out" />
 
                     </div>
 
-                    {/* Title & Description */}
+                    {}
                     <h3 className="text-xl font-extrabold text-slate-900 mb-3 group-hover:text-[#0CA953] transition-colors duration-300">
                       {card.title}
                     </h3>
@@ -139,7 +139,7 @@ export default function ForWhoSection() {
                     </p>
                   </div>
 
-                  {/* Bottom Round Arrow Button */}
+                  {}
                   <div className="mt-auto pt-2 flex justify-start">
                     <div className="w-10 h-10 rounded-full flex items-center justify-center border border-[#0CA953]/30 text-[#0CA953] group-hover:bg-[#0CA953] group-hover:text-white transition-all duration-300">
                       <ArrowRight size={18} strokeWidth={2.5} />
@@ -151,7 +151,7 @@ export default function ForWhoSection() {
           </div>
         </div>
 
-        {/* CTA Button */}
+        {}
         <div className="flex flex-col items-center justify-center mb-16">
           <Link
             href="/wypelnij-formularz"
@@ -163,7 +163,7 @@ export default function ForWhoSection() {
           </Link>
         </div>
 
-        {/* Bottom Trust Bar */}
+        {}
         <div className="pt-2">
           <div className="grid gap-6 md:grid-cols-3 max-w-5xl mx-auto">
             {trustItems.map((item, idx) => {

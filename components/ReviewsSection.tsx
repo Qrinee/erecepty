@@ -69,7 +69,7 @@ export default function ReviewsSection() {
   return (
     <section className="py-10 md:py-12 bg-white relative overflow-hidden" aria-labelledby="reviews-section-title">
 
-      {/* Decorative Potted Plant (Left - Desktop Only) */}
+      {}
       <div className="absolute left-4 top-[35%] -translate-y-1/2 hidden xl:block w-36 h-48 select-none pointer-events-none z-0">
         <div className="absolute top-2 left-6 bg-[#064743] text-white p-2.5 rounded-2xl shadow-md rounded-bl-none animate-bounce flex items-center justify-center">
           <svg className="w-4 h-4 fill-white text-white" viewBox="0 0 24 24">
@@ -88,7 +88,7 @@ export default function ReviewsSection() {
         </svg>
       </div>
 
-      {/* Decorative Smartphone (Right - Desktop Only) */}
+      {}
       <div className="absolute right-4 top-[35%] -translate-y-1/2 hidden xl:block w-44 h-56 select-none pointer-events-none z-0">
         <div className="absolute left-4 bottom-4 w-[96px] h-[160px] border-[5px] border-slate-700 rounded-[22px] bg-white shadow-xl flex flex-col p-2 relative overflow-hidden">
           <div className="w-10 h-3 bg-slate-700 rounded-b-md mx-auto -mt-2.5 mb-2" />
@@ -124,7 +124,7 @@ export default function ReviewsSection() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Headings */}
+        {}
         <div className="text-center mb-8">
           <h2 id="reviews-section-title" className="text-xl md:text-4xl font-extrabold text-slate-900 mb-2 tracking-tight">
             Pacjenci polecają nasze konsultacje online
@@ -134,10 +134,10 @@ export default function ReviewsSection() {
           </p>
         </div>
 
-        {/* Top Stats Badge Card */}
+        {}
         <div className="max-w-6xl mx-auto bg-white border border-slate-100 rounded-[24px] p-5 sm:p-6 shadow-[0_15px_40px_rgba(0,0,0,0.02)] mb-8 relative z-10">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-6 divide-y sm:divide-y-0 sm:divide-x divide-slate-100 md:divide-x">
-            {/* Col 1: Star Rating */}
+            {}
             <div className="flex flex-col items-center text-center px-4 pb-6 sm:pb-0">
               <div className="flex items-center gap-2 mb-2">
                 <Star className="w-6 h-6 fill-yellow-400 text-yellow-400" />
@@ -148,7 +148,7 @@ export default function ReviewsSection() {
               </p>
             </div>
 
-            {/* Col 2: Consultation time */}
+            {}
             <div className="flex flex-col items-center text-center px-4 pt-6 sm:pt-0">
               <div className="w-10 h-10 rounded-full border border-[#D5EAE6] bg-[#E8F3F1] flex items-center justify-center text-[#064743] mb-3">
                 <Clock className="w-5 h-5" />
@@ -157,7 +157,7 @@ export default function ReviewsSection() {
               <div className="text-[#147A60] text-xs font-bold mt-1">nawet w 15 minut</div>
             </div>
 
-            {/* Col 3: Verified specialists */}
+            {}
             <div className="flex flex-col items-center text-center px-4 pt-6 sm:pt-0">
               <div className="w-10 h-10 rounded-full border border-[#D5EAE6] bg-[#E8F3F1] flex items-center justify-center text-[#064743] mb-3">
                 <UserCheck className="w-5 h-5" />
@@ -166,7 +166,7 @@ export default function ReviewsSection() {
               <div className="text-slate-500 text-xs font-semibold mt-1">lekarze specjaliści</div>
             </div>
 
-            {/* Col 4: No queues */}
+            {}
             <div className="flex flex-col items-center text-center px-4 pt-6 sm:pt-0">
               <div className="w-10 h-10 rounded-full border border-[#D5EAE6] bg-[#E8F3F1] flex items-center justify-center text-[#064743] mb-3">
                 <Users className="w-5 h-5" />
@@ -177,7 +177,7 @@ export default function ReviewsSection() {
           </div>
         </div>
 
-        {/* 3 Review Cards Desktop Carousel */}
+        {}
         <div className="mb-8 max-w-6xl mx-auto">
           <DesktopCarousel>
             {reviews.map((review, idx) => (
@@ -185,11 +185,11 @@ export default function ReviewsSection() {
                 key={idx}
                 className="w-[85vw] min-w-[85vw] sm:w-[320px] sm:min-w-[320px] lg:w-[280px] lg:min-w-[280px] snap-center shrink-0 bg-white rounded-[24px] p-5 border border-slate-100 shadow-[0_15px_40px_rgba(0,0,0,0.015)] relative flex flex-col justify-between hover:shadow-md transition-shadow group overflow-hidden"
               >
-                {/* Giant background quotation mark */}
+                {}
                 <Quote className="absolute top-4 right-4 w-8 h-8 text-[#064743]/5 rotate-180 pointer-events-none" />
 
                 <div>
-                  {/* Header: Avatar, Name, Location, Rating, Verification Badge */}
+                  {}
                   <div className="flex items-start gap-4 mb-4">
                     <div className="w-12 h-12 rounded-full bg-[#E8F3F1] flex items-center justify-center text-[#064743] font-bold text-base flex-shrink-0 shadow-sm">
                       {review.initials}
@@ -208,7 +208,7 @@ export default function ReviewsSection() {
                           />
                         ))}
                       </div>
-                      {/* Verification badge */}
+                      {}
                       <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-[#EAF5F2] text-[10px] font-bold text-[#147A60] mt-2.5 self-start">
                         <CheckCircle className="w-3 h-3 fill-[#147A60] text-white" />
                         Zweryfikowana opinia
@@ -216,7 +216,7 @@ export default function ReviewsSection() {
                     </div>
                   </div>
 
-                  {/* Review Text */}
+                  {}
                   <p className="text-slate-600 text-sm sm:text-base leading-relaxed font-medium">
                     {review.text}
                   </p>
@@ -226,10 +226,10 @@ export default function ReviewsSection() {
           </DesktopCarousel>
         </div>
 
-        {/* Bottom Trust Banner inside Section */}
+        {}
         <div className="max-w-6xl mx-auto bg-[#EAF3F0] rounded-[24px] p-5 md:p-6">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
-            {/* Left Column (Stats/Title) */}
+            {}
             <div className="lg:col-span-5 flex items-center gap-4">
               <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center text-[#064743] shadow-sm flex-shrink-0">
                 <Users className="w-7 h-7" />
@@ -243,7 +243,7 @@ export default function ReviewsSection() {
               </div>
             </div>
 
-            {/* Right Column (4 Guarantees grid) */}
+            {}
             <div className="lg:col-span-7 grid grid-cols-2 md:grid-cols-4 gap-6 border-t lg:border-t-0 lg:border-l border-[#D5EAE6] pt-6 lg:pt-0 lg:pl-8">
               {[
                 { icon: Clock, title: "Konsultacje", desc: "online 24/7" },

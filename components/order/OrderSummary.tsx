@@ -44,12 +44,12 @@ export default function OrderSummary({
 }: OrderSummaryProps) {
   const [medicines, setMedicines] = useState<MedicineData[]>([]);
 
-  // Sync medicines from window (updated by MedicineCartClient)
+  
   useEffect(() => {
     const syncMedicines = () => {
       const cartMedicines = window.__MEDICINES_CART__ || [];
       
-      // Include initial medicine if no cart medicines yet
+      
       if (cartMedicines.length === 0 && initialMedicine) {
         setMedicines([initialMedicine]);
       } else if (cartMedicines.length > 0) {
@@ -57,13 +57,13 @@ export default function OrderSummary({
       }
     };
 
-    // Initial sync
+    
     syncMedicines();
 
-    // Listen for storage changes (when medicines are added/removed)
+    
     window.addEventListener('storage', syncMedicines);
     
-    // Custom event for same-tab updates
+    
     window.addEventListener('medicines-updated', syncMedicines);
 
     return () => {
@@ -132,7 +132,7 @@ export default function OrderSummary({
         </label>
       </div>
 
-      {/* Price breakdown */}
+      {}
       <div className="mt-4 pt-4 border-t border-gray-100 space-y-2">
         <div className="flex justify-between text-sm text-gray-600">
           <span>Konsultacja ({medicineCount} × {MEDICINE_PRICE.toFixed(2)} PLN)</span>

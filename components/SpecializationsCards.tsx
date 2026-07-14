@@ -80,10 +80,10 @@ export default function SpecializationsCards() {
                         className="rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl transition-all duration-300 relative"
                         style={{ backgroundColor: card.bgColor }}
                     >
-                        {/* Header with integrated image overlay */}
+                        {}
                         <div className="relative pt-8 pl-8 pb-8 pr-[25%] lg:pr-[35%] min-h-[250px] flex flex-col justify-center flex-grow z-20">
                             <div className="relative z-20">
-                                {/* Badge & Title */}
+                                {}
                                 <div className="flex justify-start mb-4">
                                     <span className={`${card.badgeBg} border ${card.badgeBorder} ${card.badgeText} text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase`}>
                                         {card.badge}
@@ -98,7 +98,7 @@ export default function SpecializationsCards() {
                                     {card.description}
                                 </p>
                                 <div>
-                                    {/* Checklist */}
+                                    {}
                                     <ul className="space-y-3 mb-8">
                                         {card.features.map((text, idx) => (
                                             <li key={idx} className="flex items-center gap-3">
@@ -121,7 +121,7 @@ export default function SpecializationsCards() {
                                 </div>
                             </div>
 
-                            {/* Absolute Image Overlay on the right */}
+                            {}
                             <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none z-10">
                                 <div className="relative w-full h-full">
                                     <Image
@@ -131,7 +131,7 @@ export default function SpecializationsCards() {
                                         priority
                                         className="object-cover object-center scale-105 transition-transform duration-500"
                                     />
-                                    {/* Left-to-right fade overlay using gradient */}
+                                    {}
                                     <div
                                         className="absolute inset-y-0 left-0 w-full bg-gradient-to-r to-transparent z-10"
                                         style={{

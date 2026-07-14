@@ -91,14 +91,14 @@ export default function ServicesSection() {
   return (
     <section id="uslugi" className="py-20 bg-white scroll-mt-20 relative overflow-hidden">
 
-      {/* Decorative leafy branch (Left - Desktop Only) */}
+      {}
       <svg className="absolute top-6 left-6 w-24 h-24 text-[#064743]/10 hidden xl:block pointer-events-none select-none" viewBox="0 0 100 100" fill="currentColor">
         <path d="M10 80 Q 30 50 60 50 M 30 65 Q 25 50 40 45 M 45 58 Q 50 40 60 40" stroke="currentColor" strokeWidth="2" fill="none" />
         <path d="M40 45 C 45 40 35 30 30 35 C 25 40 35 48 40 45 Z" />
         <path d="M60 40 C 65 35 55 25 50 30 C 45 35 55 43 60 40 Z" />
       </svg>
 
-      {/* Decorative leafy branch (Right - Desktop Only) */}
+      {}
       <svg className="absolute top-6 right-6 w-24 h-24 text-[#064743]/10 hidden xl:block pointer-events-none select-none" viewBox="0 0 100 100" fill="currentColor">
         <path d="M90 80 Q 70 50 40 50 M 70 65 Q 75 50 60 45 M 55 58 Q 50 40 40 40" stroke="currentColor" strokeWidth="2" fill="none" />
         <path d="M60 45 C 55 40 65 30 70 35 C 75 40 65 48 60 45 Z" />
@@ -107,7 +107,7 @@ export default function ServicesSection() {
 
       <div className="w-full px-4 sm:px-8 xl:px-16 relative z-10">
 
-        {/* Headings */}
+        {}
         <div className="text-center mb-10 relative">
           <h2 className="text-3xl md:text-4xl font-extrabold text-slate-900 mb-3 tracking-tight">
             Nasze usługi
@@ -117,17 +117,17 @@ export default function ServicesSection() {
           </p>
         </div>
 
-        {/* Outer relative container to hold the left-aligned green badge & grid */}
+        {}
         <div className="max-w-6xl m-auto relative mt-8">
 
-          {/* Green pill badge aligned to the left (desktop only, block on mobile) */}
+          {}
           <div className="mb-6 lg:mb-8 text-left">
             <span className="inline-flex items-center px-4 py-2 bg-[#EAF3F0] text-[#147A60] font-extrabold rounded-full text-[11px] sm:text-xs tracking-wider uppercase shadow-sm">
               • DOSTĘPNE 24/7 • BEZ WYCHODZENIA Z DOMU
             </span>
           </div>
 
-          {/* Services Grid */}
+          {}
           <div className="max-w-7xl m-auto grid grid-cols-2 sm:grid-cols-2 lg:grid-cols-4 gap-4 lg:gap-6">
             {services.map((service, idx) => (
               <Link
@@ -136,7 +136,7 @@ export default function ServicesSection() {
                 className="bg-white rounded-[24px] p-6 flex flex-col justify-between border border-slate-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300 group h-full"
               >
                 <div>
-                  {/* Illustration Container */}
+                  {}
                   <div className="w-full h-32 flex items-center justify-center mb-4 overflow-hidden rounded-xl bg-slate-50/50">
                     <img
                       src={service.image}
@@ -144,12 +144,12 @@ export default function ServicesSection() {
                       className="max-h-[110px] w-auto object-contain transform group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
-                  {/* Title */}
+                  {}
                   <h3 className="font-extrabold text-slate-800 text-base sm:text-lg mb-1.5">{service.title}</h3>
-                  {/* Description */}
+                  {}
                   <p className="text-xs sm:text-sm text-slate-500 leading-relaxed min-h-[36px]">{service.desc}</p>
                 </div>
-                {/* Action Link */}
+                {}
                 <div className="mt-4">
                   <span className="text-[#147A60] hover:text-[#064743] font-bold text-sm inline-flex items-center gap-1 transition-colors">
                     <span>Zamów</span>
@@ -162,7 +162,7 @@ export default function ServicesSection() {
 
         </div>
 
-        {/* Bottom Trust/Guarantees Panel */}
+        {}
         <div className="w-full bg-[#EAF3F0]/60 border border-[#D5EAE6]/45 rounded-[24px] p-6 mt-16">
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-5 gap-6 divide-y md:divide-y-0 md:divide-x divide-[#D5EAE6]/80 items-center">
             {[

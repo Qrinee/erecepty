@@ -9,13 +9,13 @@ export default function ForWomanAndMen() {
         <section className="max-w-[100vw] pt-5 mx-auto px-4 sm:px-6 lg:px-8 ">
             <div className="grid gap-3 lg:grid-cols-3">
 
-                {/* Card 1: Tabletka "dzień po" */}
+                {}
                 <div className="bg-[#fef5f8] rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-rose-100 transition-all duration-300 relative">
 
-                    {/* Header with integrated image overlay */}
+                    {}
                     <div className="relative pt-8 pl-8 pb-8 pr-[25%] lg:pr-[35%] min-h-[220px] flex flex-col justify-center flex-grow z-20" >
                         <div className="relative z-20">
-                            {/* Badge & Title */}
+                            {}
                             <div className="flex justify-start mb-4">
                                 <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
                                     Dla kobiet
@@ -30,7 +30,7 @@ export default function ForWomanAndMen() {
                                 Dyskretna pomoc, kiedy liczy się czas.
                             </p>
                             <div>
-                                {/* Checklist */}
+                                {}
                                 <ul className="space-y-3 mb-8">
                                     {[
                                         "Konsultacja online 24/7",
@@ -56,7 +56,7 @@ export default function ForWomanAndMen() {
                             </div>
                         </div>
 
-                        {/* Absolute Image Overlay on the right */}
+                        {}
                         <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none z-10">
                             <div className="relative w-full h-full">
                                 <Image
@@ -66,7 +66,7 @@ export default function ForWomanAndMen() {
                                     priority
                                     className="object-cover object-center scale-105 transition-transform duration-500"
                                 />
-                                {/* Left-to-right fade overlay using gradient */}
+                                {}
                                 <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#fef5f8]  to-transparent z-10" />
                             </div>
                         </div>
@@ -76,13 +76,13 @@ export default function ForWomanAndMen() {
 
                 </div>
 
-                {/* Card 2: Antykoncepcja */}
+                {}
                 <div className="bg-[#feeff2] rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-rose-100 transition-all duration-300 relative">
 
-                    {/* Header with integrated image overlay */}
+                    {}
                     <div className="relative pt-8 pl-8 pb-8 pr-[25%] lg:pr-[35%] min-h-[250px] flex flex-col justify-center flex-grow z-20">
                         <div className="relative z-20">
-                            {/* Badge & Title */}
+                            {}
                             <div className="flex justify-start mb-4">
                                 <span className="bg-rose-50 border border-rose-100 text-rose-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
                                     Dla kobiet
@@ -98,7 +98,7 @@ export default function ForWomanAndMen() {
                             </p>
 
                             <div>
-                                {/* Checklist */}
+                                {}
                                 <ul className="space-y-3 mb-8">
                                     {[
                                         "Dobór metod antykoncepcji",
@@ -125,7 +125,7 @@ export default function ForWomanAndMen() {
                             </div>
                         </div>
 
-                        {/* Absolute Image Overlay on the right */}
+                        {}
                         <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none z-10">
                             <div className="relative w-full h-full">
                                 <Image
@@ -135,7 +135,7 @@ export default function ForWomanAndMen() {
                                     priority
                                     className="object-cover object-center scale-105 transition-transform duration-500"
                                 />
-                                {/* Left-to-right fade overlay using gradient */}
+                                {}
                                 <div className="absolute inset-y-0 left-0 w-full bg-gradient-to-r from-[#feeff2] to-transparent z-10" />
                             </div>
                         </div>
@@ -144,13 +144,13 @@ export default function ForWomanAndMen() {
 
                 </div>
 
-                {/* Card 3: Testosteron */}
+                {}
                 <div className="bg-[#f1f4fd] rounded-[32px] border border-slate-100 shadow-sm flex flex-col justify-between overflow-hidden group hover:shadow-xl hover:border-blue-100 transition-all duration-300 relative">
 
-                    {/* Header with integrated image overlay */}
+                    {}
                     <div className="relative pt-8 pl-8 pb-8 pr-[25%] lg:pr-[35%] min-h-[250px] flex flex-col justify-center flex-grow z-20">
                         <div className="relative z-20">
-                            {/* Badge & Title */}
+                            {}
                             <div className="flex justify-start mb-4">
                                 <span className="bg-blue-50 border border-blue-100 text-blue-500 text-xs font-extrabold px-3 py-1 rounded-lg tracking-wider uppercase">
                                     Dla mężczyzn
@@ -165,7 +165,7 @@ export default function ForWomanAndMen() {
                                 Zadbaj o energię, siłę i dobre samopoczucie.
                             </p>
                             <div>
-                                {/* Checklist */}
+                                {}
                                 <ul className="space-y-3 mb-8">
                                     {[
                                         "Badanie i konsultacja online",
@@ -192,7 +192,7 @@ export default function ForWomanAndMen() {
                             </div>
                         </div>
 
-                        {/* Absolute Image Overlay on the right */}
+                        {}
                         <div className="absolute top-0 right-0 bottom-0 w-[50%] overflow-hidden pointer-events-none select-none z-10">
                             <div className="relative w-full h-full">
                                 <Image
@@ -202,7 +202,7 @@ export default function ForWomanAndMen() {
                                     priority
                                     className="object-cover object-center scale-105 transition-transform duration-500"
                                 />
-                                {/* Left-to-right fade overlay using gradient */}
+                                {}
                                 <div className="absolute inset-y-0 opacity-80 left-0 w-full bg-gradient-to-r from-[#f1f4fd] to-transparent z-10" />
                             </div>
                         </div>

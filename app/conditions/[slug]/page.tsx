@@ -1,10 +1,8 @@
-// app/conditions/[slug]/page.tsx
 import { conditions } from "@/app/data/conditions";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import ConditionPageClient from "./ConditionPageClient";
 
-// Named export for metadata - MUSI być Server Component
 export async function generateMetadata({
   params,
 }: {
@@ -69,14 +67,12 @@ export async function generateMetadata({
   };
 }
 
-// Generate static paths - MUSI być Server Component
 export async function generateStaticParams() {
   return conditions.map((condition) => ({
     slug: condition.slug,
   }));
 }
 
-// Main page component - Server Component
 export default async function ConditionPage({
   params,
 }: {
@@ -90,6 +86,5 @@ export default async function ConditionPage({
     notFound();
   }
 
-  // Renderujemy Client Component z danymi
   return <ConditionPageClient condition={condition} />;
 }

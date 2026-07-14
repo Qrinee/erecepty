@@ -1,4 +1,3 @@
-// app/utils/api.ts
 const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL + '/api';
 
 export const searchAutocomplete = async (
@@ -8,12 +7,12 @@ export const searchAutocomplete = async (
     const response = await fetch(
       `${API_BASE_URL}/search/autocomplete?query=${encodeURIComponent(query)}`
     );
-    
-    if (!response.ok) {
+
+        if (!response.ok) {
       throw new Error('Błąd wyszukiwania');
     }
-    
-    return await response.json();
+
+        return await response.json();
   } catch (error) {
     console.error('Search error:', error);
     throw error;

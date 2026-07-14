@@ -25,12 +25,12 @@ export default function AppPromotionSection() {
     if (typeof window !== "undefined") {
       setOrigin(window.location.origin);
       
-      // Detect iOS
+      
       const userAgent = window.navigator.userAgent.toLowerCase();
       const isIosDevice = /iphone|ipad|ipod/.test(userAgent);
       setIsIos(isIosDevice);
 
-      // Check if already running as PWA
+      
       if (window.matchMedia("(display-mode: standalone)").matches) {
         setIsInstalled(true);
       }
@@ -77,7 +77,7 @@ export default function AppPromotionSection() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center">
           
-          {/* Left Column: Benefits & Install Prompts */}
+          {}
           <div className="lg:col-span-7 text-left">
             <div className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#E4F2EE] text-[#064743] font-bold text-xs sm:text-sm uppercase tracking-wider mb-3 shadow-sm">
               <Smartphone className="w-4 h-4" />
@@ -93,7 +93,7 @@ export default function AppPromotionSection() {
               Zyskaj błyskawiczny dostęp do konsultacji medycznych, e-recept i e-zwolnień bezpośrednio z pulpitu swojego telefonu. Działa dokładnie jak aplikacja mobilna, bez zajmowania pamięci!
             </p>
 
-            {/* Benefits List (2-column grid for compactness) */}
+            {}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-4 mb-8">
               {[
                 "Łatwiejsze i szybsze składanie zamówień",
@@ -110,10 +110,10 @@ export default function AppPromotionSection() {
               ))}
             </div>
 
-            {/* Install Button & QR Code Section */}
+            {}
             <div className="flex flex-col sm:flex-row gap-4 items-start sm:items-center border-t border-[#D5EAE6]/50 pt-4">
               
-              {/* Install Trigger Button */}
+              {}
               <div className="w-full sm:w-auto">
                 {isInstalled ? (
                   <div className="inline-flex items-center gap-2 bg-[#E4F2EE] text-[#064743] px-6 py-3 rounded-xl font-extrabold text-sm sm:text-base border border-[#D5EAE6]">
@@ -137,7 +137,7 @@ export default function AppPromotionSection() {
                 </p>
               </div>
 
-              {/* QR Code */}
+              {}
               <div className="hidden md:flex items-center gap-4 bg-white border border-[#D5EAE6]/60 rounded-2xl p-3 shadow-sm relative group">
                 <div className="w-[80px] h-[80px] bg-slate-50 border border-slate-100 rounded-xl flex items-center justify-center overflow-hidden flex-shrink-0 p-1">
                   <img
@@ -156,7 +156,7 @@ export default function AppPromotionSection() {
                   </p>
                 </div>
 
-                {/* Curved visual arrow pointing to mockup */}
+                {}
                 <div className="absolute top-1/2 -right-10 -translate-y-1/2 translate-x-1 hidden lg:block pointer-events-none w-8 h-6.5 text-[#147A60] opacity-40">
                   <svg className="w-full h-full" viewBox="0 0 50 40" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round">
                     <path d="M5 20 C 15 5, 35 5, 42 16" />
@@ -168,17 +168,17 @@ export default function AppPromotionSection() {
             </div>
           </div>
 
-          {/* Right Column: Smartphone Mockup (More Compact Version) */}
+          {}
           <div className="lg:col-span-5 flex justify-center items-center">
             <div className="relative w-[190px] h-[380px] bg-slate-900 border-[6px] border-slate-800 rounded-[32px] shadow-[0_15px_35px_rgba(6,71,67,0.1)] overflow-hidden ring-1 ring-white/10">
               
-              {/* Dynamic Island */}
+              {}
               <div className="absolute top-2 left-1/2 -translate-x-1/2 w-20 h-4 bg-black rounded-full z-30 flex items-center justify-between px-2.5">
                 <div className="w-0.75 h-0.75 bg-[#064743] rounded-full animate-pulse" />
                 <div className="w-1.5 h-0.75 bg-slate-900 rounded-full" />
               </div>
 
-              {/* Status Bar */}
+              {}
               <div className="absolute top-0.5 left-0 right-0 h-5 px-4 flex items-center justify-between z-20 text-[8px] text-slate-800 font-bold select-none">
                 <span>9:41</span>
                 <div className="flex items-center gap-0.5">
@@ -192,11 +192,11 @@ export default function AppPromotionSection() {
                 </div>
               </div>
 
-              {/* Phone Content Screen */}
+              {}
               <div className="w-full h-full bg-white pt-5 pb-2 px-3 flex flex-col justify-between overflow-y-auto select-none no-scrollbar">
                 
                 <div>
-                  {/* App Mockup Header */}
+                  {}
                   <div className="flex items-center justify-between pb-1.5 border-b border-slate-100 mt-1.5 mb-2">
                     <div className="flex items-center gap-1">
                       <img
@@ -210,23 +210,23 @@ export default function AppPromotionSection() {
                     </div>
                   </div>
 
-                  {/* Promo Banner inside Mockup */}
+                  {}
                   <div className="bg-[#064743] text-white text-center py-1 px-1.5 rounded-md mb-2 text-[8px] font-bold tracking-tight">
                     W aplikacji 20% taniej!
                   </div>
 
-                  {/* Trust Pill */}
+                  {}
                   <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-full bg-[#EBF5F2] text-[#147A60] text-[7.5px] font-extrabold mb-2">
                     <span className="w-0.75 h-0.75 bg-[#10B981] rounded-full animate-ping" />
                     <span>• 12 lekarzy online</span>
                   </div>
 
-                  {/* Heading inside Screen */}
+                  {}
                   <h3 className="font-extrabold text-[#064743] text-[9.5px] leading-tight mb-0.5">
                     Wybierz usługę i wypełnij wywiad
                   </h3>
                   
-                  {/* Mock Rating */}
+                  {}
                   <div className="flex items-center gap-1 mb-2">
                     <div className="flex gap-0.5">
                       {[...Array(5)].map((_, i) => (
@@ -236,7 +236,7 @@ export default function AppPromotionSection() {
                     <span className="text-[7.5px] text-slate-400 font-bold">150k+ pacjentów</span>
                   </div>
 
-                  {/* Interactive Button Shortcuts */}
+                  {}
                   <div className="space-y-1">
                     {[
                       { label: "E-recepta", sub: "Wypełnij formularz online" },
@@ -265,21 +265,21 @@ export default function AppPromotionSection() {
 
                 </div>
 
-                {/* Micro Footer inside phone mockup */}
+                {}
                 <div className="text-center text-[6.5px] text-slate-400 font-bold border-t border-slate-100 pt-1.5 mt-1.5">
                   © Lekarze i Terapeuci
                 </div>
 
               </div>
 
-              {/* Screen Bezel Gloss */}
+              {}
               <div className="absolute inset-0 border border-white/5 rounded-[26px] pointer-events-none" />
             </div>
           </div>
         </div>
       </div>
 
-      {/* iOS Instructions Modal Overlay */}
+      {}
       {showInstructions && (
         <div className="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 flex items-center justify-center p-4 animate-fadeIn">
           <div className="bg-white rounded-3xl p-6 max-w-md w-full shadow-2xl relative border border-slate-100 animate-slideUp">
@@ -307,7 +307,7 @@ export default function AppPromotionSection() {
             <div className="space-y-4">
               
               {isIos ? (
-                // iOS Specific Steps
+                
                 <>
                   <div className="flex gap-4 items-start">
                     <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 text-[#147A60] flex items-center justify-center flex-shrink-0 text-sm font-extrabold">
@@ -346,7 +346,7 @@ export default function AppPromotionSection() {
                   </div>
                 </>
               ) : (
-                // General Fallback
+                
                 <>
                   <div className="flex gap-4 items-start">
                     <div className="w-8 h-8 rounded-lg bg-slate-50 border border-slate-100 text-[#147A60] flex items-center justify-center flex-shrink-0 text-sm font-extrabold">

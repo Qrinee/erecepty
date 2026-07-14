@@ -31,7 +31,7 @@ export default function Header({ transparent = false }: HeaderProps) {
     checkAuth();
   }, []);
 
-  // Close dropdown when clicking outside
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -43,7 +43,7 @@ export default function Header({ transparent = false }: HeaderProps) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close dropdown on Escape key
+  
   useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
@@ -105,8 +105,8 @@ export default function Header({ transparent = false }: HeaderProps) {
       e.preventDefault();
       const element = document.getElementById(id);
       if (element) {
-        // Obliczamy offset dla paska nawigacji
-        const headerOffset = 80; // wysokość headera
+        
+        const headerOffset = 80; 
         const elementPosition = element.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.scrollY - headerOffset;
         

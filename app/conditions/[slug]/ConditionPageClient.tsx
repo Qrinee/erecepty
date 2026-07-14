@@ -1,4 +1,4 @@
-// app/conditions/[slug]/ConditionPageClient.tsx
+
 'use client';
 
 import Link from "next/link";
@@ -22,12 +22,12 @@ import {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 
-// Floating abstract elements
+
 function FloatingElements() {
   return (
     <>
       <Header />
-      {/* Animated background elements */}
+      {}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-gradient-to-br from-blue-100/20 to-transparent rounded-full blur-3xl animate-pulse" />
         <div className="absolute top-1/4 -left-20 w-60 h-60 bg-gradient-to-tr from-cyan-100/10 to-transparent rounded-full blur-3xl animate-pulse delay-1000" />
@@ -37,7 +37,7 @@ function FloatingElements() {
   );
 }
 
-// Glass card component
+
 function GlassCard({ children, className = "" }: { children: React.ReactNode; className?: string }) {
   return (
     <div className={`backdrop-blur-xl bg-white/70 border border-white/20 rounded-3xl shadow-lg shadow-blue-100/30 ${className}`}>
@@ -46,7 +46,7 @@ function GlassCard({ children, className = "" }: { children: React.ReactNode; cl
   );
 }
 
-// Animated stat card
+
 function StatCard({ stat, label, icon: Icon }: { stat: string; label: string; icon: any }) {
   return (
     <div className="group relative">
@@ -64,7 +64,7 @@ function StatCard({ stat, label, icon: Icon }: { stat: string; label: string; ic
   );
 }
 
-// Treatment card with hover animation
+
 function TreatmentCard({ treatment }: { treatment: any }) {
   return (
     <div className="group relative">
@@ -122,7 +122,7 @@ function TreatmentCard({ treatment }: { treatment: any }) {
   );
 }
 
-// FAQ component
+
 function FAQItem({ faq, index }: { faq: any; index: number }) {
   return (
     <GlassCard className="p-8 mb-6 transition-all duration-300  hover:shadow-xl">
@@ -145,7 +145,7 @@ function FAQItem({ faq, index }: { faq: any; index: number }) {
   );
 }
 
-// Timeline step component
+
 function TimelineStep({ step, index }: { step: any; index: number }) {
   return (
     <div className="relative group">
@@ -171,7 +171,7 @@ function TimelineStep({ step, index }: { step: any; index: number }) {
   );
 }
 
-// Research citation component
+
 function ResearchCitation({ citation }: { citation: any }) {
   return (
     <GlassCard className="p-6 mb-4 transition-all duration-300  hover:shadow-xl">
@@ -194,7 +194,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
     <div className="min-h-screen bg-gradient-to-b from-white via-blue-50/30 to-white">
       <FloatingElements />
       
-      {/* Hero Section */}
+      {}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-transparent to-cyan-500/5" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
@@ -217,7 +217,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
                 {condition.heroDescription}
               </p>
               
-              {/* Key facts */}
+              {}
               <div className="grid grid-cols-2 gap-4 mb-12">
                 {condition.heroStats.map((stat, index) => (
                   <div 
@@ -231,7 +231,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
               </div>
             </div>
             
-            {/* Featured image or illustration */}
+            {}
             <div className="relative">
               <GlassCard className="p-8">
                 <div className="aspect-square rounded-2xl bg-gradient-to-br from-blue-50 to-cyan-50 flex items-center justify-center">
@@ -246,12 +246,12 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
         </div>
       </section>
 
-      {/* Main Content */}
+      {}
       <main className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-32">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Left Column - Main Content */}
+          {}
           <div className="lg:col-span-2 space-y-12">
-            {/* Condition Overview */}
+            {}
             <section>
               <GlassCard className="p-12">
                 <h2 className="text-4xl font-bold text-gray-900 mb-12">
@@ -264,7 +264,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
                   </p>
                 </div>
 
-                {/* Symptoms Grid */}
+                {}
                 <div className="mb-12">
                   <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
                     <Activity className="w-6 h-6 mr-3 text-red-500" />
@@ -283,7 +283,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
                   </div>
                 </div>
 
-                {/* Causes & Risk Factors */}
+                {}
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
                   <div>
                     <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
@@ -318,7 +318,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
               </GlassCard>
             </section>
 
-            {/* Available Methods */}
+            {}
             <section>
               <div className="mb-12">
                 <div className="flex items-center mb-6">
@@ -339,7 +339,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
               </div>
             </section>
 
-            {/* Research & Studies */}
+            {}
             <section>
               <GlassCard className="p-12">
                 <h3 className="text-3xl font-bold text-gray-900 mb-8 flex items-center">
@@ -356,7 +356,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
                   </div>
                 </div>
 
-                {/* Statistics Grid */}
+                {}
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-6 mt-12">
                   {condition.statistics.map((stat, index) => (
                     <div 
@@ -372,9 +372,9 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
             </section>
           </div>
 
-          {/* Right Column - Sidebar */}
+          {}
           <div className="space-y-8">
-            {/* Historical Timeline */}
+            {}
             <section>
               <GlassCard className="p-8">
                 <h3 className="text-2xl font-bold text-gray-900 mb-8 flex items-center">
@@ -389,7 +389,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
               </GlassCard>
             </section>
 
-            {/* Indications */}
+            {}
             <section>
               <GlassCard className="p-8 border-green-200/50">
                 <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
@@ -407,7 +407,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
               </GlassCard>
             </section>
 
-            {/* Contraindications */}
+            {}
             <section>
               <GlassCard className="p-8 border-red-200/50">
                 <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
@@ -425,7 +425,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
               </GlassCard>
             </section>
 
-            {/* Related Conditions */}
+            {}
             <section>
               <GlassCard className="p-8">
                 <h3 className="text-xl font-bold text-gray-900 mb-6 flex items-center">
@@ -448,7 +448,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
           </div>
         </div>
 
-        {/* FAQ Section */}
+        {}
         <section className="mt-16">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-6">
@@ -466,7 +466,7 @@ export default function ConditionPageClient({ condition }: { condition: Conditio
           </div>
         </section>
 
-        {/* Further Reading */}
+        {}
         <section className="mt-24">
           <GlassCard className="p-12">
             <div className="text-center">

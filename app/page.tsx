@@ -45,7 +45,7 @@ export default function Home() {
       }
     };
 
-    // Run on initial mount
+    
     handleHash();
   }, []);
   return (
@@ -57,7 +57,7 @@ export default function Home() {
         <SpecializationsCards />
         <ServicesPanel />
         <ServicesSection />
-        {/* <SpecializationsSection /> */}
+        {}
         <HowItWorksSection />
         <ForWhoSection />
         <KnowledgeCenter />

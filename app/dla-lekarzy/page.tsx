@@ -78,14 +78,14 @@ export default function DlaLekarzyPage() {
     if (e.target.files && e.target.files.length > 0) {
       const file = e.target.files[0];
 
-      // Validate file type
+      
       if (file.type !== "application/pdf") {
         setFileError("Dozwolone są wyłącznie pliki w formacie PDF.");
         setCvFile(null);
         return;
       }
 
-      // Validate file size (5MB limit)
+      
       if (file.size > 5 * 1024 * 1024) {
         setFileError("Plik jest zbyt duży. Maksymalny rozmiar to 5MB.");
         setCvFile(null);
@@ -135,7 +135,7 @@ export default function DlaLekarzyPage() {
       if (response.ok) {
         setSubmitStatus("success");
         setResponseMessage(resData.message || "Zgłoszenie zostało wysłane pomyślnie!");
-        // Reset form
+        
         setFormData({
           name: "",
           email: "",
@@ -198,7 +198,7 @@ export default function DlaLekarzyPage() {
       <Header transparent={false} />
       <main id="main-content" className="bg-[#FAFBFB] min-h-screen pb-20 relative overflow-hidden" tabIndex={-1}>
 
-        {/* Background decorative elements (Plus signs) */}
+        {}
         <div className="absolute top-36 left-10 text-emerald-500/10 pointer-events-none select-none hidden lg:block">
           <span className="text-5xl font-light">+</span>
         </div>
@@ -213,10 +213,10 @@ export default function DlaLekarzyPage() {
 
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
 
-            {/* Left Column (Header + Benefits + Banner) */}
+            {}
             <div className="lg:col-span-7 space-y-10">
 
-              {/* Header Section with Doctor image overlay */}
+              {}
               <div className="relative pb-6 flex flex-col md:flex-row items-end justify-between min-h-[300px]">
                 <div className="max-w-md md:max-w-[65%] space-y-5 text-left relative z-10">
                   <span className="inline-flex items-center gap-1.5 bg-[#E8F3F1] text-[#147A60] text-xs font-black px-4 py-2 rounded-full uppercase tracking-wider shadow-sm">
@@ -233,7 +233,7 @@ export default function DlaLekarzyPage() {
                   </p>
                 </div>
 
-                {/* Doctor Portrait Image positioned absolutely to the right bottom */}
+                {}
                 <div className="hidden md:block absolute bottom-[-10vh] right-[-10px] lg:right-[-20px] w-[45%] lg:w-[38%] h-[380px] lg:h-[450px] xl:h-[480px]">
                   <div className="relative w-full h-full">
                     <Image
@@ -247,7 +247,7 @@ export default function DlaLekarzyPage() {
                 </div>
               </div>
 
-              {/* Benefits Grid (3 columns on desktop, 1 on mobile) */}
+              {}
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 z-10">
                 {benefits.map((benefit, idx) => {
                   const Icon = benefit.icon;
@@ -266,7 +266,7 @@ export default function DlaLekarzyPage() {
                 })}
               </div>
 
-              {/* Banner block at the bottom of left column */}
+              {}
               <div className="bg-[#FAFBFB] border border-slate-100 rounded-3xl p-6 flex items-center gap-5 shadow-[0_15px_40px_rgba(0,0,0,0.01)]">
                 <div className="w-12 h-12 rounded-full bg-[#E8F3F1] text-[#147A60] flex items-center justify-center flex-shrink-0">
                   <UserCheck className="w-6 h-6" />
@@ -281,7 +281,7 @@ export default function DlaLekarzyPage() {
 
             </div>
 
-            {/* Right Sidebar Form Column */}
+            {}
             <div className="lg:col-span-5 bg-white border border-slate-100/80 rounded-[32px] p-6 sm:p-8 md:p-10 shadow-[0_20px_50px_rgba(0,0,0,0.02)]">
               <div className="flex flex-col items-center text-center space-y-4 mb-8">
                 <div className="w-14 h-14 rounded-full bg-[#E8F3F1] text-[#147A60] flex items-center justify-center shadow-sm">
@@ -321,7 +321,7 @@ export default function DlaLekarzyPage() {
                     </div>
                   )}
 
-                  {/* Name Input */}
+                  {}
                   <div className="relative">
                     <User className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
@@ -337,7 +337,7 @@ export default function DlaLekarzyPage() {
                     />
                   </div>
 
-                  {/* Email Input */}
+                  {}
                   <div className="relative">
                     <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
@@ -353,7 +353,7 @@ export default function DlaLekarzyPage() {
                     />
                   </div>
 
-                  {/* Phone Input */}
+                  {}
                   <div className="relative">
                     <Phone className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <input
@@ -369,7 +369,7 @@ export default function DlaLekarzyPage() {
                     />
                   </div>
 
-                  {/* Specialization Select */}
+                  {}
                   <div className="relative">
                     <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400" />
                     <select
@@ -389,7 +389,7 @@ export default function DlaLekarzyPage() {
                     <ChevronDown className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400 pointer-events-none" />
                   </div>
 
-                  {/* About Textarea */}
+                  {}
                   <div className="relative">
                     <MessageSquare className="absolute left-4 top-4 w-5 h-5 text-slate-400" />
                     <textarea
@@ -404,7 +404,7 @@ export default function DlaLekarzyPage() {
                     />
                   </div>
 
-                  {/* CV Upload */}
+                  {}
                   <div className="space-y-1 text-left">
                     <input
                       id="cv-file"
@@ -466,7 +466,7 @@ export default function DlaLekarzyPage() {
                     )}
                   </div>
 
-                  {/* Submit Button */}
+                  {}
                   <button
                     type="submit"
                     disabled={isSubmitting}
@@ -485,7 +485,7 @@ export default function DlaLekarzyPage() {
                     )}
                   </button>
 
-                  {/* Form Trust Note */}
+                  {}
                   <div className="flex items-center justify-center gap-2 text-slate-400 text-[10px] font-semibold mt-4">
                     <Lock className="w-3.5 h-3.5 text-slate-400" />
                     <span>Twoje dane są bezpieczne i nie udostępniamy ich osobom trzecim.</span>
@@ -497,7 +497,7 @@ export default function DlaLekarzyPage() {
 
           </div>
 
-          {/* Bottom Trust Banner */}
+          {}
           <div className="border-t border-slate-200/60 mt-20 pt-16">
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 divide-y lg:divide-y-0 lg:divide-x divide-slate-100">
               {[

@@ -24,12 +24,10 @@ export default function OrderSummaryClient({ initialMedicine, medicineId }: Orde
   const [isExpress, setIsExpress] = useState(false);
   const [isRefunded, setIsRefunded] = useState(false);
 
-  // Sync medicines from window (updated by MedicineCartClient)
   useEffect(() => {
     const syncMedicines = () => {
       const cartMedicines = window.__MEDICINES_CART__ || [];
-      
-      // Include initial medicine if no cart medicines yet
+
       if (cartMedicines.length === 0 && initialMedicine) {
         setMedicines([initialMedicine]);
       } else if (cartMedicines.length > 0) {
@@ -37,13 +35,10 @@ export default function OrderSummaryClient({ initialMedicine, medicineId }: Orde
       }
     };
 
-    // Initial sync
     syncMedicines();
 
-    // Listen for storage changes (when medicines are added/removed)
     window.addEventListener('storage', syncMedicines);
-    
-    // Custom event for same-tab updates
+
     window.addEventListener('medicines-updated', syncMedicines);
 
     return () => {
@@ -52,33 +47,27 @@ export default function OrderSummaryClient({ initialMedicine, medicineId }: Orde
     };
   }, [initialMedicine]);
 
-  // Calculate totals
   const medicineCount = medicines.length;
   const subtotal = medicineCount * 49.99;
   const expressFee = isExpress ? 19.99 : 0;
   const refundedFee = isRefunded ? 10.00 : 0;
   const total = subtotal + expressFee + refundedFee;
 
-  // Navigate to consultation page (step 2)
   const handleNextStep = () => {
-    // Save cart medicines to localStorage for next steps
     localStorage.setItem('orderMedicines', JSON.stringify(medicines));
     localStorage.setItem('orderExpress', JSON.stringify(isExpress));
     localStorage.setItem('orderRefunded', JSON.stringify(isRefunded));
-    
-    router.push(`/add-medicine/${medicineId}/consultation`);
+
+        router.push(`/add-medicine/${medicineId}/consultation`);
   };
 
-  // Handle cancel - go back to step 1 preserving all state
   const handleCancel = () => {
-    // Save current state before going back
     localStorage.setItem('orderMedicines', JSON.stringify(medicines));
     localStorage.setItem('orderExpress', JSON.stringify(isExpress));
     localStorage.setItem('orderRefunded', JSON.stringify(isRefunded));
     router.back();
   };
 
-  // Check if form is valid (all required fields filled)
   const isFormValid = () => {
     if (medicines.length === 0) return false;
     return true;

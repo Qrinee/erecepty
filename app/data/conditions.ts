@@ -1,4 +1,3 @@
-// app/data/conditions.ts
 import { ConditionPageData } from "@/app/types/condition";
 
 export const conditions: ConditionPageData[] = [
@@ -7,14 +6,12 @@ export const conditions: ConditionPageData[] = [
     category: "Zdrowie reprodukcyjne",
     title: "Wszystko o",
     subtitle: "antykoncepcji",
-    
-    // Required properties from interface that are missing:
-    ctaPrimary: "Dowiedz się więcej",  // Empty since you removed commercial elements
-    ctaSecondary: "Kontakt", // Empty since you removed commercial elements
-    
-    heroImage: "/conditions/antykoncepcja.jpg",
-    
-    // Added missing researchCitations (was only in type, not in interface)
+
+    ctaPrimary: "Dowiedz się więcej",  
+    ctaSecondary: "Kontakt", 
+
+        heroImage: "/conditions/antykoncepcja.jpg",
+
     researchCitations: [
       {
         text: "Systematyczny przegląd potwierdza, że połączenie etynyloestradiolu z lewonorgestrelem jest najczęściej badaną i stosowaną formą antykoncepcji hormonalnej.",
@@ -27,45 +24,45 @@ export const conditions: ConditionPageData[] = [
         year: "2020"
       }
     ],
-    
-    metaDescription: "Kompleksowy przegląd metod zapobiegania ciąży. Informacje o skuteczności, mechanizmach działania, zaletach i ograniczeniach różnych form antykoncepcji.",
+
+        metaDescription: "Kompleksowy przegląd metod zapobiegania ciąży. Informacje o skuteczności, mechanizmach działania, zaletach i ograniczeniach różnych form antykoncepcji.",
     keywords: ["metody antykoncepcji", "tabletki antykoncepcyjne", "antykoncepcja hormonalna", "zdrowie reprodukcyjne", "planowanie rodziny"],
-    
-    heroDescription: "Przegląd metod zapobiegania ciąży z uwzględnieniem ich skuteczności, mechanizmów działania oraz medycznych wskazań i przeciwwskazań.",
+
+        heroDescription: "Przegląd metod zapobiegania ciąży z uwzględnieniem ich skuteczności, mechanizmów działania oraz medycznych wskazań i przeciwwskazań.",
     heroStats: [
       { stat: "99%", label: "Skuteczność metod hormonalnych" },
       { stat: "60%", label: "Kobiet stosuje antykoncepcję w Polsce" },
       { stat: "1960", label: "Pierwsza pigułka antykoncepcyjna" },
       { stat: "20+", label: "Różnych metod dostępnych" }
     ],
-    
-    conditionDescription: "Antykoncepcja obejmuje wszystkie metody i środki służące zapobieganiu ciąży. Dzieli się na hormonalne, barierowe, chemiczne, mechaniczne oraz naturalne. Wybór odpowiedniej metody zależy od wielu czynników, w tym stanu zdrowia, stylu życia, preferencji osobistych oraz planów reprodukcyjnych.",
-    
-    symptoms: [
+
+        conditionDescription: "Antykoncepcja obejmuje wszystkie metody i środki służące zapobieganiu ciąży. Dzieli się na hormonalne, barierowe, chemiczne, mechaniczne oraz naturalne. Wybór odpowiedniej metody zależy od wielu czynników, w tym stanu zdrowia, stylu życia, preferencji osobistych oraz planów reprodukcyjnych.",
+
+        symptoms: [
       "Potrzeba planowania rodziny",
       "Zaburzenia cyklu miesiączkowego",
       "Choroby endokrynologiczne",
       "Wskazania medyczne do regulacji hormonów",
       "Ochrona zdrowia reprodukcyjnego"
     ],
-    
-    causes: [
+
+        causes: [
       "Ewolucja metod planowania rodziny",
       "Postęp w farmakologii hormonalnej",
       "Zmiany społeczno-kulturowe",
       "Wzrost świadomości zdrowotnej",
       "Rozwój medycyny prewencyjnej"
     ],
-    
-    riskFactors: [
+
+        riskFactors: [
       "Palenie tytoniu przy stosowaniu hormonów",
       "Historia zakrzepicy w rodzinie",
       "Choroby wątroby",
       "Nowotwory hormonozależne",
       "Nieustabilizowane nadciśnienie"
     ],
-    
-    treatmentOptions: [
+
+        treatmentOptions: [
       {
         name: "Tabletki jednofazowe",
         type: "Antykoncepcja hormonalna",
@@ -105,8 +102,8 @@ export const conditions: ConditionPageData[] = [
         ]
       }
     ],
-    
-    treatmentProcess: [
+
+        treatmentProcess: [
       {
         step: 1,
         title: "Pierwsze metody naturalne",
@@ -132,16 +129,15 @@ export const conditions: ConditionPageData[] = [
         duration: "lata 1990-obecnie"
       }
     ],
-    
-    // Required by interface but not in your data:
+
     costInfo: {
       consultationCost: "",
       prescriptionCost: "",
       insuranceCoverage: "",
       availability: ""
     },
-    
-indications: [
+
+    indications: [
   "Planowanie rodziny i zapobieganie nieplanowanej ciąży",
   "Regulacja nieregularnych cykli miesiączkowych",
   "Zmniejszenie obfitości krwawień miesiączkowych i bólu",
@@ -162,8 +158,8 @@ contraindications: [
   "Migrena z aurą",
   "Ciężka cukrzyca z powikłaniami naczyniowymi"
 ],
-    
-    faqs: [
+
+        faqs: [
       {
         question: "Jak działa antykoncepcja hormonalna?",
         answer: "Antykoncepcja hormonalna działa na trzech głównych poziomach: hamuje owulację poprzez supresję hormonów przysadkowych, zagęszcza śluz szyjkowy utrudniając penetrację plemników, oraz zmienia endometrium uniemożliwiając implantację zapłodnionej komórki jajowej."
@@ -177,15 +173,15 @@ contraindications: [
         answer: "Tabletki antykoncepcyjne dzieli się na generacje w zależności od typu progestagenu:\n\n• I generacja: noretysteron - wyższe dawki, więcej działań niepożądanych\n• II generacja: lewonorgestrel - lepszy profil bezpieczeństwa\n• III generacja: dezogestrel, gestoden - mniejsze działanie androgenne\n• IV generacja: drospirenon, dienogest - działanie antyandrogenne"
       }
     ],
-    
-    statistics: [
+
+        statistics: [
       { value: "99.7%", description: "skuteczność tabletek przy regularnym stosowaniu" },
       { value: "0.1-0.5%", description: "wskaźnik niepowodzeń wkładek domacicznych" },
       { value: "85%", description: "kobiet stosujących antykoncepcję w UE" },
       { value: "50+", description: "lat stosowania pigułki antykoncepcyjnej" }
     ],
-    
-    relatedConditions: ["zaburzenia hormonalne", "endometrioza", "pcos", "cykl miesiączkowy", "zdrowie reprodukcyjne"]
+
+        relatedConditions: ["zaburzenia hormonalne", "endometrioza", "pcos", "cykl miesiączkowy", "zdrowie reprodukcyjne"]
   },
 
 
@@ -194,13 +190,13 @@ contraindications: [
   category: "Zdrowie psychiczne",
   title: "Wsparcie w",
   subtitle: "depresji i zaburzeniach lękowych",
-  
-  ctaPrimary: "Dowiedz się więcej",
+
+    ctaPrimary: "Dowiedz się więcej",
   ctaSecondary: "Kontakt",
-  
-  heroImage: "/conditions/depresja-zaburzenia-lekowe.jpg",
-  
-  researchCitations: [
+
+    heroImage: "/conditions/depresja-zaburzenia-lekowe.jpg",
+
+    researchCitations: [
     {
       text: "Metaanaliza 64 badań wykazała, że połączenie psychoterapii z farmakoterapią daje lepsze efekty w leczeniu depresji niż każda z tych metod stosowana osobno.",
       source: "Journal of the American Medical Association",
@@ -212,21 +208,21 @@ contraindications: [
       year: "2022"
     }
   ],
-  
-  metaDescription: "Kompleksowe podejście do leczenia depresji i zaburzeń lękowych. Informacje o objawach, metodach terapeutycznych i wsparciu w procesie zdrowienia.",
+
+    metaDescription: "Kompleksowe podejście do leczenia depresji i zaburzeń lękowych. Informacje o objawach, metodach terapeutycznych i wsparciu w procesie zdrowienia.",
   keywords: ["depresja", "zaburzenia lękowe", "zdrowie psychiczne", "psychoterapia", "leczenie depresji", "nerwica"],
-  
-  heroDescription: "Depresja i zaburzenia lękowe to powszechne problemy zdrowotne, które można skutecznie leczyć. Zrozumienie ich mechanizmów i dostępnych form pomocy jest pierwszym krokiem do poprawy jakości życia.",
+
+    heroDescription: "Depresja i zaburzenia lękowe to powszechne problemy zdrowotne, które można skutecznie leczyć. Zrozumienie ich mechanizmów i dostępnych form pomocy jest pierwszym krokiem do poprawy jakości życia.",
   heroStats: [
     { stat: "280 mln", label: "Osób z depresją na świecie" },
     { stat: "40%", label: "Chorujących na depresję nie szuka pomocy" },
     { stat: "60%", label: "Skuteczność leczenia przy odpowiednim doborze terapii" },
     { stat: "2-3x", label: "Częstsze występowanie u kobiet" }
   ],
-  
-  conditionDescription: "Depresja to zaburzenie nastroju charakteryzujące się utrzymującym się smutkiem, utratą zainteresowań i brakiem energii. Zaburzenia lękowe obejmują nadmierny, niekontrolowany niepokój, który utrudnia codzienne funkcjonowanie. Obydwa problemy często współwystępują i wymagają zindywidualizowanego podejścia terapeutycznego.",
-  
-  symptoms: [
+
+    conditionDescription: "Depresja to zaburzenie nastroju charakteryzujące się utrzymującym się smutkiem, utratą zainteresowań i brakiem energii. Zaburzenia lękowe obejmują nadmierny, niekontrolowany niepokój, który utrudnia codzienne funkcjonowanie. Obydwa problemy często współwystępują i wymagają zindywidualizowanego podejścia terapeutycznego.",
+
+    symptoms: [
     "Utrzymujący się smutek lub przygnębienie",
     "Utrata zainteresowania aktywnościami",
     "Zmęczenie i brak energii",
@@ -237,8 +233,8 @@ contraindications: [
     "Unikanie sytuacji społecznych",
     "Objawy somatyczne (kołatanie serca, drżenie)"
   ],
-  
-  causes: [
+
+    causes: [
     "Czynniki biologiczne (dysfunkcja neuroprzekaźników)",
     "Predyspozycje genetyczne",
     "Stresujące wydarzenia życiowe",
@@ -246,8 +242,8 @@ contraindications: [
     "Choroby somatyczne",
     "Substancje psychoaktywne"
   ],
-  
-  riskFactors: [
+
+    riskFactors: [
     "Historia depresji w rodzinie",
     "Trauma dziecięca",
     "Przewlekłe choroby fizyczne",
@@ -255,8 +251,8 @@ contraindications: [
     "Problemy finansowe lub zawodowe",
     "Używanie substancji psychoaktywnych"
   ],
-  
-  treatmentOptions: [
+
+    treatmentOptions: [
     {
       name: "Psychoterapia poznawczo-behawioralna",
       type: "Psychoterapia",
@@ -296,8 +292,8 @@ contraindications: [
       ]
     }
   ],
-  
-  treatmentProcess: [
+
+    treatmentProcess: [
     {
       step: 1,
       title: "Diagnoza i ocena",
@@ -323,15 +319,15 @@ contraindications: [
       duration: "6 miesięcy+"
     }
   ],
-  
-  costInfo: {
+
+    costInfo: {
     consultationCost: "",
     prescriptionCost: "",
     insuranceCoverage: "",
     availability: ""
   },
-  
-indications: [
+
+  indications: [
   "Regularna psychoterapia (np. poznawczo-behawioralna, psychodynamiczna)",
   "Farmakoterapia (leki przeciwdepresyjne, przeciwlękowe) pod kontrolą lekarza",
   "Aktywność fizyczna dostosowana do możliwości",
@@ -348,8 +344,8 @@ contraindications: [
   "Brak regularności w przyjmowaniu leków lub uczestnictwie w terapii",
   "Nieleczenie współistniejących chorób somatycznych"
 ],
-  
-  faqs: [
+
+    faqs: [
     {
       question: "Czy depresja to po prostu smutek?",
       answer: "Nie, depresja to choroba, a nie zwykły smutek. Podczas gdy smutek jest naturalną, przejściową reakcją na trudne sytuacje, depresja jest stanem chorobowym charakteryzującym się utrzymującymi się objawami, które znacząco zakłócają codzienne funkcjonowanie. Wymaga profesjonalnego leczenia."
@@ -363,15 +359,15 @@ contraindications: [
       answer: "Leki przeciwdepresyjne nie powodują uzależnienia w sensie psychicznym (nie dają euforii ani nie prowadzą do zachowań kompulsywnych). Mogą jednak powodować objawy odstawienne przy gwałtownym zaprzestaniu przyjmowania, dlatego ważne jest stopniowe zmniejszanie dawki pod kontrolą lekarza."
     }
   ],
-  
-  statistics: [
+
+    statistics: [
     { value: "10-15%", description: "ludzi doświadcza epizodu depresyjnego w ciągu życia" },
     { value: "50-60%", description: "skuteczność leczenia przy odpowiednim doborze terapii" },
     { value: "3.8%", description: "populacji światowej cierpi na zaburzenia depresyjne" },
     { value: "40-60%", description: "pacjentów z depresją ma współwystępujące zaburzenia lękowe" }
   ],
-  
-  relatedConditions: ["zaburzenia snu", "stres", "wypalenie zawodowe", "zaburzenia adaptacyjne", "zaburzenia osobowości"]
+
+    relatedConditions: ["zaburzenia snu", "stres", "wypalenie zawodowe", "zaburzenia adaptacyjne", "zaburzenia osobowości"]
 },
 
 
@@ -380,13 +376,13 @@ contraindications: [
   category: "Metaboliczne",
   title: "Kompleksowe podejście do",
   subtitle: "otyłości",
-  
-  ctaPrimary: "Dowiedz się więcej",
+
+    ctaPrimary: "Dowiedz się więcej",
   ctaSecondary: "Kontakt",
-  
-  heroImage: "/conditions/otylosc.jpg",
-  
-  researchCitations: [
+
+    heroImage: "/conditions/otylosc.jpg",
+
+    researchCitations: [
     {
       text: "Metaanaliza 28 randomizowanych badań klinicznych potwierdza, że połączenie interwencji behawioralnych z farmakoterapią daje lepsze i trwalsze efekty w redukcji masy ciała niż sama dieta.",
       source: "The New England Journal of Medicine",
@@ -398,21 +394,21 @@ contraindications: [
       year: "2022"
     }
   ],
-  
-  metaDescription: "Kompleksowe podejście do leczenia otyłości jako choroby przewlekłej. Informacje o przyczynach, metodach leczenia i długoterminowym zarządzaniu masą ciała.",
+
+    metaDescription: "Kompleksowe podejście do leczenia otyłości jako choroby przewlekłej. Informacje o przyczynach, metodach leczenia i długoterminowym zarządzaniu masą ciała.",
   keywords: ["otyłość", "nadwaga", "BMI", "redukcja masy ciała", "leczenie otyłości", "zdrowie metaboliczne", "dieta"],
-  
-  heroDescription: "Otyłość to przewlekła choroba metaboliczna charakteryzująca się nadmiernym nagromadzeniem tkanki tłuszczowej. Wymaga wielodyscyplinarnego podejścia łączącego interwencje żywieniowe, aktywność fizyczną, terapię behawioralną i w wybranych przypadkach farmakoterapię lub leczenie chirurgiczne.",
+
+    heroDescription: "Otyłość to przewlekła choroba metaboliczna charakteryzująca się nadmiernym nagromadzeniem tkanki tłuszczowej. Wymaga wielodyscyplinarnego podejścia łączącego interwencje żywieniowe, aktywność fizyczną, terapię behawioralną i w wybranych przypadkach farmakoterapię lub leczenie chirurgiczne.",
   heroStats: [
     { stat: "650 mln", label: "Osób z otyłością na świecie" },
     { stat: "25%", label: "Polaków ma otyłość" },
     { stat: "200+", label: "powikłań zdrowotnych związanych z otyłością" },
     { stat: "2-10 lat", label: "skrócenie życia przy BMI > 35" }
   ],
-  
-  conditionDescription: "Otyłość definiowana jest jako nadmierne nagromadzenie tkanki tłuszczowej, które negatywnie wpływa na zdrowie. Diagnozuje się ją przy wskaźniku BMI ≥ 30 kg/m². Jest chorobą przewlekłą o złożonej etiologii, obejmującą czynniki genetyczne, środowiskowe, psychologiczne i metaboliczne. Otyłość zwiększa ryzyko wielu chorób, w tym cukrzycy typu 2, nadciśnienia, chorób sercowo-naczyniowych i niektórych nowotworów.",
-  
-  symptoms: [
+
+    conditionDescription: "Otyłość definiowana jest jako nadmierne nagromadzenie tkanki tłuszczowej, które negatywnie wpływa na zdrowie. Diagnozuje się ją przy wskaźniku BMI ≥ 30 kg/m². Jest chorobą przewlekłą o złożonej etiologii, obejmującą czynniki genetyczne, środowiskowe, psychologiczne i metaboliczne. Otyłość zwiększa ryzyko wielu chorób, w tym cukrzycy typu 2, nadciśnienia, chorób sercowo-naczyniowych i niektórych nowotworów.",
+
+    symptoms: [
     "Nadmierna masa ciała (BMI ≥ 30)",
     "Zwiększony obwód talii (≥80 cm u kobiet, ≥94 cm u mężczyzn)",
     "Duszność przy niewielkim wysiłku",
@@ -422,8 +418,8 @@ contraindications: [
     "Zmęczenie i brak energii",
     "Trudności w codziennych czynnościach"
   ],
-  
-  causes: [
+
+    causes: [
     "Nadmierna podaż kalorii w stosunku do zapotrzebowania",
     "Czynniki genetyczne i epigenetyczne",
     "Zaburzenia hormonalne (leptynooporność, insulinooporność)",
@@ -432,8 +428,8 @@ contraindications: [
     "Niektóre leki (psychotropowe, steroidy)",
     "Czynniki środowiskowe i społeczne"
   ],
-  
-  riskFactors: [
+
+    riskFactors: [
     "Otyłość w rodzinie",
     "Niski status socjoekonomiczny",
     "Choroby endokrynologiczne (PCOS, niedoczynność tarczycy)",
@@ -442,8 +438,8 @@ contraindications: [
     "Ciąża (ryzyko otyłości poporodowej)",
     "Zaprzestanie palenia tytoniu"
   ],
-  
-  treatmentOptions: [
+
+    treatmentOptions: [
     {
       name: "Kompleksowa terapia behawioralna",
       type: "Leczenie zachowawcze",
@@ -502,8 +498,8 @@ contraindications: [
       ]
     }
   ],
-  
-  treatmentProcess: [
+
+    treatmentProcess: [
     {
       step: 1,
       title: "Kompleksowa diagnostyka",
@@ -529,15 +525,15 @@ contraindications: [
       duration: "Dożywotnio"
     }
   ],
-  
-  costInfo: {
+
+    costInfo: {
     consultationCost: "",
     prescriptionCost: "",
     insuranceCoverage: "",
     availability: ""
   },
-  
-indications: [
+
+  indications: [
   "Indywidualnie dobrana dieta redukcyjna pod okiem dietetyka",
   "Regularna aktywność fizyczna (co najmniej 150 minut umiarkowanej aktywności tygodniowo)",
   "Terapia behawioralna mająca na celu zmianę nawyków żywieniowych",
@@ -554,8 +550,8 @@ contraindications: [
   "Opuszczanie posiłków i głodówki",
   "Bagatelizowanie objawów i unikanie leczenia powikłań otyłości"
 ],
-  
-  faqs: [
+
+    faqs: [
     {
       question: "Czy otyłość to tylko problem estetyczny?",
       answer: "Absolutnie nie. Otyłość jest uznawana przez WHO za chorobę przewlekłą, która prowadzi do poważnych powikłań zdrowotnych. Zwiększa ryzyko: cukrzycy typu 2 (7-krotnie), nadciśnienia, chorób serca, udaru, niektórych nowotworów, bezdechu sennego i problemów stawowych. Wpływa również na zdrowie psychiczne i jakość życia."
@@ -569,15 +565,15 @@ contraindications: [
       answer: "Chirurgię bariatryczną rozważa się przy: BMI ≥ 40 lub BMI ≥ 35 z powikłaniami (cukrzyca, nadciśnienie, bezdech senny), wieku 18-65 lat, niepowodzeniu leczenia zachowawczego (co najmniej 6 miesięcy), braku przeciwwskazań psychologicznych i gotowości do długoterminowej opieki pooperacyjnej."
     }
   ],
-  
-  statistics: [
+
+    statistics: [
     { value: "13%", description: "światowej populacji dorosłych ma otyłość" },
     { value: "5-15%", description: "redukcja masy ciała znacząco zmniejsza ryzyko powikłań" },
     { value: "50-70%", description: "pacjentów po operacji bariatrycznej osiąga trwałą redukcję" },
     { value: "3x", description: "większe ryzyko hospitalizacji u osób z otyłością" }
   ],
-  
-  relatedConditions: ["cukrzyca typu 2", "nadciśnienie", "insulinooporność", "PCOS", "bezdech senny", "dna moczanowa"]
+
+    relatedConditions: ["cukrzyca typu 2", "nadciśnienie", "insulinooporność", "PCOS", "bezdech senny", "dna moczanowa"]
 },
 
 {
@@ -585,13 +581,13 @@ contraindications: [
   category: "Metaboliczne",
   title: "Parę słów o",
   subtitle: "cukrzycy",
-  
-  ctaPrimary: "Dowiedz się więcej",
+
+    ctaPrimary: "Dowiedz się więcej",
   ctaSecondary: "Kontakt",
-  
-  heroImage: "/conditions/cukrzyca.jpg",
-  
-  researchCitations: [
+
+    heroImage: "/conditions/cukrzyca.jpg",
+
+    researchCitations: [
     {
       text: "Badanie DCCT/EDIC wykazało, że intensywna kontrola glikemii u chorych na cukrzycę typu 1 redukuje ryzyko powikłań naczyniowych o 50-75% nawet po 30 latach od zakończenia badania.",
       source: "New England Journal of Medicine",
@@ -603,21 +599,21 @@ contraindications: [
       year: "2022"
     }
   ],
-  
-  metaDescription: "Kompleksowe podejście do diagnozy, leczenia i monitorowania cukrzycy. Informacje o typach cukrzycy, nowoczesnych metodach leczenia i profilaktyce powikłań.",
+
+    metaDescription: "Kompleksowe podejście do diagnozy, leczenia i monitorowania cukrzycy. Informacje o typach cukrzycy, nowoczesnych metodach leczenia i profilaktyce powikłań.",
   keywords: ["cukrzyca", "cukrzyca typu 1", "cukrzyca typu 2", "insulina", "glikemia", "HbA1c", "leczenie cukrzycy"],
-  
-  heroDescription: "Cukrzyca to grupa przewlekłych chorób metabolicznych charakteryzujących się hiperglikemią wynikającą z defektu wydzielania lub działania insuliny. Wymaga kompleksowego, wielodyscyplinarnego podejścia i stałej samokontroli.",
+
+    heroDescription: "Cukrzyca to grupa przewlekłych chorób metabolicznych charakteryzujących się hiperglikemią wynikającą z defektu wydzielania lub działania insuliny. Wymaga kompleksowego, wielodyscyplinarnego podejścia i stałej samokontroli.",
   heroStats: [
     { stat: "537 mln", label: "Osób z cukrzycą na świecie (2021)" },
     { stat: "6.7 mln", label: "Zgonów rocznie z powodu cukrzycy" },
     { stat: "3x", label: "większe ryzyko zawału serca" },
     { stat: "40%", label: "chorych ma powikłania nerkowe" }
   ],
-  
-  conditionDescription: "Cukrzyca jest przewlekłą chorobą metaboliczną charakteryzującą się podwyższonym poziomem glukozy we krwi (hiperglikemią). Dzieli się na kilka typów: cukrzyca typu 1 (autoimmunologiczna), typu 2 (insulinooporność), cukrzyca ciążowa i inne specyficzne typy. Nieleczona prowadzi do poważnych powikłań mikro- i makronaczyniowych.",
-  
-  symptoms: [
+
+    conditionDescription: "Cukrzyca jest przewlekłą chorobą metaboliczną charakteryzującą się podwyższonym poziomem glukozy we krwi (hiperglikemią). Dzieli się na kilka typów: cukrzyca typu 1 (autoimmunologiczna), typu 2 (insulinooporność), cukrzyca ciążowa i inne specyficzne typy. Nieleczona prowadzi do poważnych powikłań mikro- i makronaczyniowych.",
+
+    symptoms: [
     "Wzmożone pragnienie (polidypsja)",
     "Częste oddawanie moczu (wielomocz)",
     "Nieuzasadniona utrata masy ciała",
@@ -627,8 +623,8 @@ contraindications: [
     "Nawracające infekcje",
     "Mrowienie lub drętwienie kończyn"
   ],
-  
-  causes: [
+
+    causes: [
     "Cukrzyca typu 1: autoimmunologiczne niszczenie komórek beta trzustki",
     "Cukrzyca typu 2: insulinooporność i względny niedobór insuliny",
     "Czynniki genetyczne i rodzinne",
@@ -637,8 +633,8 @@ contraindications: [
     "Zaburzenia hormonalne",
     "Niektóre leki"
   ],
-  
-  riskFactors: [
+
+    riskFactors: [
     "Otyłość (szczególnie brzuszna)",
     "Wiek powyżej 45 lat",
     "Cukrzyca w rodzinie",
@@ -648,8 +644,8 @@ contraindications: [
     "Cukrzyca ciążowa w wywiadzie",
     "Zespół policystycznych jajników (PCOS)"
   ],
-  
-  treatmentOptions: [
+
+    treatmentOptions: [
     {
       name: "Terapia insulinowa",
       type: "Leczenie farmakologiczne",
@@ -708,8 +704,8 @@ contraindications: [
       ]
     }
   ],
-  
-  treatmentProcess: [
+
+    treatmentProcess: [
     {
       step: 1,
       title: "Diagnostyka i klasyfikacja",
@@ -735,15 +731,15 @@ contraindications: [
       duration: "Dożywotnio"
     }
   ],
-  
-  costInfo: {
+
+    costInfo: {
     consultationCost: "",
     prescriptionCost: "",
     insuranceCoverage: "",
     availability: ""
   },
-  
-indications: [
+
+  indications: [
   "Regularna samokontrola glikemii",
   "Przestrzeganie zaleceń żywieniowych (dieta z kontrolą węglowodanów)",
   "Regularna aktywność fizyczna dostosowana do typu cukrzycy i stanu zdrowia",
@@ -760,8 +756,8 @@ contraindications: [
   "Zaniedbywanie samokontroli i opuszczanie wizyt kontrolnych",
   "Stosowanie niezatwierdzonych metod leczenia (tzw. cudownych leków)"
 ],
-  
-  faqs: [
+
+    faqs: [
     {
       question: "Jaka jest różnica między cukrzycą typu 1 a typu 2?",
       answer: "Cukrzyca typu 1 jest chorobą autoimmunologiczną, w której układ odpornościowy niszczy komórki beta trzustki produkujące insulinę. Wymaga leczenia insuliną od początku. Cukrzyca typu 2 wynika z insulinooporności i względnego niedoboru insuliny. Często związana z otyłością, początkowo może być leczona dietą, lekami doustnymi, a insulinę wprowadza się w późniejszym etapie."
@@ -775,15 +771,15 @@ contraindications: [
       answer: "HbA1c (hemoglobina glikowana) odzwierciedla średnie stężenie glukozy we krwi z ostatnich 2-3 miesięcy. Jest kluczowym wskaźnikiem kontroli cukrzycy. Cel terapeutyczny zwykle wynosi <7%, ale może być indywidualizowany. Każde 1% redukcji HbA1c zmniejsza ryzyko powikłań mikronaczyniowych o 35%."
     }
   ],
-  
-  statistics: [
+
+    statistics: [
     { value: "1 na 10", description: "dorosłych ma cukrzycę" },
     { value: "50%", description: "chorych na cukrzycę typu 2 nie wie o swojej chorobie" },
     { value: "80%", description: "przedwczesnych zgonów z powodu cukrzycy można zapobiec" },
     { value: "3-4x", description: "większe ryzyko chorób sercowo-naczyniowych" }
   ],
-  
-  relatedConditions: ["otyłość", "nadciśnienie", "dyslipidemia", "retinopatia", "neuropatia", "nefropatia"]
+
+    relatedConditions: ["otyłość", "nadciśnienie", "dyslipidemia", "retinopatia", "neuropatia", "nefropatia"]
 }
 
 

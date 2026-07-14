@@ -30,7 +30,7 @@ export default function TherapyContinuationPage() {
       <main className="bg-white min-h-screen pt-8 pb-20" id="main-content">
         <div className="w-[90vw] mx-auto px-6 relative">
 
-          {/* Breadcrumbs */}
+          {}
           <nav className="mb-14 relative z-20" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-sm text-slate-500 font-medium">
               <li><Link href="/" className="hover:text-emerald-700 transition-colors">Strona główna</Link></li>
@@ -41,10 +41,10 @@ export default function TherapyContinuationPage() {
             </ol>
           </nav>
 
-          {/* Hero Area */}
+          {}
           <section className="relative mb-24 min-h-[400px] lg:min-h-[500px] flex flex-col justify-center mt-4">
 
-            {/* Background Image with Fade */}
+            {}
             <div className="absolute inset-y-0 right-0 w-full lg:w-[50%] z-0 pointer-events-none flex justify-end">
               <div className="relative w-full h-full max-w-4xl" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 60%)', maskImage: 'linear-gradient(to right, transparent, black 55%)' }}>
                 <img
@@ -55,7 +55,7 @@ export default function TherapyContinuationPage() {
               </div>
             </div>
 
-            {/* Content Container */}
+            {}
             <div className="relative z-20 w-full">
               <div className="max-w-2xl pt-10 pb-20 lg:py-0">
                 <h1 className="text-4xl md:text-5xl lg:text-[64px] font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight">
@@ -67,7 +67,7 @@ export default function TherapyContinuationPage() {
               </div>
             </div>
 
-            {/* Floating Shield */}
+            {}
             <div className="absolute bottom-[30%] right-[10%] sm:right-[20%] lg:right-[42%] lg:bottom-[15%] z-20 animate-bounce-slow">
               <svg width="90" height="108" viewBox="0 0 24 24" fill="#3B8262" xmlns="http://www.w3.org/2000/svg" className="drop-shadow-2xl">
                 <path d="M12 22C12 22 20 18 20 12V5L12 2L4 5V12C4 18 12 22 12 22Z" />
@@ -76,7 +76,7 @@ export default function TherapyContinuationPage() {
             </div>
           </section>
 
-          {/* 4 badges row */}
+          {}
           <section className="mb-24 relative z-20 -mt-10">
             <div className="bg-white rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-slate-50 p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
               <div className="flex items-center gap-3">
@@ -101,9 +101,9 @@ export default function TherapyContinuationPage() {
             </div>
           </section>
 
-          {/* Two Column details: Kiedy warto skorzystac & Dla kogo */}
+          {}
           <section className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-24">
-            {/* Left: Kiedy warto skorzystać */}
+            {}
             <div className="col-span-1 lg:col-span-6 bg-white border border-slate-100 p-10 md:p-12 rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)]">
               <h3 className="font-extrabold text-slate-900 text-2xl md:text-3xl mb-6">Kiedy warto skorzystać?</h3>
               <p className="text-slate-600 text-sm sm:text-base mb-8">Jeśli stale przyjmujesz leki i potrzebujesz:</p>
@@ -130,7 +130,7 @@ export default function TherapyContinuationPage() {
               </ul>
             </div>
 
-            {/* Right: Dla kogo */}
+            {}
             <div className="col-span-1 lg:col-span-6 bg-white border border-slate-100 p-10 md:p-12 rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)]">
               <div className="flex flex-col sm:flex-row gap-8 justify-between items-center h-full">
                 <div className="flex-1 w-full">
@@ -161,7 +161,7 @@ export default function TherapyContinuationPage() {
                   </div>
                 </div>
 
-                {/* Vector Group Icon next to diseases grid */}
+                {}
                 <div className="hidden sm:flex w-32 h-32 rounded-2xl bg-emerald-50 border border-emerald-100 items-center justify-center shrink-0">
                   <Stethoscope className="w-16 h-16 text-emerald-700" strokeWidth={1.5} />
                 </div>
@@ -169,12 +169,12 @@ export default function TherapyContinuationPage() {
             </div>
           </section>
 
-          {/* Jak wyglada proces */}
+          {}
           <section className="bg-white border border-slate-100 p-10 md:p-14 rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] mb-24">
             <h3 className="font-extrabold text-slate-900 text-3xl md:text-4xl text-center mb-16">Jak wygląda proces?</h3>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 relative mb-12">
-              {/* Step 1 */}
+              {}
               <div className="text-center flex flex-col items-center relative z-10">
                 <div className="w-16 h-16 rounded-[1.25rem] bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center font-extrabold text-2xl mb-6 shadow-sm">
                   1
@@ -184,13 +184,13 @@ export default function TherapyContinuationPage() {
                   Krótki wywiad medyczny online. Opisz swój stan i aktualne leczenie.
                 </p>
 
-                {/* Layout Arrow 1 -> 2 */}
+                {}
                 <div className="hidden md:block absolute top-8 -right-8 translate-x-1/2 text-slate-200">
                   <ArrowRight className="w-8 h-8" strokeWidth={1.5} />
                 </div>
               </div>
 
-              {/* Step 2 */}
+              {}
               <div className="text-center flex flex-col items-center relative z-10">
                 <div className="w-16 h-16 rounded-[1.25rem] bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center mb-6 shadow-sm">
                   <ClipboardList className="w-7 h-7" strokeWidth={1.5} />
@@ -200,13 +200,13 @@ export default function TherapyContinuationPage() {
                   Weryfikacja historii leczenia i analiza informacji przez lekarza.
                 </p>
 
-                {/* Layout Arrow 2 -> 3 */}
+                {}
                 <div className="hidden md:block absolute top-8 -right-8 translate-x-1/2 text-slate-200">
                   <ArrowRight className="w-8 h-8" strokeWidth={1.5} />
                 </div>
               </div>
 
-              {/* Step 3 */}
+              {}
               <div className="text-center flex flex-col items-center relative z-10">
                 <div className="w-16 h-16 rounded-[1.25rem] bg-emerald-50 text-emerald-700 border border-emerald-100 flex items-center justify-center font-extrabold text-2xl mb-6 shadow-sm">
                   3
@@ -218,7 +218,7 @@ export default function TherapyContinuationPage() {
               </div>
             </div>
 
-            {/* Warning box */}
+            {}
             <div className="bg-slate-50/80 border border-slate-100 p-6 md:p-8 rounded-2xl flex items-start gap-5 text-left max-w-4xl mx-auto">
               <div className="w-12 h-12 rounded-xl bg-white border border-slate-100 flex items-center justify-center shrink-0 shadow-sm">
                 <Lock className="w-6 h-6 text-slate-700" strokeWidth={1.5} />
@@ -233,10 +233,10 @@ export default function TherapyContinuationPage() {
           </section>
 
 
-          {/* Continuation Banner with image on the right */}
+          {}
           <section className="bg-[#F4F9F8] rounded-[2rem] shadow-[0_4px_24px_rgba(0,0,0,0.04)] mb-24 overflow-hidden relative min-h-[280px] flex items-center">
 
-            {/* Background Image with Fade */}
+            {}
             <div className="absolute inset-y-0 right-0 w-full lg:w-[60%] z-0 pointer-events-none flex justify-end">
               <div className="relative w-full h-full" style={{ WebkitMaskImage: 'linear-gradient(to right, transparent, black 30%)', maskImage: 'linear-gradient(to right, transparent, black 30%)' }}>
                 <img
@@ -247,7 +247,7 @@ export default function TherapyContinuationPage() {
               </div>
             </div>
 
-            {/* Content Container */}
+            {}
             <div className="relative z-10 w-full p-10 md:p-14">
               <div className="max-w-xl text-left">
                 <h3 className="text-2xl md:text-[28px] font-extrabold text-slate-900 mb-2 tracking-tight">Kontynuuj leczenie bez wychodzenia z domu</h3>

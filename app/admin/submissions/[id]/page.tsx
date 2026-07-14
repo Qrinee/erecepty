@@ -306,9 +306,9 @@ export default function SubmissionDetailPage() {
                 <p className="text-gray-500">Brak danych medycznych</p>
               ) : (
                 Object.entries(medical).map(([key, value]) => {
-                  if (key === 'medicinesExtra' || key === 'accountPassword') return null; // We display medicines separately, and hide password
+                  if (key === 'medicinesExtra' || key === 'accountPassword') return null; 
                   
-                  // Translate some known keys for better display
+                  
                   let label = key;
                   if (key === 'symptoms') label = 'Objawy';
                   else if (key === 'symptomsFrom') label = 'Od kiedy występują objawy';
@@ -374,7 +374,7 @@ export default function SubmissionDetailPage() {
             <div className="p-6 space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {Object.entries(submission.leaveDetails).map(([key, value]) => {
-                  // Skip these as they are duplicated or handled elsewhere
+                  
                   if (key === 'normalizedMedical' || key === 'isHospitalizedFlag' || key === 'accountPassword' || key === 'leaveStartDate' || key === 'leaveEndDate') return null;
 
                   let label = key;

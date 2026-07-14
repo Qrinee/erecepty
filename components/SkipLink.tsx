@@ -3,10 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 
-/**
- * SkipLink component - Provides keyboard-accessible navigation to main content
- * WCAG 2.4.1 - Bypass Blocks
- */
+
 export default function SkipLink() {
   const [isVisible, setIsVisible] = useState(false);
 

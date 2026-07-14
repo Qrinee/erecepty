@@ -48,7 +48,7 @@ export default function ArticlePage() {
 
       <main className="flex-grow pt-8 pb-16 px-4 sm:px-8 xl:px-16 max-w-[90vw] mx-auto w-full">
 
-        {/* Breadcrumbs */}
+        {}
         <div className="flex items-center gap-2 text-xs sm:text-sm font-medium text-slate-500 mb-8 flex-wrap ">
           <Link href="/" className="hover:text-slate-800 transition-colors  flex items-center">Strona główna</Link>
           <ChevronRight className="w-4 h-4 text-slate-300" />
@@ -59,7 +59,7 @@ export default function ArticlePage() {
           <span className="text-slate-800">Czy lekarz online może wystawić receptę?</span>
         </div>
 
-        {/* Hero Section */}
+        {}
         <div className="flex flex-col lg:flex-row gap-12 items-center mb-16">
           <div className="flex-1 space-y-6">
             <span className="inline-block bg-[#EAF3F0] text-[#147A60] px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase">
@@ -99,13 +99,13 @@ export default function ArticlePage() {
           </div>
         </div>
 
-        {/* Content Layout */}
+        {}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16">
 
-          {/* Main Column */}
+          {}
           <div className="lg:col-span-8 space-y-14">
 
-            {/* Step by step */}
+            {}
             <section>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-6 pb-4 border-b border-slate-100">Jak działa e-recepta online?</h2>
               <p className="text-slate-600 text-base sm:text-lg mb-10 leading-relaxed max-w-3xl">To bardzo proste. Cały proces zajmuje tylko kilka minut.</p>
@@ -132,7 +132,7 @@ export default function ArticlePage() {
               </div>
             </section>
 
-            {/* When can doctor prescribe online */}
+            {}
             <section>
               <h2 className="text-2xl font-black text-slate-900 mb-2">Kiedy lekarz może wystawić receptę online?</h2>
               <p className="text-slate-600 font-medium mb-6 text-[15px]">E-receptę można otrzymać m.in. w sytuacjach takich jak:</p>
@@ -161,7 +161,7 @@ export default function ArticlePage() {
               </div>
             </section>
 
-            {/* How to receive and fulfill */}
+            {}
             <section>
               <h2 className="text-2xl font-black text-slate-900 mb-2">Jak otrzymać i zrealizować e-receptę?</h2>
               <p className="text-slate-600 font-medium mb-6 text-[15px]">Po wystawieniu recepty otrzymasz 4-cyfrowy kod.</p>
@@ -175,7 +175,7 @@ export default function ArticlePage() {
                   <div key={i} className="flex flex-col items-center text-center">
                     <div className="w-full aspect-[4/3] border border-slate-200 rounded-2xl flex items-center justify-center mb-4 relative overflow-hidden group hover:border-[#147A60] transition-colors">
                       <card.icon className="w-10 h-10 text-[#147A60] stroke-[1.5]" />
-                      {/* Decorative small green line at bottom of box */}
+                      {}
                       <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#147A60] transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left"></div>
                     </div>
                     <h4 className="font-extrabold text-slate-900 text-sm mb-2">{card.title}</h4>
@@ -185,7 +185,7 @@ export default function ArticlePage() {
               </div>
             </section>
 
-            {/* FAQ */}
+            {}
             <section>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 mb-8 pb-4 border-b border-slate-100">Najczęściej zadawane pytania</h2>
               <div className="space-y-0 border-t border-slate-100">
@@ -210,10 +210,10 @@ export default function ArticlePage() {
 
           </div>
 
-          {/* Sidebar */}
+          {}
           <div className="lg:col-span-4 space-y-8">
 
-            {/* Categories */}
+            {}
             <div className="bg-[#F8FAF9] rounded-2xl p-6">
               <h3 className="font-extrabold text-slate-900 mb-6 text-lg sm:text-xl">W tej kategorii</h3>
               <div className="space-y-1">
@@ -236,7 +236,7 @@ export default function ArticlePage() {
               </Link>
             </div>
 
-            {/* Popular Articles */}
+            {}
             <div className="p-2">
               <h3 className="font-extrabold text-slate-900 mb-6 text-lg sm:text-xl">Popularne artykuły</h3>
               <div className="space-y-5">
@@ -259,7 +259,7 @@ export default function ArticlePage() {
               </Link>
             </div>
 
-            {/* Contact Box */}
+            {}
             <div className="bg-[#EAF3F0] rounded-2xl p-6">
               <div className="w-12 h-12 bg-[#064743] text-white rounded-xl flex items-center justify-center mb-5">
                 <Headset className="w-6 h-6" />
@@ -282,7 +282,7 @@ export default function ArticlePage() {
 
       </main>
 
-      {/* Bottom Banner Full Width */}
+      {}
       <div className="w-full bg-[#F8FAF9] border-t border-b border-[#EAF3F0] py-10 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-8 xl:px-16 flex flex-col md:flex-row items-center justify-between gap-8 relative z-10">
           <div className="flex items-center gap-5">
@@ -300,7 +300,7 @@ export default function ArticlePage() {
         </div>
       </div>
 
-      {/* Feature strip at the very bottom */}
+      {}
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-12 md:px-20 lg:px-28 xl:px-36 py-16">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-8">
           <div className="flex gap-5">

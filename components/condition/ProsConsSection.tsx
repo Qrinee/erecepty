@@ -10,7 +10,7 @@ export default function ProsConsSection({ data }: Props) {
   return (
     <section className="bg-slate-50 py-20">
       <div className="mx-auto max-w-5xl px-6 grid gap-8 md:grid-cols-2">
-        {/* Pros */}
+        {}
         <div className="rounded-2xl bg-white p-6 shadow-sm">
           <h3 className="mb-4 font-semibold text-emerald-600">
             Zalety
@@ -25,7 +25,7 @@ export default function ProsConsSection({ data }: Props) {
           </ul>
         </div>
 
-        {/* Cons */}
+        {}
         <div className="rounded-2xl bg-white p-6 shadow-sm">
           <h3 className="mb-4 font-semibold text-red-600">
             Skutki uboczne

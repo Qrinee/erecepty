@@ -60,10 +60,10 @@ export function L4Form() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Clear previous errors
+    
     const newErrors: Record<string, string> = {};
     
-    // Validate fullName (first and last name)
+    
     const nameParts = fullName.trim().split(/\s+/);
     if (!fullName.trim()) {
       newErrors.fullName = "Imię i nazwisko są wymagane.";
@@ -71,7 +71,7 @@ export function L4Form() {
       newErrors.fullName = "Imię i nazwisko musi zawierać co najmniej dwa wyrazy.";
     }
     
-    // Validate PESEL
+    
     if (!pesel) {
       newErrors.pesel = "PESEL jest wymagany.";
     } else {
@@ -81,7 +81,7 @@ export function L4Form() {
       }
     }
     
-    // Validate Address, Postal Code, City
+    
     if (!address.trim()) {
       newErrors.address = "Adres zamieszkania jest wymagany.";
     }
@@ -94,7 +94,7 @@ export function L4Form() {
       newErrors.city = "Miasto jest wymagane.";
     }
     
-    // Validate Phone (at least 9 digits)
+    
     const cleanPhone = phone.replace(/\s+/g, "");
     if (!cleanPhone) {
       newErrors.phone = "Numer telefonu jest wymagany.";
@@ -102,19 +102,19 @@ export function L4Form() {
       newErrors.phone = "Numer telefonu musi zawierać od 9 do 15 cyfr.";
     }
     
-    // Validate Email
+    
     if (!email) {
       newErrors.email = "Adres e-mail jest wymagany.";
     } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       newErrors.email = "Adres e-mail jest nieprawidłowy.";
     }
     
-    // Validate Symptoms
+    
     if (!symptoms.trim()) {
       newErrors.symptoms = "Opis objawów jest wymagany.";
     }
     
-    // Validate Days Needed
+    
     const days = parseInt(daysNeeded);
     if (!daysNeeded) {
       newErrors.daysNeeded = "Liczba dni zwolnienia jest wymagana.";
@@ -122,7 +122,7 @@ export function L4Form() {
       newErrors.daysNeeded = "Liczba dni musi być wartością od 1 do 182.";
     }
     
-    // Validate consents
+    
     if (!consentTruth) {
       newErrors.consentTruth = "Musisz oświadczyć zgodność danych z prawdą.";
     }
@@ -133,14 +133,14 @@ export function L4Form() {
       newErrors.consentDoctor = "Musisz potwierdzić zrozumienie, że o wystawieniu L4 decyduje lekarz.";
     }
     
-    // Validate password if creating account
+    
     if (createAccount && (!accountPassword || accountPassword.length < 6)) {
       newErrors.accountPassword = "Hasło musi mieć co najmniej 6 znaków.";
     }
 
     if (Object.keys(newErrors).length > 0) {
       setErrors(newErrors);
-      // Scroll to the top of the form
+      
       const formEl = e.currentTarget as HTMLFormElement;
       formEl.scrollIntoView({ behavior: "smooth", block: "start" });
       return;
@@ -191,7 +191,7 @@ export function L4Form() {
     <form onSubmit={handleSubmit}>
       <FormErrorAlert errors={errors} />
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
-        {/* Col 1: Dane pacjenta */}
+        {}
         <div>
           <SectionHeader icon={User} title="Dane pacjenta" color="bg-indigo-500" />
           <div className="space-y-3">
@@ -310,7 +310,7 @@ export function L4Form() {
           </div>
         </div>
 
-        {/* Col 2: Dane pracodawcy */}
+        {}
         <div>
           <SectionHeader icon={Building2} title="Dane pracodawcy" color="bg-purple-600" />
           <div className="space-y-3">
@@ -319,7 +319,7 @@ export function L4Form() {
           </div>
         </div>
 
-        {/* Col 3: Informacje zdrowotne */}
+        {}
         <div>
           <SectionHeader icon={Heart} title="Informacje zdrowotne" color="bg-purple-600" />
           <div className="space-y-3">
@@ -364,7 +364,7 @@ export function L4Form() {
           </div>
         </div>
 
-        {/* Col 4: Zgody */}
+        {}
         <div>
           <SectionHeader icon={ShieldCheck} title="Zgody" color="bg-purple-600" />
           <div className="space-y-3">

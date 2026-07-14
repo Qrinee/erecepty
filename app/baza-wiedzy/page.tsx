@@ -23,9 +23,9 @@ export default function BazaWiedzyPage() {
     <>
       <Header />
       <main id="main-content" tabIndex={-1}>
-        {/* Hero Section */}
+        {}
         <section className="relative bg-gradient-to-br from-[#DAE9E6] via-white to-purple-50 pt-10 pb-16 overflow-hidden">
-          {/* Decorative elements */}
+          {}
           <div className="absolute top-20 left-10 w-32 h-32 bg-[#DAE9E6] rounded-full opacity-30 blur-2xl" />
           <div className="absolute bottom-20 right-10 w-48 h-48 bg-purple-200 rounded-full opacity-30 blur-3xl" />
 
@@ -46,7 +46,7 @@ export default function BazaWiedzyPage() {
                 konsultacji zdrowotnych, telekonsultacji i zdrowia.
               </p>
 
-              {/* Search Bar */}
+              {}
               <div className="max-w-xl mx-auto">
                 <div className="relative">
                   <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-slate-400" size={20} />
@@ -63,7 +63,7 @@ export default function BazaWiedzyPage() {
 
 
 
-        {/* Articles Grid */}
+        {}
         <section className="py-16 bg-gradient-to-br from-white to-[#DAE9E6]">
           <div className="max-w-7xl mx-auto px-6">
 
@@ -73,7 +73,7 @@ export default function BazaWiedzyPage() {
               ))}
             </div>
 
-            {/* Empty state if no articles */}
+            {}
             {allArticles.length === 0 && (
               <div className="text-center py-16">
                 <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">

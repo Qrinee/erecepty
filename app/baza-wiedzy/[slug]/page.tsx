@@ -1,4 +1,3 @@
-// app/baza-wiedzy/[slug]/page.tsx
 import { knowledgeCards } from "@/app/data/knowledgeCards";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -22,7 +21,6 @@ export interface ArticlePageData {
   relatedArticles?: string[];
 }
 
-// Named export for metadata - MUSI być Server Component
 export async function generateMetadata({
   params,
 }: {
@@ -97,14 +95,12 @@ export async function generateMetadata({
   };
 }
 
-// Generate static paths - MUSI być Server Component
 export async function generateStaticParams() {
   return knowledgeCards.map((article) => ({
     slug: article.slug,
   }));
 }
 
-// Main page component - Server Component
 export default async function ArticlePage({
   params,
 }: {
@@ -118,12 +114,10 @@ export default async function ArticlePage({
     notFound();
   }
 
-  // Pobierz powiązane artykuły
   const relatedArticles = article.relatedArticles
     ? knowledgeCards.filter((a) => article.relatedArticles?.includes(a.slug))
     : [];
 
-  // Renderujemy Client Component z danymi
   return (
     <ArticlePageClient
       article={article}

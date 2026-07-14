@@ -1,4 +1,4 @@
-// app/components/SearchBar.tsx
+
 "use client";
 
 import { useState, useEffect, useRef, useCallback } from 'react';
@@ -30,7 +30,7 @@ export default function SearchBar() {
   const [showSuggestions, setShowSuggestions] = useState<boolean>(false);
   const [activeIndex, setActiveIndex] = useState<number>(-1);
 
-  // Funkcja wyszukująca z debouncingiem
+  
   const performSearch = useCallback(
     debounce(async (searchTerm: string) => {
       if (searchTerm.length < 2) {
@@ -57,7 +57,7 @@ export default function SearchBar() {
     []
   );
 
-  // Obsługa zmiany inputu
+  
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = e.target.value;
     setQuery(value);
@@ -72,7 +72,7 @@ export default function SearchBar() {
     }
   };
 
-  // Obsługa klawiatury
+  
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
     if (!results.length) return;
 
@@ -105,16 +105,16 @@ export default function SearchBar() {
     }
   };
 
-  // Wybór wyniku z dropdown
+  
   const handleSelectResult = (result: SearchResult) => {
     setQuery(result.nazwa);
     setShowSuggestions(false);
     
-    // Przejdź do strony leku
+    
     router.push(`/add-medicine/${result.id}`);
   };
 
-  // Przycisk "Szukaj"
+  
   const handleSearch = () => {
     const trimmedQuery = query.trim();
     
@@ -124,11 +124,11 @@ export default function SearchBar() {
     }
 
     setShowSuggestions(false);
-    // Przejdź do strony wyszukiwania z ID jako query
+    
     router.push(`/add-medicine/${encodeURIComponent(trimmedQuery)}`);
   };
 
-  // Ukryj dropdown po kliknięciu na zewnątrz
+  
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
@@ -141,7 +141,7 @@ export default function SearchBar() {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Automatyczne wyświetlanie podpowiedzi przy focus
+  
   const handleInputFocus = () => {
     if (query.length >= 2 && results.length > 0) {
       setShowSuggestions(true);
@@ -150,7 +150,7 @@ export default function SearchBar() {
 
   return (
     <div className="relative max-w-xl mx-auto mb-6">
-      {/* Input field */}
+      {}
       <div className="relative">
         <Search
           className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 stroke-[1.5] text-slate-400"
@@ -190,7 +190,7 @@ export default function SearchBar() {
           aria-autocomplete="list"
         />
 
-        {/* Button */}
+        {}
         <div className="absolute right-1 top-1/2 -translate-y-1/2 flex gap-2">
           <button
             onClick={handleSearch}
@@ -231,7 +231,7 @@ export default function SearchBar() {
           </button>
         </div>
 
-        {/* Loading indicator */}
+        {}
         {isLoading && (
           <div className="absolute right-24 top-1/2 -translate-y-1/2" aria-live="polite">
             <div className="w-4 h-4 border-2 border-blue-100 border-t-blue-600 rounded-full animate-spin" />
@@ -243,7 +243,7 @@ export default function SearchBar() {
         Wpisz co najmniej 2 znaki, aby rozpocząć wyszukiwanie. Użyj strzałek góra/dół do nawigacji po wynikach, Enter do wyboru, Escape do zamknięcia.
       </p>
 
-      {/* Suggestions dropdown */}
+      {}
       {showSuggestions && results.length > 0 && (
         <div
           ref={dropdownRef}
@@ -263,7 +263,7 @@ export default function SearchBar() {
           aria-label="Wyniki wyszukiwania"
         >
           <div className="max-h-80 overflow-y-auto">
-            {/* Header */}
+            {}
             <div className="p-3 border-b border-slate-100 bg-slate-50">
               <div className="flex items-center justify-between">
                 <span className="text-xs font-medium text-slate-600">
@@ -275,7 +275,7 @@ export default function SearchBar() {
               </div>
             </div>
 
-            {/* Results list */}
+            {}
             <ul className="divide-y divide-slate-100">
               {results.map((result, index) => (
                 <li key={result.id}>
@@ -296,7 +296,7 @@ export default function SearchBar() {
                     aria-selected={activeIndex === index}
                   >
                     <div className="flex items-start gap-3">
-                      {/* Icon */}
+                      {}
                       <div className="
                         flex-shrink-0 w-8 h-8
                         rounded-lg
@@ -306,7 +306,7 @@ export default function SearchBar() {
                         <Pill className="w-4 h-4 text-blue-600" />
                       </div>
 
-                      {/* Content */}
+                      {}
                       <div className="flex-1 min-w-0">
                         <div className="flex items-start justify-between gap-2 mb-1">
                           <h4 className="text-sm font-semibold text-slate-900 truncate">
@@ -314,7 +314,7 @@ export default function SearchBar() {
                           </h4>
                         </div>
 
-                        {/* Details */}
+                        {}
                         <div className="space-y-1">
                           {result.suggestion && (
                             <p className="text-xs text-slate-600">
@@ -333,7 +333,7 @@ export default function SearchBar() {
                         </div>
                       </div>
 
-                      {/* Chevron */}
+                      {}
                       <ChevronRight className="
                         flex-shrink-0
                         w-4 h-4
@@ -346,7 +346,7 @@ export default function SearchBar() {
               ))}
             </ul>
 
-            {/* Footer */}
+            {}
             <div className="p-3 border-t border-slate-100 bg-slate-50">
               <button
                 type="button"
@@ -371,7 +371,7 @@ export default function SearchBar() {
         </div>
       )}
 
-      {/* No results message */}
+      {}
       {showSuggestions && query.length >= 2 && !isLoading && results.length === 0 && (
         <div
           ref={dropdownRef}

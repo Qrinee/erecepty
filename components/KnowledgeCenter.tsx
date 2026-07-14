@@ -32,7 +32,7 @@ export default function KnowledgeCenter() {
     <section className="bg-white py-20" aria-labelledby="knowledge-center-title">
       <div className="mx-auto w-full px-4 sm:px-6 lg:px-8">
 
-        {/* Header Section */}
+        {}
         <div className="mb-12 text-center max-w-3xl mx-auto">
           <h2 id="knowledge-center-title" className="text-3xl md:text-5xl font-extrabold text-slate-900 tracking-tight">
             Centrum wiedzy
@@ -42,7 +42,7 @@ export default function KnowledgeCenter() {
           </p>
         </div>
 
-        {/* Trust Features Desktop Carousel */}
+        {}
         <div className="mb-16">
           <DesktopCarousel>
             {trustFeatures.map((feature, idx) => (
@@ -57,7 +57,7 @@ export default function KnowledgeCenter() {
           </DesktopCarousel>
         </div>
 
-        {/* Cards Desktop Carousel */}
+        {}
         <DesktopCarousel>
           {knowledgeCards.map((card, index) => (
             <div key={index} className="min-w-[290px] sm:min-w-[360px] w-[290px] sm:w-[360px] h-[480px] snap-center shrink-0 flex">
@@ -66,7 +66,7 @@ export default function KnowledgeCenter() {
           ))}
         </DesktopCarousel>
 
-        {/* Bottom Search/Contact Banner */}
+        {}
         <div className="mt-12 bg-[#F8FAF9] border border-slate-100 rounded-2xl p-6 md:p-8 flex flex-col lg:flex-row items-center justify-between gap-6 shadow-sm">
           <div className="flex items-center gap-4 text-center lg:text-left">
             <div className="hidden sm:flex w-12 h-12 flex-shrink-0 bg-white shadow-sm border border-slate-100 text-[#138A56] rounded-full items-center justify-center">

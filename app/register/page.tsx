@@ -57,7 +57,7 @@ export default function RegisterPage() {
       const data = await response.json();
 
       if (!response.ok) {
-        // Handle different error cases with user-friendly messages
+        
         if (data.errorCode === 'EMAIL_EXISTS') {
           throw new Error("Konto z tym adresem e-mail już istnieje");
         }

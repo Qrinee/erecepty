@@ -92,14 +92,14 @@ export default function ServicesPanel() {
   return (
     <section className="bg-white relative overflow-hidden pt-10 scroll-mt-24" id="cennik">
 
-      {/* Decorative leafy branch (Left - Desktop Only) */}
+      {}
       <svg className="absolute top-6 left-6 w-24 h-24 text-[#064743]/10 hidden xl:block pointer-events-none select-none" viewBox="0 0 100 100" fill="currentColor">
         <path d="M10 80 Q 30 50 60 50 M 30 65 Q 25 50 40 45 M 45 58 Q 50 40 60 40" stroke="currentColor" strokeWidth="2" fill="none" />
         <path d="M40 45 C 45 40 35 30 30 35 C 25 40 35 48 40 45 Z" />
         <path d="M60 40 C 65 35 55 25 50 30 C 45 35 55 43 60 40 Z" />
       </svg>
 
-      {/* Decorative leafy branch (Right - Desktop Only) */}
+      {}
       <svg className="absolute top-6 right-6 w-24 h-24 text-[#064743]/10 hidden xl:block pointer-events-none select-none" viewBox="0 0 100 100" fill="currentColor">
         <path d="M90 80 Q 70 50 40 50 M 70 65 Q 75 50 60 45 M 55 58 Q 50 40 40 40" stroke="currentColor" strokeWidth="2" fill="none" />
         <path d="M60 45 C 55 40 65 30 70 35 C 75 40 65 48 60 45 Z" />
@@ -108,7 +108,7 @@ export default function ServicesPanel() {
 
       <div className="mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 
-        {/* Header */}
+        {}
         <div className="text-center mb-12">
           <h2 className="text-2xl md:text-3xl font-extrabold text-slate-800 mb-3 tracking-tight uppercase">
             Umów wizytę online w kilka minut
@@ -118,7 +118,7 @@ export default function ServicesPanel() {
           </p>
         </div>
 
-        {/* Service Cards Grid */}
+        {}
         <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-6 gap-6">
           {services.map((service) => {
             const Icon = service.icon;
@@ -128,12 +128,12 @@ export default function ServicesPanel() {
                 className={`rounded-[28px] border p-6 flex flex-col justify-between shadow-sm hover:shadow-md transition-shadow relative overflow-hidden ${service.color}`}
               >
                 <div>
-                  {/* Top-left small circular icon badge */}
+                  {}
                   <div className="w-10 h-10 rounded-[14px] bg-white border border-slate-100 shadow-[0_2px_4px_rgba(0,0,0,0.02)] flex items-center justify-center text-slate-500 mb-2 absolute top-6 left-6 z-10">
                     <Icon className="w-5 h-5" strokeWidth={1.5} />
                   </div>
 
-                  {/* Image Container - Beautifully rounded and masked photo */}
+                  {}
                   <div className="relative w-full aspect-[16/10] mb-6 mt-2 rounded-2xl overflow-hidden border border-slate-100 flex items-center justify-center group h-[250px]">
                     <img
                       src={service.image}
@@ -142,13 +142,13 @@ export default function ServicesPanel() {
                     />
                   </div>
 
-                  {/* Title */}
+                  {}
                   <h3 className="text-[22px] font-extrabold text-slate-900 mb-2">{service.title}</h3>
 
-                  {/* Description */}
+                  {}
                   <p className="text-[15px] text-slate-600 mb-6 leading-snug min-h-[44px]">{service.description}</p>
 
-                  {/* Consultation types (Telefon / Video) */}
+                  {}
                   <div className="flex flex-wrap gap-3 mb-8">
                     <div className="flex  items-center justify-center gap-2 py-2 px-3.5 bg-white border border-slate-200 rounded-[10px] text-sm font-bold text-slate-600 shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
                       <Phone className="w-4 h-4 text-slate-400" />
@@ -162,13 +162,13 @@ export default function ServicesPanel() {
                 </div>
 
                 <div>
-                  {/* Price */}
+                  {}
                   <div className="mb-4 flex items-baseline gap-1.5 text-slate-900">
                     <span className="text-[17px] font-bold text-slate-800">od</span>
                     <span className="text-3xl font-extrabold tracking-tight">{service.price} zł</span>
                   </div>
 
-                  {/* CTA Button */}
+                  {}
                   <button
                     onClick={() => handleOrder(service.href)}
                     className={`w-full ${service.buttonColor} text-white font-bold py-3.5 rounded-[14px] transition-all active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer shadow-sm text-base`}
@@ -176,7 +176,7 @@ export default function ServicesPanel() {
                     <span>{service.buttonText}</span>
                   </button>
 
-                  {/* Info text at the bottom */}
+                  {}
                   <div className="flex items-center justify-center gap-1.5 text-sm text-slate-500 mt-4 font-medium">
                     <Clock className="w-4 h-4" />
                     <span>Czas realizacji: nawet 15 min</span>
@@ -187,7 +187,7 @@ export default function ServicesPanel() {
           })}
         </div>
 
-        {/* Bottom Trust/Guarantees Row under Grid */}
+        {}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-16 pt-8 border-t border-slate-100">
           {[
             { icon: ShieldCheck, title: "Bezpiecznie", desc: "Twoje dane są u nas bezpieczne" },

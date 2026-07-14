@@ -61,7 +61,7 @@ export default function OnlineConsultationsClient() {
       <main className="bg-white min-h-screen pt-8 pb-20" id="main-content">
         <div className="w-[80vw] mx-auto px-6">
 
-          {/* Breadcrumbs */}
+          {}
           <nav className="mb-14" aria-label="Breadcrumb">
             <ol className="flex items-center gap-2 text-sm text-slate-500 font-medium">
               <li><Link href="/" className="hover:text-emerald-700 transition-colors">Strona główna</Link></li>
@@ -72,11 +72,11 @@ export default function OnlineConsultationsClient() {
             </ol>
           </nav>
 
-          {/* Hero Area */}
+          {}
           <section className="mb-8">
             <div className="flex flex-col lg:flex-row items-center gap-12 lg:gap-8">
 
-              {/* Left text */}
+              {}
               <div className="flex-1 text-center lg:text-left">
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-slate-900 mb-6 leading-[1.1] tracking-tight">
                   Wszystko o <br className="hidden lg:block" />konsultacjach online
@@ -86,7 +86,7 @@ export default function OnlineConsultationsClient() {
                 </p>
               </div>
 
-              {/* Right graphic */}
+              {}
               <div className="flex-1 flex justify-center lg:justify-end">
                 <img
                   src="/app.png"
@@ -98,7 +98,7 @@ export default function OnlineConsultationsClient() {
             </div>
           </section>
 
-          {/* 4 badges row */}
+          {}
           <section className="mb-24">
             <div className="bg-white rounded-3xl shadow-[0_4px_24px_rgba(0,0,0,0.06)] border border-slate-50 p-6 md:p-8 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
               <div className="flex items-center gap-3">
@@ -123,7 +123,7 @@ export default function OnlineConsultationsClient() {
             </div>
           </section>
 
-          {/* FAQ Accordion Section */}
+          {}
           <section className="mb-24">
             <h2 className="text-2xl md:text-[28px] font-bold text-slate-900 mb-8">
               Najczęściej zadawane pytania
@@ -158,7 +158,7 @@ export default function OnlineConsultationsClient() {
             </div>
           </section>
 
-          {/* Outcomes grid */}
+          {}
           <section>
             <h2 className="text-2xl md:text-[28px] font-bold text-slate-900 mb-8">
               Co możesz otrzymać podczas konsultacji?

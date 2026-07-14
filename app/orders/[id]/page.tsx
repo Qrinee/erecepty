@@ -44,7 +44,7 @@ export default function OrderDetailPage() {
     if (status === 'cancelled') return 'bg-red-100 text-red-800';
     if (status === 'completed') return 'bg-green-100 text-green-800';
     if (status === 'reviewed') return 'bg-blue-100 text-blue-800';
-    
+
     if (paymentStatus === 'unpaid') return 'bg-orange-100 text-orange-800';
     if (paymentStatus === 'paid') return 'bg-teal-100 text-teal-800';
     return 'bg-yellow-100 text-yellow-800';
@@ -54,7 +54,7 @@ export default function OrderDetailPage() {
     if (status === 'cancelled') return 'Anulowane';
     if (status === 'completed') return 'Zakończone';
     if (status === 'reviewed') return 'W trakcie analizy';
-    
+
     if (paymentStatus === 'unpaid') return 'Nieopłacone';
     if (paymentStatus === 'paid') return 'Opłacone (Oczekujące na lekarza)';
     return 'Oczekujące na przegląd';
@@ -65,7 +65,7 @@ export default function OrderDetailPage() {
     if (status === 'completed') return CheckCircle2 ? <CheckCircle2 className="w-6 h-6" /> : null;
     if (status === 'reviewed') return Clock ? <Clock className="w-6 h-6" /> : null;
     if (status === 'cancelled') return XCircle ? <XCircle className="w-6 h-6" /> : null;
-    
+
     if (paymentStatus === 'unpaid') return CreditCard ? <CreditCard className="w-6 h-6" /> : null;
     return AlertCircle ? <AlertCircle className="w-6 h-6" /> : null;
   };
@@ -96,16 +96,14 @@ export default function OrderDetailPage() {
     <div className="min-h-screen bg-gray-50">
       <Header />
       <main className="max-w-4xl mx-auto px-4 py-8">
-        {/* Back Button */}
-        <button 
-          onClick={() => router.push("/orders")} 
+        <button
+          onClick={() => router.push("/orders")}
           className="flex items-center gap-2 text-blue-600 hover:text-blue-700 font-medium mb-6"
         >
           <ArrowLeft className="w-4 h-4" />
           Wróć do konsultacji
         </button>
 
-        {/* Status Header */}
         <div className={`${getStatusBadgeClass(data.status, data.paymentStatus)} rounded-2xl p-6 mb-6 border border-current border-opacity-20`}>
           <div className="flex items-start gap-4">
             <div className="flex-shrink-0">
@@ -122,11 +120,8 @@ export default function OrderDetailPage() {
           </div>
         </div>
 
-        {/* Main Content Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-6">
-          {/* Left Column - Status Info */}
           <div className="lg:col-span-2 space-y-6">
-            {/* Timeline Section */}
             <div className="bg-white rounded-2xl p-6 border border-gray-200">
               <h2 className="text-lg font-semibold text-gray-900 mb-4">Historia konsultacji</h2>
               <div className="space-y-4">
@@ -184,8 +179,6 @@ export default function OrderDetailPage() {
                 )}
               </div>
             </div>
-
-            {/* Admin Notes Section */}
             {data.adminNotes && (
               <div className="bg-blue-50 border border-blue-200 rounded-2xl p-6">
                 <h3 className="text-lg font-semibold text-blue-900 mb-3">Notatka od lekarza</h3>
@@ -195,7 +188,6 @@ export default function OrderDetailPage() {
               </div>
             )}
 
-            {/* Patient Data Section */}
             {data.patient && (
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">Dane pacjenta</h2>
@@ -232,7 +224,7 @@ export default function OrderDetailPage() {
               </div>
             )}
 
-            {/* Medical Info Section */}
+            {}
             {data.medicalInfo && (
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">Informacje medyczne</h2>
@@ -271,7 +263,7 @@ export default function OrderDetailPage() {
               </div>
             )}
 
-            {/* Medicines Section */}
+            {}
             {data.medicines && data.medicines.length > 0 ? (
               <div className="bg-white rounded-2xl p-6 border border-gray-200">
                 <h2 className="text-lg font-semibold text-gray-900 mb-4">Leki ({data.medicines.length})</h2>
@@ -295,12 +287,12 @@ export default function OrderDetailPage() {
             ) : null}
           </div>
 
-          {/* Right Column - Summary */}
+          {}
           <div className="space-y-4">
-            {/* Quick Info Card */}
+            {}
             <div className="bg-white rounded-2xl p-6 border border-gray-200 sticky top-28">
               <h3 className="font-semibold text-gray-900 mb-4">Podsumowanie</h3>
-              
+
               <div className="space-y-3 text-sm">
                 <div>
                   <p className="text-gray-600">Typ zgłoszenia</p>
@@ -339,13 +331,12 @@ export default function OrderDetailPage() {
                 {data.paymentStatus && (
                   <div className="pt-3 border-t border-gray-200">
                     <p className="text-gray-600">Płatność</p>
-                    <p className={`font-medium ${
-                      data.paymentStatus === 'paid' ? 'text-green-700' : 
+                    <p className={`font-medium ${data.paymentStatus === 'paid' ? 'text-green-700' :
                       data.paymentStatus === 'unpaid' ? 'text-orange-700' :
-                      'text-red-700'
-                    }`}>
-                      {data.paymentStatus === 'paid' ? '✓ Opłacone' : 
-                       data.paymentStatus === 'unpaid' ? 'Oczekujące' : 'Nieudane'}
+                        'text-red-700'
+                      }`}>
+                      {data.paymentStatus === 'paid' ? '✓ Opłacone' :
+                        data.paymentStatus === 'unpaid' ? 'Oczekujące' : 'Nieudane'}
                     </p>
                   </div>
                 )}
